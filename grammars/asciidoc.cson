@@ -90,6 +90,8 @@
     'captures':
       '1': 'name': 'variable.list.asciidoc'
   }
+
+  { 'include': '#inline' }
 ]
 
 'repository':
@@ -109,5 +111,15 @@
           '1': 'name': 'string.substitution.start.asciidoc'
           '2': 'name': 'string.substitution.key.asciidoc'
           '3': 'name': 'string.substitution.end.asciidoc'
+      }
+
+      # Matches raw inlines
+      #
+      # Examples
+      #
+      #   `Text in {backticks}` renders exactly as entered, in `monospace`.
+      {
+        'match': '`[^`]+`',
+        'name': 'markup.raw.asciidoc'
       }
     ]

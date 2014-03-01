@@ -1,0 +1,113 @@
+'name': 'AsciiDoc'
+'scopeName': 'source.asciidoc'
+'fileTypes': [
+  'ad'
+  'asc'
+  'adoc'
+  'asciidoc'
+]
+
+'patterns': [
+  # Matches section titles (headers)
+  #
+  # Examples
+  #
+  #   = Document Title (Level 0)
+  #
+  #   == Level 1 Section
+  #
+  #   === Level 2 Section
+  {
+    'begin': '^={1,6}\\s+'
+    'end': '$'
+    'name': 'markup.heading.asciidoc'
+    'patterns': [
+      'include': '$self'
+    ]
+  }
+
+  # Matches attributes
+  #
+  # Examples
+  #
+  #   :icons: font
+  #   :sectanchors:
+  {
+    'match': '(\\:)([^\/\\:\\s]+)(\\:)(\\s+\\S+)?$'
+    'name': 'variable.other'
+    'captures':
+      '1': 'name': 'string.attribute.start.asciidoc'
+      '2': 'name': 'string.attribute.key.asciidoc'
+      '3': 'name': 'string.attribute.end.asciidoc'
+  }
+
+  # Matches block comments
+  #
+  # Examples
+  #
+  #   ////
+  #   A multi-line comment.
+  #
+  #   Notice it's a delimited block.
+  #   ////
+  {
+    'begin': '(^/{4,}$)'
+    'end': '\\1'
+    'name': 'markup.comment.block.asciidoc'
+  }
+
+  # Matches admonition blocks
+  #
+  # Examples
+  #
+  #   TIP: Pro tip..
+  #
+  #   IMPORTANT: Don't forget...
+  {
+    'begin': '^((NOTE|TIP|IMPORTANT|WARNING|CAUTION)\\:)'
+    'end': '$'
+    'name': 'markup.admonition.asciidoc'
+    'captures':
+      '1': 'name': 'string.admonition.title.asciidoc'
+    'patterns': [
+      { 'include': '#inline' }
+    ]
+  }
+
+  # Matches ordered and unordered list items
+  #
+  # Examples
+  #
+  #   * level 1
+  #   ** level 2
+  #   *** level 3
+  #
+  #   . level 1
+  #   .. level 2
+  #   ... level 3
+  {
+    'match': '^\\s*([\\*\\-\\.])[ \\t]+'
+    'captures':
+      '1': 'name': 'variable.list.asciidoc'
+  }
+]
+
+'repository':
+  'inline':
+    'patterns': [
+
+      # Matches substitutions
+      #
+      # Examples
+      #
+      #   Check out {docslink} too!
+      #
+      #   {checkedbox} That's done!
+      {
+        'match': '({)([^\/\\:\\s]+)(})',
+        'captures':
+          '1': 'name': 'string.substitution.start.asciidoc'
+          '2': 'name': 'string.substitution.key.asciidoc'
+          '3': 'name': 'string.substitution.end.asciidoc'
+      }
+    ]

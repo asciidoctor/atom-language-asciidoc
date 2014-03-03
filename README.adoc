@@ -1,3 +1,0 @@
-## AsciiDoc Package for Atom
-
-Adds syntax highlighting and snippets to AsciiDoc files. Supports http://asciidoctor.org/[Asciidoctor]-specific features.

@@ -8,6 +8,20 @@
 ]
 
 'patterns': [
+
+  # Includes inline patterns,
+  # see repository section below.
+  {
+    'include': '#inline'
+  }
+
+  # Due to the complex AsciiDoc code blocks syntax there is a separate pattern
+  # for each supported programming language. To not blow up the main grammar
+  # file code block patterns moved to an external file asciidoc.code.blocks.cson
+  {
+    'include': 'source.code.block.asciidoc'
+  }
+
   # Matches section titles (headers)
   #
   # Examples
@@ -34,11 +48,9 @@
   #   :sectanchors:
   {
     'match': '(\\:)([^\/\\:\\s]+)(\\:)(\\s+\\S+)?$'
-    'name': 'variable.other'
+    'name': 'constant.asciidoc'
     'captures':
-      '1': 'name': 'string.attribute.start.asciidoc'
-      '2': 'name': 'string.attribute.key.asciidoc'
-      '3': 'name': 'string.attribute.end.asciidoc'
+      '4': 'name': 'variable.asciidoc'
   }
 
   # Matches block comments
@@ -53,7 +65,7 @@
   {
     'begin': '(^/{4,}$)'
     'end': '\\1'
-    'name': 'markup.comment.block.asciidoc'
+    'name': 'comment.block.asciidoc'
   }
 
   # Matches admonition blocks
@@ -88,10 +100,8 @@
   {
     'match': '^\\s*([\\*\\-\\.])[ \\t]+'
     'captures':
-      '1': 'name': 'variable.list.asciidoc'
+      '1': 'name': 'markup.list.asciidoc'
   }
-
-  { 'include': '#inline' }
 ]
 
 'repository':
@@ -107,10 +117,7 @@
       #   {checkedbox} That's done!
       {
         'match': '({)([^\/\\:\\s]+)(})',
-        'captures':
-          '1': 'name': 'string.substitution.start.asciidoc'
-          '2': 'name': 'string.substitution.key.asciidoc'
-          '3': 'name': 'string.substitution.end.asciidoc'
+        'name': 'constant.asciidoc'
       }
 
       # Matches raw inlines
@@ -120,6 +127,6 @@
       #   `Text in {backticks}` renders exactly as entered, in `monospace`.
       {
         'match': '`[^`]+`',
-        'name': 'markup.raw.asciidoc'
+        'name': 'markup.raw.inline.asciidoc'
       }
     ]

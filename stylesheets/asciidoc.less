@@ -1,22 +1,28 @@
 .editor {
   .asciidoc {
+    .comment.block {
+      font-style: italic;
+    }
     .markup.heading {
       font-weight: bold;
       color: #eee;
     }
-    .markup.comment.block {
-      font-style: italic;
-    }
-    .markup.admonition.asciidoc {
-      font-style: italic;
-      .title {
-        color: #FF73FD;
-      }
-    }
     .markup.raw {
+      color: #7c7c7c;
+    }
+    .markup.raw.inline {
+      color: #c5c8c6;
       background-color: #2f2f2f;
       border-radius: 2px;
       border: 1px solid #444;
+    }
+    .markup.list {
+      color: #7c7c7c;
+    }
+    .markup.admonition.asciidoc {
+      .title {
+        color: #FF73FD;
+      }
     }
   }
 }

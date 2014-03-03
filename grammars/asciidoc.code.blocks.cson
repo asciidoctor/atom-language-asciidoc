@@ -1,0 +1,170 @@
+'name': 'AsciiDoc Code Blocks'
+'scopeName': 'source.code.block.asciidoc'
+
+'patterns': [
+
+  ##############################################################################
+  #                                                                            #
+  #                         AsciiDoc Style Code Blocks                         #
+  #                                                                            #
+  ##############################################################################
+
+  # Matches JavaScript AsciiDoc code blocks
+  #
+  # Examples
+  #
+  #   [source,js]
+  #   ----
+  #   var http = require('http');
+  #   http.createServer(function (req, res) {
+  #     res.end('Hello World\n');
+  #   }).listen(1337, '127.0.0.1');
+  #   ----
+  {
+    'begin': '^\\[source,\\s*(javascript|js)\\]$'
+    'beginCaptures':
+      '0': 'name': 'support.asciidoc'
+    'end': '^\\s*$'
+    'patterns': [
+      {
+        'begin': '(^\\s*-{4,}\\s*$)'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '\\1'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.js']
+      }
+    ]
+  }
+
+  # Matches Ruby AsciiDoc code blocks
+  #
+  # Examples
+  #
+  #   [source,ruby]
+  #   ----
+  #   require 'sinatra'
+  #
+  #   get '/hi' do
+  #     "Hello World!"
+  #   end
+  #   ----
+  {
+    'begin': '^\\[source,\\s*(ruby|rb)\\]$'
+    'beginCaptures':
+      '0': 'name': 'support.asciidoc'
+    'end': '^\\s*$'
+    'patterns': [
+      {
+        'begin': '(^\\s*-{4,}\\s*$)'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '\\1'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.ruby']
+      }
+    ]
+  }
+
+  # Matches language-agnostic AsciiDoc code blocks
+  #
+  # Examples
+  #
+  #   [source]
+  #   ----
+  #   require 'sinatra'
+  #
+  #   get '/hi' do
+  #     "Hello World!"
+  #   end
+  #   ----
+  {
+    'begin': '^\\[source(,[^\\],]*)?\\]$'
+    'beginCaptures':
+      '0': 'name': 'support.asciidoc'
+    'end': '^\\s*$'
+    'patterns': [
+      {
+        'begin': '(^\\s*-{4,}\\s*$)'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '\\1'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'name': 'markup.raw.asciidoc'
+      }
+    ]
+  }
+
+
+  ##############################################################################
+  #                                                                            #
+  #                         Markdown Style Code Blocks                         #
+  #                                                                            #
+  ##############################################################################
+
+  # Matches JavaScript Markdown-style code blocks
+  #
+  # Examples
+  #
+  #   [source,js]
+  #   ----
+  #   var http = require('http');
+  #   http.createServer(function (req, res) {
+  #     res.end('Hello World\n');
+  #   }).listen(1337, '127.0.0.1');
+  #   ----
+  {
+    'begin': '^`{3,}\\s*(javascript|js)\\s*$'
+    'beginCaptures':
+      '0': 'name': 'support.asciidoc'
+    'end': '^`{3,}$'
+    'endCaptures':
+      '0': 'name': 'support.asciidoc'
+    'patterns': ['include': 'source.js']
+  }
+
+  # Matches Ruby Markdown-style code blocks
+  #
+  # Examples
+  #
+  #   ```ruby
+  #   require 'sinatra'
+  #
+  #   get '/hi' do
+  #     "Hello World!"
+  #   end
+  #   ```
+  {
+    'begin': '^`{3,}\\s*(ruby|rb)\\s*$'
+    'beginCaptures':
+      '0': 'name': 'support.asciidoc'
+    'end': '^`{3,}$'
+    'endCaptures':
+      '0': 'name': 'support.asciidoc'
+    'patterns': ['include': 'source.ruby']
+  }
+
+  # Matches language-agnostic Markdown code blocks
+  #
+  # Examples
+  #
+  #   ```
+  #   require 'sinatra'
+  #
+  #   get '/hi' do
+  #     "Hello World!"
+  #   end
+  #   ```
+  {
+    'begin': '^`{3,}.*$'
+    'beginCaptures':
+      '0': 'name': 'support.asciidoc'
+    'end': '^`{3,}$'
+    'endCaptures':
+      '0': 'name': 'support.asciidoc'
+    'name': 'markup.raw.asciidoc'
+  }
+]

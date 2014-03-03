@@ -108,6 +108,28 @@
   'inline':
     'patterns': [
 
+      # Matches bold pharses
+      #
+      # Examples
+      #
+      #   *bold phrase*
+      {
+        'match': '(?<=^|\\s)(\\*[^\\*]+\\*)'
+        'captures':
+          '0': 'name': 'markup.bold.asciidoc'
+      }
+
+      # Matches italic pharses
+      #
+      # Examples
+      #
+      #   _italic phrase_
+      {
+        'match': '(?<=^|\\s)(_[^_]+_)'
+        'captures':
+          '0': 'name': 'markup.italic.asciidoc'
+      }
+
       # Matches substitutions
       #
       # Examples

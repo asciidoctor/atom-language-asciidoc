@@ -1,36 +1,35 @@
+@import 'syntax-variables';
+
+@syntax-unobtrusive-text-color: fadeout(@syntax-text-color, 50%);
+
 .editor {
   .asciidoc {
+
     .markup.bold {
       font-weight: bold;
     }
+
     .markup.italic {
       font-style: italic;
     }
 
-
-    .comment.block {
-      font-style: italic;
-    }
     .markup.heading {
       font-weight: bold;
-      color: #eee;
-    }
-    .markup.raw {
-      color: #7c7c7c;
-    }
-    .markup.raw.inline {
-      color: #c5c8c6;
-      background-color: #2f2f2f;
-      border-radius: 2px;
-      border: 1px solid #444;
-    }
-    .markup.list {
-      color: #7c7c7c;
-    }
-    .markup.admonition.asciidoc {
-      .title {
-        color: #FF73FD;
+
+      // Lighten headers for dark themes.
+      & when (lightness(@syntax-background-color) < 50%){
+        color: lighten(@syntax-text-color, 20%);
       }
+
+      // Darken headers for light themes.
+      & when (lightness(@syntax-background-color) > 50%){
+        color: darken(@syntax-text-color, 20%);
+      }
+    }
+
+    .markup.list.bullet,
+    .markup.substitution {
+      color: @syntax-unobtrusive-text-color;
     }
   }
 }

@@ -48,7 +48,7 @@
   #   :sectanchors:
   {
     'match': '(\\:)([^\/\\:\\s]+)(\\:)(\\s+\\S+)?$'
-    'name': 'constant.asciidoc'
+    'name': 'support.constant.asciidoc'
     'captures':
       '4': 'name': 'variable.asciidoc'
   }
@@ -80,7 +80,7 @@
     'end': '$'
     'name': 'markup.admonition.asciidoc'
     'captures':
-      '1': 'name': 'string.admonition.title.asciidoc'
+      '1': 'name': 'support.constant.asciidoc'
     'patterns': [
       { 'include': '#inline' }
     ]
@@ -99,8 +99,9 @@
   #   ... level 3
   {
     'match': '^\\s*([\\*\\-\\.])[ \\t]+'
+    'name': 'markup.list.asciidoc'
     'captures':
-      '1': 'name': 'markup.list.asciidoc'
+      '1': 'name': 'markup.list.bullet.asciidoc'
   }
 ]
 
@@ -139,7 +140,7 @@
       #   {checkedbox} That's done!
       {
         'match': '({)([^\/\\:\\s]+)(})',
-        'name': 'constant.asciidoc'
+        'name': 'markup.substitution.asciidoc'
       }
 
       # Matches raw inlines

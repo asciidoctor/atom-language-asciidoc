@@ -48,3 +48,17 @@ describe "AsciiDoc grammar", ->
     {tokens} = grammar.tokenizeLine("====== Heading 5")
     expect(tokens[0]).toEqual value: "====== ", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
     expect(tokens[1]).toEqual value: "Heading 5", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+
+  it "tokenizes list bullets with the length up to 5 symbols", ->
+    {tokens} = grammar.tokenizeLine("""
+                                    . Level 1
+                                    .. Level 2
+                                    *** Level 3
+                                    **** Level 4
+                                    ***** Level 5
+                                    """)
+    expect(tokens[0]).toEqual  value: ".", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+    expect(tokens[3]).toEqual  value: "..", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+    expect(tokens[6]).toEqual  value: "***", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+    expect(tokens[9]).toEqual  value: "****", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+    expect(tokens[12]).toEqual value: "*****", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]

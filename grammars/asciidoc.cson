@@ -96,7 +96,7 @@
   #   .. level 2
   #   ... level 3
   {
-    'match': '^\\s*([\\*\\-\\.])[ \\t]+'
+    'match': '^\\s*([\\*\\-\\.]{1,5})[ \\t]+'
     'name': 'markup.list.asciidoc'
     'captures':
       '1': 'name': 'markup.list.bullet.asciidoc'

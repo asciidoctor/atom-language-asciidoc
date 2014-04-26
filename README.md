@@ -1,4 +1,4 @@
-# AsciiDoc Package for Atom
+# AsciiDoc Package for Atom [![Build Status](https://travis-ci.org/farata/atom-language-asciidoc.png?branch=master)](https://travis-ci.org/farata/atom-language-asciidoc)
 
 Adds syntax highlighting and snippets to AsciiDoc files. Supports [Asciidoctor](http://asciidoctor.org/)-specific features.
 

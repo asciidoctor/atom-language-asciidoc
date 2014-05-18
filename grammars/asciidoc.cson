@@ -84,6 +84,46 @@
     ]
   }
 
+  # Matches tables. Supports cell spans, alignments and styles.
+  #
+  # Examples
+  #
+  #   |===
+  #   |Name |Purpose |Substitution
+  #
+  #   h|comment
+  #   a|Private notes that are not displayed in the output
+  #   |none
+  #
+  #   h|literal
+  #   |Output text to be displayed exactly as entered
+  #   |verbatim
+  #   |===
+  {
+    'begin': '^(\\|={3,}\\s*)$'
+    'beginCaptures':
+      '0': 'name': 'support.table.asciidoc'
+    'end': '^\\1$'
+    'endCaptures':
+      '0': 'name': 'support.table.asciidoc'
+    'patterns': [
+      # Match non-escaped vertical column delimiters
+      {
+        # Regex groups:
+        #   1 - matches beginning of the line or a whitespace to separate a
+        #       column from the previous one.
+        #   2 - matches cell spans, alignments, styles, and the vertical bar
+        #   3 - negative lookahead prevents highlighting of several vertical
+        #       bars followed in a row and triple equal signs that can close the
+        #       table (triple equal sign is the issue only for unit tests)
+        'match': '(^|\\s+)([^\\|\\s\\\\]*\\|)(?!={3,}|\\|)'
+        'captures':
+          '2': 'name': 'support.table.asciidoc'
+      }
+      { 'include': '#inline' }
+    ]
+  }
+
   # Matches ordered and unordered list items
   #
   # Examples

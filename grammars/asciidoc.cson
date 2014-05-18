@@ -137,7 +137,7 @@
       #
       #   {checkedbox} That's done!
       {
-        'match': '({)([^\/\\:\\s]+)(})',
+        'match': '({)([^\/\\:\\s]+)(})'
         'name': 'markup.substitution.asciidoc'
       }
 
@@ -147,7 +147,7 @@
       #
       #   `Text in {backticks}` renders exactly as entered, in `monospace`.
       {
-        'match': '`[^`]+`',
+        'match': '`[^`]+`'
         'name': 'markup.raw.inline.asciidoc'
       }
     ]

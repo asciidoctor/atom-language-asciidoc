@@ -1,6 +1,6 @@
 @import 'syntax-variables';
 
-@syntax-unobtrusive-text-color: fadeout(@syntax-text-color, 50%);
+@syntax-text-color-unobtrusive: fadeout(@syntax-text-color, 50%);
 
 .editor {
   .asciidoc {
@@ -29,7 +29,7 @@
 
     .markup.list.bullet,
     .markup.substitution {
-      color: @syntax-unobtrusive-text-color;
+      color: @syntax-text-color-unobtrusive;
     }
   }
 }

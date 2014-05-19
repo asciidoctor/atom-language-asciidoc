@@ -112,13 +112,15 @@
         # Regex groups:
         #   1 - matches beginning of the line or a whitespace to separate a
         #       column from the previous one.
-        #   2 - matches cell spans, alignments, styles, and the vertical bar
-        #   3 - negative lookahead prevents highlighting of several vertical
+        #   2 - matches cell specs (spans, alignments, styles, etc.)
+        #   3 - matches the vertical bar.
+        #   4 - negative lookahead prevents highlighting of several vertical
         #       bars followed in a row and triple equal signs that can close the
         #       table (triple equal sign is the issue only for unit tests)
-        'match': '(^|\\s+)([^\\|\\s\\\\]*\\|)(?!={3,}|\\|)'
+        'match': '(^|\\s+)([^\\|\\s\\\\]*)(\\|)(?!={3,}|\\|)'
         'captures':
-          '2': 'name': 'support.table.asciidoc'
+          '2': 'name': 'support.table.spec.asciidoc'
+          '3': 'name': 'support.table.asciidoc'
       }
       { 'include': '#inline' }
     ]

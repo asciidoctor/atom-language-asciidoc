@@ -73,12 +73,12 @@ describe "AsciiDoc grammar", ->
     expect(tokens[0]).toEqual value: "|==\n|==", scopes: ["source.asciidoc"]
 
   it "tokenizes cell delimiters within table block", ->
-    {tokens} = grammar.tokenizeLine("|===\n|Name |Purpose\n|===")
+    {tokens} = grammar.tokenizeLine("|===\n|Name h|Purpose\n|===")
     expect(tokens[2]).toEqual value: "|", scopes: ["source.asciidoc", "support.table.asciidoc"]
-    expect(tokens[5]).toEqual value: "|", scopes: ["source.asciidoc", "support.table.asciidoc"]
+    expect(tokens[6]).toEqual value: "|", scopes: ["source.asciidoc", "support.table.asciidoc"]
 
-  it "tokenizes complex cell spans, alignments and styles within table block", ->
+  it "tokenizes cell specs within table block", ->
     {tokens} = grammar.tokenizeLine("|===\n^|1 2.2+^.^|2 .3+<.>m|3\n|===")
-    expect(tokens[2]).toEqual value: "^|", scopes: ["source.asciidoc", "support.table.asciidoc"]
-    expect(tokens[5]).toEqual value: "2.2+^.^|", scopes: ["source.asciidoc", "support.table.asciidoc"]
-    expect(tokens[8]).toEqual value: ".3+<.>m|", scopes: ["source.asciidoc", "support.table.asciidoc"]
+    expect(tokens[2]).toEqual value: "^", scopes: ["source.asciidoc", "support.table.spec.asciidoc"]
+    expect(tokens[6]).toEqual value: "2.2+^.^", scopes: ["source.asciidoc", "support.table.spec.asciidoc"]
+    expect(tokens[10]).toEqual value: ".3+<.>m", scopes: ["source.asciidoc", "support.table.spec.asciidoc"]

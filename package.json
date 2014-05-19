@@ -2,7 +2,7 @@
   "version": "0.8.0",
   "name": "language-asciidoc",
   "description": "Syntax highlighting and snippets for AsciiDoc (with Asciidoctor flavor).",
-  "repository": "https://github.com/Farata/atom-language-asciidoc",
+  "repository": "https://github.com/asciidoctor/atom-language-asciidoc",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"

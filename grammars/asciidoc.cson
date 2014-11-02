@@ -192,6 +192,17 @@
         'match': '`[^`]+`'
         'name': 'markup.raw.inline.asciidoc'
       }
+
+      # Matches quoted text Monospaced
+      #
+      # Examples
+      #
+      #    This is +monospaced+ text.
+      {
+        'match': '(?<=^|\\s)(\\+[^\\+]+\\+)'
+        'captures':
+          '0': 'name': 'markup.raw.inline.asciidoc'
+      }
     ]
   'codeBlocks':
     'patterns': [

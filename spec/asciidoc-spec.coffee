@@ -6,7 +6,7 @@ describe "AsciiDoc grammar", ->
       atom.packages.activatePackage("language-asciidoc")
 
     runs ->
-      grammar = atom.syntax.grammarForScopeName("source.asciidoc")
+      grammar = atom.grammars.grammarForScopeName("source.asciidoc")
 
   it "parses the grammar", ->
     expect(grammar).toBeDefined()

@@ -82,3 +82,13 @@ describe "AsciiDoc grammar", ->
     expect(tokens[2]).toEqual value: "^", scopes: ["source.asciidoc", "support.table.spec.asciidoc"]
     expect(tokens[6]).toEqual value: "2.2+^.^", scopes: ["source.asciidoc", "support.table.spec.asciidoc"]
     expect(tokens[10]).toEqual value: ".3+<.>m", scopes: ["source.asciidoc", "support.table.spec.asciidoc"]
+
+  it "tokenizes comment delimited block", ->
+    {tokens} = grammar.tokenizeLine("////\ncontent\n////")
+    expect(tokens[0]).toEqual value: "////", scopes: ["source.asciidoc", "comment.block.asciidoc"]
+    expect(tokens[2]).toEqual value: "////", scopes: ["source.asciidoc", "comment.block.asciidoc"]
+
+  it "tokenizes example delimited block", ->
+    {tokens} = grammar.tokenizeLine("====\nexample\n====\n")
+    expect(tokens[0]).toEqual value: "====", scopes: ["source.asciidoc", "example.block.asciidoc"]
+    expect(tokens[2]).toEqual value: "====", scopes: ["source.asciidoc", "example.block.asciidoc"]

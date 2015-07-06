@@ -30,7 +30,7 @@
   #
   #   === Level 2 Section
   {
-    'begin': '^={1,6}\\s+'
+    'begin': '^={1,6}\\p{Blank}+'
     'end': '$'
     'name': 'markup.heading.asciidoc'
     'patterns': [
@@ -64,6 +64,36 @@
     'begin': '(^/{4,}$)'
     'end': '\\1'
     'name': 'comment.block.asciidoc'
+  }
+
+  # Matches example block
+  #
+  # Examples
+  #
+  #   ====
+  #   A multi-line example.
+  #
+  #   Notice it's a delimited block.
+  #   ====
+  {
+    'begin': '(^={4,}$)'
+    'end': '\\1'
+    'name': 'example.block.asciidoc'
+  }
+
+  # Matches quote block
+  #
+  # Examples
+  #
+# [quote, Archimedes]
+# ____________________________________________________________________
+# Eureka! - I have found it!
+# ____________________________________________________________________
+
+  {
+    'begin': '(^_{4,}$)'
+    'end': '\\1'
+    'name': 'quote.block.asciidoc'
   }
 
   # Matches admonition blocks

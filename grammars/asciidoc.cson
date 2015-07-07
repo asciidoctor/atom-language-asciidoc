@@ -81,14 +81,61 @@
     'name': 'example.block.asciidoc'
   }
 
+  # Matches sidebar block
+  #
+  # Examples
+  #
+  # ***********************************
+  # As an aside, I love Asciidoc
+  # ***********************************
+  {
+    'begin': '(^\\*{4,}$)'
+    'end': '\\1'
+    'name': 'sidebar.block.asciidoc'
+  }
+
   # Matches quote block
   #
   # Examples
   #
-# [quote, Archimedes]
-# ____________________________________________________________________
-# Eureka! - I have found it!
-# ____________________________________________________________________
+  # [quote]
+  # ____________________________________________________________________
+  # Huh?
+  # ____________________________________________________________________
+  #
+  # [quote, Homer Simpson]
+  # ____________________________________________________________________
+  # Doh!
+  # ____________________________________________________________________
+  #
+  # [quote, Archimedes, bathtub]
+  # ____________________________________________________________________
+  # Eureka! - I have found it!
+  # ____________________________________________________________________
+  {
+    'begin': '^\\[(quote|verse)'
+    'end': '\\]$'
+    'name': 'quote.declaration.asciidoc'
+    'captures':
+      '1': 'name': 'support.constant.asciidoc',
+      #'2': 'attribution': 'support.constant.asciidoc',
+      #'3': 'citetitle': 'support.constant.asciidoc'
+    'patterns': [
+      'match': '(,\\p{Blank}+([A-Za-z ]+))?(,\\p{Blank}+([A-Za-z ]+))?'
+      'captures':
+        '1': 'attribution': 'quote.attribution.asciidoc'
+        '3': 'citetitle': 'quote.citetitle.asciidoc'
+    ]
+  }
+
+  # {
+  #   'match': '^\\[(quote|verse),\\p{Blank}+([A-Za-z ]+)\\]$'
+  #   'name': 'quote.declaration.asciidoc'
+  #   'captures':
+  #     '1': 'name': 'support.constant.asciidoc',
+  #     '2': 'attribution': 'support.constant.asciidoc',
+  #     #'3': 'citetitle': 'support.constant.asciidoc'
+  # }
 
   {
     'begin': '(^_{4,}$)'
@@ -100,11 +147,11 @@
   #
   # Examples
   #
-  #   TIP: Pro tip..
+  #   TIP: Pro tip...
   #
   #   IMPORTANT: Don't forget...
   {
-    'begin': '^((NOTE|TIP|IMPORTANT|WARNING|CAUTION)\\:)'
+    'begin': '^((NOTE|TIP|IMPORTANT|WARNING|CAUTION)\\:)\\p{Blank}+'
     'end': '$'
     'name': 'markup.admonition.asciidoc'
     'captures':
@@ -112,6 +159,20 @@
     'patterns': [
       { 'include': '#inline' }
     ]
+  }
+
+  # Matches explicit paragraph styles
+  #
+  # Examples
+  #
+  #   [normal]
+  #   This is a normal paragraph.
+  {
+    'begin': '^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|abstract|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]\n'
+    'end': '$'
+    'name': 'markup.explicitStyle.asciidoc'
+    'captures':
+      '1': 'name': 'support.constant.asciidoc'
   }
 
   # Matches tables. Supports cell spans, alignments and styles.

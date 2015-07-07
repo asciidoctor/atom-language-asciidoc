@@ -83,12 +83,39 @@ describe "AsciiDoc grammar", ->
     expect(tokens[6]).toEqual value: "2.2+^.^", scopes: ["source.asciidoc", "support.table.spec.asciidoc"]
     expect(tokens[10]).toEqual value: ".3+<.>m", scopes: ["source.asciidoc", "support.table.spec.asciidoc"]
 
+  it "tokenizes admonition", ->
+    {tokens} = grammar.tokenizeLine("NOTE: This is a note")
+    expect(tokens[0]).toEqual value: "NOTE:", scopes: ["source.asciidoc", "markup.admonition.asciidoc", "support.constant.asciidoc"]
+    expect(tokens[2]).toEqual value: "This is a note", scopes: ["source.asciidoc", "markup.admonition.asciidoc"]
+
+  it "tokenizes explicit paragraph style", ->
+    {tokens} = grammar.tokenizeLine("[NOTE]\n====\n")
+    expect(tokens[1]).toEqual value: "NOTE", scopes: ["source.asciidoc", "markup.explicitStyle.asciidoc", "support.constant.asciidoc"]
+    expect(tokens[3]).toEqual value: "====", scopes: ["source.asciidoc", "markup.explicitStyle.asciidoc"]
+
+  it "tokenizes quote blocks", ->
+    {tokens} = grammar.tokenizeLine("[quote]\n____\nDoh!\n____")
+    expect(tokens[1]).toEqual value: "quote", scopes: ["source.asciidoc", "quote.declaration.asciidoc", "support.constant.asciidoc"]
+    expect(tokens[4]).toEqual value: "____", scopes: ["source.asciidoc", "quote.block.asciidoc"]
+    expect(tokens[6]).toEqual value: "____", scopes: ["source.asciidoc", "quote.block.asciidoc"]
+
+  it "tokenizes quote blocks with attributions", ->
+    {tokens} = grammar.tokenizeLine("[quote, Homer Simpson]\n")
+    console.log("Tokens: " + JSON.stringify(tokens, null, '\t'))
+    expect(tokens[1]).toEqual value: "quote", scopes: ["source.asciidoc", "quote.declaration.asciidoc", "support.constant.asciidoc"]
+    expect(tokens[2]).toEqual value: ", Homer Simpson", scopes: ["source.asciidoc", "quote.declaration.asciidoc"]
+
+  testBlock = (delimiter,type) ->
+    marker = Array(5).join(delimiter)
+    {tokens} = grammar.tokenizeLine("#{marker}\ncontent\n#{marker}")
+    expect(tokens[0]).toEqual value: marker, scopes: ["source.asciidoc", type]
+    expect(tokens[2]).toEqual value: marker, scopes: ["source.asciidoc", type]
+
   it "tokenizes comment delimited block", ->
-    {tokens} = grammar.tokenizeLine("////\ncontent\n////")
-    expect(tokens[0]).toEqual value: "////", scopes: ["source.asciidoc", "comment.block.asciidoc"]
-    expect(tokens[2]).toEqual value: "////", scopes: ["source.asciidoc", "comment.block.asciidoc"]
+    testBlock "/", "comment.block.asciidoc"
 
   it "tokenizes example delimited block", ->
-    {tokens} = grammar.tokenizeLine("====\nexample\n====\n")
-    expect(tokens[0]).toEqual value: "====", scopes: ["source.asciidoc", "example.block.asciidoc"]
-    expect(tokens[2]).toEqual value: "====", scopes: ["source.asciidoc", "example.block.asciidoc"]
+    testBlock "=", "example.block.asciidoc"
+
+  it "tokenizes sidebar block", ->
+    testBlock "*", "sidebar.block.asciidoc"

@@ -38,6 +38,22 @@
     ]
   }
 
+  # Matches block titles
+  #
+  # Examples
+  #
+  # .An example example
+  # ========================
+  # This is an example.
+  # ========================
+  #
+  {
+    'begin': '^\\.(\\w[\\w ]*\\w)'
+    'end': '$'
+    'captures':
+      '1': 'name': 'markup.heading.blocktitle.asciidoc'
+  }
+
   # Matches attributes
   #
   # Examples
@@ -79,9 +95,9 @@
   #   Notice it's a delimited block.
   #   ====
   {
-    'begin': '(^={4,}$)'
+    'begin': '^(={4,})+?$'
     'end': '\\1'
-    'name': 'example.block.asciidoc'
+    'name': 'markup.block.example.asciidoc'
     'patterns': [
       { 'include': '#inline' }
     ]
@@ -97,7 +113,7 @@
   {
     'begin': '(^\\*{4,}$)'
     'end': '\\1'
-    'name': 'sidebar.block.asciidoc'
+    'name': 'markup.block.sidebar.asciidoc'
     'patterns': [
       { 'include': '#inline' }
     ]
@@ -113,9 +129,9 @@
   {
     'begin': '(^\\.{4,}$)'
     'end': '\\1'
-    'name': 'literal.block.asciidoc'
+    'name': 'markup.block.literal.asciidoc'
     'patterns': [
-      { 'include': '#inline' }
+      { 'include': [ '#inline', '#codeBlocks'] }
     ]
   }
 
@@ -129,13 +145,13 @@
   {
     'begin': '(^\\+{4,}$)'
     'end': '\\1'
-    'name': 'passthrough.block.asciidoc'
+    'name': 'markup.block.passthrough.asciidoc'
     'patterns': [
       { 'include': '#inline' }
     ]
   }
 
-  # Matches quote block
+  # Matches quote declaration
   #
   # Examples
   #
@@ -153,42 +169,20 @@
   # ____________________________________________________________________
   # I don't like it, and I'm sorry I ever had anything to do with it.
   # ____________________________________________________________________
-  # {
-  #   'begin': '^\\[(quote|verse)'
-  #   'end': '\\]$'
-  #   'beginCaptures':
-  #     '1': 'name': 'quote.declaration.asciidoc'
-  #   'patterns': [
-  #     {
-  #       'begin': ', ([\\w ]+)'
-  #       'end': '\\]'
-  #       'beginCaptures':
-  #         '1': 'name': 'quote.attribution.asciidoc'
-  #       'patterns': [
-  #         {
-  #           'begin': ', ([\\w ]+)'
-  #           'end': '\\]'
-  #           'beginCaptures':
-  #             '1': 'name': 'quote.citation.asciidoc'
-  #         }
-  #       ]
-  #     }
-  #   ]
-  # }
-
   {
     'begin': '^\\[(quote|verse)(, ([\\w ]+))?(, ([\\w ]+))?'
     'end': '\\]$'
     'beginCaptures':
-      '1': 'name': 'quote.declaration.asciidoc'
-      '3': 'name': 'quote.attribution.asciidoc'
-      '5': 'name': 'quote.citation.asciidoc'
+      '1': 'name': 'markup.quote.declaration.asciidoc'
+      '3': 'name': 'markup.quote.attribution.asciidoc'
+      '5': 'name': 'markup.quote.citation.asciidoc'
   }
 
+  # Matches quote block
   {
     'begin': '(^_{4,}$)'
     'end': '\\1'
-    'name': 'quote.block.asciidoc'
+    'name': 'markup.quote.block.asciidoc'
     'patterns': [
       { 'include': '#inline' }
     ]
@@ -221,7 +215,7 @@
   {
     'begin': '^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|abstract|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]\n'
     'end': '$'
-    'name': 'markup.explicitStyle.asciidoc'
+    'name': 'markup.explicit.asciidoc'
     'captures':
       '1': 'name': 'support.constant.asciidoc'
   }
@@ -325,6 +319,24 @@
         'name': 'markup.substitution.asciidoc'
       }
 
+      # Matches block ID elements
+      #
+      # Example: [[section-title]]
+      {
+        'match': '(?<=^|\\s)(\\[{2}([^\\[\\]]+)\\]{2})'
+        'captures':
+          '0': 'name': 'markup.blockid.asciidoc'
+      }
+
+      # Matches reference elements
+      #
+      # Example: <<section-ref>>
+      {
+        'match': '(?<=^|\\s)(\\<{2}([^\\<\\>]+)\\>{2})'
+        'captures':
+          '0': 'name': 'markup.reference.asciidoc'
+      }
+
       # Matches raw inlines
       #
       # Examples
@@ -335,6 +347,7 @@
         'name': 'markup.raw.inline.asciidoc'
       }
     ]
+    
   'codeBlocks':
     'patterns': [
 

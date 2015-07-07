@@ -9,11 +9,13 @@ atom-text-editor, :host {
       font-weight: bold;
     }
 
+    .markup.reference,
     .markup.italic {
       font-style: italic;
     }
 
-    .markup.explicitStyle,
+    .markup.blockid,
+    .markup.explicit,
     .markup.admonition,
     .markup.heading {
       font-weight: bold;
@@ -30,6 +32,7 @@ atom-text-editor, :host {
     }
 
     .block,
+    .markup.heading.blocktitle,
     .table.spec,
     .markup.list.bullet,
     .markup.substitution {

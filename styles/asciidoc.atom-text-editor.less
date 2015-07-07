@@ -9,12 +9,20 @@ atom-text-editor, :host {
       font-weight: bold;
     }
 
-    .markup.reference,
     .markup.italic {
       font-style: italic;
     }
 
-    .markup.blockid,
+    .markup.blockid {
+      font-weight: bold;
+      color: mix(green, @syntax-text-color, 20%);
+    }
+
+    .markup.reference {
+      font-style: italic;
+      color: mix(green, @syntax-text-color, 20%);
+    }
+
     .markup.explicit,
     .markup.admonition,
     .markup.heading {
@@ -41,7 +49,6 @@ atom-text-editor, :host {
 
     .quote {
       color: mix(blue, @syntax-text-color, 20%);
-      //color: @syntax-text-color-unobtrusive;
     }
   }
 }

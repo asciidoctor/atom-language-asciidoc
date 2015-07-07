@@ -47,7 +47,12 @@ describe "AsciiDoc grammar", ->
     testAsciidocHeaders(level) for level in [0..5]
 
   it "tokenizes block titles", ->
-    {tokens} = grammar.tokenizeLine(".An example example\n=========\nExample\n=========")
+    {tokens} = grammar.tokenizeLine("""
+                                    .An example example
+                                    =========
+                                    Example
+                                    =========
+                                    """)
     expect(tokens[1]).toEqual value: "An example example", scopes: ["source.asciidoc", "markup.heading.blocktitle.asciidoc"]
     expect(tokens[3]).toEqual value: "=========", scopes: ["source.asciidoc", "markup.block.example.asciidoc"]
 
@@ -96,7 +101,12 @@ describe "AsciiDoc grammar", ->
     expect(tokens[3]).toEqual value: "====", scopes: ["source.asciidoc", "markup.explicit.asciidoc"]
 
   it "tokenizes quote blocks", ->
-    {tokens} = grammar.tokenizeLine("[quote]\n____\nD'oh!\n____")
+    {tokens} = grammar.tokenizeLine("""
+                                    [quote]
+                                    ____
+                                    D'oh!
+                                    ____
+                                    """)
     expect(tokens[1]).toEqual value: "quote", scopes: ["source.asciidoc", "markup.quote.declaration.asciidoc"]
     expect(tokens[4]).toEqual value: "____", scopes: ["source.asciidoc", "markup.quote.block.asciidoc"]
     expect(tokens[6]).toEqual value: "____", scopes: ["source.asciidoc", "markup.quote.block.asciidoc"]

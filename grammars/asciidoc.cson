@@ -64,6 +64,9 @@
     'begin': '(^/{4,}$)'
     'end': '\\1'
     'name': 'comment.block.asciidoc'
+    'patterns': [
+      { 'include': '#inline' }
+    ]
   }
 
   # Matches example block
@@ -79,6 +82,9 @@
     'begin': '(^={4,}$)'
     'end': '\\1'
     'name': 'example.block.asciidoc'
+    'patterns': [
+      { 'include': '#inline' }
+    ]
   }
 
   # Matches sidebar block
@@ -92,6 +98,41 @@
     'begin': '(^\\*{4,}$)'
     'end': '\\1'
     'name': 'sidebar.block.asciidoc'
+    'patterns': [
+      { 'include': '#inline' }
+    ]
+  }
+
+  # Matches literal block
+  #
+  # Examples
+  #
+  # ...................................
+  # Daleks EXTERMINATE in monospace!
+  # ...................................
+  {
+    'begin': '(^\\.{4,}$)'
+    'end': '\\1'
+    'name': 'literal.block.asciidoc'
+    'patterns': [
+      { 'include': '#inline' }
+    ]
+  }
+
+  # Matches passthrough block
+  #
+  # Examples
+  #
+  # +++++++++++++++++++++++++++++++++++
+  # <s>Could be struck through</s>
+  # +++++++++++++++++++++++++++++++++++
+  {
+    'begin': '(^\\+{4,}$)'
+    'end': '\\1'
+    'name': 'passthrough.block.asciidoc'
+    'patterns': [
+      { 'include': '#inline' }
+    ]
   }
 
   # Matches quote block
@@ -112,33 +153,45 @@
   # ____________________________________________________________________
   # I don't like it, and I'm sorry I ever had anything to do with it.
   # ____________________________________________________________________
+  # {
+  #   'begin': '^\\[(quote|verse)'
+  #   'end': '\\]$'
+  #   'beginCaptures':
+  #     '1': 'name': 'quote.declaration.asciidoc'
+  #   'patterns': [
+  #     {
+  #       'begin': ', ([\\w ]+)'
+  #       'end': '\\]'
+  #       'beginCaptures':
+  #         '1': 'name': 'quote.attribution.asciidoc'
+  #       'patterns': [
+  #         {
+  #           'begin': ', ([\\w ]+)'
+  #           'end': '\\]'
+  #           'beginCaptures':
+  #             '1': 'name': 'quote.citation.asciidoc'
+  #         }
+  #       ]
+  #     }
+  #   ]
+  # }
+
   {
-    'begin': '^\\[(quote|verse)'
+    'begin': '^\\[(quote|verse)(, ([\\w ]+))?(, ([\\w ]+))?'
     'end': '\\]$'
     'beginCaptures':
       '1': 'name': 'quote.declaration.asciidoc'
-    'patterns': [
-      {
-        'begin': ', ([\\w ]+)'
-        'end': '\\]'
-        'beginCaptures':
-          '1': 'name': 'quote.attribution.asciidoc'
-        'patterns': [
-          {
-            'begin': ', ([\\w ]+)'
-            'end': '\\]'
-            'beginCaptures':
-              '1': 'name': 'quote.citation.asciidoc'
-          }
-        ]
-      }
-    ]
+      '3': 'name': 'quote.attribution.asciidoc'
+      '5': 'name': 'quote.citation.asciidoc'
   }
 
   {
     'begin': '(^_{4,}$)'
     'end': '\\1'
     'name': 'quote.block.asciidoc'
+    'patterns': [
+      { 'include': '#inline' }
+    ]
   }
 
   # Matches admonition blocks

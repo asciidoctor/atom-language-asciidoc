@@ -109,3 +109,9 @@ describe "AsciiDoc grammar", ->
 
   it "tokenizes sidebar block", ->
     testBlock "*", "sidebar.block.asciidoc"
+
+  it "tokenizes literal block", ->
+    testBlock ".", "literal.block.asciidoc"
+
+  it "tokenizes passthrough block", ->
+    testBlock "+", "passthrough.block.asciidoc"

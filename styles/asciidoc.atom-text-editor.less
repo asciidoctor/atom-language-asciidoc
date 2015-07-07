@@ -29,19 +29,16 @@ atom-text-editor, :host {
       }
     }
 
+    .block,
+    .table.spec,
     .markup.list.bullet,
     .markup.substitution {
       color: @syntax-text-color-unobtrusive;
     }
 
-    .example,
-    .table.spec {
-      color: @syntax-text-color-unobtrusive;
+    .quote {
+      color: mix(blue, @syntax-text-color, 20%);
+      //color: @syntax-text-color-unobtrusive;
     }
-
-    // .example {
-    //   // color: mix(blue, @syntax-text-color, 20%);
-    //   color: @syntax-text-color-unobtrusive;
-    // }
   }
 }

@@ -105,27 +105,22 @@
   #
   # [quote, Homer Simpson]
   # ____________________________________________________________________
-  # Doh!
+  # D'oh!
   # ____________________________________________________________________
   #
-  # [quote, Archimedes, bathtub]
+  # [quote, Erwin Schrödinger, Sorry]
   # ____________________________________________________________________
-  # Eureka! - I have found it!
+  # I don't like it, and I'm sorry I ever had anything to do with it.
   # ____________________________________________________________________
   {
-    'begin': '^\\[(quote|verse)'
+    'begin': '^\\['
+    'match': '(quote|verse)(, ([ \\w]+))?(, ([ \\w]+))?'
+    'captures':
+      '1': 'name': 'quote.type.asciidoc'
+      '3': 'attribution': 'quote.attribution.asciidoc'
+      '5': 'citetitle': 'quote.citetitle.asciidoc'
     'end': '\\]$'
     'name': 'quote.declaration.asciidoc'
-    'captures':
-      '1': 'name': 'support.constant.asciidoc',
-      #'2': 'attribution': 'support.constant.asciidoc',
-      #'3': 'citetitle': 'support.constant.asciidoc'
-    'patterns': [
-      'match': '(,\\p{Blank}+([A-Za-z ]+))?(,\\p{Blank}+([A-Za-z ]+))?'
-      'captures':
-        '1': 'attribution': 'quote.attribution.asciidoc'
-        '3': 'citetitle': 'quote.citetitle.asciidoc'
-    ]
   }
 
   # {

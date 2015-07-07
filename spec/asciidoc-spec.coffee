@@ -24,31 +24,16 @@ describe "AsciiDoc grammar", ->
     expect(tokens[1]).toEqual value: "_italic_", scopes: ["source.asciidoc", "markup.italic.asciidoc"]
     expect(tokens[2]).toEqual value: " text", scopes: ["source.asciidoc"]
 
+  testAsciidocHeaders = (level) ->
+    equalsSigns = level + 1
+    marker = Array(equalsSigns + 1).join('=')
+    {tokens} = grammar.tokenizeLine("#{marker} Heading #{level}")
+    expect(tokens[0]).toEqual value: "#{marker} ", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+    expect(tokens[1]).toEqual value: "Heading #{level}", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+
   it "tokenizes AsciiDoc-style headings", ->
-    {tokens} = grammar.tokenizeLine("= Heading 0")
-    expect(tokens[0]).toEqual value: "= ", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
-    expect(tokens[1]).toEqual value: "Heading 0", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
-
-    {tokens} = grammar.tokenizeLine("== Heading 1")
-    expect(tokens[0]).toEqual value: "== ", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
-    expect(tokens[1]).toEqual value: "Heading 1", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
-
-    {tokens} = grammar.tokenizeLine("=== Heading 2")
-    expect(tokens[0]).toEqual value: "=== ", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
-    expect(tokens[1]).toEqual value: "Heading 2", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
-
-    {tokens} = grammar.tokenizeLine("==== Heading 3")
-    expect(tokens[0]).toEqual value: "==== ", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
-    expect(tokens[1]).toEqual value: "Heading 3", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
-
-    {tokens} = grammar.tokenizeLine("===== Heading 4")
-    expect(tokens[0]).toEqual value: "===== ", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
-    expect(tokens[1]).toEqual value: "Heading 4", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
-
-    {tokens} = grammar.tokenizeLine("====== Heading 5")
-    expect(tokens[0]).toEqual value: "====== ", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
-    expect(tokens[1]).toEqual value: "Heading 5", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
-
+    testAsciidocHeaders(level) for level in [0..5]
+    
   it "tokenizes list bullets with the length up to 5 symbols", ->
     {tokens} = grammar.tokenizeLine("""
                                     . Level 1
@@ -94,16 +79,24 @@ describe "AsciiDoc grammar", ->
     expect(tokens[3]).toEqual value: "====", scopes: ["source.asciidoc", "markup.explicitStyle.asciidoc"]
 
   it "tokenizes quote blocks", ->
-    {tokens} = grammar.tokenizeLine("[quote]\n____\nDoh!\n____")
-    expect(tokens[1]).toEqual value: "quote", scopes: ["source.asciidoc", "quote.declaration.asciidoc", "support.constant.asciidoc"]
-    expect(tokens[4]).toEqual value: "____", scopes: ["source.asciidoc", "quote.block.asciidoc"]
-    expect(tokens[6]).toEqual value: "____", scopes: ["source.asciidoc", "quote.block.asciidoc"]
+    {tokens} = grammar.tokenizeLine("[quote]\n____\nD'oh!\n____")
+    #console.log("Tokens: " + JSON.stringify(tokens, null, '\t'))
+    expect(tokens[1]).toEqual value: "quote", scopes: ["source.asciidoc", "quote.declaration.asciidoc", "quote.type.asciidoc"]
+    expect(tokens[3]).toEqual value: "____", scopes: ["source.asciidoc", "quote.block.asciidoc"]
+    expect(tokens[5]).toEqual value: "____", scopes: ["source.asciidoc", "quote.block.asciidoc"]
 
-  it "tokenizes quote blocks with attributions", ->
-    {tokens} = grammar.tokenizeLine("[quote, Homer Simpson]\n")
-    console.log("Tokens: " + JSON.stringify(tokens, null, '\t'))
-    expect(tokens[1]).toEqual value: "quote", scopes: ["source.asciidoc", "quote.declaration.asciidoc", "support.constant.asciidoc"]
-    expect(tokens[2]).toEqual value: ", Homer Simpson", scopes: ["source.asciidoc", "quote.declaration.asciidoc"]
+  it "tokenizes quote blocks with attribution", ->
+    {tokens} = grammar.tokenizeLine("[verse, Homer Simpson]\n")
+    #console.log("Tokens: " + JSON.stringify(tokens, null, '\t'))
+    expect(tokens[1]).toEqual value: "verse", scopes: ["source.asciidoc", "quote.declaration.asciidoc", "quote.type.asciidoc"]
+    expect(tokens[3]).toEqual value: "Homer Simpson", scopes: ["source.asciidoc", "quote.declaration.asciidoc"] #, "quote.attribution.asciidoc"]
+
+  it "tokenizes quote blocks with attribution and citation", ->
+    {tokens} = grammar.tokenizeLine("[quote, Erwin Schrödinger, Sorry]\n")
+    # console.log("Tokens: " + JSON.stringify(tokens, null, '\t'))
+    expect(tokens[1]).toEqual value: "quote", scopes: ["source.asciidoc", "quote.declaration.asciidoc", "quote.type.asciidoc"]
+    expect(tokens[3]).toEqual value: "Erwin Schrödinger", scopes: ["source.asciidoc", "quote.declaration.asciidoc"] #, "quote.attribution.asciidoc"]
+    expect(tokens[5]).toEqual value: "Sorry", scopes: ["source.asciidoc", "quote.declaration.asciidoc"] #, "quote.citation.asciidoc"]
 
   testBlock = (delimiter,type) ->
     marker = Array(5).join(delimiter)

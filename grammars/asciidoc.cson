@@ -113,24 +113,27 @@
   # I don't like it, and I'm sorry I ever had anything to do with it.
   # ____________________________________________________________________
   {
-    'begin': '^\\['
-    'match': '(quote|verse)(, ([ \\w]+))?(, ([ \\w]+))?'
-    'captures':
-      '1': 'name': 'quote.type.asciidoc'
-      '3': 'attribution': 'quote.attribution.asciidoc'
-      '5': 'citetitle': 'quote.citetitle.asciidoc'
+    'begin': '^\\[(quote|verse)'
     'end': '\\]$'
-    'name': 'quote.declaration.asciidoc'
+    'beginCaptures':
+      '1': 'name': 'quote.declaration.asciidoc'
+    'patterns': [
+      {
+        'begin': ', ([\\w ]+)'
+        'end': '\\]'
+        'beginCaptures':
+          '1': 'name': 'quote.attribution.asciidoc'
+        'patterns': [
+          {
+            'begin': ', ([\\w ]+)'
+            'end': '\\]'
+            'beginCaptures':
+              '1': 'name': 'quote.citation.asciidoc'
+          }
+        ]
+      }
+    ]
   }
-
-  # {
-  #   'match': '^\\[(quote|verse),\\p{Blank}+([A-Za-z ]+)\\]$'
-  #   'name': 'quote.declaration.asciidoc'
-  #   'captures':
-  #     '1': 'name': 'support.constant.asciidoc',
-  #     '2': 'attribution': 'support.constant.asciidoc',
-  #     #'3': 'citetitle': 'support.constant.asciidoc'
-  # }
 
   {
     'begin': '(^_{4,}$)'

@@ -33,7 +33,7 @@ describe "AsciiDoc grammar", ->
 
   it "tokenizes AsciiDoc-style headings", ->
     testAsciidocHeaders(level) for level in [0..5]
-    
+
   it "tokenizes list bullets with the length up to 5 symbols", ->
     {tokens} = grammar.tokenizeLine("""
                                     . Level 1
@@ -80,23 +80,20 @@ describe "AsciiDoc grammar", ->
 
   it "tokenizes quote blocks", ->
     {tokens} = grammar.tokenizeLine("[quote]\n____\nD'oh!\n____")
-    #console.log("Tokens: " + JSON.stringify(tokens, null, '\t'))
-    expect(tokens[1]).toEqual value: "quote", scopes: ["source.asciidoc", "quote.declaration.asciidoc", "quote.type.asciidoc"]
-    expect(tokens[3]).toEqual value: "____", scopes: ["source.asciidoc", "quote.block.asciidoc"]
-    expect(tokens[5]).toEqual value: "____", scopes: ["source.asciidoc", "quote.block.asciidoc"]
+    expect(tokens[1]).toEqual value: "quote", scopes: ["source.asciidoc", "quote.declaration.asciidoc"]
+    expect(tokens[4]).toEqual value: "____", scopes: ["source.asciidoc", "quote.block.asciidoc"]
+    expect(tokens[6]).toEqual value: "____", scopes: ["source.asciidoc", "quote.block.asciidoc"]
 
   it "tokenizes quote blocks with attribution", ->
-    {tokens} = grammar.tokenizeLine("[verse, Homer Simpson]\n")
-    #console.log("Tokens: " + JSON.stringify(tokens, null, '\t'))
-    expect(tokens[1]).toEqual value: "verse", scopes: ["source.asciidoc", "quote.declaration.asciidoc", "quote.type.asciidoc"]
-    expect(tokens[3]).toEqual value: "Homer Simpson", scopes: ["source.asciidoc", "quote.declaration.asciidoc"] #, "quote.attribution.asciidoc"]
+    {tokens} = grammar.tokenizeLine("[verse, Homer Simpson]\n____\nD'oh!\n____")
+    expect(tokens[1]).toEqual value: "verse", scopes: ["source.asciidoc", "quote.declaration.asciidoc"]
+    expect(tokens[3]).toEqual value: "Homer Simpson", scopes: ["source.asciidoc", "quote.attribution.asciidoc"]
 
   it "tokenizes quote blocks with attribution and citation", ->
     {tokens} = grammar.tokenizeLine("[quote, Erwin Schrödinger, Sorry]\n")
-    # console.log("Tokens: " + JSON.stringify(tokens, null, '\t'))
-    expect(tokens[1]).toEqual value: "quote", scopes: ["source.asciidoc", "quote.declaration.asciidoc", "quote.type.asciidoc"]
-    expect(tokens[3]).toEqual value: "Erwin Schrödinger", scopes: ["source.asciidoc", "quote.declaration.asciidoc"] #, "quote.attribution.asciidoc"]
-    expect(tokens[5]).toEqual value: "Sorry", scopes: ["source.asciidoc", "quote.declaration.asciidoc"] #, "quote.citation.asciidoc"]
+    expect(tokens[1]).toEqual value: "quote", scopes: ["source.asciidoc", "quote.declaration.asciidoc"]
+    expect(tokens[3]).toEqual value: "Erwin Schrödinger", scopes: ["source.asciidoc", "quote.attribution.asciidoc"]
+    expect(tokens[5]).toEqual value: "Sorry", scopes: ["source.asciidoc", "quote.citation.asciidoc"]
 
   testBlock = (delimiter,type) ->
     marker = Array(5).join(delimiter)
@@ -104,10 +101,10 @@ describe "AsciiDoc grammar", ->
     expect(tokens[0]).toEqual value: marker, scopes: ["source.asciidoc", type]
     expect(tokens[2]).toEqual value: marker, scopes: ["source.asciidoc", type]
 
-  it "tokenizes comment delimited block", ->
+  it "tokenizes comment block", ->
     testBlock "/", "comment.block.asciidoc"
 
-  it "tokenizes example delimited block", ->
+  it "tokenizes example block", ->
     testBlock "=", "example.block.asciidoc"
 
   it "tokenizes sidebar block", ->

@@ -33,10 +33,10 @@ atom-text-editor, :host {
       color: mix(green, @syntax-text-color, 20%);
     }
 
-    .markup.section,
-    .markup.explicit,
     .markup.admonition,
-    .markup.heading {
+    .markup.explicit,
+    .markup.heading,
+    .markup.section {
       font-weight: bold;
 
       // Lighten headers for dark themes.
@@ -52,9 +52,9 @@ atom-text-editor, :host {
 
     .block,
     .markup.heading.blocktitle,
-    .table.spec,
     .markup.list.bullet,
-    .markup.substitution {
+    .markup.substitution,
+    .table.spec {
       color: @syntax-text-color-unobtrusive;
     }
 

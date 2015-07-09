@@ -335,27 +335,33 @@
       #
       # Example: [[section-title]]
       {
-        'match': '(?<=^|\\s)(\\[{2}([^\\[\\]]+)\\]{2})'
+        'match': '(?<=^|\\s)(\\[{2})([^\\[\\]]+)(\\]{2})'
         'captures':
-          '0': 'name': 'markup.blockid.asciidoc'
+          '1': 'name': 'support.constant.asciidoc'
+          '2': 'name': 'markup.blockid.asciidoc'
+          '3': 'name': 'support.constant.asciidoc'
       }
 
       # Matches bibliography entities
       #
       # Example: [[[bib-ref]]]
       {
-        'match': '(?<=^|\\s)(\\[{3}([^\\[\\]]+)\\]{3})'
+        'match': '(?<=^|\\s)(\\[{3})([^\\[\\]]+)(\\]{3})'
         'captures':
-          '0': 'name': 'markup.biblioref.asciidoc'
+          '1': 'name': 'support.constant.asciidoc'
+          '2': 'name': 'markup.biblioref.asciidoc'
+          '3': 'name': 'support.constant.asciidoc'
       }
 
       # Matches reference elements
       #
       # Example: <<section-ref>>
       {
-        'match': '(?<=^|\\s)(\\<{2}([^\\<\\>]+)\\>{2})'
+        'match': '(?<=^|\\s)(\\<\\<)([^\\<\\>]+)(\\>\\>)'
         'captures':
-          '0': 'name': 'markup.reference.asciidoc'
+          '1': 'name': 'support.constant.asciidoc'
+          '2': 'name': 'markup.reference.asciidoc'
+          '3': 'name': 'support.constant.asciidoc'
       }
 
       # Matches raw inlines

@@ -59,20 +59,26 @@ describe "AsciiDoc grammar", ->
   it "tokenizes [[blockId]] elements", ->
     {tokens} = grammar.tokenizeLine("this is a [[blockId]] element")
     expect(tokens[0]).toEqual value: "this is a ", scopes: ["source.asciidoc"]
-    expect(tokens[1]).toEqual value: "[[blockId]]", scopes: ["source.asciidoc", "markup.blockid.asciidoc"]
-    expect(tokens[2]).toEqual value: " element", scopes: ["source.asciidoc"]
+    expect(tokens[1]).toEqual value: "[[", scopes: ["source.asciidoc", "support.constant.asciidoc"]
+    expect(tokens[2]).toEqual value: "blockId", scopes: ["source.asciidoc", "markup.blockid.asciidoc"]
+    expect(tokens[3]).toEqual value: "]]", scopes: ["source.asciidoc", "support.constant.asciidoc"]
+    expect(tokens[4]).toEqual value: " element", scopes: ["source.asciidoc"]
 
-  it "tokenizes [[bib-ref]] bibliography references", ->
+  it "tokenizes [[[bib-ref]]] bibliography references", ->
     {tokens} = grammar.tokenizeLine("this is a [[[bib-ref]]] element")
     expect(tokens[0]).toEqual value: "this is a ", scopes: ["source.asciidoc"]
-    expect(tokens[1]).toEqual value: "[[[bib-ref]]]", scopes: ["source.asciidoc", "markup.biblioref.asciidoc"]
-    expect(tokens[2]).toEqual value: " element", scopes: ["source.asciidoc"]
+    expect(tokens[1]).toEqual value: "[[[", scopes: ["source.asciidoc", "support.constant.asciidoc"]
+    expect(tokens[2]).toEqual value: "bib-ref", scopes: ["source.asciidoc", "markup.biblioref.asciidoc"]
+    expect(tokens[3]).toEqual value: "]]]", scopes: ["source.asciidoc", "support.constant.asciidoc"]
+    expect(tokens[4]).toEqual value: " element", scopes: ["source.asciidoc"]
 
   it "tokenizes <<reference>> elements", ->
     {tokens} = grammar.tokenizeLine("this is a <<reference>> element")
     expect(tokens[0]).toEqual value: "this is a ", scopes: ["source.asciidoc"]
-    expect(tokens[1]).toEqual value: "<<reference>>", scopes: ["source.asciidoc", "markup.reference.asciidoc"]
-    expect(tokens[2]).toEqual value: " element", scopes: ["source.asciidoc"]
+    expect(tokens[1]).toEqual value: "<<", scopes: ["source.asciidoc", "support.constant.asciidoc"]
+    expect(tokens[2]).toEqual value: "reference", scopes: ["source.asciidoc", "markup.reference.asciidoc"]
+    expect(tokens[3]).toEqual value: ">>", scopes: ["source.asciidoc", "support.constant.asciidoc"]
+    expect(tokens[4]).toEqual value: " element", scopes: ["source.asciidoc"]
 
   testAsciidocHeaders = (level) ->
     equalsSigns = level + 1

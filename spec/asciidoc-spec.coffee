@@ -24,6 +24,12 @@ describe "AsciiDoc grammar", ->
     expect(tokens[1]).toEqual value: "_italic_", scopes: ["source.asciidoc", "markup.italic.asciidoc"]
     expect(tokens[2]).toEqual value: " text", scopes: ["source.asciidoc"]
 
+  it "tokenizes HTML elements", ->
+    {tokens} = grammar.tokenizeLine("Dungeons &amp; Dragons")
+    expect(tokens[0]).toEqual value: "Dungeons ", scopes: ["source.asciidoc"]
+    expect(tokens[1]).toEqual value: "&amp;", scopes: ["source.asciidoc", "markup.htmlentity.asciidoc"]
+    expect(tokens[2]).toEqual value: " Dragons", scopes: ["source.asciidoc"]
+
   it "tokenizes [[blockId]] elements", ->
     {tokens} = grammar.tokenizeLine("this is a [[blockId]] element")
     expect(tokens[0]).toEqual value: "this is a ", scopes: ["source.asciidoc"]

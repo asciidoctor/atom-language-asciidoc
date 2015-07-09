@@ -212,14 +212,6 @@
   #
   #   [normal]
   #   This is a normal paragraph.
-  # {
-  #   'begin': '^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]\n'
-  #   'end': '$'
-  #   'name': 'markup.explicit.asciidoc'
-  #   'captures':
-  #     '1': 'name': 'support.constant.asciidoc'
-  # }
-
   {
     'match': '^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]$'
     'name': 'markup.explicit.asciidoc'
@@ -365,6 +357,21 @@
       {
         'match': '`[^`]+`'
         'name': 'markup.raw.inline.asciidoc'
+      }
+
+      # Matches HTML entities
+      #
+      # Examples
+      #
+      #   Dungeons &amp; Dragons
+      {
+        'begin': ' '
+        'end': ' '
+        'match': '(\&)(.+?)(;)'
+        'name': 'markup.htmlentity.asciidoc'
+        'captures':
+          '1': 'name': 'support.constant.asciidoc'
+          '3': 'name': 'support.constant.asciidoc'
       }
     ]
 

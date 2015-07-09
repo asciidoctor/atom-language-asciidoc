@@ -62,6 +62,12 @@ describe "AsciiDoc grammar", ->
     expect(tokens[1]).toEqual value: "[[blockId]]", scopes: ["source.asciidoc", "markup.blockid.asciidoc"]
     expect(tokens[2]).toEqual value: " element", scopes: ["source.asciidoc"]
 
+  it "tokenizes [[bib-ref]] bibliography references", ->
+    {tokens} = grammar.tokenizeLine("this is a [[[bib-ref]]] element")
+    expect(tokens[0]).toEqual value: "this is a ", scopes: ["source.asciidoc"]
+    expect(tokens[1]).toEqual value: "[[[bib-ref]]]", scopes: ["source.asciidoc", "markup.biblioref.asciidoc"]
+    expect(tokens[2]).toEqual value: " element", scopes: ["source.asciidoc"]
+
   it "tokenizes <<reference>> elements", ->
     {tokens} = grammar.tokenizeLine("this is a <<reference>> element")
     expect(tokens[0]).toEqual value: "this is a ", scopes: ["source.asciidoc"]

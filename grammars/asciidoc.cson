@@ -327,7 +327,7 @@
       #
       #   {checkedbox} That's done!
       {
-        'match': '({)([^\/\\:\\s]+)(})'
+        'match': '(?<=^|\\s)({)([^\/\\:\\s]+)(})'
         'name': 'markup.substitution.asciidoc'
       }
 
@@ -338,6 +338,15 @@
         'match': '(?<=^|\\s)(\\[{2}([^\\[\\]]+)\\]{2})'
         'captures':
           '0': 'name': 'markup.blockid.asciidoc'
+      }
+
+      # Matches bibliography entities
+      #
+      # Example: [[[bib-ref]]]
+      {
+        'match': '(?<=^|\\s)(\\[{3}([^\\[\\]]+)\\]{3})'
+        'captures':
+          '0': 'name': 'markup.biblioref.asciidoc'
       }
 
       # Matches reference elements
@@ -355,7 +364,7 @@
       #
       #   `Text in {backticks}` renders exactly as entered, in `monospace`.
       {
-        'match': '`[^`]+`'
+        'match': '(?<=^|\\s)`[^`]+`'
         'name': 'markup.raw.inline.asciidoc'
       }
 
@@ -378,7 +387,7 @@
       #
       #   http://www.docbook.org/[DocBook.org]
       {
-        'match': '([^:]+:)([^:].*?)(\\[)([^\\]]*?)(\\])'
+        'match': '(?<=^|\\s)([^:]+:)([^:].*?)(\\[)([^\\]]*?)(\\])'
         'name': 'markup.macro.inline.asciidoc'
         'captures':
           '1': 'name': 'support.constant.asciidoc'
@@ -395,7 +404,7 @@
       #
       #   http://www.docbook.org
       {
-        'match': '(\\S+\\.(com|net|org|edu|gov)(\/\\S+)?)'
+        'match': '(?<=^|\\s)(\\S+\\.(com|net|org|edu|gov)(\/\\S+)?)'
         'name': 'markup.url.asciidoc'
       }
 
@@ -405,7 +414,7 @@
       #
       #   image::tiger.png[Tyger tyger]
       {
-        'match': '([^\:]+\:{2})(.+?)(\\[)([^\\]]*?)(\\])'
+        'match': '(?<=^|\\s)([^\:]+\:{2})(.+?)(\\[)([^\\]]*?)(\\])'
         'name': 'markup.macro.block.asciidoc'
         'captures':
           '1': 'name': 'support.constant.asciidoc'

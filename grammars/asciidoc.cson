@@ -365,13 +365,25 @@
       #
       #   Dungeons &amp; Dragons
       {
-        'begin': ' '
-        'end': ' '
         'match': '(\&)(.+?)(;)'
         'name': 'markup.htmlentity.asciidoc'
         'captures':
           '1': 'name': 'support.constant.asciidoc'
           '3': 'name': 'support.constant.asciidoc'
+      }
+
+      # Matches inline macros
+      #
+      # Examples
+      #
+      #   http://www.docbook.org/[DocBook.org]
+      {
+        'match': '([^\:]+\:)(.+?)(\\[)([^\\]]*?)(\\])'
+        'name': 'markup.macro.inline.asciidoc'
+        'captures':
+          '1': 'name': 'support.constant.asciidoc'
+          '3': 'name': 'support.constant.asciidoc'
+          '5': 'name': 'support.constant.asciidoc'
       }
     ]
 

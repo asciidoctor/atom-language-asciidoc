@@ -378,8 +378,22 @@
       #
       #   http://www.docbook.org/[DocBook.org]
       {
-        'match': '([^\:]+\:)(.+?)(\\[)([^\\]]*?)(\\])'
+        'match': '([^\:]+\:)([^\:].*?)(\\[)([^\\]]*?)(\\])'
         'name': 'markup.macro.inline.asciidoc'
+        'captures':
+          '1': 'name': 'support.constant.asciidoc'
+          '3': 'name': 'support.constant.asciidoc'
+          '5': 'name': 'support.constant.asciidoc'
+      }
+
+      # Matches block macros
+      #
+      # Examples
+      #
+      #   image::tiger.png[Tyger tyger]
+      {
+        'match': '([^\:]+\:{2})(.+?)(\\[)([^\\]]*?)(\\])'
+        'name': 'markup.macro.block.asciidoc'
         'captures':
           '1': 'name': 'support.constant.asciidoc'
           '3': 'name': 'support.constant.asciidoc'

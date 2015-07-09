@@ -44,6 +44,14 @@ describe "AsciiDoc grammar", ->
     expect(tokens[3]).toEqual value: "DocBook.org", scopes: ["source.asciidoc", "markup.macro.inline.asciidoc"]
     expect(tokens[4]).toEqual value: "]", scopes: ["source.asciidoc", "markup.macro.inline.asciidoc", "support.constant.asciidoc"]
 
+  it "tokenizes block macros", ->
+    {tokens} = grammar.tokenizeLine("image::tiger.png[Tyger tyger]")
+    expect(tokens[0]).toEqual value: "image::", scopes: ["source.asciidoc", "markup.macro.block.asciidoc", "support.constant.asciidoc"]
+    expect(tokens[1]).toEqual value: "tiger.png", scopes: ["source.asciidoc", "markup.macro.block.asciidoc"]
+    expect(tokens[2]).toEqual value: "[", scopes: ["source.asciidoc", "markup.macro.block.asciidoc", "support.constant.asciidoc"]
+    expect(tokens[3]).toEqual value: "Tyger tyger", scopes: ["source.asciidoc", "markup.macro.block.asciidoc"]
+    expect(tokens[4]).toEqual value: "]", scopes: ["source.asciidoc", "markup.macro.block.asciidoc", "support.constant.asciidoc"]
+
   it "tokenizes [[blockId]] elements", ->
     {tokens} = grammar.tokenizeLine("this is a [[blockId]] element")
     expect(tokens[0]).toEqual value: "this is a ", scopes: ["source.asciidoc"]

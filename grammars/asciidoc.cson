@@ -378,12 +378,25 @@
       #
       #   http://www.docbook.org/[DocBook.org]
       {
-        'match': '([^\:]+\:)([^\:].*?)(\\[)([^\\]]*?)(\\])'
+        'match': '([^:]+:)([^:].*?)(\\[)([^\\]]*?)(\\])'
         'name': 'markup.macro.inline.asciidoc'
         'captures':
           '1': 'name': 'support.constant.asciidoc'
           '3': 'name': 'support.constant.asciidoc'
           '5': 'name': 'support.constant.asciidoc'
+      }
+
+      # Matches common URLs
+      #
+      # NOTE: As mentioned in http://stackoverflow.com/questions/1141848/regex-to-match-url,
+      # this regex is not foolproof.
+      #
+      # Examples
+      #
+      #   http://www.docbook.org
+      {
+        'match': '(\\S+\\.(com|net|org|edu|gov)(\/\\S+)?)'
+        'name': 'markup.url.asciidoc'
       }
 
       # Matches block macros

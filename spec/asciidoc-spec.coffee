@@ -98,7 +98,12 @@ describe "AsciiDoc grammar", ->
   it "tokenizes explicit paragraph styles", ->
     {tokens} = grammar.tokenizeLine("[NOTE]\n====\n")
     expect(tokens[1]).toEqual value: "NOTE", scopes: ["source.asciidoc", "markup.explicit.asciidoc", "support.constant.asciidoc"]
-    expect(tokens[3]).toEqual value: "====", scopes: ["source.asciidoc", "markup.explicit.asciidoc"]
+    expect(tokens[4]).toEqual value: "====", scopes: ["source.asciidoc", "markup.block.example.asciidoc"]
+
+  it "tokenizes section templates", ->
+    {tokens} = grammar.tokenizeLine("[sect1]\nThis is an section.\n")
+    expect(tokens[1]).toEqual value: "sect1", scopes: ["source.asciidoc", "markup.section.asciidoc", "support.constant.asciidoc"]
+    expect(tokens[3]).toEqual value: "\nThis is an section.\n", scopes: ["source.asciidoc"]
 
   it "tokenizes quote blocks", ->
     {tokens} = grammar.tokenizeLine("""

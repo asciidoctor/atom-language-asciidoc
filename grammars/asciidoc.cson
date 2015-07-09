@@ -212,10 +212,30 @@
   #
   #   [normal]
   #   This is a normal paragraph.
+  # {
+  #   'begin': '^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]\n'
+  #   'end': '$'
+  #   'name': 'markup.explicit.asciidoc'
+  #   'captures':
+  #     '1': 'name': 'support.constant.asciidoc'
+  # }
+
   {
-    'begin': '^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|abstract|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]\n'
-    'end': '$'
+    'match': '^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]$'
     'name': 'markup.explicit.asciidoc'
+    'captures':
+      '1': 'name': 'support.constant.asciidoc'
+  }
+
+  # Matches section templates
+  #
+  # Examples
+  #
+  #   [appendix]
+  #   This is an appendix.
+  {
+    'match': '^\\[((sect[1-4]|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index))\\]$'
+    'name': 'markup.section.asciidoc'
     'captures':
       '1': 'name': 'support.constant.asciidoc'
   }
@@ -347,7 +367,7 @@
         'name': 'markup.raw.inline.asciidoc'
       }
     ]
-    
+
   'codeBlocks':
     'patterns': [
 

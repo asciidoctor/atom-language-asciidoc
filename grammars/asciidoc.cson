@@ -410,7 +410,7 @@
       #
       #   http://www.docbook.org
       {
-        'match': '(?<=^|\\s)(\\S+\\.(com|net|org|edu|gov)(\/\\S+)?)'
+        'match': '(?<=^|\\s)(\\S+://\\S+\\.(com|net|org|edu|gov)(\/\\S+)?)'
         'name': 'markup.url.asciidoc'
       }
 

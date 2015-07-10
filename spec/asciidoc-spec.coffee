@@ -40,6 +40,10 @@ describe "AsciiDoc grammar", ->
     {tokens} = grammar.tokenizeLine("http://www.docbook.org is great")
     expect(tokens[0]).toEqual value: "http://www.docbook.org", scopes: ["source.asciidoc", "markup.url.asciidoc"]
 
+  it "does not tokenizes email addresses as URLs", ->
+    {tokens} = grammar.tokenizeLine("John Smith <johnSmith@example.com>")
+    expect(tokens[0]).toEqual value: "John Smith <johnSmith@example.com>", scopes: ["source.asciidoc"]
+
   it "tokenizes inline macros", ->
     {tokens} = grammar.tokenizeLine("http://www.docbook.org/[DocBook.org]")
     expect(tokens[0]).toEqual value: "http:", scopes: ["source.asciidoc", "markup.macro.inline.asciidoc", "support.constant.asciidoc"]
@@ -158,6 +162,7 @@ describe "AsciiDoc grammar", ->
                                     """)
     expect(tokens[1]).toEqual value: "quote", scopes: ["source.asciidoc", "markup.quote.declaration.asciidoc"]
     expect(tokens[4]).toEqual value: "____", scopes: ["source.asciidoc", "markup.quote.block.asciidoc"]
+    expect(tokens[5]).toEqual value: "\nD'oh!\n", scopes: ["source.asciidoc", "markup.quote.block.asciidoc"]
     expect(tokens[6]).toEqual value: "____", scopes: ["source.asciidoc", "markup.quote.block.asciidoc"]
 
   it "tokenizes quote declarations with attribution", ->

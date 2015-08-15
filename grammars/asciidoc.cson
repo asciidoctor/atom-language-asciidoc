@@ -95,7 +95,7 @@
   #   Notice it's a delimited block.
   #   ====
   {
-    'begin': '^(={4,})+?$'
+    'begin': '^(={4,})$'
     'end': '\\1'
     'name': 'markup.block.example.asciidoc'
     'patterns': [
@@ -130,9 +130,7 @@
     'begin': '(^\\.{4,}$)'
     'end': '\\1'
     'name': 'markup.block.literal.asciidoc'
-    'patterns': [
-      { 'include': [ '#inline', '#codeBlocks'] }
-    ]
+    'patterns': [ ]
   }
 
   # Matches passthrough block
@@ -146,9 +144,7 @@
     'begin': '(^\\+{4,}$)'
     'end': '\\1'
     'name': 'markup.block.passthrough.asciidoc'
-    'patterns': [
-      { 'include': '#inline' }
-    ]
+    'patterns': [ ]
   }
 
   # Matches quote declaration

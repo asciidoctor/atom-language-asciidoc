@@ -80,7 +80,9 @@
     'captures':
       '1': 'name': 'support.constant.asciidoc'
     'patterns': [
-      { 'include': '#inline' }
+      {
+        'include': '#inline'
+      }
     ]
   }
 
@@ -122,7 +124,9 @@
           '2': 'name': 'support.table.spec.asciidoc'
           '3': 'name': 'support.table.asciidoc'
       }
-      { 'include': '#inline' }
+      {
+        'include': '#inline'
+      }
     ]
   }
 
@@ -323,7 +327,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*(markdown|mdown|md)\\]$'
+        'begin': '^\\[source,\\s*(markdown|mdown|md)\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -350,7 +354,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*ya?ml\\]$'
+        'begin': '^\\[source,\\s*ya?ml\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -377,7 +381,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*coffee-?(script)?\\]$'
+        'begin': '^\\[source,\\s*coffee-?(script)?\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -404,7 +408,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*json\\]$'
+        'begin': '^\\[source,\\s*json\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -431,7 +435,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*css\\]$'
+        'begin': '^\\[source,\\s*css\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -458,7 +462,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*less\\]$'
+        'begin': '^\\[source,\\s*less\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -485,7 +489,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*xml\\]$'
+        'begin': '^\\[source,\\s*xml\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -512,7 +516,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*(rust|rs)\\]$'
+        'begin': '^\\[source,\\s*(rust|rs)\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -539,7 +543,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*erlang\\]$'
+        'begin': '^\\[source,\\s*erlang\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -566,7 +570,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*cs(harp)?\\]$'
+        'begin': '^\\[source,\\s*cs(harp)?\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -593,7 +597,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*php\\]$'
+        'begin': '^\\[source,\\s*php\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -620,7 +624,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*(sh|bash|shell)\\]$'
+        'begin': '^\\[source,\\s*(sh|bash|shell)\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -647,7 +651,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*py(thon)?\\]$'
+        'begin': '^\\[source,\\s*py(thon)?\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -674,7 +678,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*c\\]$'
+        'begin': '^\\[source,\\s*c\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -701,7 +705,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*c(pp|\\+\\+)\\]$'
+        'begin': '^\\[source,\\s*c(pp|\\+\\+)\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -728,7 +732,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*(objc|objective-c)\\]$'
+        'begin': '^\\[source,\\s*(objc|objective-c)\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -755,7 +759,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*swift\\]$'
+        'begin': '^\\[source,\\s*swift\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -782,7 +786,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*html\\]$'
+        'begin': '^\\[source,\\s*html\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -809,7 +813,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*elixir\\]$'
+        'begin': '^\\[source,\\s*elixir\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -820,7 +824,7 @@
               '0': 'name': 'support.asciidoc'
             'end': '\\1'
             'endCaptures':
-              '0':'name': 'support.asciidoc'
+              '0': 'name': 'support.asciidoc'
             'contentName': 'source.elixir'
             'patterns': ['include': 'source.elixir']
           }
@@ -836,7 +840,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*(diff|patch|rej)\\]$'
+        'begin': '^\\[source,\\s*(diff|patch|rej)\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -863,7 +867,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*julia\\]$'
+        'begin': '^\\[source,\\s*julia\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -890,7 +894,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*r\\]$'
+        'begin': '^\\[source,\\s*r\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -917,7 +921,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*haskell\\]$'
+        'begin': '^\\[source,\\s*haskell\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -944,7 +948,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*elm\\]$'
+        'begin': '^\\[source,\\s*elm\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -971,7 +975,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*sql\\]$'
+        'begin': '^\\[source,\\s*sql\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'
@@ -998,7 +1002,7 @@
       #  ...
       #   ----
       {
-        'begin':'^\\[source,\\s*clojure\\]$'
+        'begin': '^\\[source,\\s*clojure\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*$'

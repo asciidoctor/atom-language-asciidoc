@@ -30,7 +30,7 @@
   #
   #   === Level 2 Section
   {
-    'begin': '^={1,6}\\p{Blank}+'
+    'begin': '^((?:=|#){1,6})([ \\t]+)(?=\\S+)'
     'end': '$'
     'name': 'markup.heading.asciidoc'
     'patterns': [

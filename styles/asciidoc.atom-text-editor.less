@@ -5,55 +5,63 @@
 atom-text-editor, :host {
   .asciidoc {
 
-    .markup.bold {
-      font-weight: bold;
-    }
+    .markup{
 
-    .markup.italic {
-      font-style: italic;
-    }
-
-    .markup.url {
-      color: mix(red, @syntax-text-color, 20%);
-    }
-
-    .markup.htmlentity {
-      font-style: italic;
-      color: mix(red, @syntax-text-color, 20%);
-    }
-
-    .markup.biblioref,
-    .markup.blockid {
-      font-weight: bold;
-      color: mix(green, @syntax-text-color, 20%);
-    }
-
-    .markup.reference {
-      font-style: italic;
-      color: mix(green, @syntax-text-color, 20%);
-    }
-
-    .markup.admonition,
-    .markup.explicit,
-    .markup.heading,
-    .markup.section {
-      font-weight: bold;
-
-      // Lighten headers for dark themes.
-      & when (lightness(@syntax-background-color) < 50%){
-        color: lighten(@syntax-text-color, 20%);
+      &.bold {
+        font-weight: bold;
       }
 
-      // Darken headers for light themes.
-      & when (lightness(@syntax-background-color) > 50%){
-        color: darken(@syntax-text-color, 20%);
+      &.italic {
+        font-style: italic;
+      }
+
+      &.url {
+        color: mix(red, @syntax-text-color, 20%);
+      }
+
+      &.htmlentity {
+        font-style: italic;
+        color: mix(red, @syntax-text-color, 20%);
+      }
+
+      &.biblioref,
+      &.blockid {
+        font-weight: bold;
+        color: mix(green, @syntax-text-color, 20%);
+      }
+
+      &.reference {
+        font-style: italic;
+        color: mix(green, @syntax-text-color, 20%);
+      }
+
+      &.admonition,
+      &.explicit,
+      &.heading,
+      &.section {
+        font-weight: bold;
+
+        // Lighten headers for dark themes.
+        & when (lightness(@syntax-background-color) < 50%){
+          color: lighten(@syntax-text-color, 20%);
+        }
+
+        // Darken headers for light themes.
+        & when (lightness(@syntax-background-color) > 50%){
+          color: darken(@syntax-text-color, 20%);
+        }
+      }
+
+      &.heading.blocktitle,
+      &.substitution {
+        color: @syntax-text-color-unobtrusive;
+      }
+      &.list.bullet {
+        color: mix(red, @syntax-text-color, 40%);
       }
     }
 
     .block,
-    .markup.heading.blocktitle,
-    .markup.list.bullet,
-    .markup.substitution,
     .table.spec {
       color: @syntax-text-color-unobtrusive;
     }

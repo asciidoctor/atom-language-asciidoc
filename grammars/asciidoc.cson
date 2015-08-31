@@ -411,7 +411,7 @@
       #   http://www.docbook.org
       {
         'match': '(?<=^|\\s)(\\S+://\\S+\\.(com|net|org|edu|gov)(\/\\S+)?)'
-        'name': 'markup.url.asciidoc'
+        'name': 'markup.underline.link.asciidoc'
       }
 
       # Matches block macros

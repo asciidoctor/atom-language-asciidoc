@@ -38,7 +38,7 @@ describe "AsciiDoc grammar", ->
 
   it "tokenizes URLs", ->
     {tokens} = grammar.tokenizeLine("http://www.docbook.org is great")
-    expect(tokens[0]).toEqual value: "http://www.docbook.org", scopes: ["source.asciidoc", "markup.url.asciidoc"]
+    expect(tokens[0]).toEqual value: "http://www.docbook.org", scopes: ["source.asciidoc", "markup.underline.link.asciidoc"]
 
   it "does not tokenizes email addresses as URLs", ->
     {tokens} = grammar.tokenizeLine("John Smith <johnSmith@example.com>")

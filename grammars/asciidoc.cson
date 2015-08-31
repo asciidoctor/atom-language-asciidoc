@@ -198,7 +198,9 @@
     'captures':
       '1': 'name': 'support.constant.asciidoc'
     'patterns': [
-      { 'include': '#inline' }
+      {
+        'include': '#inline'
+      }
     ]
   }
 
@@ -266,7 +268,9 @@
           '2': 'name': 'support.table.spec.asciidoc'
           '3': 'name': 'support.table.asciidoc'
       }
-      { 'include': '#inline' }
+      {
+        'include': '#inline'
+      }
     ]
   }
 
@@ -493,6 +497,761 @@
         ]
       }
 
+      # Matches Go AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,go]
+      #   ----
+      #   ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*go(lang)?\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.go'
+            'patterns': ['include': 'source.go']
+          }
+        ]
+      }
+
+      # Matches Java AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,java]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*java\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'patterns': ['include': 'source.java']
+          }
+        ]
+      }
+
+      # Matches Mardown AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,md]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*(markdown|mdown|md)\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.gfm'
+            'patterns': ['include': 'source.gfm']
+          }
+        ]
+      }
+
+      # Matches YAML AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,yml]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*ya?ml\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.yaml'
+            'patterns': ['include': 'source.yaml']
+          }
+        ]
+      }
+
+      # Matches CoffeScript AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,cofeescript]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*coffee-?(script)?\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.coffee'
+            'patterns': ['include': 'source.coffee']
+          }
+        ]
+      }
+
+      # Matches JSON AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,json]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*json\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.json'
+            'patterns': ['include': 'source.json']
+          }
+        ]
+      }
+
+      # Matches CSS AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,css]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*css\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+              'end': '\\1'
+              'endCaptures':
+                '0': 'name': 'support.asciidoc'
+              'contentName': 'source.css'
+              'patterns': ['include': 'source.css']
+          }
+        ]
+      }
+
+      # Matches LESS AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,less]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*less\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.css.less'
+            'patterns': ['include': 'source.css.less']
+          }
+        ]
+      }
+
+      # Matches XML AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,xml]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*xml\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'text.xml'
+            'patterns': ['include': 'text.xml']
+          }
+        ]
+      }
+
+      # Matches Rust AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,rust]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*(rust|rs)\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.rust'
+            'patterns': ['include': 'source.rust']
+          }
+        ]
+      }
+
+      # Matches Erlang AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,erlang]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*erlang\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.erlang'
+            'patterns': ['include': 'source.erlang']
+          }
+        ]
+      }
+
+      # Matches C# AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,cs]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*cs(harp)?\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.cs'
+            'patterns': ['include': 'source.cs']
+          }
+        ]
+      }
+
+      # Matches PHP AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,php]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*php\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.php'
+            'patterns': ['include': 'source.php']
+          }
+        ]
+      }
+
+      # Matches Shell AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,shell]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*(sh|bash|shell)\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.shell'
+            'patterns': ['include': 'source.shell']
+          }
+        ]
+      }
+
+      # Matches Python AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,python]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*py(thon)?\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.python'
+            'patterns': ['include': 'source.python']
+          }
+        ]
+      }
+
+      # Matches C AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,c]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*c\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.c'
+            'patterns': ['include': 'source.c']
+          }
+        ]
+      }
+
+      # Matches C++ AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,cpp]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*c(pp|\\+\\+)\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.cpp'
+            'patterns': ['include': 'source.cpp']
+          }
+        ]
+      }
+
+      # Matches Objectif C AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,objc]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*(objc|objective-c)\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.objc'
+            'patterns': ['include': 'source.objc']
+          }
+        ]
+      }
+
+      # Matches Swift AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,swift]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*swift\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.swift'
+            'patterns': ['include': 'source.swift']
+          }
+        ]
+      }
+
+      # Matches HTML AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,html]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*html\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'text.html.basic'
+            'patterns': ['include': 'text.html.basic']
+          }
+        ]
+      }
+
+      # Matches Elixir AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,elixir]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*elixir\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.elixir'
+            'patterns': ['include': 'source.elixir']
+          }
+        ]
+      }
+
+      # Matches Diff/Patch AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,diff]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*(diff|patch|rej)\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.diff'
+            'patterns': ['include': 'source.diff']
+          }
+        ]
+      }
+
+      # Matches Julia AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,julia]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*julia\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.julia'
+            'patterns': ['include': 'source.julia']
+          }
+        ]
+      }
+
+      # Matches R AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,r]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*r\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.r'
+            'patterns': ['include': 'source.r']
+          }
+        ]
+      }
+
+      # Matches Haskell AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,haskell]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*haskell\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.haskell'
+            'patterns': ['include': 'source.haskell']
+          }
+        ]
+      }
+
+      # Matches ELM AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,elm]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*elm\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.elm'
+            'patterns': ['include': 'source.elm']
+          }
+        ]
+      }
+
+      # Matches SQL AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,sql]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*sql\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.sql'
+            'patterns': ['include': 'source.sql']
+          }
+        ]
+      }
+
+      # Matches Clojure AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,clojure]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*clojure\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.clojure'
+            'patterns': ['include': 'source.clojure']
+          }
+        ]
+      }
+
       # Matches language-agnostic AsciiDoc code blocks
       #
       # Examples
@@ -570,6 +1329,465 @@
         'endCaptures':
           '0': 'name': 'support.asciidoc'
         'patterns': ['include': 'source.ruby']
+      }
+
+      # Matches Go Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```go
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*go(lang)?\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.go']
+      }
+
+      # Matches Makdown Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```md
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*(markdown|mdown|md)\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.gfm']
+      }
+
+      # Matches YAML Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```yml
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*ya?ml\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.yaml']
+      }
+
+      # Matches CoffeScript Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```coffee
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*coffee-?(script)?\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.coffee']
+      }
+
+      # Matches JSON Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```json
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*json\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.json']
+      }
+
+      # Matches CSS Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```css
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*css\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.css']
+      }
+
+      # Matches LESS Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```less
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*less\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.css.less']
+      }
+
+      # Matches XML Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```xml
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*xml\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'text.xml']
+      }
+
+      # Matches Rust Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```rust
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*(rust|rs)\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.rust']
+      }
+
+      # Matches Erlang Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```erlang
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*erlang\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.erlang']
+      }
+
+      # Matches CSharp Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```cs
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*cs(harp)?\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.cs']
+      }
+
+      # Matches PHP Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```php
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*php\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.php']
+      }
+
+      # Matches Shell Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```shell
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*(sh|bash|shell)\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.shell']
+      }
+
+      # Matches Python Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```python
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*py(thon)?\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.python']
+      }
+
+      # Matches C Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```c
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*c\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.c']
+      }
+
+      # Matches C++ Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```cpp
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*c(pp|\\+\\+)\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.cpp']
+      }
+
+      # Matches Objective C Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```objc
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*(objc|objective-c)\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.objc']
+      }
+
+      # Matches Swift Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```swift
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*swift\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.swift']
+      }
+
+      # Matches HTML Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```html
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*html\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'text.html.basic']
+      }
+
+      # Matches Elixir Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```elixir
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*elixir\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.elixir']
+      }
+
+      # Matches Diff Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```diff
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*(diff|patch|rej)\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.diff']
+      }
+
+      # Matches Julia Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```julia
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*julia\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.julia']
+      }
+
+      # Matches R Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```r
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*r\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.r']
+      }
+
+      # Matches Haskell Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```haskell
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*haskell\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.haskell']
+      }
+
+      # Matches ELM Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```elm
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*elm\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.elm']
+      }
+
+      # Matches SQL Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```sql
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*sql\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.sql']
+      }
+
+      # Matches Clojure Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```clojure
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*clojure\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.clojure']
       }
 
       # Matches language-agnostic Markdown code blocks

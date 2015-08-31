@@ -30,12 +30,28 @@
   #
   #   === Level 2 Section
   {
-    'begin': '^={1,6}\\s+'
+    'begin': '^={1,6}\\p{Blank}+'
     'end': '$'
     'name': 'markup.heading.asciidoc'
     'patterns': [
       'include': '$self'
     ]
+  }
+
+  # Matches block titles
+  #
+  # Examples
+  #
+  # .An example example
+  # ========================
+  # This is an example.
+  # ========================
+  #
+  {
+    'begin': '^\\.(\\w[\\w ]*\\w)'
+    'end': '$'
+    'captures':
+      '1': 'name': 'markup.heading.blocktitle.asciidoc'
   }
 
   # Matches attributes
@@ -64,17 +80,119 @@
     'begin': '(^/{4,}$)'
     'end': '\\1'
     'name': 'comment.block.asciidoc'
+    'patterns': [
+      { 'include': '#inline' }
+    ]
+  }
+
+  # Matches example block
+  #
+  # Examples
+  #
+  #   ====
+  #   A multi-line example.
+  #
+  #   Notice it's a delimited block.
+  #   ====
+  {
+    'begin': '^(={4,})$'
+    'end': '\\1'
+    'name': 'markup.block.example.asciidoc'
+    'patterns': [
+      { 'include': '#inline' }
+    ]
+  }
+
+  # Matches sidebar block
+  #
+  # Examples
+  #
+  # ***********************************
+  # As an aside, I love Asciidoc
+  # ***********************************
+  {
+    'begin': '(^\\*{4,}$)'
+    'end': '\\1'
+    'name': 'markup.block.sidebar.asciidoc'
+    'patterns': [
+      { 'include': '#inline' }
+    ]
+  }
+
+  # Matches literal block
+  #
+  # Examples
+  #
+  # ...................................
+  # Daleks EXTERMINATE in monospace!
+  # ...................................
+  {
+    'begin': '(^\\.{4,}$)'
+    'end': '\\1'
+    'name': 'markup.block.literal.asciidoc'
+    'patterns': [ ]
+  }
+
+  # Matches passthrough block
+  #
+  # Examples
+  #
+  # +++++++++++++++++++++++++++++++++++
+  # <s>Could be struck through</s>
+  # +++++++++++++++++++++++++++++++++++
+  {
+    'begin': '(^\\+{4,}$)'
+    'end': '\\1'
+    'name': 'markup.block.passthrough.asciidoc'
+    'patterns': [ ]
+  }
+
+  # Matches quote declaration
+  #
+  # Examples
+  #
+  # [quote]
+  # ____________________________________________________________________
+  # Huh?
+  # ____________________________________________________________________
+  #
+  # [quote, Homer Simpson]
+  # ____________________________________________________________________
+  # D'oh!
+  # ____________________________________________________________________
+  #
+  # [quote, Erwin Schrödinger, Sorry]
+  # ____________________________________________________________________
+  # I don't like it, and I'm sorry I ever had anything to do with it.
+  # ____________________________________________________________________
+  {
+    'begin': '^\\[(quote|verse)(, ([\\w ]+))?(, ([\\w ]+))?'
+    'end': '\\]$'
+    'beginCaptures':
+      '1': 'name': 'markup.quote.declaration.asciidoc'
+      '3': 'name': 'markup.quote.attribution.asciidoc'
+      '5': 'name': 'markup.quote.citation.asciidoc'
+  }
+
+  # Matches quote block
+  {
+    'begin': '(^_{4,}$)'
+    'end': '\\1'
+    'name': 'markup.quote.block.asciidoc'
+    'patterns': [
+      { 'include': '#inline' }
+    ]
   }
 
   # Matches admonition blocks
   #
   # Examples
   #
-  #   TIP: Pro tip..
+  #   TIP: Pro tip...
   #
   #   IMPORTANT: Don't forget...
   {
-    'begin': '^((NOTE|TIP|IMPORTANT|WARNING|CAUTION)\\:)'
+    'begin': '^((NOTE|TIP|IMPORTANT|WARNING|CAUTION)\\:)\\p{Blank}+'
     'end': '$'
     'name': 'markup.admonition.asciidoc'
     'captures':
@@ -82,6 +200,32 @@
     'patterns': [
       { 'include': '#inline' }
     ]
+  }
+
+  # Matches explicit paragraph styles
+  #
+  # Examples
+  #
+  #   [normal]
+  #   This is a normal paragraph.
+  {
+    'match': '^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]$'
+    'name': 'markup.explicit.asciidoc'
+    'captures':
+      '1': 'name': 'support.constant.asciidoc'
+  }
+
+  # Matches section templates
+  #
+  # Examples
+  #
+  #   [appendix]
+  #   This is an appendix.
+  {
+    'match': '^\\[((sect[1-4]|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index))\\]$'
+    'name': 'markup.section.asciidoc'
+    'captures':
+      '1': 'name': 'support.constant.asciidoc'
   }
 
   # Matches tables. Supports cell spans, alignments and styles.
@@ -179,8 +323,41 @@
       #
       #   {checkedbox} That's done!
       {
-        'match': '({)([^\/\\:\\s]+)(})'
+        'match': '(?<=^|\\s)({)([^\/\\:\\s]+)(})'
         'name': 'markup.substitution.asciidoc'
+      }
+
+      # Matches block ID elements
+      #
+      # Example: [[section-title]]
+      {
+        'match': '(?<=^|\\s)(\\[{2})([^\\[\\]]+)(\\]{2})'
+        'captures':
+          '1': 'name': 'support.constant.asciidoc'
+          '2': 'name': 'markup.blockid.asciidoc'
+          '3': 'name': 'support.constant.asciidoc'
+      }
+
+      # Matches bibliography entities
+      #
+      # Example: [[[bib-ref]]]
+      {
+        'match': '(?<=^|\\s)(\\[{3})([^\\[\\]]+)(\\]{3})'
+        'captures':
+          '1': 'name': 'support.constant.asciidoc'
+          '2': 'name': 'markup.biblioref.asciidoc'
+          '3': 'name': 'support.constant.asciidoc'
+      }
+
+      # Matches reference elements
+      #
+      # Example: <<section-ref>>
+      {
+        'match': '(?<=^|\\s)(\\<\\<)([^\\<\\>]+)(\\>\\>)'
+        'captures':
+          '1': 'name': 'support.constant.asciidoc'
+          '2': 'name': 'markup.reference.asciidoc'
+          '3': 'name': 'support.constant.asciidoc'
       }
 
       # Matches raw inlines
@@ -189,10 +366,65 @@
       #
       #   `Text in {backticks}` renders exactly as entered, in `monospace`.
       {
-        'match': '`[^`]+`'
+        'match': '(?<=^|\\s)`[^`]+`'
         'name': 'markup.raw.inline.asciidoc'
       }
+
+      # Matches HTML entities
+      #
+      # Examples
+      #
+      #   Dungeons &amp; Dragons
+      {
+        'match': '(\&)(.+?)(;)'
+        'name': 'markup.htmlentity.asciidoc'
+        'captures':
+          '1': 'name': 'support.constant.asciidoc'
+          '3': 'name': 'support.constant.asciidoc'
+      }
+
+      # Matches inline macros
+      #
+      # Examples
+      #
+      #   http://www.docbook.org/[DocBook.org]
+      {
+        'match': '(?<=^|\\s)([^:]+:)([^:].*?)(\\[)([^\\]]*?)(\\])'
+        'name': 'markup.macro.inline.asciidoc'
+        'captures':
+          '1': 'name': 'support.constant.asciidoc'
+          '3': 'name': 'support.constant.asciidoc'
+          '5': 'name': 'support.constant.asciidoc'
+      }
+
+      # Matches common URLs
+      #
+      # NOTE: As mentioned in http://stackoverflow.com/questions/1141848/regex-to-match-url,
+      # this regex is not foolproof.
+      #
+      # Examples
+      #
+      #   http://www.docbook.org
+      {
+        'match': '(?<=^|\\s)(\\S+://\\S+\\.(com|net|org|edu|gov)(\/\\S+)?)'
+        'name': 'markup.url.asciidoc'
+      }
+
+      # Matches block macros
+      #
+      # Examples
+      #
+      #   image::tiger.png[Tyger tyger]
+      {
+        'match': '(?<=^|\\s)([^\:]+\:{2})(.+?)(\\[)([^\\]]*?)(\\])'
+        'name': 'markup.macro.block.asciidoc'
+        'captures':
+          '1': 'name': 'support.constant.asciidoc'
+          '3': 'name': 'support.constant.asciidoc'
+          '5': 'name': 'support.constant.asciidoc'
+      }
     ]
+
   'codeBlocks':
     'patterns': [
 

@@ -85,6 +85,14 @@
     ]
   }
 
+  # Matches single line comments
+  #
+  # // A single-line comment
+  {
+      'match': '^\/\/.*$'
+      'name': 'markup.block.asciidoc'
+  }
+
   # Matches example block
   #
   # Examples

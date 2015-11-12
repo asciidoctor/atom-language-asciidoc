@@ -89,7 +89,7 @@
   #
   # // A single-line comment
   {
-      'match': '^\/\/.*$'
+      'match': '^\/{2}\\p{Space}.*$'
       'name': 'markup.block.asciidoc'
   }
 

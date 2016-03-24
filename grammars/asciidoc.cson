@@ -314,7 +314,7 @@
       #
       #   _italic phrase_
       {
-        'match': '(?<=^|\\s)(_[^_]+_)'
+        'match': '(?<=^|\\s)(_[^_^\\s].*?_)(?=\\s|$)'
         'captures':
           '0': 'name': 'markup.italic.asciidoc'
       }

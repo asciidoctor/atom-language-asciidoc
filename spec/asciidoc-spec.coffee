@@ -173,13 +173,12 @@ describe "AsciiDoc grammar", ->
 
   it "tokenizes block titles", ->
     {tokens} = grammar.tokenizeLine("""
-                                    .An example example
+                                    .An e-xample' e_xample
                                     =========
                                     Example
                                     =========
                                     """)
-    expect(tokens[1]).toEqual value: "An example example", scopes: ["source.asciidoc", "markup.heading.blocktitle.asciidoc"]
-    expect(tokens[3]).toEqual value: "=========", scopes: ["source.asciidoc", "markup.block.example.asciidoc"]
+    expect(tokens[1]).toEqual value: "An e-xample' e_xample", scopes: ["source.asciidoc", "markup.heading.blocktitle.asciidoc"]
 
   it "tokenizes Mardown-style headings", ->
     {tokens} = grammar.tokenizeLine("# Heading 0")

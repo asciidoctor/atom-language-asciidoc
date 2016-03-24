@@ -22,6 +22,22 @@ describe "AsciiDoc grammar", ->
     expect(tokens[1]).toEqual value: "*bold*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
     expect(tokens[2]).toEqual value: " text", scopes: ["source.asciidoc"]
 
+  it "does not tokenize to bold for enclosed asterisk", ->
+    {tokens} = grammar.tokenizeLine("this is *no bold*text")
+    expect(tokens[0]).toEqual value: "this is *no bold*text", scopes: ["source.asciidoc"]
+
+  it "tokenizes multi-line *bold* text", ->
+    {tokens} = grammar.tokenizeLine("""
+                                    this is *multi- 
+                                    line bold* text
+                                    """)
+    expect(tokens[0]).toEqual value: "this is ", scopes: ["source.asciidoc"]
+    expect(tokens[1]).toEqual value: """
+                                    *multi- 
+                                    line bold*
+                                    """, scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+    expect(tokens[2]).toEqual value: " text", scopes: ["source.asciidoc"]
+
   it "tokenizes _italic_ text", ->
     {tokens} = grammar.tokenizeLine("this is _italic_ text")
     expect(tokens[0]).toEqual value: "this is ", scopes: ["source.asciidoc"]
@@ -218,6 +234,27 @@ describe "AsciiDoc grammar", ->
     expect(tokens[6]).toEqual  value: "***", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
     expect(tokens[9]).toEqual  value: "****", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
     expect(tokens[12]).toEqual value: "*****", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+
+  it "tokenizes list bullets including bold text up to 5 symbols", ->
+    {tokens} = grammar.tokenizeLine("""
+                                    . Level 1
+                                    .. *Bold level 2*
+                                    *** Level 3
+                                    **** *Bold level 4*
+                                    ***** Level 5
+                                    """)
+    expect(tokens[0]).toEqual  value: ".", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+    expect(tokens[3]).toEqual  value: "..", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+    expect(tokens[5]).toEqual  value: "*Bold level 2*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+    expect(tokens[7]).toEqual  value: "***", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+    expect(tokens[10]).toEqual  value: "****", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+    expect(tokens[12]).toEqual  value: "*Bold level 4*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+    expect(tokens[14]).toEqual value: "*****", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+
+  it "tokenizes bold content in a list for a single line", ->
+    {tokens} = grammar.tokenizeLine("* *Bold text*")
+    expect(tokens[0]).toEqual value: "*", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+    expect(tokens[2]).toEqual value: "*Bold text*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
 
   it "tokenizes table delimited block", ->
     {tokens} = grammar.tokenizeLine("|===\n|===")

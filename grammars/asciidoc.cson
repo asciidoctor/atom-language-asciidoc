@@ -303,7 +303,7 @@ patterns: [
       #
       #   *bold phrase*
       {
-        'match': '(?<=^|\\s)(\\*[^\\*]+\\*)'
+        'match': '(?<=^|\\s)(\\*[^\\s^\\*][^\\*]*\\*)(?=\\s|$)'
         'captures':
           '0': 'name': 'markup.bold.asciidoc'
       }

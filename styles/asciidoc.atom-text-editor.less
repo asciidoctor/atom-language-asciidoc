@@ -13,7 +13,30 @@ atom-text-editor, :host {
       font-style: italic;
     }
 
-    .markup.heading {
+    .markup.url {
+      color: mix(red, @syntax-text-color, 20%);
+    }
+
+    .markup.htmlentity {
+      font-style: italic;
+      color: mix(red, @syntax-text-color, 20%);
+    }
+
+    .markup.biblioref,
+    .markup.blockid {
+      font-weight: bold;
+      color: mix(green, @syntax-text-color, 20%);
+    }
+
+    .markup.reference {
+      font-style: italic;
+      color: mix(green, @syntax-text-color, 20%);
+    }
+
+    .markup.admonition,
+    .markup.explicit,
+    .markup.heading,
+    .markup.section {
       font-weight: bold;
 
       // Lighten headers for dark themes.
@@ -27,13 +50,16 @@ atom-text-editor, :host {
       }
     }
 
+    .block,
+    .markup.heading.blocktitle,
     .markup.list.bullet,
-    .markup.substitution {
+    .markup.substitution,
+    .table.spec {
       color: @syntax-text-color-unobtrusive;
     }
 
-    .table.spec {
-      color: @syntax-text-color-unobtrusive;
+    .quote {
+      color: mix(blue, @syntax-text-color, 20%);
     }
   }
 }

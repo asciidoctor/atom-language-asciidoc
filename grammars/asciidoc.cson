@@ -48,7 +48,7 @@
   # ========================
   #
   {
-    'begin': '^\\.(\\w[\\w ]*\\w)'
+    'begin': '^\\.(\\w.*\\w)'
     'end': '$'
     'captures':
       '1': 'name': 'markup.heading.blocktitle.asciidoc'
@@ -392,13 +392,14 @@
       # Examples
       #
       #   http://www.docbook.org/[DocBook.org]
+      #   cite:[AsciidoctorWeb]
       {
-        'match': '(?<=^|\\s)([^:]+:)([^:].*?)(\\[)([^\\]]*?)(\\])'
+        'match': '(?<=^|\\s)(\\w+:)([^:]*?)(\\[)([^\\]]*?)(\\])'
         'name': 'markup.macro.inline.asciidoc'
         'captures':
           '1': 'name': 'support.constant.asciidoc'
-          '3': 'name': 'support.constant.asciidoc'
-          '5': 'name': 'support.constant.asciidoc'
+          '2': 'name': 'support.constant.asciidoc'
+          '4': 'name': 'support.constant.asciidoc'
       }
 
       # Matches common URLs
@@ -420,12 +421,12 @@
       #
       #   image::tiger.png[Tyger tyger]
       {
-        'match': '(?<=^|\\s)([^\:]+\:{2})(.+?)(\\[)([^\\]]*?)(\\])'
+        'match': '(?<=^|\\s)(\\w+\:{2})([^\:]*?)(\\[)([^\\]]*?)(\\])'
         'name': 'markup.macro.block.asciidoc'
         'captures':
           '1': 'name': 'support.constant.asciidoc'
-          '3': 'name': 'support.constant.asciidoc'
-          '5': 'name': 'support.constant.asciidoc'
+          '2': 'name': 'support.constant.asciidoc'
+          '4': 'name': 'support.constant.asciidoc'
       }
     ]
 

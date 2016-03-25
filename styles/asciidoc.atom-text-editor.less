@@ -61,5 +61,15 @@ atom-text-editor, :host {
     .quote {
       color: mix(blue, @syntax-text-color, 20%);
     }
+
+    .markup.macro.inline,
+    .markup.macro.block {
+        color: mix(green, @syntax-text-color, 20%);
+    }
+
+    .markup.macro.block {
+        font-weight: bold;
+    }
+
   }
 }

@@ -48,7 +48,7 @@
   # ========================
   #
   {
-    'begin': '^\\.(\\w.*\\w)'
+    'begin': '^\\.([^\\.].*)'
     'end': '$'
     'captures':
       '1': 'name': 'markup.heading.blocktitle.asciidoc'

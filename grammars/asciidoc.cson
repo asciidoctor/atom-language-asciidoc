@@ -48,7 +48,7 @@
   # ========================
   #
   {
-    'begin': '^\\.([^\\.].*)'
+    'begin': '^\\.([^\\.\\s].*)'
     'end': '$'
     'captures':
       '1': 'name': 'markup.heading.blocktitle.asciidoc'
@@ -398,8 +398,8 @@
         'name': 'markup.macro.inline.asciidoc'
         'captures':
           '1': 'name': 'support.constant.asciidoc'
-          '2': 'name': 'support.constant.asciidoc'
-          '4': 'name': 'support.constant.asciidoc'
+          '3': 'name': 'support.constant.asciidoc'
+          '5': 'name': 'support.constant.asciidoc'
       }
 
       # Matches common URLs
@@ -425,8 +425,8 @@
         'name': 'markup.macro.block.asciidoc'
         'captures':
           '1': 'name': 'support.constant.asciidoc'
-          '2': 'name': 'support.constant.asciidoc'
-          '4': 'name': 'support.constant.asciidoc'
+          '3': 'name': 'support.constant.asciidoc'
+          '5': 'name': 'support.constant.asciidoc'
       }
     ]
 

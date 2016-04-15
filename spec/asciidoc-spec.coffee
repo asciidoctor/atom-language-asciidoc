@@ -104,6 +104,31 @@ describe "AsciiDoc grammar", ->
     expect(tokens[1]).toEqual value: "An example example", scopes: ["source.asciidoc", "markup.heading.blocktitle.asciidoc"]
     expect(tokens[3]).toEqual value: "=========", scopes: ["source.asciidoc", "markup.block.example.asciidoc"]
 
+  it "tokenizes Mardown-style headings", ->
+    {tokens} = grammar.tokenizeLine("# Heading 0")
+    expect(tokens[0]).toEqual value: "# ", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+    expect(tokens[1]).toEqual value: "Heading 0", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+
+    {tokens} = grammar.tokenizeLine("## Heading 1")
+    expect(tokens[0]).toEqual value: "## ", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+    expect(tokens[1]).toEqual value: "Heading 1", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+
+    {tokens} = grammar.tokenizeLine("### Heading 2")
+    expect(tokens[0]).toEqual value: "### ", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+    expect(tokens[1]).toEqual value: "Heading 2", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+
+    {tokens} = grammar.tokenizeLine("#### Heading 3")
+    expect(tokens[0]).toEqual value: "#### ", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+    expect(tokens[1]).toEqual value: "Heading 3", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+
+    {tokens} = grammar.tokenizeLine("##### Heading 4")
+    expect(tokens[0]).toEqual value: "##### ", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+    expect(tokens[1]).toEqual value: "Heading 4", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+
+    {tokens} = grammar.tokenizeLine("###### Heading 5")
+    expect(tokens[0]).toEqual value: "###### ", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+    expect(tokens[1]).toEqual value: "Heading 5", scopes: ["source.asciidoc", "markup.heading.asciidoc"]
+
   it "tokenizes list bullets with the length up to 5 symbols", ->
     {tokens} = grammar.tokenizeLine("""
                                     . Level 1

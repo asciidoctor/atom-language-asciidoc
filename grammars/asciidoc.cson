@@ -48,7 +48,7 @@
   # ========================
   #
   {
-    'begin': '^\\.(\\w[\\w ]*\\w)'
+    'begin': '^\\.([^\\s.].*)'
     'end': '$'
     'captures':
       '1': 'name': 'markup.heading.blocktitle.asciidoc'
@@ -392,8 +392,9 @@
       # Examples
       #
       #   http://www.docbook.org/[DocBook.org]
+      #   kbd:[Ctrl,T]
       {
-        'match': '(?<=^|\\s)([^:]+:)([^:].*?)(\\[)([^\\]]*?)(\\])'
+        'match': '(?<=^|\\s)(\\w+:)([^:]*?)(\\[)([^\\]]*?)(\\])'
         'name': 'markup.macro.inline.asciidoc'
         'captures':
           '1': 'name': 'support.constant.asciidoc'
@@ -420,7 +421,7 @@
       #
       #   image::tiger.png[Tyger tyger]
       {
-        'match': '(?<=^|\\s)([^\:]+\:{2})(.+?)(\\[)([^\\]]*?)(\\])'
+        'match': '(?<=^|\\s)(\\w+\:{2})([^\:]*?)(\\[)([^\\]]*?)(\\])'
         'name': 'markup.macro.block.asciidoc'
         'captures':
           '1': 'name': 'support.constant.asciidoc'

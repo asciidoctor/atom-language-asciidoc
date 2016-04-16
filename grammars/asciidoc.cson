@@ -297,24 +297,24 @@
   'inline':
     'patterns': [
 
-      # Matches bold pharses
+      # Matches bold phrases
       #
       # Examples
       #
       #   *bold phrase*
       {
-        'match': '(?<=^|\\s)(\\*[^\\*]+\\*)'
+        'match': '(?<=^|\\s)(\\*[^ \\*].+?\\*)(?= |\\t|$)'
         'captures':
           '0': 'name': 'markup.bold.asciidoc'
       }
 
-      # Matches italic pharses
+      # Matches italic phrases
       #
       # Examples
       #
       #   _italic phrase_
       {
-        'match': '(?<=^|\\s)(_[^_]+_)'
+        'match': '(?<=^|\\s)(_[^ _].+?_)(?= |\\t|$)'
         'captures':
           '0': 'name': 'markup.italic.asciidoc'
       }

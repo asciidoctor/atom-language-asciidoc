@@ -16,17 +16,75 @@ describe "AsciiDoc grammar", ->
     expect(grammar).toBeDefined()
     expect(grammar.scopeName).toBe "source.asciidoc"
 
-  it "tokenizes *bold* text", ->
-    {tokens} = grammar.tokenizeLine("this is *bold* text")
-    expect(tokens[0]).toEqual value: "this is ", scopes: ["source.asciidoc"]
-    expect(tokens[1]).toEqual value: "*bold*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
-    expect(tokens[2]).toEqual value: " text", scopes: ["source.asciidoc"]
+  describe "Should tokenizes *bold* text", ->
 
-  it "tokenizes _italic_ text", ->
-    {tokens} = grammar.tokenizeLine("this is _italic_ text")
-    expect(tokens[0]).toEqual value: "this is ", scopes: ["source.asciidoc"]
-    expect(tokens[1]).toEqual value: "_italic_", scopes: ["source.asciidoc", "markup.italic.asciidoc"]
-    expect(tokens[2]).toEqual value: " text", scopes: ["source.asciidoc"]
+    it "when text is 'this is *bold* text'", ->
+      {tokens} = grammar.tokenizeLine("this is *bold* text")
+      expect(tokens.length).toEqual 3
+      expect(tokens[0]).toEqual value: "this is ", scopes: ["source.asciidoc"]
+      expect(tokens[1]).toEqual value: "*bold*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+      expect(tokens[2]).toEqual value: " text", scopes: ["source.asciidoc"]
+
+    it "when text is '* text*'", ->
+      {tokens} = grammar.tokenizeLine("* text*")
+      expect(tokens.length).toEqual 3
+      expect(tokens[0]).toEqual value: "*", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+      expect(tokens[1]).toEqual value: " ", scopes: ["source.asciidoc", "markup.list.asciidoc"]
+      expect(tokens[2]).toEqual value: "text*", scopes: ["source.asciidoc"]
+
+    it "when text is '*bold text*'", ->
+      {tokens} = grammar.tokenizeLine("*bold text*")
+      expect(tokens.length).toEqual 1
+      expect(tokens[0]).toEqual value: "*bold text*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+
+    it "twhen text is '*bold*text*'", ->
+      {tokens} = grammar.tokenizeLine("*bold*text*")
+      expect(tokens.length).toEqual 1
+      expect(tokens[0]).toEqual value: "*bold*text*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+
+    it "when text is '*bold* text *bold* text'", ->
+      {tokens} = grammar.tokenizeLine("*bold* text *bold* text")
+      expect(tokens.length).toEqual 4
+      expect(tokens[0]).toEqual value: "*bold*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+      expect(tokens[1]).toEqual value: " text ", scopes: ["source.asciidoc"]
+      expect(tokens[2]).toEqual value: "*bold*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+      expect(tokens[3]).toEqual value: " text", scopes: ["source.asciidoc"]
+
+    it "when text is '* *bold* text' (list context)", ->
+      {tokens} = grammar.tokenizeLine("* *bold* text")
+      expect(tokens.length).toEqual 4
+      expect(tokens[0]).toEqual value: "*", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+      expect(tokens[1]).toEqual value: " ", scopes: ["source.asciidoc", "markup.list.asciidoc"]
+      expect(tokens[2]).toEqual value: "*bold*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+      expect(tokens[3]).toEqual value: " text", scopes: ["source.asciidoc"]
+
+    it "when text is '* *bold*' (list context)", ->
+      {tokens} = grammar.tokenizeLine("* *bold*")
+      expect(tokens.length).toEqual 3
+      expect(tokens[0]).toEqual value: "*", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+      expect(tokens[1]).toEqual value: " ", scopes: ["source.asciidoc", "markup.list.asciidoc"]
+      expect(tokens[2]).toEqual value: "*bold*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+
+  describe "Should tokenizes _italic_ text", ->
+
+    it "when text is 'this is _italic_ text'", ->
+      {tokens} = grammar.tokenizeLine("this is _italic_ text")
+      expect(tokens.length).toEqual 3
+      expect(tokens[0]).toEqual value: "this is ", scopes: ["source.asciidoc"]
+      expect(tokens[1]).toEqual value: "_italic_", scopes: ["source.asciidoc", "markup.italic.asciidoc"]
+      expect(tokens[2]).toEqual value: " text", scopes: ["source.asciidoc"]
+
+    it "when text is '_this is _italic_ text'", ->
+      {tokens} = grammar.tokenizeLine("_this is _italic_ text")
+      expect(tokens.length).toEqual 2
+      expect(tokens[0]).toEqual value: "_this is _italic_", scopes: ["source.asciidoc", "markup.italic.asciidoc"]
+      expect(tokens[1]).toEqual value: " text", scopes: ["source.asciidoc"]
+
+    it "when text is 'this is _italic_text_'", ->
+      {tokens} = grammar.tokenizeLine("this is _italic_text_")
+      expect(tokens.length).toEqual 2
+      expect(tokens[0]).toEqual value: "this is ", scopes: ["source.asciidoc"]
+      expect(tokens[1]).toEqual value: "_italic_text_", scopes: ["source.asciidoc", "markup.italic.asciidoc"]
 
   it "tokenizes HTML elements", ->
     {tokens} = grammar.tokenizeLine("Dungeons &amp; Dragons")

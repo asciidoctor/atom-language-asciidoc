@@ -201,7 +201,7 @@ describe "AsciiDoc grammar", ->
     expect(tokens[3]).toEqual value: "Erwin Schrödinger", scopes: ["source.asciidoc", "markup.quote.attribution.asciidoc"]
     expect(tokens[5]).toEqual value: "Sorry", scopes: ["source.asciidoc", "markup.quote.citation.asciidoc"]
 
-  testBlock = (delimiter,type) ->
+  testBlock = (delimiter, type) ->
     marker = Array(5).join(delimiter)
     {tokens} = grammar.tokenizeLine("#{marker}\ncontent\n#{marker}")
     expect(tokens[0]).toEqual value: marker, scopes: ["source.asciidoc", type]

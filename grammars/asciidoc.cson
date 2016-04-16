@@ -81,7 +81,7 @@
     'end': '\\1'
     'name': 'comment.block.asciidoc'
     'patterns': [
-      { 'include': '#inline' }
+      'include': '#inline'
     ]
   }
 
@@ -99,7 +99,7 @@
     'end': '\\1'
     'name': 'markup.block.example.asciidoc'
     'patterns': [
-      { 'include': '#inline' }
+      'include': '#inline'
     ]
   }
 
@@ -115,7 +115,7 @@
     'end': '\\1'
     'name': 'markup.block.sidebar.asciidoc'
     'patterns': [
-      { 'include': '#inline' }
+      'include': '#inline'
     ]
   }
 
@@ -180,7 +180,7 @@
     'end': '\\1'
     'name': 'markup.quote.block.asciidoc'
     'patterns': [
-      { 'include': '#inline' }
+      'include': '#inline'
     ]
   }
 

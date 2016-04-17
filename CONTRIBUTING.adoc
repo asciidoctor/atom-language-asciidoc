@@ -1,0 +1,57 @@
+= Contributing
+
+In the spirit of free software, _everyone_ is encouraged to help improve this project.
+
+To contribute code, simply fork the project on GitHub, hack away and send a pull request with your proposed changes.
+
+Feel free to use the https://github.com/asciidoctor/atom-language-asciidoc/issues[issue tracker] to provide feedback or suggestions in other ways.
+
+== Development
+*todo*
+
+=== Retrieve the source code
+*todo*
+
+=== Prepare for business
+*todo*
+
+== Quality assurance
+*todo*
+
+=== CoffeeScript lint
+This package uses http://www.coffeelint.org/[CoffeeLint] to ensure that the code is uniformly structured.
+The linter definitions are defined in the link:coffeelint.json[coffeelint.json].
+
+When developing in Atom, the https://atom.io/packages/linter-coffeelint[linter-coffeelint] package exposes the linting in your editor.
+It does require CoffeeLint to be http://www.coffeelint.org/#install[installed].
+
+CoffeeLint can also be triggered from the commandline:
+
+`coffeelint -f coffeelint.json grammars/asciidoc.cson`
+
+`coffeelint -f coffeelint.json spec/asciidoc-spec.coffee`
+
+=== Package specs
+Tests are defined in link:spec/asciidoc-spec.coffee[asciidoc-spec.coffee], which provide snippets of text and test if the parsed result meet the expectations.
+Ideally all grammar features are covered in the specs (100% test coverage), with both positive and negative tests.
+Having these tests present will help future contributors make improvements without accidentally breaking other parts of the package.
+
+== Grammar
+*todo*
+
+== Styling
+*todo*
+
+=== General resources
+
+.The primary references:
+* http://lesscss.org/functions/
+
+.Atom theme variables:
+* https://github.com/atom/atom/blob/master/static/variables/syntax-variables.less
+* https://github.com/atom/atom/blob/master/static/atom.less
+* http://flight-manual.atom.io/hacking-atom/sections/creating-a-theme/#_atom_theme_vars
+
+.Some others references:
+* https://github.com/atom/styleguide
+* https://github.com/atom/template-syntax/blob/master/stylesheets/syntax-variables.less

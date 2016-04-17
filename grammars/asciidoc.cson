@@ -778,6 +778,169 @@
         ]
       }
 
+
+      # Matches Dockerfile AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,dockerfile]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*(docker(file))\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.dockerfile'
+            'patterns': ['include': 'source.dockerfile']
+          }
+        ]
+      }
+
+      # Matches properties AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,properties]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*properties\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.git-config'
+            'patterns': ['include': 'source.git-config']
+          }
+        ]
+      }
+
+      # Matches Makefile AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,makefile]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*(makefile|make)\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.makefile'
+            'patterns': ['include': 'source.makefile']
+          }
+        ]
+      }
+
+      # Matches Perl AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,perl]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*perl\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.perl'
+            'patterns': ['include': 'source.perl']
+          }
+        ]
+      }
+
+      # Matches Perl6 AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,perl6]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*perl6\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.perl6'
+            'patterns': ['include': 'source.perl6']
+          }
+        ]
+      }
+
+      # Matches Toml AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,toml]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*toml\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*$'
+        'patterns': [
+          {
+            'begin': '(^\\s*-{4,}\\s*$)'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '\\1'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'contentName': 'source.toml'
+            'patterns': ['include': 'source.toml']
+          }
+        ]
+      }
+
       # Matches Erlang AsciiDoc code blocks
       #
       # Examples
@@ -1494,6 +1657,108 @@
         'endCaptures':
           '0': 'name': 'support.asciidoc'
         'patterns': ['include': 'source.rust']
+      }
+
+      # Matches Dockerfile Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```dockerfile
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*(docker(file))\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.dockerfile']
+      }
+
+      # Matches properties Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```properties
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*properties\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.git-config']
+      }
+
+      # Matches Makefile Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```makefile
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*(makefile|make)\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.makefile']
+      }
+
+      # Matches Perl Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```perl
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*perl\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.perl']
+      }
+
+      # Matches Perl6 Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```perl6
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*perl6\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.perl6']
+      }
+
+      # Matches Toml Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```toml
+      #   ...
+      #   ```
+      {
+        'begin': '^`{3,}\\s*toml\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^`{3,}$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'patterns': ['include': 'source.toml']
       }
 
       # Matches Erlang Markdown-style code blocks

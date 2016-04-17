@@ -530,7 +530,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.go'
+            'contentName': 'source.embedded.go'
             'patterns': ['include': 'source.go']
           }
         ]
@@ -583,7 +583,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.gfm'
+            'contentName': 'source.embedded.gfm'
             'patterns': ['include': 'source.gfm']
           }
         ]
@@ -610,7 +610,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.yaml'
+            'contentName': 'source.embedded.yaml'
             'patterns': ['include': 'source.yaml']
           }
         ]
@@ -637,7 +637,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.coffee'
+            'contentName': 'source.embedded.coffee'
             'patterns': ['include': 'source.coffee']
           }
         ]
@@ -664,7 +664,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.json'
+            'contentName': 'source.embedded.json'
             'patterns': ['include': 'source.json']
           }
         ]
@@ -691,7 +691,7 @@
               'end': '\\1'
               'endCaptures':
                 '0': 'name': 'support.asciidoc'
-              'contentName': 'source.css'
+              'contentName': 'source.embedded.css'
               'patterns': ['include': 'source.css']
           }
         ]
@@ -718,7 +718,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.css.less'
+            'contentName': 'source.embedded.css.less'
             'patterns': ['include': 'source.css.less']
           }
         ]
@@ -745,7 +745,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'text.xml'
+            'contentName': 'text.embedded.xml'
             'patterns': ['include': 'text.xml']
           }
         ]
@@ -772,7 +772,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.rust'
+            'contentName': 'source.embedded.rust'
             'patterns': ['include': 'source.rust']
           }
         ]
@@ -800,7 +800,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.dockerfile'
+            'contentName': 'source.embedded.dockerfile'
             'patterns': ['include': 'source.dockerfile']
           }
         ]
@@ -827,7 +827,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.git-config'
+            'contentName': 'source.embedded.git-config'
             'patterns': ['include': 'source.git-config']
           }
         ]
@@ -854,7 +854,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.makefile'
+            'contentName': 'source.embedded.makefile'
             'patterns': ['include': 'source.makefile']
           }
         ]
@@ -881,7 +881,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.perl'
+            'contentName': 'source.embedded.perl'
             'patterns': ['include': 'source.perl']
           }
         ]
@@ -908,7 +908,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.perl6'
+            'contentName': 'source.embedded.perl6'
             'patterns': ['include': 'source.perl6']
           }
         ]
@@ -935,7 +935,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.toml'
+            'contentName': 'source.embedded.toml'
             'patterns': ['include': 'source.toml']
           }
         ]
@@ -962,7 +962,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.erlang'
+            'contentName': 'source.embedded.erlang'
             'patterns': ['include': 'source.erlang']
           }
         ]
@@ -989,7 +989,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.cs'
+            'contentName': 'source.embedded.cs'
             'patterns': ['include': 'source.cs']
           }
         ]
@@ -1016,7 +1016,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.php'
+            'contentName': 'source.embedded.php'
             'patterns': ['include': 'source.php']
           }
         ]
@@ -1043,7 +1043,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.shell'
+            'contentName': 'source.embedded.shell'
             'patterns': ['include': 'source.shell']
           }
         ]
@@ -1070,7 +1070,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.python'
+            'contentName': 'source.embedded.python'
             'patterns': ['include': 'source.python']
           }
         ]
@@ -1097,7 +1097,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.c'
+            'contentName': 'source.embedded.c'
             'patterns': ['include': 'source.c']
           }
         ]
@@ -1124,7 +1124,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.cpp'
+            'contentName': 'source.embedded.cpp'
             'patterns': ['include': 'source.cpp']
           }
         ]
@@ -1151,7 +1151,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.objc'
+            'contentName': 'source.embedded.objc'
             'patterns': ['include': 'source.objc']
           }
         ]
@@ -1178,7 +1178,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.swift'
+            'contentName': 'source.embedded.swift'
             'patterns': ['include': 'source.swift']
           }
         ]
@@ -1205,7 +1205,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'text.html.basic'
+            'contentName': 'text.embedded.html.basic'
             'patterns': ['include': 'text.html.basic']
           }
         ]
@@ -1232,7 +1232,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.elixir'
+            'contentName': 'source.embedded.elixir'
             'patterns': ['include': 'source.elixir']
           }
         ]
@@ -1259,7 +1259,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.diff'
+            'contentName': 'source.embedded.diff'
             'patterns': ['include': 'source.diff']
           }
         ]
@@ -1286,7 +1286,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.julia'
+            'contentName': 'source.embedded.julia'
             'patterns': ['include': 'source.julia']
           }
         ]
@@ -1313,7 +1313,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.r'
+            'contentName': 'source.embedded.r'
             'patterns': ['include': 'source.r']
           }
         ]
@@ -1340,7 +1340,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.haskell'
+            'contentName': 'source.embedded.haskell'
             'patterns': ['include': 'source.haskell']
           }
         ]
@@ -1367,7 +1367,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.elm'
+            'contentName': 'source.embedded.elm'
             'patterns': ['include': 'source.elm']
           }
         ]
@@ -1394,7 +1394,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.sql'
+            'contentName': 'source.embedded.sql'
             'patterns': ['include': 'source.sql']
           }
         ]
@@ -1421,7 +1421,7 @@
             'end': '\\1'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'contentName': 'source.clojure'
+            'contentName': 'source.embedded.clojure'
             'patterns': ['include': 'source.clojure']
           }
         ]

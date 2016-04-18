@@ -7,40 +7,80 @@ To contribute code, simply fork the project on GitHub, hack away and send a pull
 Feel free to use the https://github.com/asciidoctor/atom-language-asciidoc/issues[issue tracker] to provide feedback or suggestions in other ways.
 
 == Development
+
 *todo*
 
 === Retrieve the source code
-*todo*
+
+The source code for this plugin is available from https://github.com/asciidoctor/atom-language-asciidoc
+
 
 === Prepare for business
+
 *todo*
 
 == Quality assurance
-*todo*
+
+When opening a pull request on GitHub, https://travis-ci.org/asciidoctor/atom-language-asciidoc[Travis CI] will run the Atom package specs and lint using CoffeeScript files.
+Of course you can do so yourself, so you can ensure your code will pass the check in the pull-request.
 
 === CoffeeScript lint
+
 This package uses http://www.coffeelint.org/[CoffeeLint] to ensure that the code is uniformly structured.
 The linter definitions are defined in the link:coffeelint.json[coffeelint.json].
 
 When developing in Atom, the https://atom.io/packages/linter-coffeelint[linter-coffeelint] package exposes the linting in your editor.
 It does require CoffeeLint to be http://www.coffeelint.org/#install[installed].
 
-CoffeeLint can also be triggered from the commandline:
+CoffeeLint can also be triggered from the command line:
 
-`coffeelint -f coffeelint.json grammars/asciidoc.cson`
-
-`coffeelint -f coffeelint.json spec/asciidoc-spec.coffee`
+[source, shell]
+----
+coffeelint -f coffeelint.json grammars/asciidoc.cson spec/*-spec.coffee snippets/language-asciidoc.cson
+----
 
 === Package specs
+
 Tests are defined in link:spec/asciidoc-spec.coffee[asciidoc-spec.coffee], which provide snippets of text and test if the parsed result meet the expectations.
 Ideally all grammar features are covered in the specs (100% test coverage), with both positive and negative tests.
 Having these tests present will help future contributors make improvements without accidentally breaking other parts of the package.
 
 == Grammar
-*todo*
+
+The grammar is defined in link:grammars/asciidoc.cson[grammars/asciidoc.cson].
+
+=== Language definition
+
+The Atom language definitions originate from the language definitions used for TextMate.
+It supports both single matches based on a single regex, and sections matches based on a _begin_ and _end_ regex.
+The regexes are based on Ruby.
+
+.TextMate oriented language resources
+* http://www.apeth.com/nonblog/stories/textmatebundle.html[Practical TextMate guide]
+* http://manual.macromates.com/en/language_grammars.html[TextMate language grammars manual]
+
+.Ruby regex information
+* http://rubular.com/[Rubular] an online Ruby regex editor
+* http://www.regular-expressions.info/ruby.html[Ruby regex introduction]
+* http://www.regular-expressions.info/refflavors.html[Regex reference index] (select Ruby in the table header dropdown)
+
+=== Code language support
+
+AsciiDoc offers the ability to include source code blocks, in a variety of languages.
+By including the language definitions of the language set for the code block, AsciiDoc is able to offer code block language highlighting.
+To get the most of out of this feature, development will have to keep up with languages available in Atom.
+You can check the available source languages available in your Atom editor, to see if some language support is missing.
+
+.Check source language support
+. Open the _Developer Tools_: `Ctrl+Shift+I` on Linux and Windows, `Cmd+Alt+i` on Mac OS X.
+. Run the query `Object.keys(atom.grammars.grammarsByScopeName).sort().join('\n')` in the _Console_.
+
+.Example language query
+image::doc/language-query.png[screenshot of a code support query]
 
 == Styling
-*todo*
+
+The styling is defined in link:styles/asciidoc.atom-text-editor.less[styles/asciidoc.atom-text-editor.less]
 
 === General resources
 
@@ -55,3 +95,7 @@ Having these tests present will help future contributors make improvements witho
 .Some others references:
 * https://github.com/atom/styleguide
 * https://github.com/atom/template-syntax/blob/master/stylesheets/syntax-variables.less
+
+== Snippets
+
+Snippets are defined in link:snippets/language-asciidoc.cson[snippets/language-asciidoc.cson]

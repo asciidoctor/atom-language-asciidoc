@@ -45,6 +45,26 @@ Tests are defined in link:spec/asciidoc-spec.coffee[asciidoc-spec.coffee], which
 Ideally all grammar features are covered in the specs (100% test coverage), with both positive and negative tests.
 Having these tests present will help future contributors make improvements without accidentally breaking other parts of the package.
 
+There are multiple ways in which you can run the tests:
+
+.Testing from the command line
+[source, shell]
+----
+atom --test spec
+----
+
+.Testing using the build-package.sh script
+[source, shell]
+----
+curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh > build-package.sh
+sh build-package.sh
+----
+
+.Testing via the Command Pallet in Atom
+----
+Window: Run Package Specs
+----
+
 == Grammar
 
 The grammar is defined in link:grammars/asciidoc.cson[grammars/asciidoc.cson].

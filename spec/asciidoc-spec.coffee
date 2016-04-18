@@ -42,24 +42,24 @@ describe "AsciiDoc grammar", ->
 
   it "tokenizes multi-line constrained _italic_ text", ->
     {tokens} = grammar.tokenizeLine("""
-                                    this is _multi- 
+                                    this is _multi-
                                     line italic_ text
                                     """)
     expect(tokens[0]).toEqual value: "this is ", scopes: ["source.asciidoc"]
     expect(tokens[1]).toEqual value: """
-                                    _multi- 
+                                    _multi-
                                     line italic_
                                     """, scopes: ["source.asciidoc", "markup.italic.asciidoc"]
     expect(tokens[2]).toEqual value: " text", scopes: ["source.asciidoc"]
 
   it "tokenizes multi-line unconstrained _italic_ text", ->
     {tokens} = grammar.tokenizeLine("""
-                                    this is__multi- 
+                                    this is__multi-
                                     line italic__text
                                     """)
     expect(tokens[0]).toEqual value: "this is", scopes: ["source.asciidoc"]
     expect(tokens[1]).toEqual value: """
-                                    __multi- 
+                                    __multi-
                                     line italic__
                                     """, scopes: ["source.asciidoc", "markup.italic.asciidoc"]
     expect(tokens[2]).toEqual value: "text", scopes: ["source.asciidoc"]

@@ -8,7 +8,7 @@ Feel free to use the https://github.com/asciidoctor/atom-language-asciidoc/issue
 
 == Development
 
-*todo*
+A general introduction into writing a syntax highlighting package: http://www.sitepoint.com/how-to-write-a-syntax-highlighting-package-for-atom/[how to write a syntax highlighting package for Atom]
 
 === Retrieve the source code
 

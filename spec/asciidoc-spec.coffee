@@ -28,12 +28,12 @@ describe "AsciiDoc grammar", ->
 
   it "tokenizes multi-line *bold* text", ->
     {tokens} = grammar.tokenizeLine("""
-                                    this is *multi- 
+                                    this is *multi-
                                     line bold* text
                                     """)
     expect(tokens[0]).toEqual value: "this is ", scopes: ["source.asciidoc"]
     expect(tokens[1]).toEqual value: """
-                                    *multi- 
+                                    *multi-
                                     line bold*
                                     """, scopes: ["source.asciidoc", "markup.bold.asciidoc"]
     expect(tokens[2]).toEqual value: " text", scopes: ["source.asciidoc"]

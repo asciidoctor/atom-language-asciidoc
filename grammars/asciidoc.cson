@@ -297,13 +297,29 @@ patterns: [
   'inline':
     'patterns': [
 
+      # Matches bold unconstrained phrases
+      #
+      # Examples
+      #
+      #   b**old** phrase
+      {
+        #'match': '(?<=^|\\s)(\\*[^\\s^\\*][^\\*]*\\*)(?=\\s|$)'
+        # asciidoctor.rb: /\\?(?:\[([^\]]+?)\])?\*\*([\s\S]+?)\*\*/m
+        'match': '\\\\?(?:\\[(?:[^\\]]+?)\\])?(\\*\\*[\\s\\S]+?\\*\\*)'
+        'captures':
+          '0': 'name': 'markup.bold.asciidoc'
+      }
+
       # Matches bold constrained phrases
       #
       # Examples
       #
       #   *bold phrase*
       {
-        'match': '(?<=^|\\s)(\\*[^\\s^\\*][^\\*]*\\*)(?=\\s|$)'
+        #'match': '(?<=^|\\s)(\\*[^\\s^\\*][^\\*]*\\*)(?=\\s|$)'
+        # asciidoctor.rb: /(^|[^\w;:}])(?:\[([^\]]+?)\])?\*(\S|\S[\s\S]*?\S)\*(?![\w])/m
+        #'match': '(?:^|[^\\w;:}])(?:\\[(?:[^\\]]+?)\\])?(\\*\\S\\*|\\*\\S[\\s\\S]*?\\S\\*)(?![\\w])' #(?:^|[^\w;:}])(?:\[(?:[^\]]+?)\])?(\*\S\*|\*\S[\s\S]*?\S\*)(?![\w])
+        'match': '(?<=^|[^\\w;:}])(?:\\[(?:[^\\]]+?)\\])?(\\*\\S\\*|\\*\\S[\\s\\S]*?\\S\\*)(?![\\w])' #do not include the preceding space
         'captures':
           '0': 'name': 'markup.bold.asciidoc'
       }

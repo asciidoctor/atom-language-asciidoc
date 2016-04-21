@@ -1,0 +1,1003 @@
+= Languages
+
+== Javascript
+
+```js
+var http = require('http');
+http.createServer(function (req, res) {
+  res.end('Hello World\n');
+}).listen(1337, '127.0.0.1');
+```
+
+[source, js]
+----
+var http = require('http');
+http.createServer(function (req, res) {
+  res.end('Hello World\n');
+}).listen(1337, '127.0.0.1');
+----
+
+
+== Ruby
+
+```ruby
+require 'sinatra'
+get '/hi' do
+ "Hello World!"
+end
+```
+
+[source,ruby]
+----
+require 'sinatra'
+get '/hi' do
+ "Hello World!"
+end
+----
+
+
+== Java
+
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello world!");
+    }
+}
+```
+
+[source,java]
+----
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello world!");
+    }
+}
+----
+
+
+== Markdown
+
+```markdown
+`text` [link](http://localhost)
+
+> text
+> text
+
+```
+
+[source,markdown]
+----
+`text` [link](http://localhost)
+
+> text
+> text
+
+----
+
+
+== YAML
+
+```yml
+receipt:     Oz-Ware Purchase Invoice
+customer:
+    given:   Dorothy
+
+items:
+    - part_no:   A4786
+      descrip:   Water Bucket (Filled)
+      price:     1.47
+
+bill-to:  &id001
+    street: |
+            123 Tornado Alley
+            Suite 16
+    city:   East Centerville
+
+specialDelivery:  >
+    Follow the Yellow Brick
+    Road to the Emerald City.
+    Pay no attention to the
+    man behind the curtain.
+test: test
+```
+
+[source,yml]
+----
+receipt:     Oz-Ware Purchase Invoice
+customer:
+    given:   Dorothy
+
+items:
+    - part_no:   A4786
+      descrip:   Water Bucket (Filled)
+      price:     1.47
+
+bill-to:  &id001
+    street: |
+            123 Tornado Alley
+            Suite 16
+    city:   East Centerville
+
+specialDelivery:  >
+    Follow the Yellow Brick
+    Road to the Emerald City.
+    Pay no attention to the
+    man behind the curtain.
+test: test
+----
+
+
+== CoffeeScript
+
+```coffee
+# Functions:
+square = (x) -> x * x
+
+# Arrays:
+list = [1, 2, 3, 4, 5]
+
+# Objects:
+math =
+  root:   Math.sqrt
+  square: square
+  cube:   (x) -> x * square x
+
+# Splats:
+race = (winner, runners...) ->
+  print winner, runners
+
+# Existence:
+alert "I knew it!" if elvis?
+
+# Array comprehensions:
+cubes = (math.cube num for num in list)
+```
+
+[source,coffee]
+----
+# Functions:
+square = (x) -> x * x
+
+# Arrays:
+list = [1, 2, 3, 4, 5]
+
+# Objects:
+math =
+  root:   Math.sqrt
+  square: square
+  cube:   (x) -> x * square x
+
+# Splats:
+race = (winner, runners...) ->
+  print winner, runners
+
+# Existence:
+alert "I knew it!" if elvis?
+
+# Array comprehensions:
+cubes = (math.cube num for num in list)
+----
+
+
+== JSON
+
+```json
+{
+  "name": "john",
+  "value": 1,
+  "array": [1, 2, 3, 4]
+}
+```
+
+[source,json]
+----
+{
+  "name": "john",
+  "value": 1,
+  "array": [1, 2, 3, 4]
+}
+----
+
+
+== CSS
+
+```css
+body {
+    background-color: #d0e4fe;
+}
+h1 {
+    color: orange;
+    text-align: center;
+}
+p {
+    font-family: "Times New Roman";
+    font-size: 20px;
+}
+```
+
+*BUG !*
+// [source,css]
+// ----
+// body {
+//   background-color: #d0e4fe;
+// }
+// h1 {
+//   color: orange;
+//   text-align: center;
+// }
+// p {
+//   font-family: "Times New Roman";
+//   font-size: 20px;
+// }
+// ----
+
+== Less
+
+```less
+@base: #f938ab;
+
+.box-shadow(@style, @c) when (iscolor(@c)) {
+  -webkit-box-shadow: @style @c;
+  box-shadow:         @style @c;
+}
+.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
+  .box-shadow(@style, rgba(0, 0, 0, @alpha));
+}
+.box {
+  color: saturate(@base, 5%);
+  border-color: lighten(@base, 30%);
+  div { .box-shadow(0 0 5px, 30%) }
+}
+```
+
+[source,less]
+----
+@base: #f938ab;
+
+.box-shadow(@style, @c) when (iscolor(@c)) {
+  -webkit-box-shadow: @style @c;
+  box-shadow:         @style @c;
+}
+.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
+  .box-shadow(@style, rgba(0, 0, 0, @alpha));
+}
+.box {
+  color: saturate(@base, 5%);
+  border-color: lighten(@base, 30%);
+  div { .box-shadow(0 0 5px, 30%) }
+}
+----
+
+
+== SASS (new)
+
+```scss
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+```
+
+[source,scss]
+----
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+----
+
+
+== XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:transform  version="1.0"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:tei="http://www.tei-c.org/ns/1.0"
+>
+  <!-- comments-->
+  <xsl:template match="tei:abbr">
+    <abbr>
+      <xsl:apply-templates/>
+    </abbr>
+  </xsl:template>
+</xsl:transform>
+```
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:transform  version="1.0"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:tei="http://www.tei-c.org/ns/1.0"
+>
+  <!-- comments-->
+  <xsl:template match="tei:abbr">
+    <abbr>
+      <xsl:apply-templates/>
+    </abbr>
+  </xsl:template>
+</xsl:transform>
+----
+
+
+== Rust (with plugin)
+
+```rust
+// This code is editable and runnable!
+fn main() {
+    // A simple integer calculator:
+
+    let program = "+ + * - /";
+    let mut accumulator = 0;
+
+    for token in program.chars() {
+        match token {
+            '+' => accumulator += 1,
+            '-' => accumulator -= 1,
+            '*' => accumulator *= 2,
+            '/' => accumulator /= 2,
+            _ => { /* ignore everything else */ }
+        }
+    }
+
+    println!("The program \"{}\" calculates the value {}",
+              program, accumulator);
+}
+```
+
+[source,rust]
+----
+// This code is editable and runnable!
+fn main() {
+    // A simple integer calculator:
+
+    let program = "+ + * - /";
+    let mut accumulator = 0;
+
+    for token in program.chars() {
+        match token {
+            '+' => accumulator += 1,
+            '-' => accumulator -= 1,
+            '*' => accumulator *= 2,
+            '/' => accumulator /= 2,
+            _ => { /* ignore everything else */ }
+        }
+    }
+
+    println!("The program \"{}\" calculates the value {}",
+              program, accumulator);
+}
+----
+
+
+== Dockerfile (with plugin)
+
+```dockerfile
+# comment
+FROM debian:latest
+
+COPY /tmp /tmp
+```
+
+[source,dockerfile]
+----
+# comment
+FROM debian:latest
+
+COPY /tmp /tmp
+----
+
+
+== Properties *BUG !*
+
+// ```properties
+// # comment
+// [user]
+//    name = John Doe
+//    email = example@examplecom
+// ```
+
+// [source,properties]
+// ----
+// # comment
+// [user]
+//    name = John Doe
+//    email = example@examplecom
+// ----
+
+
+== Makefile
+
+```makefile
+.PHONY: all
+
+HTTP_PROXY := "http://user:password@proxy.com:8080"
+NO_PROXY := "localhost,192.168.99.100"
+
+## Construction d'une image de Jenkins avec le plugin Git
+build-git-image:
+	@docker build -t jenkins-git -f git/Dockerfile git
+
+## Construction d'une image de Jenkins avec le plugin Git sans cache de Docker
+build-git-nocache:
+	docker build \
+		--no-cache \
+		-t jenkins-git -f git/Dockerfile git
+```
+
+[source,makefile]
+----
+.PHONY: all
+
+HTTP_PROXY := "http://user:password@proxy.com:8080"
+NO_PROXY := "localhost,192.168.99.100"
+
+## Comment
+build-git-image:
+	@docker build -t jenkins-git -f git/Dockerfile git
+
+## Comment
+build-git-nocache:
+	docker build \
+		--no-cache \
+		-t jenkins-git -f git/Dockerfile git
+----
+
+
+== Perl
+
+```perl
+my $s  = 'toto' ;        # comment
+local $level += 1;       # comment
+our @s = (1, $s, 3.14);  # comment
+
+print "Hello, world\n";
+```
+
+[source,perl]
+----
+my $s  = 'toto' ;        # comment
+local $level += 1;       # comment
+our @s = (1, $s, 3.14);  # comment
+
+print "Hello, world\n";
+----
+
+
+== Perl6
+
+```perl6
+for 'dict.txt'.IO.words -> $word {
+  say "$word probably rhymes with Perl"
+    if $word ~~ /[ea?|u|i] rl $/;
+
+  say "$word is a palindrome"
+    if $word eq $word.flip;
+}
+```
+
+[source,perl6]
+----
+for 'dict.txt'.IO.words -> $word {
+  say "$word probably rhymes with Perl"
+    if $word ~~ /[ea?|u|i] rl $/;
+
+  say "$word is a palindrome"
+    if $word eq $word.flip;
+}
+----
+
+
+== TOML
+
+```toml
+## This is a TOML document.
+
+title = "TOML Example"
+
+[owner]
+name = "Tom Preston-Werner"
+dob = 1979-05-27T07:32:00-08:00 # First class dates
+
+[database]
+server = "192.168.1.1"
+ports = [ 8001, 8001, 8002 ]
+connection_max = 5000
+enabled = true
+
+[servers]
+
+  # Indentation (tabs and/or spaces) is allowed but not required
+  [servers.alpha]
+  ip = "10.0.0.1"
+  dc = "eqdc10"
+
+  [servers.beta]
+  ip = "10.0.0.2"
+  dc = "eqdc10"
+
+[clients]
+data = [ ["gamma", "delta"], [1, 2] ]
+
+# Line breaks are OK when inside arrays
+hosts = [
+  "alpha",
+  "omega"
+]
+```
+
+[source,toml]
+----
+## This is a TOML document.
+
+title = "TOML Example"
+
+[owner]
+name = "Tom Preston-Werner"
+dob = 1979-05-27T07:32:00-08:00 # First class dates
+
+[database]
+server = "192.168.1.1"
+ports = [ 8001, 8001, 8002 ]
+connection_max = 5000
+enabled = true
+
+[servers]
+
+  # Indentation (tabs and/or spaces) is allowed but not required
+  [servers.alpha]
+  ip = "10.0.0.1"
+  dc = "eqdc10"
+
+  [servers.beta]
+  ip = "10.0.0.2"
+  dc = "eqdc10"
+
+[clients]
+data = [ ["gamma", "delta"], [1, 2] ]
+
+# Line breaks are OK when inside arrays
+hosts = [
+  "alpha",
+  "omega"
+]
+----
+
+
+== Erlang (with plugin)
+
+```erlang
+-module(count_to_ten).
+-export([count_to_ten/0]).
+
+count_to_ten() -> do_count(0).
+
+do_count(10) -> 10;
+do_count(Value) -> do_count(Value + 1).
+```
+
+[source,erlang]
+----
+-module(count_to_ten).
+-export([count_to_ten/0]).
+
+count_to_ten() -> do_count(0).
+
+do_count(10) -> 10;
+do_count(Value) -> do_count(Value + 1).
+----
+
+
+== C#
+
+```csharp
+using System;
+
+class HelloWorld
+{
+    public static void Main()
+    {
+        Console.WriteLine("hello world!");
+    }
+}
+```
+
+[source,csharp]
+----
+using System;
+
+class HelloWorld
+{
+    public static void Main()
+    {
+        Console.WriteLine("hello world!");
+    }
+}
+----
+
+
+== PHP *BUG !*
+
+```php
+<?php
+
+// forme la plus simple, recommandée
+echo 'Hello World';
+```
+
+[source,php]
+----
+<?php
+
+// forme la plus simple, recommandée
+echo 'Hello World';
+----
+
+
+== Shell
+
+```shell
+for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
+```
+
+[source,shell]
+----
+for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
+----
+
+
+== Python
+
+```py
+# Comment
+def factor(x):
+    if x < 2:
+        return 1
+    else:
+        return x * factorielle(x-1)
+```
+
+[source,py]
+----
+# Comment
+def factor(x):
+    if x < 2:
+        return 1
+    else:
+        return x * factorielle(x-1)
+----
+
+
+== C
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    printf("hello, world\n");
+    return 0;
+}
+```
+
+[source,c]
+----
+#include <stdio.h>
+
+int main(void)
+{
+    printf("hello, world\n");
+    return 0;
+}
+----
+
+
+== CPP
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    cout << "Hello, new world!" << endl;
+}
+```
+
+[source,cpp]
+----
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    cout << "Hello, new world!" << endl;
+}
+----
+
+
+== Objective C
+
+```objc
+@interface Personne : NSObject
+{
+     // variables d'instance
+     NSString *surname;
+}
+// methodes
+@property (copy) NSString *surname;
+@end
+```
+
+[source,objc]
+----
+@interface Personne : NSObject
+{
+     // variables d'instance
+     NSString *surname;
+}
+// methodes
+@property (copy) NSString *surname;
+@end
+----
+
+== Swift (with plugin)
+
+```swift
+@IBAction func buttonPressed(sender: AnyObject) {
+    println("You clicked the button")
+}
+```
+
+[source,swift]
+----
+@IBAction func buttonPressed(sender: AnyObject) {
+    println("You clicked the button")
+}
+----
+
+
+== HTML
+
+```html
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>
+   Title
+  </title>
+ </head>
+ <body>
+  foobar <a href="foo.html">Foo</a>.
+  <p>
+   fiibir
+  </p>
+ </body>
+</html>
+```
+
+[source,html]
+----
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>
+   Title
+  </title>
+ </head>
+ <body>
+  foobar <a href="foo.html">Foo</a>.
+  <p>
+   fiibir
+  </p>
+ </body>
+</html>
+----
+
+
+== Elixir (with plugin)
+
+```elixir
+parent = self()
+
+# Spawns an Elixir process (not an operating system one!)
+spawn_link(fn ->
+  send parent, {:msg, "hello world"}
+end)
+
+# Block until the message is received
+receive do
+  {:msg, contents} -> IO.puts contents
+end
+```
+
+[source,elixir]
+----
+parent = self()
+
+# Spawns an Elixir process (not an operating system one!)
+spawn_link(fn ->
+  send parent, {:msg, "hello world"}
+end)
+
+# Block until the message is received
+receive do
+  {:msg, contents} -> IO.puts contents
+end
+----
+
+
+== Diff (with plugin)
+
+```diff
+--- hello.c	2014-04-29 17:59:49.000000000 +0530
++++ hello-new.c	2014-04-29 18:00:43.000000000 +0530
+@@ -1,5 +1,6 @@
+ #include<stdio.h>
+
+-main(){
++int main(void){
+ 	printf("Hello, world!\n");
++	return 0;
+ }
+```
+
+[source,diff]
+----
+--- hello.c	2014-04-29 17:59:49.000000000 +0530
++++ hello-new.c	2014-04-29 18:00:43.000000000 +0530
+@@ -1,5 +1,6 @@
+ #include<stdio.h>
+
+-main(){
++int main(void){
+ 	printf("Hello, world!\n");
++	return 0;
+ }
+----
+
+
+== Julia (with plugin)
+
+```julia
+function mandel(z)
+    c = z
+    maxiter = 80
+    for n = 1:maxiter
+        if abs(z) > 2
+            return n-1
+        end
+        z = z^2 + c
+    end
+    return maxiter
+end
+```
+
+[source,julia]
+----
+function mandel(z)
+    c = z
+    maxiter = 80
+    for n = 1:maxiter
+        if abs(z) > 2
+            return n-1
+        end
+        z = z^2 + c
+    end
+    return maxiter
+end
+----
+
+
+== R (with plugin)
+
+```r
+if(FALSE) {
+   "This is a demo for multi-line comments and it should be put inside either a single
+      of double quote"
+}
+
+myString <- "Hello, World!"
+print ( myString)
+```
+
+[source,r]
+----
+if(FALSE) {
+   "This is a demo for multi-line comments and it should be put inside either a single
+      of double quote"
+}
+
+myString <- "Hello, World!"
+print ( myString)
+----
+
+
+== Haskell (with plugin)
+
+```haskell
+fac n = if n > 0 then n * fac(n - 1) else 1
+```
+
+[source,haskell]
+----
+fac n = if n > 0 then n * fac(n - 1) else 1
+----
+
+
+== ELM (with plugin)
+
+```elm
+import Html exposing (span, text)
+import Html.Attributes exposing (class)
+
+main =
+  span [class "welcome-message"] [text "Hello, World!"]
+```
+
+[source,elm]
+----
+import Html exposing (span, text)
+import Html.Attributes exposing (class)
+
+main =
+  span [class "welcome-message"] [text "Hello, World!"]
+----
+
+
+== SQL
+
+```sql
+SELECT * FROM FOO f WHERE f.bar = "foo"
+```
+
+[source,sql]
+----
+SELECT * FROM FOO f WHERE f.bar = "foo"
+----
+
+
+== Clojure
+
+```clojure
+(println "Bonjour tout le monde!")
+```
+
+[source,clojure]
+----
+(println "Bonjour tout le monde!")
+----
+
+
+== Golang (with plugin)
+
+```go
+package main
+
+import "net/http"
+
+func main() {
+        panic(http.ListenAndServe(":8080", http.FileServer(http.Dir("."))))
+}
+```
+
+[source, go]
+----
+package main
+
+import "net/http"
+
+func main() {
+        panic(http.ListenAndServe(":8080", http.FileServer(http.Dir("."))))
+}
+----

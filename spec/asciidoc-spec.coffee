@@ -297,3 +297,36 @@ describe "AsciiDoc grammar", ->
 
   it "tokenizes passthrough block", ->
     testBlock "+", "markup.block.passthrough.asciidoc"
+
+  it "tokenizes code block followed by others grammar parts", ->
+    tokens = grammar.tokenizeLines("""
+                                    [source,shell]
+                                    ----
+                                    ls -l <1>
+                                    cd .. <2>
+                                    ----
+                                    <1> *Grammars* _definition_
+                                    <2> *CoffeeLint* _rules_
+                                    """)
+    expect(tokens).toHaveLength(7) # Number of lines
+    expect(tokens[0]).toHaveLength(1)
+    expect(tokens[0][0]).toEqual value: '[source,shell]', scopes: ["source.asciidoc", "support.asciidoc"]
+    expect(tokens[1]).toHaveLength(1)
+    expect(tokens[1][0]).toEqual value: "----", scopes: ["source.asciidoc", "markup.code.shell.asciidoc", "support.asciidoc"]
+    expect(tokens[2]).toHaveLength(1)
+    expect(tokens[2][0]).toEqual value: "ls -l <1>", scopes: ["source.asciidoc", "markup.code.shell.asciidoc", "source.embedded.shell"]
+    expect(tokens[3]).toHaveLength(1)
+    expect(tokens[3][0]).toEqual value: "cd .. <2>", scopes: ["source.asciidoc", "markup.code.shell.asciidoc", "source.embedded.shell"]
+    expect(tokens[4]).toHaveLength(2)
+    expect(tokens[4][0]).toEqual value: "----", scopes: ["source.asciidoc", "markup.code.shell.asciidoc", "support.asciidoc"]
+    expect(tokens[4][1]).toEqual value: "", scopes: ["source.asciidoc"]
+    expect(tokens[5]).toHaveLength(4)
+    expect(tokens[5][0]).toEqual value: "<1> ", scopes: ["source.asciidoc"]
+    expect(tokens[5][1]).toEqual value: "*Grammars*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+    expect(tokens[5][2]).toEqual value: " ", scopes: ["source.asciidoc"]
+    expect(tokens[5][3]).toEqual value: "_definition_", scopes: ["source.asciidoc", "markup.italic.asciidoc"]
+    expect(tokens[5]).toHaveLength(4)
+    expect(tokens[6][0]).toEqual value: "<2> ", scopes: ["source.asciidoc"]
+    expect(tokens[6][1]).toEqual value: "*CoffeeLint*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+    expect(tokens[6][2]).toEqual value: " ", scopes: ["source.asciidoc"]
+    expect(tokens[6][3]).toEqual value: "_rules_", scopes: ["source.asciidoc", "markup.italic.asciidoc"]

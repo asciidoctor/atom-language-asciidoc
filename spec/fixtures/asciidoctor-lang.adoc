@@ -298,7 +298,7 @@ p {
 ----
 
 
-== SASS
+== SASS / SCSS
 
 ```scss
 $font-stack:    Helvetica, sans-serif;
@@ -319,6 +319,25 @@ body {
   font: 100% $font-stack;
   color: $primary-color;
 }
+----
+
+```sass
+$font-stack:    Helvetica, sans-serif
+$primary-color: #333
+
+body
+  font: 100% $font-stack
+  color: $primary-color
+```
+
+[source,sass]
+----
+$font-stack:    Helvetica, sans-serif
+$primary-color: #333
+
+body
+  font: 100% $font-stack
+  color: $primary-color
 ----
 
 

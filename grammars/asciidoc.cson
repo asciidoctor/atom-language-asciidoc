@@ -765,7 +765,7 @@
         ]
       }
 
-      # Matches SASS AsciiDoc code blocks
+      # Matches SCSS AsciiDoc code blocks
       #
       # Examples
       #
@@ -774,7 +774,7 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(scss|sass))\\]$'
+        'begin': '^\\[source,\\s*(?i:(scss))\\]$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '(?<=----)[\\r\\n]+$'
@@ -789,6 +789,34 @@
             'name': 'markup.code.css.scss.asciidoc'
             'contentName': 'source.embedded.css.scss'
             'patterns': ['include': 'source.css.scss']
+          }
+        ]
+      }
+
+      # Matches SASS AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,sass]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*(?i:(sass))\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '(?<=----)[\\r\\n]+$'
+        'patterns': [
+          {
+            'begin': '^(-{4,})\\s*$'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '^\\1*$'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'name': 'markup.code.sass.asciidoc'
+            'contentName': 'source.embedded.sass'
+            'patterns': ['include': 'source.sass']
           }
         ]
       }
@@ -1774,7 +1802,7 @@
         'patterns': ['include': 'source.css.less']
       }
 
-      # Matches SASS Markdown-style code blocks
+      # Matches SCSS Markdown-style code blocks
       #
       # Examples
       #
@@ -1782,15 +1810,34 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(scss|sass))\\s*$'
+        'begin': '^\\s*(`{3,})\\s*(?i:(scss))\\s*$'
         'beginCaptures':
           '0': 'name': 'support.asciidoc'
         'end': '^\\s*\\1\\s*$'
         'endCaptures':
           '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.scss.less.asciidoc'
+        'name': 'markup.code.css.scss.asciidoc'
         'contentName': 'source.embedded.css.scss'
         'patterns': ['include': 'source.css.scss']
+      }
+
+      # Matches SASS Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```sass
+      #   ...
+      #   ```
+      {
+        'begin': '^\\s*(`{3,})\\s*(?i:(sass))\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*\\1\\s*$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'name': 'markup.code.sass.asciidoc'
+        'contentName': 'source.embedded.sass'
+        'patterns': ['include': 'source.sass']
       }
 
       # Matches XML Markdown-style code blocks

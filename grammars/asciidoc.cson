@@ -653,6 +653,34 @@
         ]
       }
 
+      # Matches TypeScript AsciiDoc code blocks
+      #
+      # Examples
+      #
+      #   [source,ts]
+      #   ----
+      #  ...
+      #   ----
+      {
+        'begin': '^\\[source,\\s*(?i:(typescript|ts))\\]$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '(?<=----)[\\r\\n]+$'
+        'patterns': [
+          {
+            'begin': '^(-{4,})\\s*$'
+            'beginCaptures':
+              '0': 'name': 'support.asciidoc'
+            'end': '^\\1*$'
+            'endCaptures':
+              '0': 'name': 'support.asciidoc'
+            'name': 'markup.code.ts.asciidoc'
+            'contentName': 'source.embedded.ts'
+            'patterns': ['include': 'source.ts']
+          }
+        ]
+      }
+
       # Matches JSON AsciiDoc code blocks
       #
       # Examples
@@ -1668,6 +1696,25 @@
         'name': 'markup.code.coffee.asciidoc'
         'contentName': 'source.embedded.coffee'
         'patterns': ['include': 'source.coffee']
+      }
+
+      # Matches TypeScript Markdown-style code blocks
+      #
+      # Examples
+      #
+      #   ```ts
+      #   ...
+      #   ```
+      {
+        'begin': '^\\s*(`{3,})\\s*(?i:(typescript|ts))\\s*$'
+        'beginCaptures':
+          '0': 'name': 'support.asciidoc'
+        'end': '^\\s*\\1\\s*$'
+        'endCaptures':
+          '0': 'name': 'support.asciidoc'
+        'name': 'markup.code.ts.asciidoc'
+        'contentName': 'source.embedded.ts'
+        'patterns': ['include': 'source.ts']
       }
 
       # Matches JSON Markdown-style code blocks

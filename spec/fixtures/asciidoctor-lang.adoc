@@ -180,6 +180,35 @@ cubes = (math.cube num for num in list)
 ----
 
 
+== TypeScript (with Plugin)
+
+[source,typescript]
+----
+class Greeter {
+    constructor(public greeting: string) { }
+    greet() {
+        return "<h1>" + this.greeting + "</h1>";
+    }
+};
+
+var greeter = new Greeter("Hello, world!");
+
+document.body.innerHTML = greeter.greet();
+----
+
+```typescript
+class Greeter {
+    constructor(public greeting: string) { }
+    greet() {
+        return "<h1>" + this.greeting + "</h1>";
+    }
+};
+
+var greeter = new Greeter("Hello, world!");
+
+document.body.innerHTML = greeter.greet();
+```
+
 == JSON
 
 ```json
@@ -269,7 +298,7 @@ p {
 ----
 
 
-== SASS (new)
+== SASS
 
 ```scss
 $font-stack:    Helvetica, sans-serif;
@@ -750,6 +779,7 @@ int main()
 @end
 ----
 
+
 == Swift (with plugin)
 
 ```swift
@@ -819,6 +849,7 @@ receive do
   {:msg, contents} -> IO.puts contents
 end
 ```
+
 
 [source,elixir]
 ----

@@ -1,23 +1,23 @@
-'name': 'AsciiDoc'
-'scopeName': 'source.asciidoc'
-'fileTypes': [
+name: 'AsciiDoc'
+scopeName: 'source.asciidoc'
+fileTypes: [
   'ad'
   'asc'
   'adoc'
   'asciidoc'
 ]
 
-'patterns': [
+patterns: [
 
   # Includes inline patterns, see repository section below.
   {
-    'include': '#inline'
+    include: '#inline'
   }
 
   # Includes AsciiDoc and Markdown style code blocks, see repository section
   # below.
   {
-    'include': '#codeBlocks'
+    include: '#codeBlocks'
   }
 
   # Matches section titles (headers)
@@ -462,21 +462,21 @@
       #   }).listen(1337, '127.0.0.1');
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(javascript|js))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(javascript|js))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.js.asciidoc'
-            'contentName': 'source.embedded.js'
-            'patterns': ['include': 'source.js']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.js.asciidoc'
+            contentName: 'source.embedded.js'
+            patterns: [include: 'source.js']
           }
         ]
       }
@@ -494,21 +494,21 @@
       #   end
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(ruby|rb))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(ruby|rb))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.ruby.asciidoc'
-            'contentName': 'source.embedded.ruby'
-            'patterns': ['include': 'source.ruby']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.ruby.asciidoc'
+            contentName: 'source.embedded.ruby'
+            patterns: [include: 'source.ruby']
           }
         ]
       }
@@ -522,21 +522,21 @@
       #   ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(go(lang)?))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(go(lang)?))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.go.asciidoc'
-            'contentName': 'source.embedded.go'
-            'patterns': ['include': 'source.go']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.go.asciidoc'
+            contentName: 'source.embedded.go'
+            patterns: [include: 'source.go']
           }
         ]
       }
@@ -550,21 +550,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(java))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(java))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.java.asciidoc'
-            'contentName': 'source.embedded.java'
-            'patterns': ['include': 'source.java']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.java.asciidoc'
+            contentName: 'source.embedded.java'
+            patterns: [include: 'source.java']
           }
         ]
       }
@@ -578,21 +578,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(markdown|mdown|md))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(markdown|mdown|md))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.gfm.asciidoc'
-            'contentName': 'source.embedded.gfm'
-            'patterns': ['include': 'source.gfm']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.gfm.asciidoc'
+            contentName: 'source.embedded.gfm'
+            patterns: [include: 'source.gfm']
           }
         ]
       }
@@ -606,21 +606,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(ya?ml))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(ya?ml))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.yaml.asciidoc'
-            'contentName': 'source.embedded.yaml'
-            'patterns': ['include': 'source.yaml']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.yaml.asciidoc'
+            contentName: 'source.embedded.yaml'
+            patterns: [include: 'source.yaml']
           }
         ]
       }
@@ -634,21 +634,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(coffee-?(script)?))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(coffee-?(script)?))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.coffee.asciidoc'
-            'contentName': 'source.embedded.coffee'
-            'patterns': ['include': 'source.coffee']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.coffee.asciidoc'
+            contentName: 'source.embedded.coffee'
+            patterns: [include: 'source.coffee']
           }
         ]
       }
@@ -662,21 +662,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(typescript|ts))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(typescript|ts))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.ts.asciidoc'
-            'contentName': 'source.embedded.ts'
-            'patterns': ['include': 'source.ts']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.ts.asciidoc'
+            contentName: 'source.embedded.ts'
+            patterns: [include: 'source.ts']
           }
         ]
       }
@@ -690,21 +690,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(json))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(json))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.json.asciidoc'
-            'contentName': 'source.embedded.json'
-            'patterns': ['include': 'source.json']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.json.asciidoc'
+            contentName: 'source.embedded.json'
+            patterns: [include: 'source.json']
           }
         ]
       }
@@ -718,21 +718,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(css))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(css))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.css.asciidoc'
-            'contentName': 'source.embedded.css'
-            'patterns': ['include': 'source.css']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.css.asciidoc'
+            contentName: 'source.embedded.css'
+            patterns: [include: 'source.css']
           }
         ]
       }
@@ -746,21 +746,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(less))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(less))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.css.less.asciidoc'
-            'contentName': 'source.embedded.css.less'
-            'patterns': ['include': 'source.css.less']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.css.less.asciidoc'
+            contentName: 'source.embedded.css.less'
+            patterns: [include: 'source.css.less']
           }
         ]
       }
@@ -774,21 +774,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(scss))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(scss))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.css.scss.asciidoc'
-            'contentName': 'source.embedded.css.scss'
-            'patterns': ['include': 'source.css.scss']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.css.scss.asciidoc'
+            contentName: 'source.embedded.css.scss'
+            patterns: [include: 'source.css.scss']
           }
         ]
       }
@@ -802,21 +802,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(sass))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(sass))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.sass.asciidoc'
-            'contentName': 'source.embedded.sass'
-            'patterns': ['include': 'source.sass']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.sass.asciidoc'
+            contentName: 'source.embedded.sass'
+            patterns: [include: 'source.sass']
           }
         ]
       }
@@ -830,21 +830,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(xml))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(xml))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.xml.asciidoc'
-            'contentName': 'text.embedded.xml'
-            'patterns': ['include': 'text.xml']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.xml.asciidoc'
+            contentName: 'text.embedded.xml'
+            patterns: [include: 'text.xml']
           }
         ]
       }
@@ -858,21 +858,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(rust|rs))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(rust|rs))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.rust.asciidoc'
-            'contentName': 'source.embedded.rust'
-            'patterns': ['include': 'source.rust']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.rust.asciidoc'
+            contentName: 'source.embedded.rust'
+            patterns: [include: 'source.rust']
           }
         ]
       }
@@ -886,21 +886,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(docker(file)?))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(docker(file)?))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.dockerfile.asciidoc'
-            'contentName': 'source.embedded.dockerfile'
-            'patterns': ['include': 'source.dockerfile']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.dockerfile.asciidoc'
+            contentName: 'source.embedded.dockerfile'
+            patterns: [include: 'source.dockerfile']
           }
         ]
       }
@@ -914,21 +914,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(properties))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(properties))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.properties.asciidoc'
-            'contentName': 'source.embedded.asciidoc.properties'
-            'patterns': ['include': 'source.asciidoc.properties']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.properties.asciidoc'
+            contentName: 'source.embedded.asciidoc.properties'
+            patterns: [include: 'source.asciidoc.properties']
           }
         ]
       }
@@ -942,21 +942,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(make(file)?))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(make(file)?))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.makefile.asciidoc'
-            'contentName': 'source.embedded.makefile'
-            'patterns': ['include': 'source.makefile']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.makefile.asciidoc'
+            contentName: 'source.embedded.makefile'
+            patterns: [include: 'source.makefile']
           }
         ]
       }
@@ -970,21 +970,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(perl))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(perl))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.perl.asciidoc'
-            'contentName': 'source.embedded.perl'
-            'patterns': ['include': 'source.perl']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.perl.asciidoc'
+            contentName: 'source.embedded.perl'
+            patterns: [include: 'source.perl']
           }
         ]
       }
@@ -998,21 +998,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(perl6))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(perl6))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.perl6.asciidoc'
-            'contentName': 'source.embedded.perl6'
-            'patterns': ['include': 'source.perl6']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.perl6.asciidoc'
+            contentName: 'source.embedded.perl6'
+            patterns: [include: 'source.perl6']
           }
         ]
       }
@@ -1026,21 +1026,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(toml))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(toml))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.toml.asciidoc'
-            'contentName': 'source.embedded.toml'
-            'patterns': ['include': 'source.toml']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.toml.asciidoc'
+            contentName: 'source.embedded.toml'
+            patterns: [include: 'source.toml']
           }
         ]
       }
@@ -1054,21 +1054,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(erlang))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(erlang))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.erlang.asciidoc'
-            'contentName': 'source.embedded.erlang'
-            'patterns': ['include': 'source.erlang']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.erlang.asciidoc'
+            contentName: 'source.embedded.erlang'
+            patterns: [include: 'source.erlang']
           }
         ]
       }
@@ -1082,21 +1082,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(cs(harp)?))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(cs(harp)?))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.cs.asciidoc'
-            'contentName': 'source.embedded.cs'
-            'patterns': ['include': 'source.cs']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.cs.asciidoc'
+            contentName: 'source.embedded.cs'
+            patterns: [include: 'source.cs']
           }
         ]
       }
@@ -1110,21 +1110,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(php))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(php))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.php.asciidoc'
-            'contentName': 'text.embedded.html.php'
-            'patterns': ['include': 'text.html.php']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.php.asciidoc'
+            contentName: 'text.embedded.html.php'
+            patterns: [include: 'text.html.php']
           }
         ]
       }
@@ -1138,21 +1138,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(sh|bash|shell))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(sh|bash|shell))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.shell.asciidoc'
-            'contentName': 'source.embedded.shell'
-            'patterns': ['include': 'source.shell']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.shell.asciidoc'
+            contentName: 'source.embedded.shell'
+            patterns: [include: 'source.shell']
           }
         ]
       }
@@ -1166,21 +1166,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(py(thon)?))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(py(thon)?))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.python.asciidoc'
-            'contentName': 'source.embedded.python'
-            'patterns': ['include': 'source.python']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.python.asciidoc'
+            contentName: 'source.embedded.python'
+            patterns: [include: 'source.python']
           }
         ]
       }
@@ -1194,21 +1194,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(c))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(c))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.c.asciidoc'
-            'contentName': 'source.embedded.c'
-            'patterns': ['include': 'source.c']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.c.asciidoc'
+            contentName: 'source.embedded.c'
+            patterns: [include: 'source.c']
           }
         ]
       }
@@ -1222,21 +1222,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(c(pp|\\+\\+)))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(c(pp|\\+\\+)))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.cpp.asciidoc'
-            'contentName': 'source.embedded.cpp'
-            'patterns': ['include': 'source.cpp']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.cpp.asciidoc'
+            contentName: 'source.embedded.cpp'
+            patterns: [include: 'source.cpp']
           }
         ]
       }
@@ -1250,21 +1250,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(objc|objective-c))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(objc|objective-c))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.objc.asciidoc'
-            'contentName': 'source.embedded.objc'
-            'patterns': ['include': 'source.objc']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.objc.asciidoc'
+            contentName: 'source.embedded.objc'
+            patterns: [include: 'source.objc']
           }
         ]
       }
@@ -1278,21 +1278,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(swift))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(swift))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.swift.asciidoc'
-            'contentName': 'source.embedded.swift'
-            'patterns': ['include': 'source.swift']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.swift.asciidoc'
+            contentName: 'source.embedded.swift'
+            patterns: [include: 'source.swift']
           }
         ]
       }
@@ -1306,21 +1306,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(html))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(html))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.html.asciidoc'
-            'contentName': 'text.embedded.html.basic'
-            'patterns': ['include': 'text.html.basic']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.html.asciidoc'
+            contentName: 'text.embedded.html.basic'
+            patterns: [include: 'text.html.basic']
           }
         ]
       }
@@ -1334,21 +1334,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(elixir))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(elixir))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.elixir.asciidoc'
-            'contentName': 'source.embedded.elixir'
-            'patterns': ['include': 'source.elixir']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.elixir.asciidoc'
+            contentName: 'source.embedded.elixir'
+            patterns: [include: 'source.elixir']
           }
         ]
       }
@@ -1362,21 +1362,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(diff|patch|rej))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(diff|patch|rej))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.diff.asciidoc'
-            'contentName': 'source.embedded.diff'
-            'patterns': ['include': 'source.diff']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.diff.asciidoc'
+            contentName: 'source.embedded.diff'
+            patterns: [include: 'source.diff']
           }
         ]
       }
@@ -1390,21 +1390,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(julia))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(julia))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.julia.asciidoc'
-            'contentName': 'source.embedded.julia'
-            'patterns': ['include': 'source.julia']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.julia.asciidoc'
+            contentName: 'source.embedded.julia'
+            patterns: [include: 'source.julia']
           }
         ]
       }
@@ -1418,21 +1418,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(r))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(r))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.r.asciidoc'
-            'contentName': 'source.embedded.r'
-            'patterns': ['include': 'source.r']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.r.asciidoc'
+            contentName: 'source.embedded.r'
+            patterns: [include: 'source.r']
           }
         ]
       }
@@ -1446,21 +1446,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(haskell))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(haskell))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.haskell.asciidoc'
-            'contentName': 'source.embedded.haskell'
-            'patterns': ['include': 'source.haskell']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.haskell.asciidoc'
+            contentName: 'source.embedded.haskell'
+            patterns: [include: 'source.haskell']
           }
         ]
       }
@@ -1474,21 +1474,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(elm))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(elm))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.elm.asciidoc'
-            'contentName': 'source.embedded.elm'
-            'patterns': ['include': 'source.elm']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.elm.asciidoc'
+            contentName: 'source.embedded.elm'
+            patterns: [include: 'source.elm']
           }
         ]
       }
@@ -1502,21 +1502,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(sql))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(sql))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.sql.asciidoc'
-            'contentName': 'source.embedded.sql'
-            'patterns': ['include': 'source.sql']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.sql.asciidoc'
+            contentName: 'source.embedded.sql'
+            patterns: [include: 'source.sql']
           }
         ]
       }
@@ -1530,21 +1530,21 @@
       #  ...
       #   ----
       {
-        'begin': '^\\[source,\\s*(?i:(clojure))\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\[source,\\s*(?i:(clojure))\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.clojure.asciidoc'
-            'contentName': 'source.embedded.clojure'
-            'patterns': ['include': 'source.clojure']
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.code.clojure.asciidoc'
+            contentName: 'source.embedded.clojure'
+            patterns: [include: 'source.clojure']
           }
         ]
       }
@@ -1562,19 +1562,19 @@
       #   end
       #   ----
       {
-        'begin': '^\\s*\\[source(,[^\\],]*)?\\]$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '(?<=----)[\\r\\n]+$'
-        'patterns': [
+        begin: '^\\s*\\[source(,[^\\],]*)?\\]$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
+        patterns: [
           {
-            'begin': '^(-{4,})\\s*$'
-            'beginCaptures':
-              '0': 'name': 'support.asciidoc'
-            'end': '^\\1*$'
-            'endCaptures':
-              '0': 'name': 'support.asciidoc'
-            'name': 'markup.raw.asciidoc'
+            begin: '^(-{4,})\\s*$'
+            beginCaptures:
+              0: name: 'support.asciidoc'
+            end: '^\\1*$'
+            endCaptures:
+              0: name: 'support.asciidoc'
+            name: 'markup.raw.asciidoc'
           }
         ]
       }
@@ -1597,15 +1597,15 @@
       #   }).listen(1337, '127.0.0.1');
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(javascript|js))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.js.asciidoc'
-        'contentName': 'source.embedded.js'
-        'patterns': ['include': 'source.js']
+        begin: '^\\s*(`{3,})\\s*(?i:(javascript|js))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.js.asciidoc'
+        contentName: 'source.embedded.js'
+        patterns: [include: 'source.js']
       }
 
       # Matches Ruby Markdown-style code blocks
@@ -1620,15 +1620,15 @@
       #   end
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(ruby|rb))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.ruby.asciidoc'
-        'contentName': 'source.embedded.ruby'
-        'patterns': ['include': 'source.ruby']
+        begin: '^\\s*(`{3,})\\s*(?i:(ruby|rb))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.ruby.asciidoc'
+        contentName: 'source.embedded.ruby'
+        patterns: [include: 'source.ruby']
       }
 
       # Matches Go Markdown-style code blocks
@@ -1639,15 +1639,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(go(lang)?))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.go.asciidoc'
-        'contentName': 'source.embedded.go'
-        'patterns': ['include': 'source.go']
+        begin: '^\\s*(`{3,})\\s*(?i:(go(lang)?))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.go.asciidoc'
+        contentName: 'source.embedded.go'
+        patterns: [include: 'source.go']
       }
 
       # Matches Java Markdown-style code blocks
@@ -1658,15 +1658,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(java))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.java.asciidoc'
-        'contentName': 'source.embedded.java'
-        'patterns': ['include': 'source.java']
+        begin: '^\\s*(`{3,})\\s*(?i:(java))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.java.asciidoc'
+        contentName: 'source.embedded.java'
+        patterns: [include: 'source.java']
       }
 
       # Matches Makdown Markdown-style code blocks
@@ -1677,15 +1677,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(markdown|mdown|md))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.gfm.asciidoc'
-        'contentName': 'source.embedded.gfm'
-        'patterns': ['include': 'source.gfm']
+        begin: '^\\s*(`{3,})\\s*(?i:(markdown|mdown|md))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.gfm.asciidoc'
+        contentName: 'source.embedded.gfm'
+        patterns: [include: 'source.gfm']
       }
 
       # Matches YAML Markdown-style code blocks
@@ -1696,15 +1696,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(ya?ml))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.yaml.asciidoc'
-        'contentName': 'source.embedded.yaml'
-        'patterns': ['include': 'source.yaml']
+        begin: '^\\s*(`{3,})\\s*(?i:(ya?ml))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.yaml.asciidoc'
+        contentName: 'source.embedded.yaml'
+        patterns: [include: 'source.yaml']
       }
 
       # Matches CoffeScript Markdown-style code blocks
@@ -1715,15 +1715,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(coffee-?(script)?))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.coffee.asciidoc'
-        'contentName': 'source.embedded.coffee'
-        'patterns': ['include': 'source.coffee']
+        begin: '^\\s*(`{3,})\\s*(?i:(coffee-?(script)?))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.coffee.asciidoc'
+        contentName: 'source.embedded.coffee'
+        patterns: [include: 'source.coffee']
       }
 
       # Matches TypeScript Markdown-style code blocks
@@ -1734,15 +1734,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(typescript|ts))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.ts.asciidoc'
-        'contentName': 'source.embedded.ts'
-        'patterns': ['include': 'source.ts']
+        begin: '^\\s*(`{3,})\\s*(?i:(typescript|ts))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.ts.asciidoc'
+        contentName: 'source.embedded.ts'
+        patterns: [include: 'source.ts']
       }
 
       # Matches JSON Markdown-style code blocks
@@ -1753,15 +1753,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(json))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.json.asciidoc'
-        'contentName': 'source.embedded.json'
-        'patterns': ['include': 'source.json']
+        begin: '^\\s*(`{3,})\\s*(?i:(json))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.json.asciidoc'
+        contentName: 'source.embedded.json'
+        patterns: [include: 'source.json']
       }
 
       # Matches CSS Markdown-style code blocks
@@ -1772,15 +1772,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(css))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.css.asciidoc'
-        'contentName': 'source.embedded.css'
-        'patterns': ['include': 'source.css']
+        begin: '^\\s*(`{3,})\\s*(?i:(css))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.css.asciidoc'
+        contentName: 'source.embedded.css'
+        patterns: [include: 'source.css']
       }
 
       # Matches LESS Markdown-style code blocks
@@ -1791,15 +1791,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(less))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.css.less.asciidoc'
-        'contentName': 'source.embedded.css.less'
-        'patterns': ['include': 'source.css.less']
+        begin: '^\\s*(`{3,})\\s*(?i:(less))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.css.less.asciidoc'
+        contentName: 'source.embedded.css.less'
+        patterns: [include: 'source.css.less']
       }
 
       # Matches SCSS Markdown-style code blocks
@@ -1810,15 +1810,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(scss))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.css.scss.asciidoc'
-        'contentName': 'source.embedded.css.scss'
-        'patterns': ['include': 'source.css.scss']
+        begin: '^\\s*(`{3,})\\s*(?i:(scss))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.css.scss.asciidoc'
+        contentName: 'source.embedded.css.scss'
+        patterns: [include: 'source.css.scss']
       }
 
       # Matches SASS Markdown-style code blocks
@@ -1829,15 +1829,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(sass))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.sass.asciidoc'
-        'contentName': 'source.embedded.sass'
-        'patterns': ['include': 'source.sass']
+        begin: '^\\s*(`{3,})\\s*(?i:(sass))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.sass.asciidoc'
+        contentName: 'source.embedded.sass'
+        patterns: [include: 'source.sass']
       }
 
       # Matches XML Markdown-style code blocks
@@ -1848,15 +1848,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(xml))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.xml.asciidoc'
-        'contentName': 'text.embedded.xml'
-        'patterns': ['include': 'text.xml']
+        begin: '^\\s*(`{3,})\\s*(?i:(xml))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.xml.asciidoc'
+        contentName: 'text.embedded.xml'
+        patterns: [include: 'text.xml']
       }
 
       # Matches Rust Markdown-style code blocks
@@ -1867,15 +1867,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(rust|rs))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.rust.asciidoc'
-        'contentName': 'source.embedded.rust'
-        'patterns': ['include': 'source.rust']
+        begin: '^\\s*(`{3,})\\s*(?i:(rust|rs))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.rust.asciidoc'
+        contentName: 'source.embedded.rust'
+        patterns: [include: 'source.rust']
       }
 
       # Matches Dockerfile Markdown-style code blocks
@@ -1886,15 +1886,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(docker(file)?))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.dockerfile.asciidoc'
-        'contentName': 'source.embedded.dockerfile'
-        'patterns': ['include': 'source.dockerfile']
+        begin: '^\\s*(`{3,})\\s*(?i:(docker(file)?))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.dockerfile.asciidoc'
+        contentName: 'source.embedded.dockerfile'
+        patterns: [include: 'source.dockerfile']
       }
 
       # Matches properties Markdown-style code blocks
@@ -1905,15 +1905,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(properties))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.properties.asciidoc'
-        'contentName': 'source.embedded.asciidoc.properties'
-        'patterns': ['include': 'source.asciidoc.properties']
+        begin: '^\\s*(`{3,})\\s*(?i:(properties))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.properties.asciidoc'
+        contentName: 'source.embedded.asciidoc.properties'
+        patterns: [include: 'source.asciidoc.properties']
       }
 
       # Matches Makefile Markdown-style code blocks
@@ -1924,15 +1924,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(make(file)?))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.makefile.asciidoc'
-        'contentName': 'source.embedded.makefile'
-        'patterns': ['include': 'source.makefile']
+        begin: '^\\s*(`{3,})\\s*(?i:(make(file)?))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.makefile.asciidoc'
+        contentName: 'source.embedded.makefile'
+        patterns: [include: 'source.makefile']
       }
 
       # Matches Perl Markdown-style code blocks
@@ -1943,15 +1943,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(perl))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.perl.asciidoc'
-        'contentName': 'source.embedded.perl'
-        'patterns': ['include': 'source.perl']
+        begin: '^\\s*(`{3,})\\s*(?i:(perl))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.perl.asciidoc'
+        contentName: 'source.embedded.perl'
+        patterns: [include: 'source.perl']
       }
 
       # Matches Perl6 Markdown-style code blocks
@@ -1962,15 +1962,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(perl6))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.perl6.asciidoc'
-        'contentName': 'source.embedded.perl6'
-        'patterns': ['include': 'source.perl6']
+        begin: '^\\s*(`{3,})\\s*(?i:(perl6))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.perl6.asciidoc'
+        contentName: 'source.embedded.perl6'
+        patterns: [include: 'source.perl6']
       }
 
       # Matches Toml Markdown-style code blocks
@@ -1981,15 +1981,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(toml))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.toml.asciidoc'
-        'contentName': 'source.embedded.toml'
-        'patterns': ['include': 'source.toml']
+        begin: '^\\s*(`{3,})\\s*(?i:(toml))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.toml.asciidoc'
+        contentName: 'source.embedded.toml'
+        patterns: [include: 'source.toml']
       }
 
       # Matches Erlang Markdown-style code blocks
@@ -2000,15 +2000,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(erlang))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.erlang.asciidoc'
-        'contentName': 'source.embedded.erlang'
-        'patterns': ['include': 'source.erlang']
+        begin: '^\\s*(`{3,})\\s*(?i:(erlang))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.erlang.asciidoc'
+        contentName: 'source.embedded.erlang'
+        patterns: [include: 'source.erlang']
       }
 
       # Matches CSharp Markdown-style code blocks
@@ -2019,15 +2019,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(cs(harp)?))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.cs.asciidoc'
-        'contentName': 'source.embedded.cs'
-        'patterns': ['include': 'source.cs']
+        begin: '^\\s*(`{3,})\\s*(?i:(cs(harp)?))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.cs.asciidoc'
+        contentName: 'source.embedded.cs'
+        patterns: [include: 'source.cs']
       }
 
       # Matches PHP Markdown-style code blocks
@@ -2038,15 +2038,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(php))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.php.asciidoc'
-        'contentName': 'text.embedded.html.php'
-        'patterns': ['include': 'text.html.php']
+        begin: '^\\s*(`{3,})\\s*(?i:(php))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.php.asciidoc'
+        contentName: 'text.embedded.html.php'
+        patterns: [include: 'text.html.php']
       }
 
       # Matches Shell Markdown-style code blocks
@@ -2057,15 +2057,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(sh|bash|shell))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.shell.asciidoc'
-        'contentName': 'source.embedded.shell'
-        'patterns': ['include': 'source.shell']
+        begin: '^\\s*(`{3,})\\s*(?i:(sh|bash|shell))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.shell.asciidoc'
+        contentName: 'source.embedded.shell'
+        patterns: [include: 'source.shell']
       }
 
       # Matches Python Markdown-style code blocks
@@ -2076,15 +2076,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(py(thon)?))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.python.asciidoc'
-        'contentName': 'source.embedded.python'
-        'patterns': ['include': 'source.python']
+        begin: '^\\s*(`{3,})\\s*(?i:(py(thon)?))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.python.asciidoc'
+        contentName: 'source.embedded.python'
+        patterns: [include: 'source.python']
       }
 
       # Matches C Markdown-style code blocks
@@ -2095,15 +2095,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(c))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.c.asciidoc'
-        'contentName': 'source.embedded.c'
-        'patterns': ['include': 'source.c']
+        begin: '^\\s*(`{3,})\\s*(?i:(c))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.c.asciidoc'
+        contentName: 'source.embedded.c'
+        patterns: [include: 'source.c']
       }
 
       # Matches C++ Markdown-style code blocks
@@ -2119,15 +2119,15 @@
       #   }
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(c(pp|\\+\\+)))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.cpp.asciidoc'
-        'contentName': 'source.embedded.cpp'
-        'patterns': ['include': 'source.cpp']
+        begin: '^\\s*(`{3,})\\s*(?i:(c(pp|\\+\\+)))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.cpp.asciidoc'
+        contentName: 'source.embedded.cpp'
+        patterns: [include: 'source.cpp']
       }
 
       # Matches Objective C Markdown-style code blocks
@@ -2138,15 +2138,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(objc|objective-c))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.objc.asciidoc'
-        'contentName': 'source.embedded.objc'
-        'patterns': ['include': 'source.objc']
+        begin: '^\\s*(`{3,})\\s*(?i:(objc|objective-c))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.objc.asciidoc'
+        contentName: 'source.embedded.objc'
+        patterns: [include: 'source.objc']
       }
 
       # Matches Swift Markdown-style code blocks
@@ -2157,15 +2157,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(swift))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.swift.asciidoc'
-        'contentName': 'source.embedded.swift'
-        'patterns': ['include': 'source.swift']
+        begin: '^\\s*(`{3,})\\s*(?i:(swift))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.swift.asciidoc'
+        contentName: 'source.embedded.swift'
+        patterns: [include: 'source.swift']
       }
 
       # Matches HTML Markdown-style code blocks
@@ -2176,15 +2176,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(html))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.html.basic.asciidoc'
-        'contentName': 'text.embedded.html.basic'
-        'patterns': ['include': 'text.html.basic']
+        begin: '^\\s*(`{3,})\\s*(?i:(html))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.html.basic.asciidoc'
+        contentName: 'text.embedded.html.basic'
+        patterns: [include: 'text.html.basic']
       }
 
       # Matches Elixir Markdown-style code blocks
@@ -2195,15 +2195,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(elixir))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.elixir.asciidoc'
-        'contentName': 'source.embedded.elixir'
-        'patterns': ['include': 'source.elixir']
+        begin: '^\\s*(`{3,})\\s*(?i:(elixir))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.elixir.asciidoc'
+        contentName: 'source.embedded.elixir'
+        patterns: [include: 'source.elixir']
       }
 
       # Matches Diff Markdown-style code blocks
@@ -2214,15 +2214,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(diff|patch|rej))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.diff.asciidoc'
-        'contentName': 'source.embedded.diff'
-        'patterns': ['include': 'source.diff']
+        begin: '^\\s*(`{3,})\\s*(?i:(diff|patch|rej))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.diff.asciidoc'
+        contentName: 'source.embedded.diff'
+        patterns: [include: 'source.diff']
       }
 
       # Matches Julia Markdown-style code blocks
@@ -2233,15 +2233,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(julia))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.julia.asciidoc'
-        'contentName': 'source.embedded.julia'
-        'patterns': ['include': 'source.julia']
+        begin: '^\\s*(`{3,})\\s*(?i:(julia))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.julia.asciidoc'
+        contentName: 'source.embedded.julia'
+        patterns: [include: 'source.julia']
       }
 
       # Matches R Markdown-style code blocks
@@ -2252,15 +2252,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(r))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.r.asciidoc'
-        'contentName': 'source.embedded.r'
-        'patterns': ['include': 'source.r']
+        begin: '^\\s*(`{3,})\\s*(?i:(r))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.r.asciidoc'
+        contentName: 'source.embedded.r'
+        patterns: [include: 'source.r']
       }
 
       # Matches Haskell Markdown-style code blocks
@@ -2271,15 +2271,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(haskell))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.haskell.asciidoc'
-        'contentName': 'source.embedded.haskell'
-        'patterns': ['include': 'source.haskell']
+        begin: '^\\s*(`{3,})\\s*(?i:(haskell))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.haskell.asciidoc'
+        contentName: 'source.embedded.haskell'
+        patterns: [include: 'source.haskell']
       }
 
       # Matches ELM Markdown-style code blocks
@@ -2290,15 +2290,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(elm))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.elm.asciidoc'
-        'contentName': 'source.embedded.elm'
-        'patterns': ['include': 'source.elm']
+        begin: '^\\s*(`{3,})\\s*(?i:(elm))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.elm.asciidoc'
+        contentName: 'source.embedded.elm'
+        patterns: [include: 'source.elm']
       }
 
       # Matches SQL Markdown-style code blocks
@@ -2309,15 +2309,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(sql))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.sql.asciidoc'
-        'contentName': 'source.embedded.sql'
-        'patterns': ['include': 'source.sql']
+        begin: '^\\s*(`{3,})\\s*(?i:(sql))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.sql.asciidoc'
+        contentName: 'source.embedded.sql'
+        patterns: [include: 'source.sql']
       }
 
       # Matches Clojure Markdown-style code blocks
@@ -2328,15 +2328,15 @@
       #   ...
       #   ```
       {
-        'begin': '^\\s*(`{3,})\\s*(?i:(clojure))\\s*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.clojure.asciidoc'
-        'contentName': 'source.embedded.clojure'
-        'patterns': ['include': 'source.clojure']
+        begin: '^\\s*(`{3,})\\s*(?i:(clojure))\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.code.clojure.asciidoc'
+        contentName: 'source.embedded.clojure'
+        patterns: [include: 'source.clojure']
       }
 
       # Matches language-agnostic Markdown code blocks
@@ -2351,13 +2351,13 @@
       #   end
       #   ```
       {
-        'begin': '^\\s*(`{3,}).*$'
-        'beginCaptures':
-          '0': 'name': 'support.asciidoc'
-        'end': '^\\s*\\1\\s*$'
-        'endCaptures':
-          '0': 'name': 'support.asciidoc'
-        'name': 'markup.raw.asciidoc'
+        begin: '^\\s*(`{3,}).*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        end: '^\\s*\\1\\s*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+        name: 'markup.raw.asciidoc'
       }
 
     ]

@@ -445,22 +445,42 @@ COPY /tmp /tmp
 ----
 
 
-== Properties *BUG !*
+== Properties
 
-// ```properties
-// # comment
-// [user]
-//    name = John Doe
-//    email = example@examplecom
-// ```
+```properties
+# comment
+foo = foo-{0}-bar\"foo\"
+; comment
+[user]
+    name = John Doe ; comment
+    email = example@examplecom # comment
+[section-foo "riooeri"]
+    key = \"foobar\" ; comment
+    key = "foobar" # comment
+[section.foo]
+    key = \"foobar\" ; comment
+    key = "foobar" # comment
+[alias]
+    lg = log --graph --pretty=tformat:'%Cred%h%Creset %Cblue%G?%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset'
+```
 
-// [source,properties]
-// ----
-// # comment
-// [user]
-//    name = John Doe
-//    email = example@examplecom
-// ----
+[source,properties]
+----
+# comment
+foo = foo-{0}-bar\"foo\"
+; comment
+[user]
+    name = John Doe ; comment
+    email = example@examplecom # comment
+[section-foo "riooeri"]
+    key = \"foobar\" ; comment
+    key = "foobar" # comment
+[section.foo]
+    key = \"foobar\" ; comment
+    key = "foobar" # comment
+[alias]
+    lg = log --graph --pretty=tformat:'%Cred%h%Creset %Cblue%G?%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset'
+----
 
 
 == Makefile

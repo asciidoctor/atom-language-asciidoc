@@ -926,9 +926,9 @@
             'end': '^\\1*$'
             'endCaptures':
               '0': 'name': 'support.asciidoc'
-            'name': 'markup.code.git-config.asciidoc'
-            'contentName': 'source.embedded.git-config'
-            'patterns': ['include': 'source.git-config']
+            'name': 'markup.code.properties.asciidoc'
+            'contentName': 'source.embedded.asciidoc.properties'
+            'patterns': ['include': 'source.asciidoc.properties']
           }
         ]
       }
@@ -1911,9 +1911,9 @@
         'end': '^\\s*\\1\\s*$'
         'endCaptures':
           '0': 'name': 'support.asciidoc'
-        'name': 'markup.code.git-config.asciidoc'
-        'contentName': 'source.embedded.git-config'
-        'patterns': ['include': 'source.git-config']
+        'name': 'markup.code.properties.asciidoc'
+        'contentName': 'source.embedded.asciidoc.properties'
+        'patterns': ['include': 'source.asciidoc.properties']
       }
 
       # Matches Makefile Markdown-style code blocks

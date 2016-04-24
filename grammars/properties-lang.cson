@@ -1,0 +1,97 @@
+# Hack for fix grammar parsing bug (`java-properties`, `git-config`)
+name: 'Hack for properties'
+scopeName: 'source.asciidoc.properties'
+fileTypes: [
+  'ASCIIDOC_PROPERTIES'
+]
+patterns: [
+  {
+    include: '#section'
+  }
+  {
+    include: '#value_pair'
+  }
+  {
+    include: '#comment'
+  }
+]
+repository:
+  # Comment grammar
+  comment:
+    match: '((#|;).*$\\n?)'
+    captures:
+      1:
+        name: 'comment.line.number-sign.asciidoc.properties'
+      2:
+        name: 'punctuation.definition.comment.asciidoc.properties'
+      3:
+        name: 'comment.line.semi-colon.asciidoc.properties'
+      4:
+        name: 'punctuation.definition.comment.asciidoc.properties'
+  # Section header grammar
+  section:
+    match: '^\\[\\s*([\\w_-]+)(?:\\s+((")(?:[^"\\\\]|^\\\\["\\\\])*("))|\\.([\\w_-]+))?\\s*\\]'
+    name: 'meta.section.asciidoc.properties'
+    captures:
+      1:
+        name: 'entity.name.section.asciidoc.properties'
+      2:
+        name: 'entity.name.section.subsection.asciidoc.properties'
+      3:
+        name: 'punctuation.definition.section.subsection.begin.asciidoc.properties'
+      4:
+        name: 'punctuation.definition.section.subsection.end.asciidoc.properties'
+      5:
+        name: 'entity.name.section.subsection.asciidoc.properties'
+  # Value pair
+  'value_pair':
+    name: 'meta.value-pair.section-item.asciidoc.properties'
+    begin: '([-\\w]+)\\s*(=)\\s*(?!$)'
+    captures:
+      1:
+        name: 'support.constant.asciidoc.properties'
+      2:
+        name: 'punctuation.separator.key-value.asciidoc.properties'
+    end: '$|(?=[#;])'
+    patterns: [
+      {
+        include: '#boolean'
+      }
+      {
+        include: '#escaped-string'
+      }
+      {
+        include: '#string'
+      }
+      {
+        include: '#comment'
+      }
+    ]
+  # Boolean value
+  boolean:
+    match: '\\b(?i:yes|no|0|1|true|false)\\b'
+    name: 'constant.language.boolean.asciidoc.properties'
+  # String value
+  string:
+    name: 'string.quoted.double.asciidoc.properties'
+    begin: '"'
+    beginCaptures:
+      0:
+        name: 'punctuation.definition.string.begin.asciidoc.properties'
+    end: '"'
+    endCaptures:
+      0:
+        name: 'punctuation.definition.string.end.asciidoc.properties'
+    patterns: [
+      {
+        match: '\\\\[ntb"\\\\]'
+        name: 'constant.character.escape.asciidoc.properties'
+      }
+      {
+        match: '\\\\.'
+        name: 'invalid.illegal.unknown-escape.asciidoc.properties'
+      }
+    ]
+  'escaped-string':
+    match: '\\\\"'
+    name: 'constant.character.escape.asciidoc.properties'

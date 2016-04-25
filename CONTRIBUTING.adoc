@@ -84,6 +84,13 @@ The regexes are based on Ruby.
 * http://www.regular-expressions.info/ruby.html[Ruby regex introduction]
 * http://www.regular-expressions.info/refflavors.html[Regex reference index] (select Ruby in the table header dropdown)
 
+=== Regex handling
+
+Atom uses the https://github.com/kkos/oniguruma[Oniguruma] library for parsing regular expressions.
+The https://github.com/kkos/oniguruma/blob/master/doc/RE[documentation] provides an overview of supported elements.
+
+Generally it can be said that POSIX-style regex elements are preferred (`/p{blank}`, `\p{word}`) as they better support internationalization.
+
 === Code language support
 
 AsciiDoc offers the ability to include source code blocks, in a variety of languages.

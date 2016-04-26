@@ -3,17 +3,18 @@
 In the spirit of free software, _everyone_ is encouraged to help improve this project.
 
 To contribute code, simply fork the project on GitHub, hack away and send a pull request with your proposed changes.
-
 Feel free to use the https://github.com/asciidoctor/atom-language-asciidoc/issues[issue tracker] to provide feedback or suggestions in other ways.
 
 == Development
 
-A general introduction into writing a syntax highlighting package: http://www.sitepoint.com/how-to-write-a-syntax-highlighting-package-for-atom/[how to write a syntax highlighting package for Atom]
+Before diving into the code, we recommend reading the article http://www.sitepoint.com/how-to-write-a-syntax-highlighting-package-for-atom/[How to Write a Syntax Highlighting Package for Atom].
+That article gives you the background information you need to get started with hacking on this package.
+
+To learn more about how the grammar works and useful resources for development, see <<Grammar>>.
 
 === Retrieve the source code
 
 The source code for this plugin is available from https://github.com/asciidoctor/atom-language-asciidoc
-
 
 === Prepare for business
 
@@ -71,25 +72,30 @@ The grammar is defined in link:grammars/asciidoc.cson[grammars/asciidoc.cson].
 
 === Language definition
 
-The Atom language definitions originate from the language definitions used for TextMate.
-It supports both single matches based on a single regex, and sections matches based on a _begin_ and _end_ regex.
-The regexes are based on Ruby.
+The Atom language definitions originate from the language definitions used by TextMate.
+The language definition is interpreted by the https://github.com/atom/first-mate[first-mate] JavaScript module.
+
+A language definition supports both single-line matches using a _match_ regular expression (regexp), and sections matches based on a _begin_ and _end_ regexps.
+The regexps are based on the Oniguruma regexp engine (also used in Ruby), as described in <<Regexp handling>>.
 
 .TextMate oriented language resources
 * http://www.apeth.com/nonblog/stories/textmatebundle.html[Practical TextMate guide]
 * http://manual.macromates.com/en/language_grammars.html[TextMate language grammars manual]
 
-.Ruby regex information
+.Ruby regexp information
 * http://rubular.com/[Rubular] an online Ruby regex editor
-* http://www.regular-expressions.info/ruby.html[Ruby regex introduction]
-* http://www.regular-expressions.info/refflavors.html[Regex reference index] (select Ruby in the table header dropdown)
+* http://www.regular-expressions.info/ruby.html[Ruby regexp introduction]
+* http://www.regular-expressions.info/refflavors.html[Regexp reference index] (select Ruby in the table header dropdown)
 
-=== Regex handling
+=== Regexp handling
 
-Atom uses the https://github.com/kkos/oniguruma[Oniguruma] library for parsing regular expressions.
-The https://github.com/kkos/oniguruma/blob/master/doc/RE[documentation] provides an overview of supported elements.
+Atom uses the https://github.com/kkos/oniguruma[Oniguruma] library for parsing regular expressions via the https://github.com/atom/node-oniguruma[node-oniguruma] JavaScript module.
+The http://oniguruma.rubyforge.org/oniguruma/files/Syntax_txt.html[Oniguruma documentation] provides an overview of all supported elements.
 
-Generally it can be said that POSIX-style regex elements are preferred (`/p{blank}`, `\p{word}`) as they better support internationalization.
+IMPORTANT: Patterns are defined as JavaScript strings.
+That means backslashes must be escaped twice (`\\\\`), backslashes in character classes escaped once (`\\s`), and single quotes escaped once (`\'`).
+
+Generally it can be said that POSIX-style regex elements are preferred (e.g., `+\p{Blank}+` and `+\p{Word}+`) as they better support internationalization.
 
 === Code language support
 

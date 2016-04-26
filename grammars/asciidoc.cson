@@ -320,9 +320,11 @@ fileTypes: [
         #'match': '(?:\\[(?:[^\\]]+?)\\])?(?<!\\*)(?!^\\*{4,}$)(?!\\*{5,})(\\*\\*[\\s\\S]+?\\*\\*)'
         #'match': '((?<!\\*)\\*\\*[\\s\\S]+?\\*\\*)' #reducing effort
         #'match': '((?<!\\*)\\*\\*(?!\\*{3,})[\\s\\S]+?\\*\\*)'
-        'match': '\\\\?(?:\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*\\*(?!\\*{3,})[\\s\\S]+?\\*\\*)' #reinclude asciidoctor.rb start
+        #'match': '\\\\?(?:\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*\\*(?!\\*{3,})[\\s\\S]+?\\*\\*)' #reinclude asciidoctor.rb start
+        'match': '\\\\?(\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*\\*(?!\\*{3,})[\\s\\S]+?\\*\\*)' # include attributes
         'captures':
-          '0': 'name': 'markup.bold.asciidoc'
+          '1': 'name': 'support.constant.asciidoc' #TODO: handle this parsing seperately
+          '2': 'name': 'markup.bold.asciidoc'
       }
 
       # Matches bold constrained phrases
@@ -340,9 +342,12 @@ fileTypes: [
         #'match': '(?<=^|\\s)(\\*[^ \\*].+?\\*)(?= |\\t|$)' #ldez version #-> still failing
         #'match': '(\\*[^\\s\\*]\\*|\\*[^\\s\\*][^\\*]*?[^\\s\\*]\\*)(?![\\w])' # reducing effort
         # 'match': '(?:^|[^\\w;:}])(?:\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*[^\\s\\*]\\*|(?<!\\*)\\*[^\\s\\*][^\\*]*?[^\\s\\*]\\*)(?![\\w])' #reinclude other matches
-        'match': '(?:\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*[^\\s\\*]\\*|(?<!\\*)\\*[^\\s\\*][^\\*]*?[^\\s\\*]\\*)(?![\\w])'
+        #'match': '(?:\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*[^\\s\\*]\\*|(?<!\\*)\\*[^\\s\\*][^\\*]*?[^\\s\\*]\\*)(?![\\w])'
+        #'match': '(\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*[^\\s\\*]\\*|(?<!\\*)\\*[^\\s\\*][^\\*]*?[^\\s\\*]\\*)(?![\\w])' # NOW INCLUDING ATTRIBUTES AS FIRST MATCH
+        'match': '(?<=^|[^\\w;:}])(\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*[^\\s\\*]\\*|(?<!\\*)\\*[^\\s\\*][^\\*]*?[^\\s\\*]\\*)(?![\\w])' #now including the attributes and the start of line regex
         'captures':
-          '0': 'name': 'markup.bold.asciidoc'
+          '1': 'name': 'support.constant.asciidoc' #TODO: handle this parsing seperately
+          '2': 'name': 'markup.bold.asciidoc'
       }
 
       # Matches italic constrained phrases

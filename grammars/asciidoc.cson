@@ -303,7 +303,7 @@ fileTypes: [
       #   b**old** phrase
       {
         # asciidoctor.rb: /\\?(?:\[([^\]]+?)\])?\*\*([\s\S]+?)\*\*/m
-        'match': '\\\\?(\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*\\*(?!\\*{3,})[\\s\\S]+?\\*\\*)'
+        'match': '\\\\?(\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*\\*(?!\\*{3,}).+?\\*\\*)'
         'captures':
           '1': 'name': 'support.constant.asciidoc' #TODO: handle this parsing seperately
           '2': 'name': 'markup.bold.asciidoc'

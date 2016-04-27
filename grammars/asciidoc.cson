@@ -85,6 +85,14 @@ patterns: [
     ]
   }
 
+  # Matches single line comments
+  #
+  # // A single-line comment
+  {
+      'match': '^\/{2}\\p{Space}.*$'
+      'name': 'markup.block.asciidoc'
+  }
+
   # Matches example block
   #
   # Examples

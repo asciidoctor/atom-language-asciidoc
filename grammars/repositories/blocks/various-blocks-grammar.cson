@@ -1,0 +1,61 @@
+key: 'various-blocks'
+
+patterns: [
+
+  # Matches example block
+  #
+  # Examples
+  #
+  #   ====
+  #   A multi-line example.
+  #
+  #   Notice it's a delimited block.
+  #   ====
+  #
+  name: 'markup.block.example.asciidoc'
+  begin: '^(={4,})$'
+  patterns: [
+    include: '#inline'
+  ]
+  end: '\\1'
+,
+  # Matches sidebar block
+  #
+  # Examples
+  #
+  # ***********************************
+  # As an aside, I love Asciidoc
+  # ***********************************
+  #
+  name: 'markup.block.sidebar.asciidoc'
+  begin: '(^\\*{4,}$)'
+  patterns: [
+    include: '#inline'
+  ]
+  end: '\\1'
+,
+  # Matches literal block
+  #
+  # Examples
+  #
+  # ...................................
+  # Daleks EXTERMINATE in monospace!
+  # ...................................
+  #
+  begin: '(^\\.{4,}$)'
+  end: '\\1'
+  name: 'markup.block.literal.asciidoc'
+,
+  # Matches passthrough block
+  #
+  # Examples
+  #
+  # +++++++++++++++++++++++++++++++++++
+  # <s>Could be struck through</s>
+  # +++++++++++++++++++++++++++++++++++
+  #
+  name: 'markup.block.passthrough.asciidoc'
+  begin: '(^\\+{4,}$)'
+  end: '\\1'
+
+]

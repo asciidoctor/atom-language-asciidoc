@@ -1,0 +1,27 @@
+key: 'comment'
+
+patterns: [
+  # Matches block comments
+  #
+  # Examples
+  #
+  #   ////
+  #   A multi-line comment.
+  #
+  #   Notice it's a delimited block.
+  #   ////
+  #
+  name: 'comment.block.asciidoc'
+  begin: '(^/{4,}$)'
+  patterns: [
+    include: '#inline'
+  ]
+  end: '\\1'
+,
+  # Matches single line comments
+  #
+  # // A single-line comment
+  #
+  name: 'comment.inline.asciidoc'
+  match: '^\/{2}\\p{Space}(.*)$'
+]

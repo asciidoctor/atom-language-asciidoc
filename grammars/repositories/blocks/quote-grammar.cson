@@ -1,0 +1,38 @@
+key: 'quote'
+
+patterns: [
+
+  # Matches quote declaration
+  #
+  # Examples
+  #
+  # [quote]
+  # ____________________________________________________________________
+  # Huh?
+  # ____________________________________________________________________
+  #
+  # [quote, Homer Simpson]
+  # ____________________________________________________________________
+  # D'oh!
+  # ____________________________________________________________________
+  #
+  # [quote, Erwin Schrödinger, Sorry]
+  # ____________________________________________________________________
+  # I don't like it, and I'm sorry I ever had anything to do with it.
+  # ____________________________________________________________________
+  #
+  begin: '^\\[(quote|verse)(, ([\\w ]+))?(, ([\\w ]+))?'
+  beginCaptures:
+    1: name: 'markup.quote.declaration.asciidoc'
+    3: name: 'markup.quote.attribution.asciidoc'
+    5: name: 'markup.quote.citation.asciidoc'
+  end: '\\]$'
+,
+  # Matches quote block
+  name: 'markup.quote.block.asciidoc'
+  begin: '(^_{4,}$)'
+  patterns: [
+    include: '#inline'
+  ]
+  end: '\\1'
+]

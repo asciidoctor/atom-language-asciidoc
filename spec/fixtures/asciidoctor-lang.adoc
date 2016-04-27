@@ -180,6 +180,35 @@ cubes = (math.cube num for num in list)
 ----
 
 
+== TypeScript (with Plugin)
+
+[source,typescript]
+----
+class Greeter {
+    constructor(public greeting: string) { }
+    greet() {
+        return "<h1>" + this.greeting + "</h1>";
+    }
+};
+
+var greeter = new Greeter("Hello, world!");
+
+document.body.innerHTML = greeter.greet();
+----
+
+```typescript
+class Greeter {
+    constructor(public greeting: string) { }
+    greet() {
+        return "<h1>" + this.greeting + "</h1>";
+    }
+};
+
+var greeter = new Greeter("Hello, world!");
+
+document.body.innerHTML = greeter.greet();
+```
+
 == JSON
 
 ```json
@@ -216,21 +245,20 @@ p {
 }
 ```
 
-*BUG !*
-// [source,css]
-// ----
-// body {
-//   background-color: #d0e4fe;
-// }
-// h1 {
-//   color: orange;
-//   text-align: center;
-// }
-// p {
-//   font-family: "Times New Roman";
-//   font-size: 20px;
-// }
-// ----
+[source,css]
+----
+body {
+  background-color: #d0e4fe;
+}
+h1 {
+  color: orange;
+  text-align: center;
+}
+p {
+  font-family: "Times New Roman";
+  font-size: 20px;
+}
+----
 
 == Less
 
@@ -270,7 +298,7 @@ p {
 ----
 
 
-== SASS (new)
+== SASS / SCSS
 
 ```scss
 $font-stack:    Helvetica, sans-serif;
@@ -291,6 +319,25 @@ body {
   font: 100% $font-stack;
   color: $primary-color;
 }
+----
+
+```sass
+$font-stack:    Helvetica, sans-serif
+$primary-color: #333
+
+body
+  font: 100% $font-stack
+  color: $primary-color
+```
+
+[source,sass]
+----
+$font-stack:    Helvetica, sans-serif
+$primary-color: #333
+
+body
+  font: 100% $font-stack
+  color: $primary-color
 ----
 
 
@@ -398,22 +445,42 @@ COPY /tmp /tmp
 ----
 
 
-== Properties *BUG !*
+== Properties
 
-// ```properties
-// # comment
-// [user]
-//    name = John Doe
-//    email = example@examplecom
-// ```
+```properties
+# comment
+foo = foo-{0}-bar\"foo\"
+; comment
+[user]
+    name = John Doe ; comment
+    email = example@examplecom # comment
+[section-foo "riooeri"]
+    key = \"foobar\" ; comment
+    key = "foobar" # comment
+[section.foo]
+    key = \"foobar\" ; comment
+    key = "foobar" # comment
+[alias]
+    lg = log --graph --pretty=tformat:'%Cred%h%Creset %Cblue%G?%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset'
+```
 
-// [source,properties]
-// ----
-// # comment
-// [user]
-//    name = John Doe
-//    email = example@examplecom
-// ----
+[source,properties]
+----
+# comment
+foo = foo-{0}-bar\"foo\"
+; comment
+[user]
+    name = John Doe ; comment
+    email = example@examplecom # comment
+[section-foo "riooeri"]
+    key = \"foobar\" ; comment
+    key = "foobar" # comment
+[section.foo]
+    key = \"foobar\" ; comment
+    key = "foobar" # comment
+[alias]
+    lg = log --graph --pretty=tformat:'%Cred%h%Creset %Cblue%G?%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset'
+----
 
 
 == Makefile
@@ -751,6 +818,7 @@ int main()
 @end
 ----
 
+
 == Swift (with plugin)
 
 ```swift
@@ -820,6 +888,7 @@ receive do
   {:msg, contents} -> IO.puts contents
 end
 ```
+
 
 [source,elixir]
 ----
@@ -1000,4 +1069,20 @@ import "net/http"
 func main() {
         panic(http.ListenAndServe(":8080", http.FileServer(http.Dir("."))))
 }
+----
+
+
+== No language
+
+```
+foobar
+foobar
+foobar
+```
+
+[source]
+----
+foobar
+foobar
+foobar
 ----

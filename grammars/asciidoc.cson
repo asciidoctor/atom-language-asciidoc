@@ -381,8 +381,9 @@
       #
       #   `Text in {backticks}` renders exactly as entered, in `monospace`.
       {
-        'match': '(?<=^|\\s)`[^`]+`'
-        'name': 'markup.raw.inline.asciidoc'
+        'match': '(^|[^\\p{Word};:"\'`\\}])((?:\\[([^\\\\]]+?)\\])?`(\\S|\\S.*?\\S)`(?![\\p{Word}"\'`]))'
+        'captures':
+          '2': 'name': 'markup.raw.inline.asciidoc'
       }
 
       # Matches HTML entities

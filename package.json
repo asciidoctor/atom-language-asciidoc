@@ -7,7 +7,11 @@
   "engines": {
     "atom": ">0.50.0"
   },
+  "dependencies": {
+    "season": "^5.3"
+  },
   "devDependencies": {
     "coffeelint": "^1.15.0"
-  }
+  },
+  "main": "lib/main.coffee"
 }

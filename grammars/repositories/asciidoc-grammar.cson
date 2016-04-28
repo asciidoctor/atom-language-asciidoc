@@ -14,9 +14,9 @@ patterns: [
 ,
   include: '#various'
 ,
-  include: '#inlines'
-,
   include: '#blocks'
+,
+  include: '#inlines'
 ]
 repository:
   blocks:

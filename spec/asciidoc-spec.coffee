@@ -314,16 +314,20 @@ describe "AsciiDoc grammar", ->
     expect(tokens[4]).toHaveLength(2)
     expect(tokens[4][0]).toEqual value: "----", scopes: ["source.asciidoc", "markup.code.shell.asciidoc", "support.asciidoc"]
     expect(tokens[4][1]).toEqual value: "", scopes: ["source.asciidoc"]
-    expect(tokens[5]).toHaveLength(4)
+    expect(tokens[5]).toHaveLength(6)
     expect(tokens[5][0]).toEqual value: "<1> ", scopes: ["source.asciidoc"]
-    expect(tokens[5][1]).toEqual value: "*Grammars*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
-    expect(tokens[5][2]).toEqual value: " ", scopes: ["source.asciidoc"]
-    expect(tokens[5][3]).toEqual value: "_definition_", scopes: ["source.asciidoc", "markup.italic.asciidoc"]
-    expect(tokens[5]).toHaveLength(4)
+    expect(tokens[5][1]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+    expect(tokens[5][2]).toEqual value: "Grammars", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+    expect(tokens[5][3]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+    expect(tokens[5][4]).toEqual value: " ", scopes: ["source.asciidoc"]
+    expect(tokens[5][5]).toEqual value: "_definition_", scopes: ["source.asciidoc", "markup.italic.asciidoc"]
+    expect(tokens[5]).toHaveLength(6)
     expect(tokens[6][0]).toEqual value: "<2> ", scopes: ["source.asciidoc"]
-    expect(tokens[6][1]).toEqual value: "*CoffeeLint*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
-    expect(tokens[6][2]).toEqual value: " ", scopes: ["source.asciidoc"]
-    expect(tokens[6][3]).toEqual value: "_rules_", scopes: ["source.asciidoc", "markup.italic.asciidoc"]
+    expect(tokens[6][1]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+    expect(tokens[6][2]).toEqual value: "CoffeeLint", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+    expect(tokens[6][3]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+    expect(tokens[6][4]).toEqual value: " ", scopes: ["source.asciidoc"]
+    expect(tokens[6][5]).toEqual value: "_rules_", scopes: ["source.asciidoc", "markup.italic.asciidoc"]
 
   describe "should tokenize todo lists", ->
 

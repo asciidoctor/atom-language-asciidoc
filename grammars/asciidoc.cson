@@ -7,7 +7,7 @@ fileTypes: [
   'asciidoc'
 ]
 
-'patterns': [
+patterns: [
   # Includes AsciiDoc and Markdown style code blocks, see repository section
   # below.
   {

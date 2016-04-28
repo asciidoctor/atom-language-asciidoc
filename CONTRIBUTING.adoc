@@ -14,7 +14,16 @@ To learn more about how the grammar works and useful resources for development, 
 
 === Retrieve the source code
 
-The source code for this plugin is available from https://github.com/asciidoctor/atom-language-asciidoc
+The source code for this plugin is available from https://github.com/asciidoctor/atom-language-asciidoc.
+
+=== Retrieve the dependencies
+
+Use the following command to download dependencies (https://github.com/atom/season[Season], http://www.coffeelint.org/[CoffeeLint], ...):
+
+[source, shell]
+----
+apm install
+----
 
 === Prepare for business
 
@@ -54,6 +63,11 @@ There are multiple ways in which you can run the tests:
 atom --test spec
 ----
 
+.Testing via the Command Pallet in Atom
+----
+Window: Run Package Specs
+----
+
 .Testing using the build-package.sh script
 [source, shell]
 ----
@@ -61,14 +75,29 @@ curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh > buil
 sh build-package.sh
 ----
 
-.Testing via the Command Pallet in Atom
-----
-Window: Run Package Specs
-----
+.Testing syntax
+* http://flight-manual.atom.io/hacking-atom/sections/writing-specs[Atom specs]
+* http://jasmine.github.io/edge/introduction.html[Jasmine]
 
 == Grammar
 
-The grammar is defined in link:grammars/asciidoc.cson[grammars/asciidoc.cson].
+The grammar is defined in files contains in the directory `grammars/repositories`.
+
+The file link:grammars/language-asciidoc.cson[grammars/language-asciidoc.cson] is a generated file, *you must don't chnage this file manually*.
+
+=== Generate the grammar file
+
+* Run Atom in Dev Mode with the following command:
+
+[source, shell]
+----
+atom -d .
+----
+
+* Open the command dialog with press keys: `Ctrl+Shift-P`
+* In the command dialog, find and choose the item named `Asciidoc Grammar: Compile grammar and reload`
+  * Tips: write only `AG` for a quick access to the item.
+* The grammar file is re-generated automatically.
 
 === Language definition
 
@@ -76,16 +105,11 @@ The Atom language definitions originate from the language definitions used by Te
 The language definition is interpreted by the https://github.com/atom/first-mate[first-mate] JavaScript module.
 
 A language definition supports both single-line matches using a _match_ regular expression (regexp), and sections matches based on a _begin_ and _end_ regexps.
-The regexps are based on the Oniguruma regexp engine (also used in Ruby), as described in <<Regexp handling>>.
+The regexps are based on the https://github.com/kkos/oniguruma[Oniguruma] regexp engine (also used in Ruby), as described in <<Regexp handling>>.
 
 .TextMate oriented language resources
 * http://www.apeth.com/nonblog/stories/textmatebundle.html[Practical TextMate guide]
 * http://manual.macromates.com/en/language_grammars.html[TextMate language grammars manual]
-
-.Ruby regexp information
-* http://rubular.com/[Rubular] an online Ruby regex editor
-* http://www.regular-expressions.info/ruby.html[Ruby regexp introduction]
-* http://www.regular-expressions.info/refflavors.html[Regexp reference index] (select Ruby in the table header dropdown)
 
 === Regexp handling
 
@@ -96,6 +120,11 @@ IMPORTANT: Patterns are defined as JavaScript strings.
 That means backslashes must be escaped twice (`\\\\`), backslashes in character classes escaped once (`\\s`), and single quotes escaped once (`\'`).
 
 Generally it can be said that POSIX-style regex elements are preferred (e.g., `+\p{Blank}+` and `+\p{Word}+`) as they better support internationalization.
+
+.Ruby regexp information
+* http://rubular.com/[Rubular] an online Ruby regex editor
+* http://www.regular-expressions.info/ruby.html[Ruby regexp introduction]
+* http://www.regular-expressions.info/refflavors.html[Regexp reference index] (select Ruby in the table header dropdown)
 
 === Code language support
 
@@ -108,8 +137,9 @@ You can check the available source languages available in your Atom editor, to s
 . Open the _Developer Tools_: `Ctrl+Shift+I` on Linux and Windows, `Cmd+Alt+i` on Mac OS X.
 . Run the query `Object.keys(atom.grammars.grammarsByScopeName).sort().join('\n')` in the _Console_.
 
+
 .Example language query
-image::doc/language-query.png[screenshot of a code support query]
+image::https://cloud.githubusercontent.com/assets/5674651/14895946/a40b08aa-0d7b-11e6-9bff-458a3d42087c.png[screenshot of a code support query]
 
 == Styling
 

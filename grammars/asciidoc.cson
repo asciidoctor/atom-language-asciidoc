@@ -8,16 +8,10 @@ fileTypes: [
 ]
 
 patterns: [
-
-  # Includes inline patterns, see repository section below.
-  {
-    include: '#inline'
-  }
-
   # Includes AsciiDoc and Markdown style code blocks, see repository section
   # below.
   {
-    include: '#codeBlocks'
+    'include': '#codeBlocks'
   }
 
   # Matches section titles (headers)
@@ -274,6 +268,21 @@ patterns: [
     ]
   }
 
+  # Matches todo lists
+  #
+  # Examples
+  #
+  # - [ ] todo
+  # - [x] done
+  # - [*] done
+  {
+    'match': '^\\s*(-)\\s(\\[[\\s\\*x]\\])(?=\\s)'
+    'name': 'markup.todo.asciidoc'
+    'captures':
+      '1': 'name': 'markup.list.bullet.asciidoc'
+      '2': 'name': 'markup.todo.box.asciidoc'
+  }
+
   # Matches ordered and unordered list items
   #
   # Examples
@@ -291,11 +300,32 @@ patterns: [
     'captures':
       '1': 'name': 'markup.list.bullet.asciidoc'
   }
+
+  # Includes inline patterns, see repository section below.
+  {
+    'include': '#inline'
+  }
 ]
 
 'repository':
   'inline':
     'patterns': [
+
+      # Matches bold unconstrained phrases
+      #
+      # Examples
+      #
+      #   b**old** phrase
+      {
+        'begin': '\\\\?(\\[(?:[^\\]]+?)\\])?(\\*\\*(?=.))'
+        'beginCaptures':
+          '1': 'name': 'support.constant.asciidoc' #TODO: handle this parsing seperately
+        'end': '(?<=.|^)\\*\\*'
+        'name': 'markup.bold.asciidoc'
+        'patterns': [
+          'match': '.+?(?=\\*\\*)'
+        ]
+      }
 
       # Matches bold constrained phrases
       #
@@ -303,9 +333,14 @@ patterns: [
       #
       #   *bold phrase*
       {
-        'match': '(?<=^|\\s)(\\*[^\\*]+\\*)'
-        'captures':
-          '0': 'name': 'markup.bold.asciidoc'
+        'begin': '(?<=^|[^\\w;:}])(\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*(?=[^\\s\\*]))'
+        'beginCaptures':
+          '1': 'name': 'support.constant.asciidoc' #TODO: handle this parsing seperately
+        'end': '(?<![\\s\\*])\\*(?!\\w)'
+        'name': 'markup.bold.asciidoc'
+        'patterns': [
+          'match': '.+?(?=\\*\\W)'
+        ]
       }
 
       # Matches italic constrained phrases

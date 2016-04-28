@@ -2,15 +2,35 @@ key: 'inlines'
 
 patterns: [
 
+  # Matches bold unconstrained phrases
+  #
+  # Examples
+  #
+  #   b**old** phrase
+  #
+  begin: '\\\\?(\\[(?:[^\\]]+?)\\])?(\\*\\*(?=.))'
+  beginCaptures:
+    1: name: 'support.constant.asciidoc' #TODO: handle this parsing seperately
+  end: '(?<=.|^)\\*\\*'
+  name: 'markup.bold.asciidoc'
+  patterns: [
+    match: '.+?(?=\\*\\*)'
+  ]
+,
   # Matches bold constrained phrases
   #
   # Examples
   #
   #   *bold phrase*
   #
-  match: '(?<=^|\\s)(\\*[^\\*]+\\*)'
-  captures:
-    0: name: 'markup.bold.asciidoc'
+  begin: '(?<=^|[^\\w;:}])(\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*(?=[^\\s\\*]))'
+  beginCaptures:
+    1: 'name': 'support.constant.asciidoc' #TODO: handle this parsing seperately
+  end: '(?<![\\s\\*])\\*(?!\\w)'
+  name: 'markup.bold.asciidoc'
+  patterns: [
+    match: '.+?(?=\\*\\W)'
+  ]
 ,
   # Matches italic constrained phrases
   #

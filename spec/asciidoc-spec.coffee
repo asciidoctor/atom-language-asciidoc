@@ -16,12 +16,6 @@ describe "AsciiDoc grammar", ->
     expect(grammar).toBeDefined()
     expect(grammar.scopeName).toBe "source.asciidoc"
 
-  it "tokenizes *bold* text", ->
-    {tokens} = grammar.tokenizeLine("this is *bold* text")
-    expect(tokens[0]).toEqual value: "this is ", scopes: ["source.asciidoc"]
-    expect(tokens[1]).toEqual value: "*bold*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
-    expect(tokens[2]).toEqual value: " text", scopes: ["source.asciidoc"]
-
   it "tokenizes _italic_ text", ->
     {tokens} = grammar.tokenizeLine("this is _italic_ text")
     expect(tokens[0]).toEqual value: "this is ", scopes: ["source.asciidoc"]
@@ -330,3 +324,58 @@ describe "AsciiDoc grammar", ->
     expect(tokens[6][1]).toEqual value: "*CoffeeLint*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
     expect(tokens[6][2]).toEqual value: " ", scopes: ["source.asciidoc"]
     expect(tokens[6][3]).toEqual value: "_rules_", scopes: ["source.asciidoc", "markup.italic.asciidoc"]
+
+  describe "should tokenize todo lists", ->
+
+    it "when todo", ->
+      {tokens} = grammar.tokenizeLine("- [ ] todo 1")
+      expect(tokens.length).toEqual 4
+      expect(tokens[0]).toEqual value: "-", scopes: ["source.asciidoc", "markup.todo.asciidoc", "markup.list.bullet.asciidoc"]
+      expect(tokens[1]).toEqual value: " ", scopes: ["source.asciidoc", "markup.todo.asciidoc"]
+      expect(tokens[2]).toEqual value: "[ ]", scopes: ["source.asciidoc", "markup.todo.asciidoc", "markup.todo.box.asciidoc"]
+      expect(tokens[3]).toEqual value: " todo 1", scopes: ["source.asciidoc"]
+
+    it "when [*] done", ->
+      {tokens} = grammar.tokenizeLine("- [*] todo 1")
+      expect(tokens.length).toEqual 4
+      expect(tokens[0]).toEqual value: "-", scopes: ["source.asciidoc", "markup.todo.asciidoc", "markup.list.bullet.asciidoc"]
+      expect(tokens[1]).toEqual value: " ", scopes: ["source.asciidoc", "markup.todo.asciidoc"]
+      expect(tokens[2]).toEqual value: "[*]", scopes: ["source.asciidoc", "markup.todo.asciidoc", "markup.todo.box.asciidoc"]
+      expect(tokens[3]).toEqual value: " todo 1", scopes: ["source.asciidoc"]
+
+    it "when [x] done", ->
+      {tokens} = grammar.tokenizeLine("- [x] todo 1")
+      expect(tokens.length).toEqual 4
+      expect(tokens[0]).toEqual value: "-", scopes: ["source.asciidoc", "markup.todo.asciidoc", "markup.list.bullet.asciidoc"]
+      expect(tokens[1]).toEqual value: " ", scopes: ["source.asciidoc", "markup.todo.asciidoc"]
+      expect(tokens[2]).toEqual value: "[x]", scopes: ["source.asciidoc", "markup.todo.asciidoc", "markup.todo.box.asciidoc"]
+      expect(tokens[3]).toEqual value: " todo 1", scopes: ["source.asciidoc"]
+
+    it "when a varied todo-list", ->
+      tokens = grammar.tokenizeLines("""
+                                      - [ ] todo 1
+                                      - normal item
+                                       - [x] done x
+                                      - [*] done *
+                                      """)
+      expect(tokens.length).toEqual 4
+      expect(tokens[0].length).toEqual 4
+      expect(tokens[0][0]).toEqual value: "-", scopes: ["source.asciidoc", "markup.todo.asciidoc", "markup.list.bullet.asciidoc"]
+      expect(tokens[0][1]).toEqual value: " ", scopes: ["source.asciidoc", "markup.todo.asciidoc"]
+      expect(tokens[0][2]).toEqual value: "[ ]", scopes: ["source.asciidoc", "markup.todo.asciidoc", "markup.todo.box.asciidoc"]
+      expect(tokens[0][3]).toEqual value: " todo 1", scopes: ["source.asciidoc"]
+      expect(tokens[1].length).toEqual 3
+      expect(tokens[1][0]).toEqual value: "-", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
+      expect(tokens[1][1]).toEqual value: " ", scopes: ["source.asciidoc", "markup.list.asciidoc"]
+      expect(tokens[1][2]).toEqual value: "normal item", scopes: ["source.asciidoc"]
+      expect(tokens[2].length).toEqual 5
+      expect(tokens[2][0]).toEqual value: " ", scopes: ["source.asciidoc", "markup.todo.asciidoc"]
+      expect(tokens[2][1]).toEqual value: "-", scopes: ["source.asciidoc", "markup.todo.asciidoc", "markup.list.bullet.asciidoc"]
+      expect(tokens[2][2]).toEqual value: " ", scopes: ["source.asciidoc", "markup.todo.asciidoc"]
+      expect(tokens[2][3]).toEqual value: "[x]", scopes: ["source.asciidoc", "markup.todo.asciidoc", "markup.todo.box.asciidoc"]
+      expect(tokens[2][4]).toEqual value: " done x", scopes: ["source.asciidoc"]
+      expect(tokens[3].length).toEqual 4
+      expect(tokens[3][0]).toEqual value: "-", scopes: ["source.asciidoc", "markup.todo.asciidoc", "markup.list.bullet.asciidoc"]
+      expect(tokens[3][1]).toEqual value: " ", scopes: ["source.asciidoc", "markup.todo.asciidoc"]
+      expect(tokens[3][2]).toEqual value: "[*]", scopes: ["source.asciidoc", "markup.todo.asciidoc", "markup.todo.box.asciidoc"]
+      expect(tokens[3][3]).toEqual value: " done *", scopes: ["source.asciidoc"]

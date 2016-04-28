@@ -2,6 +2,20 @@ key: 'list'
 
 patterns: [
 
+  # Matches todo lists
+  #
+  # Examples
+  #
+  # - [ ] todo
+  # - [x] done
+  # - [*] done
+  #
+  match: '^\\s*(-)\\s(\\[[\\s\\*x]\\])(?=\\s)'
+  name: 'markup.todo.asciidoc'
+  captures:
+    1: name: 'markup.list.bullet.asciidoc'
+    2: name: 'markup.todo.box.asciidoc'
+,
   # Matches ordered and unordered list items
   #
   # Examples

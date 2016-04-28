@@ -21,10 +21,10 @@ patterns: [
     include: "#various"
   }
   {
-    include: "#inlines"
+    include: "#blocks"
   }
   {
-    include: "#blocks"
+    include: "#inlines"
   }
 ]
 repository:
@@ -74,6 +74,15 @@ repository:
     ]
   list:
     patterns: [
+      {
+        match: "^\\s*(-)\\s(\\[[\\s\\*x]\\])(?=\\s)"
+        name: "markup.todo.asciidoc"
+        captures:
+          "1":
+            name: "markup.list.bullet.asciidoc"
+          "2":
+            name: "markup.todo.box.asciidoc"
+      }
       {
         name: "markup.list.asciidoc"
         match: "^\\s*([\\*\\-\\.]{1,5})[ \\t]+"
@@ -135,10 +144,30 @@ repository:
   inlines:
     patterns: [
       {
-        match: "(?<=^|\\s)(\\*[^\\*]+\\*)"
-        captures:
-          "0":
-            name: "markup.bold.asciidoc"
+        begin: "\\\\?(\\[(?:[^\\]]+?)\\])?(\\*\\*(?=.))"
+        beginCaptures:
+          "1":
+            name: "support.constant.asciidoc"
+        end: "(?<=.|^)\\*\\*"
+        name: "markup.bold.asciidoc"
+        patterns: [
+          {
+            match: ".+?(?=\\*\\*)"
+          }
+        ]
+      }
+      {
+        begin: "(?<=^|[^\\w;:}])(\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*(?=[^\\s\\*]))"
+        beginCaptures:
+          "1":
+            name: "support.constant.asciidoc"
+        end: "(?<![\\s\\*])\\*(?!\\w)"
+        name: "markup.bold.asciidoc"
+        patterns: [
+          {
+            match: ".+?(?=\\*\\W)"
+          }
+        ]
       }
       {
         match: "(?!_{4,}\\s*$)(?<=^|[^\\w;:])(?:\\[(?:[^\\]]+?)\\])?(_\\S_|_\\S[\\s\\S]*?\\S_)(?!\\w)"
@@ -265,6 +294,65 @@ repository:
             include: "#inline"
           }
         ]
+        end: "\\1"
+      }
+    ]
+  table:
+    patterns: [
+      {
+        begin: "^(\\|={3,}\\s*)$"
+        beginCaptures:
+          "0":
+            name: "support.table.asciidoc"
+        patterns: [
+          {
+            match: "(^|\\s+)([^\\|\\s\\\\]*)(\\|)(?!={3,}|\\|)"
+            captures:
+              "2":
+                name: "support.table.spec.asciidoc"
+              "3":
+                name: "support.table.asciidoc"
+          }
+          {
+            include: "#inline"
+          }
+        ]
+        end: "^\\1$"
+        endCaptures:
+          "0":
+            name: "support.table.asciidoc"
+      }
+    ]
+  "various-blocks":
+    patterns: [
+      {
+        name: "markup.block.example.asciidoc"
+        begin: "^(={4,})$"
+        patterns: [
+          {
+            include: "#inline"
+          }
+        ]
+        end: "\\1"
+      }
+      {
+        name: "markup.block.sidebar.asciidoc"
+        begin: "(^\\*{4,}$)"
+        patterns: [
+          {
+            include: "#inline"
+          }
+        ]
+        end: "\\1"
+      }
+      {
+        begin: "(^\\.{4,}$)"
+        end: "\\1"
+        name: "markup.block.literal.asciidoc"
+      }
+      {
+        name: "markup.block.passthrough.asciidoc"
+        begin: "(^\\+{4,}$)"
         end: "\\1"
       }
     ]
@@ -1980,64 +2068,5 @@ repository:
         endCaptures:
           "0":
             name: "support.asciidoc"
-      }
-    ]
-  table:
-    patterns: [
-      {
-        begin: "^(\\|={3,}\\s*)$"
-        beginCaptures:
-          "0":
-            name: "support.table.asciidoc"
-        patterns: [
-          {
-            match: "(^|\\s+)([^\\|\\s\\\\]*)(\\|)(?!={3,}|\\|)"
-            captures:
-              "2":
-                name: "support.table.spec.asciidoc"
-              "3":
-                name: "support.table.asciidoc"
-          }
-          {
-            include: "#inline"
-          }
-        ]
-        end: "^\\1$"
-        endCaptures:
-          "0":
-            name: "support.table.asciidoc"
-      }
-    ]
-  "various-blocks":
-    patterns: [
-      {
-        name: "markup.block.example.asciidoc"
-        begin: "^(={4,})$"
-        patterns: [
-          {
-            include: "#inline"
-          }
-        ]
-        end: "\\1"
-      }
-      {
-        name: "markup.block.sidebar.asciidoc"
-        begin: "(^\\*{4,}$)"
-        patterns: [
-          {
-            include: "#inline"
-          }
-        ]
-        end: "\\1"
-      }
-      {
-        begin: "(^\\.{4,}$)"
-        end: "\\1"
-        name: "markup.block.literal.asciidoc"
-      }
-      {
-        name: "markup.block.passthrough.asciidoc"
-        begin: "(^\\+{4,}$)"
-        end: "\\1"
       }
     ]

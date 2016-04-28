@@ -1,6 +1,7 @@
 {CompositeDisposable} = require 'atom'
 CSON = require 'season'
 GrammarHelper = require './grammar-helper'
+generator = require './code-block-generator'
 
 module.exports =
 
@@ -27,20 +28,18 @@ module.exports =
         'asciidoc'
       ]
 
-      partialGrammars = [
-        'comment-grammar.cson'
-        'list-grammar.cson'
-        'titles-grammar.cson'
-        'various-grammar.cson'
-        'inlines/inlines-grammar.cson'
-        'blocks/admonition-grammar.cson'
-        'blocks/quote-grammar.cson'
-        'blocks/table-grammar.cson'
-        'blocks/various-blocks-grammar.cson'
-        'blocks/source-asciidoc-grammar.cson'
-        'blocks/source-markdown-grammar.cson'
-      ]
-      helper.appendPartialGrammars rootGrammar, partialGrammars
+      helper.appendPartialGrammarsDirectory rootGrammar, ['partials/', 'inlines/', 'blocks/']
+
+      # Load languages list
+      languages = helper.readGrammarFile 'languages.cson'
+
+      # Add languages blocks for AsciiDoc
+      codeAsciidocBlocks = generator.makeAsciidocBlocks languages
+      rootGrammar.repository['source-asciidoctor'] = patterns: codeAsciidocBlocks
+
+      # Add languages blocks for Markdown
+      codeMarkdownBlocks = generator.makeMarkdownBlocks languages
+      rootGrammar.repository['source-markdown'] = patterns: codeMarkdownBlocks
 
       if debug
         console.log CSON.stringify rootGrammar

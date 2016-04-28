@@ -1,0 +1,79 @@
+[
+  pattern: 'c', type: 'source', code: 'c'
+,
+  pattern: 'clojure', type: 'source', code: 'clojure'
+,
+  pattern: 'coffee-?(script)?', type: 'source', code: 'coffee'
+,
+  pattern: 'c(pp|\\+\\+)', type: 'source', code: 'cpp'
+,
+  pattern: 'css', type: 'source', code: 'css'
+,
+  pattern: 'cs(harp)?', type: 'source', code: 'cs'
+,
+  pattern: 'diff|patch|rej', type: 'source', code: 'diff'
+,
+  pattern: 'docker(file)?', type: 'source', code: 'dockerfile'
+,
+  pattern: 'elixir', type: 'source', code: 'elixir'
+,
+  pattern: 'elm', type: 'source', code: 'elm'
+,
+  pattern: 'erlang', type: 'source', code: 'erlang'
+,
+  pattern: 'go(lang)?', type: 'source', code: 'go'
+,
+  pattern: 'haskell', type: 'source', code: 'haskell'
+,
+  pattern: 'html', type: 'text', code: 'html.basic'
+,
+  pattern: 'java', type: 'source', code: 'java'
+,
+  pattern: 'javascript|js', type: 'source', code: 'js'
+,
+  pattern: 'json', type: 'source', code: 'json'
+,
+  pattern: 'julia', type: 'source', code: 'julia'
+,
+  pattern: 'less', type: 'source', code: 'css.less'
+,
+  pattern: 'make(file)?', type: 'source', code: 'makefile'
+,
+  pattern: 'markdown|mdown|md', type: 'source', code: 'gfm'
+,
+  pattern: 'objc|objective-c', type: 'source', code: 'objc'
+,
+  pattern: 'perl', type: 'source', code: 'perl'
+,
+  pattern: 'perl6', type: 'source', code: 'perl6'
+,
+  pattern: 'php', type: 'text', code: 'html.php'
+,
+  pattern: 'properties', type: 'source', code: 'asciidoc.properties'
+,
+  pattern: 'py(thon)?', type: 'source', code: 'python'
+,
+  pattern: 'r', type: 'source', code: 'r'
+,
+  pattern: 'ruby|rb', type: 'source', code: 'ruby'
+,
+  pattern: 'rust|rs', type: 'source', code: 'rust'
+,
+  pattern: 'sass', type: 'source', code: 'sass'
+,
+  pattern: 'scss', type: 'source', code: 'css.scss'
+,
+  pattern: 'sh|bash|shell', type: 'source', code: 'shell'
+,
+  pattern: 'sql', type: 'source', code: 'sql'
+,
+  pattern: 'swift', type: 'source', code: 'swift'
+,
+  pattern: 'toml', type: 'source', code: 'toml'
+,
+  pattern: 'typescript|ts', type: 'source', code: 'ts'
+,
+  pattern: 'xml', type: 'text', code: 'xml'
+,
+  pattern: 'ya?ml', type: 'source', code: 'yaml'
+]

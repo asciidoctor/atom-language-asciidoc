@@ -96,7 +96,7 @@ atom -d .
 
 * Open the command dialog with press keys: `Ctrl+Shift-P`
 * In the command dialog, find and choose the item named `Asciidoc Grammar: Compile grammar and reload`
-  * Tips: write only `AG` for a quick access to the item.
+** Tips: write only `AG` for a quick access to the item.
 * The grammar file is re-generated automatically.
 
 === Language definition

@@ -1,0 +1,21 @@
+key: 'list'
+
+patterns: [
+
+  # Matches ordered and unordered list items
+  #
+  # Examples
+  #
+  #   * level 1
+  #   ** level 2
+  #   *** level 3
+  #
+  #   . level 1
+  #   .. level 2
+  #   ... level 3
+  #
+  name: 'markup.list.asciidoc'
+  match: '^\\s*([\\*\\-\\.]{1,5})[ \\t]+'
+  captures:
+    1: name: 'markup.list.bullet.asciidoc'
+]

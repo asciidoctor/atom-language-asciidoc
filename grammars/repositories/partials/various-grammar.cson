@@ -1,0 +1,58 @@
+key: 'various'
+
+patterns: [
+
+  # Matches block titles
+  #
+  # Examples
+  #
+  # .An example example
+  # ========================
+  # This is an example.
+  # ========================
+  #
+  begin: '^\\.([^\\s.].*)'
+  captures:
+    1: name: 'markup.heading.blocktitle.asciidoc'
+  end: '$'
+,
+  # Matches attributes
+  #
+  # Examples
+  #
+  #   :icons: font
+  #   :sectanchors:
+  #   :!compat-mode:
+  #
+  name: 'meta.definition.attribute-entry.asciidoc'
+  match: '^(:)(!?\\w[\\p{Blank}\\w-]*?|\\w[\\p{Blank}\\w-]*?!?)(:)(\\p{Blank}+.*)?$'
+  captures:
+    1: name: 'punctuation.separator.attribute-entry.asciidoc'
+    2: name: 'support.constant.attribute-name.asciidoc'
+    3: name: 'punctuation.separator.attribute-entry.asciidoc'
+    4: name: 'string.unquoted.attribute-value.asciidoc'
+,
+  # Matches explicit paragraph styles
+  #
+  # Examples
+  #
+  #   [normal]
+  #   This is a normal paragraph.
+  #
+  name: 'markup.explicit.asciidoc'
+  match: '^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]$'
+  captures:
+    1: name: 'support.constant.asciidoc'
+,
+  # Matches section templates
+  #
+  # Examples
+  #
+  #   [appendix]
+  #   This is an appendix.
+  #
+  name: 'markup.section.asciidoc'
+  match: '^\\[((sect[1-4]|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index))\\]$'
+  captures:
+    1: name: 'support.constant.asciidoc'
+]

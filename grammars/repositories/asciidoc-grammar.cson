@@ -1,0 +1,39 @@
+# Grammar master
+name: ''
+scopeName: ''
+fileTypes: []
+
+maxTokensPerLine: 100
+
+patterns: [
+  include: '#comment'
+,
+  include: '#list'
+,
+  include: '#titles'
+,
+  include: '#various'
+,
+  include: '#inlines'
+,
+  include: '#blocks'
+]
+repository:
+  blocks:
+    patterns: [
+      include: '#admonition'
+    ,
+      include: '#quote'
+    ,
+      include: '#table'
+    ,
+      include: '#code-blocks'
+    ,
+      include: '#various-blocks'
+    ]
+  'code-blocks':
+    patterns: [
+      include: '#source-asciidoctor'
+    ,
+      include: '#source-markdown'
+    ]

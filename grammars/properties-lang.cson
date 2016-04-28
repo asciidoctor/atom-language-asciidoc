@@ -1,5 +1,5 @@
 # Hack for fix grammar parsing bug (`java-properties`, `git-config`)
-name: 'Hack for properties'
+name: 'AsciiDoc Hack for properties'
 scopeName: 'source.asciidoc.properties'
 fileTypes: [
   'ASCIIDOC_PROPERTIES'

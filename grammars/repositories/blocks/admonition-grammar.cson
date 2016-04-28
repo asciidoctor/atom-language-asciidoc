@@ -1,0 +1,20 @@
+key: 'admonition'
+
+patterns: [
+  # Matches admonition blocks
+  #
+  # Examples
+  #
+  #   TIP: Pro tip...
+  #
+  #   IMPORTANT: Don't forget...
+  #
+  name: 'markup.admonition.asciidoc'
+  begin: '^((NOTE|TIP|IMPORTANT|WARNING|CAUTION)\\:)\\p{Blank}+'
+  captures:
+    1: name: 'support.constant.asciidoc'
+  patterns: [
+    include: '#inline'
+  ]
+  end: '$'
+]

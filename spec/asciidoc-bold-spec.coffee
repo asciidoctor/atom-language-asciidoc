@@ -42,58 +42,72 @@ describe "AsciiDoc grammar", ->
       expect(tokens[3]).toEqual value: "**", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
 
     it "when multi-line constrained *bold* text", ->
-      tokens = grammar.tokenizeLines("""
+      tokens = grammar.tokenizeLines """
                                       this is *multi-
                                       line bold* text
-                                      """)
+                                      """
+      expect(tokens).toHaveLength 2
+      expect(tokens[0]).toHaveLength 3
       expect(tokens[0][0]).toEqual value: "this is ", scopes: ["source.asciidoc"]
       expect(tokens[0][1]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[0][2]).toEqual value: "multi-", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+      expect(tokens[1]).toHaveLength 3
       expect(tokens[1][0]).toEqual value: "line bold", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[1][1]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[1][2]).toEqual value: " text", scopes: ["source.asciidoc"]
 
     it "when multi-line constrained *bold* text closes on a new line", ->
-      tokens = grammar.tokenizeLines("""
+      tokens = grammar.tokenizeLines """
                                       this is *multi-
                                       line bold
                                       * text
-                                      """)
+                                      """
+      expect(tokens).toHaveLength 3
+      expect(tokens[0]).toHaveLength 3
       expect(tokens[0][0]).toEqual value: "this is ", scopes: ["source.asciidoc"]
       expect(tokens[0][1]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[0][2]).toEqual value: "multi-", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+      expect(tokens[1]).toHaveLength 1
       expect(tokens[1][0]).toEqual value: "line bold", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+      expect(tokens[2]).toHaveLength 2
       expect(tokens[2][0]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[2][1]).toEqual value: " text", scopes: ["source.asciidoc"]
 
     it "when multi-line unconstrained **bold** text", ->
-      tokens = grammar.tokenizeLines("""
+      tokens = grammar.tokenizeLines """
                                       this is**multi-
                                       line bold**text
-                                      """)
+                                      """
+      expect(tokens).toHaveLength 2
+      expect(tokens[0]).toHaveLength 3
       expect(tokens[0][0]).toEqual value: "this is", scopes: ["source.asciidoc"]
       expect(tokens[0][1]).toEqual value: "**", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[0][2]).toEqual value: "multi-", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+      expect(tokens[1]).toHaveLength 3
       expect(tokens[1][0]).toEqual value: "line bold", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[1][1]).toEqual value: "**", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[1][2]).toEqual value: "text", scopes: ["source.asciidoc"]
 
     it "when multi-line unconstrained **bold** text closes on a new line", ->
-      tokens = grammar.tokenizeLines("""
+      tokens = grammar.tokenizeLines """
                                       this is**multi-
                                       line bold
                                       **text
-                                      """)
+                                      """
+      expect(tokens).toHaveLength 3
+      expect(tokens[0]).toHaveLength 3
       expect(tokens[0][0]).toEqual value: "this is", scopes: ["source.asciidoc"]
       expect(tokens[0][1]).toEqual value: "**", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[0][2]).toEqual value: "multi-", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+      expect(tokens[1]).toHaveLength 1
       expect(tokens[1][0]).toEqual value: "line bold", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
+      expect(tokens[2]).toHaveLength 2
       expect(tokens[2][0]).toEqual value: "**", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[2][1]).toEqual value: "text", scopes: ["source.asciidoc"]
 
     it "when constrained *bold* at the beginning of the line", ->
       {tokens} = grammar.tokenizeLine("*bold text* from the start.")
-      expect(tokens.length).toEqual 4
+      expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[1]).toEqual value: "bold text", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[2]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
@@ -101,7 +115,7 @@ describe "AsciiDoc grammar", ->
 
     it "when constrained *bold* in a * bulleted list", ->
       {tokens} = grammar.tokenizeLine("* *bold text* followed by normal text")
-      expect(tokens.length).toEqual 6
+      expect(tokens).toHaveLength 6
       expect(tokens[0]).toEqual value: "*", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
       expect(tokens[1]).toEqual value: " ", scopes: ["source.asciidoc", "markup.list.asciidoc"]
       expect(tokens[2]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
@@ -111,7 +125,7 @@ describe "AsciiDoc grammar", ->
 
     it "when constrained *bold* text within special characters", ->
       {tokens} = grammar.tokenizeLine("a*non-bold*a, !*bold*?, '*bold*:, .*bold*; ,*bold*")
-      expect(tokens.length).toEqual 16
+      expect(tokens).toHaveLength 16
       expect(tokens[0]).toEqual value: "a*non-bold*a, !", scopes: ["source.asciidoc"]
       expect(tokens[1]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[2]).toEqual value: "bold", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
@@ -131,7 +145,7 @@ describe "AsciiDoc grammar", ->
 
     it "when variants of unbalanced asterisks around *bold* text", ->
       {tokens} = grammar.tokenizeLine("*bold* **bold* ***bold* ***bold** ***bold*** **bold*** *bold*** *bold**")
-      expect(tokens.length).toEqual 26
+      expect(tokens).toHaveLength 26
       expect(tokens[0]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[1]).toEqual value: "bold", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[2]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
@@ -161,7 +175,7 @@ describe "AsciiDoc grammar", ->
 
     it "when text is 'this is *bold* text'", ->
       {tokens} = grammar.tokenizeLine("this is *bold* text")
-      expect(tokens.length).toEqual 5
+      expect(tokens).toHaveLength 5
       expect(tokens[0]).toEqual value: "this is ", scopes: ["source.asciidoc"]
       expect(tokens[1]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[2]).toEqual value: "bold", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
@@ -170,28 +184,28 @@ describe "AsciiDoc grammar", ->
 
     it "when text is '* text*'", ->
       {tokens} = grammar.tokenizeLine("* text*")
-      expect(tokens.length).toEqual 3
+      expect(tokens).toHaveLength 3
       expect(tokens[0]).toEqual value: "*", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
       expect(tokens[1]).toEqual value: " ", scopes: ["source.asciidoc", "markup.list.asciidoc"]
       expect(tokens[2]).toEqual value: "text*", scopes: ["source.asciidoc"]
 
     it "when text is '*bold text*'", ->
       {tokens} = grammar.tokenizeLine("*bold text*")
-      expect(tokens.length).toEqual 3
+      expect(tokens).toHaveLength 3
       expect(tokens[0]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[1]).toEqual value: "bold text", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[2]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
 
     it "when text is '*bold*text*'", ->
       {tokens} = grammar.tokenizeLine("*bold*text*")
-      expect(tokens.length).toEqual 3
+      expect(tokens).toHaveLength 3
       expect(tokens[0]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[1]).toEqual value: "bold*text", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[2]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
 
     it "when text is '*bold* text *bold* text'", ->
       {tokens} = grammar.tokenizeLine("*bold* text *bold* text")
-      expect(tokens.length).toEqual 8
+      expect(tokens).toHaveLength 8
       expect(tokens[0]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[1]).toEqual value: "bold", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[2]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
@@ -203,7 +217,7 @@ describe "AsciiDoc grammar", ->
 
     it "when text is '* *bold* text' (list context)", ->
       {tokens} = grammar.tokenizeLine("* *bold* text")
-      expect(tokens.length).toEqual 6
+      expect(tokens).toHaveLength 6
       expect(tokens[0]).toEqual value: "*", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
       expect(tokens[1]).toEqual value: " ", scopes: ["source.asciidoc", "markup.list.asciidoc"]
       expect(tokens[2]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
@@ -213,7 +227,7 @@ describe "AsciiDoc grammar", ->
 
     it "when text is '* *bold*' (list context)", ->
       {tokens} = grammar.tokenizeLine("* *bold*")
-      expect(tokens.length).toEqual 5
+      expect(tokens).toHaveLength 5
       expect(tokens[0]).toEqual value: "*", scopes: ["source.asciidoc", "markup.list.asciidoc", "markup.list.bullet.asciidoc"]
       expect(tokens[1]).toEqual value: " ", scopes: ["source.asciidoc", "markup.list.asciidoc"]
       expect(tokens[2]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
@@ -222,7 +236,7 @@ describe "AsciiDoc grammar", ->
 
     it "when having a [role] set on constrained *bold* text", ->
       {tokens} = grammar.tokenizeLine("[role]*bold*")
-      expect(tokens.length).toEqual 4
+      expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqual value: "[role]", scopes: ["source.asciidoc", "markup.bold.asciidoc", "support.constant.asciidoc"]
       expect(tokens[1]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[2]).toEqual value: "bold", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
@@ -230,7 +244,7 @@ describe "AsciiDoc grammar", ->
 
     it "when having [role1 role2] set on constrained *bold* text", ->
       {tokens} = grammar.tokenizeLine("[role1 role2]*bold*")
-      expect(tokens.length).toEqual 4
+      expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqual value: "[role1 role2]", scopes: ["source.asciidoc", "markup.bold.asciidoc", "support.constant.asciidoc"]
       expect(tokens[1]).toEqual value: "*", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[2]).toEqual value: "bold", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
@@ -238,7 +252,7 @@ describe "AsciiDoc grammar", ->
 
     it "when having a [role] set on unconstrained *bold* text", ->
       {tokens} = grammar.tokenizeLine("[role]**bold**")
-      expect(tokens.length).toEqual 4
+      expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqual value: "[role]", scopes: ["source.asciidoc", "markup.bold.asciidoc", "support.constant.asciidoc"]
       expect(tokens[1]).toEqual value: "**", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[2]).toEqual value: "bold", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
@@ -246,7 +260,7 @@ describe "AsciiDoc grammar", ->
 
     it "when having [role1 role2] set on unconstrained **bold** text", ->
       {tokens} = grammar.tokenizeLine("[role1 role2]**bold**")
-      expect(tokens.length).toEqual 4
+      expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqual value: "[role1 role2]", scopes: ["source.asciidoc", "markup.bold.asciidoc", "support.constant.asciidoc"]
       expect(tokens[1]).toEqual value: "**", scopes: ["source.asciidoc", "markup.bold.asciidoc"]
       expect(tokens[2]).toEqual value: "bold", scopes: ["source.asciidoc", "markup.bold.asciidoc"]

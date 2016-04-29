@@ -8,14 +8,14 @@ patterns: [
   #
   #   b**old** phrase
   #
+  name: 'markup.bold.asciidoc'
   begin: '\\\\?(\\[(?:[^\\]]+?)\\])?(\\*\\*(?=.))'
   beginCaptures:
     1: name: 'support.constant.asciidoc' #TODO: handle this parsing seperately
-  end: '(?<=.|^)\\*\\*'
-  name: 'markup.bold.asciidoc'
   patterns: [
     match: '.+?(?=\\*\\*)'
   ]
+  end: '(?<=.|^)\\*\\*'
 ,
   # Matches bold constrained phrases
   #
@@ -23,14 +23,14 @@ patterns: [
   #
   #   *bold phrase*
   #
+  name: 'markup.bold.asciidoc'
   begin: '(?<=^|[^\\w;:}])(\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*(?=[^\\s\\*]))'
   beginCaptures:
     1: 'name': 'support.constant.asciidoc' #TODO: handle this parsing seperately
-  end: '(?<![\\s\\*])\\*(?!\\w)'
-  name: 'markup.bold.asciidoc'
   patterns: [
     match: '.+?(?=\\*\\W)'
   ]
+  end: '(?<![\\s\\*])\\*(?!\\w)'
 ,
   # Matches italic constrained phrases
   #

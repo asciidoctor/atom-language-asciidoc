@@ -1,6 +1,6 @@
 {
   "name": "language-asciidoc",
-  "version": "0.12.0",
+  "version": "1.0.0",
   "description": "Syntax highlighting and snippets for AsciiDoc (with Asciidoctor flavor).",
   "repository": "https://github.com/asciidoctor/atom-language-asciidoc",
   "license": "MIT",

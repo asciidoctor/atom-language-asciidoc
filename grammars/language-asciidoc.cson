@@ -144,30 +144,30 @@ repository:
   inlines:
     patterns: [
       {
+        name: "markup.bold.asciidoc"
         begin: "\\\\?(\\[(?:[^\\]]+?)\\])?(\\*\\*(?=.))"
         beginCaptures:
           "1":
             name: "support.constant.asciidoc"
-        end: "(?<=.|^)\\*\\*"
-        name: "markup.bold.asciidoc"
         patterns: [
           {
             match: ".+?(?=\\*\\*)"
           }
         ]
+        end: "(?<=.|^)\\*\\*"
       }
       {
+        name: "markup.bold.asciidoc"
         begin: "(?<=^|[^\\w;:}])(\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*(?=[^\\s\\*]))"
         beginCaptures:
           "1":
             name: "support.constant.asciidoc"
-        end: "(?<![\\s\\*])\\*(?!\\w)"
-        name: "markup.bold.asciidoc"
         patterns: [
           {
             match: ".+?(?=\\*\\W)"
           }
         ]
+        end: "(?<![\\s\\*])\\*(?!\\w)"
       }
       {
         match: "(?!_{4,}\\s*$)(?<=^|[^\\w;:])(?:\\[(?:[^\\]]+?)\\])?(_\\S_|_\\S[\\s\\S]*?\\S_)(?!\\w)"

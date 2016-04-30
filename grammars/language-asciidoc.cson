@@ -73,6 +73,9 @@ repository:
         include: "#subscript"
       }
       {
+        include: "#xref"
+      }
+      {
         include: "#various-inlines"
       }
     ]
@@ -284,16 +287,6 @@ repository:
             name: "support.constant.asciidoc"
       }
       {
-        match: "(?<=^|\\s)(\\<\\<)([^\\<\\>]+)(\\>\\>)"
-        captures:
-          "1":
-            name: "support.constant.asciidoc"
-          "2":
-            name: "markup.reference.asciidoc"
-          "3":
-            name: "support.constant.asciidoc"
-      }
-      {
         match: "(^|[^\\p{Word};:\"'`\\}])((?:\\[([^\\\\]]+?)\\])?`(\\S|\\S.*?\\S)`(?![\\p{Word}\"'`]))"
         captures:
           "2":
@@ -307,6 +300,27 @@ repository:
             name: "support.constant.asciidoc"
           "3":
             name: "support.constant.asciidoc"
+      }
+    ]
+  xref:
+    patterns: [
+      {
+        name: "markup.reference.xref.asciidoc"
+        match: "\\\\?(?:(<<)([\\p{Word}\":./].*?)(>>))"
+        captures:
+          "1":
+            name: "constant.asciidoc"
+          "3":
+            name: "constant.asciidoc"
+      }
+      {
+        name: "markup.reference.xref.asciidoc"
+        match: "\\\\?((xref:)([\\p{Word}\":.\\/].*?)(\\[(.*?)\\]))"
+        captures:
+          "2":
+            name: "constant.asciidoc"
+          "3":
+            name: "constant.id.xref.asciidoc"
       }
     ]
   admonition:

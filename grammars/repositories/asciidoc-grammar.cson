@@ -49,5 +49,7 @@ repository:
     ,
       include: '#subscript'
     ,
+      include: '#xref'
+    ,
       include: '#various-inlines'
     ]

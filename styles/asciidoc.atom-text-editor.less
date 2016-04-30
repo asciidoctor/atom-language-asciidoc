@@ -69,6 +69,18 @@ atom-text-editor, :host {
       &.macro.block {
           font-weight: bold;
       }
+
+      &.super {
+        vertical-align: super;
+        font-size: @font-size * .8;
+        color: mix(green, @syntax-text-color, 50%);
+      }
+
+      &.sub {
+        vertical-align: sub;
+        font-size: @font-size * .8;
+        color: mix(green, @syntax-text-color, 50%);
+      }
     }
 
     .block,

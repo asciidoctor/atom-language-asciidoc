@@ -67,6 +67,12 @@ repository:
         include: "#link-macro"
       }
       {
+        include: "#superscript"
+      }
+      {
+        include: "#subscript"
+      }
+      {
         include: "#various-inlines"
       }
     ]
@@ -84,7 +90,7 @@ repository:
       }
       {
         name: "comment.inline.asciidoc"
-        match: "^/{2}\\p{Space}(.*)$"
+        match: "^/{2}\\p{Blank}(.*)$"
       }
     ]
   list:
@@ -110,7 +116,7 @@ repository:
     patterns: [
       {
         name: "markup.heading.asciidoc"
-        begin: "^((?:=|#){1,6})([ \\t]+)(?=\\S+)"
+        begin: "^((?:=|#){1,6})([\\p{Blank}]+)(?=\\S+)"
         patterns: [
           {
             include: "$self"
@@ -225,6 +231,30 @@ repository:
             name: "support.constant.asciidoc"
           "4":
             name: "support.constant.asciidoc"
+      }
+    ]
+  subscript:
+    patterns: [
+      {
+        name: "markup.sub.asciidoc"
+        match: "\\\\?(?:\\[([^\\]]+?)\\])?(~)(\\S+?)(~)"
+        captures:
+          "2":
+            name: "constant.sub.asciidoc"
+          "4":
+            name: "constant.sub.asciidoc"
+      }
+    ]
+  superscript:
+    patterns: [
+      {
+        name: "markup.super.asciidoc"
+        match: "\\\\?(?:\\[([^\\]]+?)\\])?(\\^)(\\S+?)(\\^)"
+        captures:
+          "2":
+            name: "constant.super.asciidoc"
+          "4":
+            name: "constant.super.asciidoc"
       }
     ]
   "various-inlines":

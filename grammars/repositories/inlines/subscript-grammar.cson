@@ -1,0 +1,15 @@
+key: 'subscript'
+
+patterns: [
+  # Matches subscript
+  #
+  # Examples
+  #
+  #   ~subscript~
+  #
+  name: 'markup.sub.asciidoc'
+  match: '\\\\?(?:\\[([^\\]]+?)\\])?(~)(\\S+?)(~)'
+  captures:
+    2: name: 'constant.sub.asciidoc'
+    4: name: 'constant.sub.asciidoc'
+]

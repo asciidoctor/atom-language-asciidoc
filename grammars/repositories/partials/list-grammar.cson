@@ -10,7 +10,7 @@ patterns: [
   # - [x] done
   # - [*] done
   #
-  match: '^\\s*(-)\\s(\\[[\\s\\*x]\\])(?=\\s)'
+  match: '^\\s*(-)\\p{Blank}(\\[[\\p{Blank}\\*x]\\])(?=\\p{Blank})'
   name: 'markup.todo.asciidoc'
   captures:
     1: name: 'markup.list.bullet.asciidoc'
@@ -29,7 +29,7 @@ patterns: [
   #   ... level 3
   #
   name: 'markup.list.asciidoc'
-  match: '^\\s*([\\*\\-\\.]{1,5})[ \\t]+'
+  match: '^\\s*([\\*\\-\\.]{1,5})(?=\\p{Blank})'
   captures:
     1: name: 'markup.list.bullet.asciidoc'
 ]

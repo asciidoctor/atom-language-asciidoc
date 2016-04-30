@@ -42,9 +42,9 @@ patterns: [
   # Daleks EXTERMINATE in monospace!
   # ...................................
   #
+  name: 'markup.block.literal.asciidoc'
   begin: '(^\\.{4,}$)'
   end: '\\1'
-  name: 'markup.block.literal.asciidoc'
 ,
   # Matches passthrough block
   #

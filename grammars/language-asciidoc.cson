@@ -55,6 +55,21 @@ repository:
         include: "#source-markdown"
       }
     ]
+  inlines:
+    patterns: [
+      {
+        include: "#strong"
+      }
+      {
+        include: "#emphasis"
+      }
+      {
+        include: "#link-macro"
+      }
+      {
+        include: "#various-inlines"
+      }
+    ]
   comment:
     patterns: [
       {
@@ -75,7 +90,7 @@ repository:
   list:
     patterns: [
       {
-        match: "^\\s*(-)\\s(\\[[\\s\\*x]\\])(?=\\s)"
+        match: "^\\s*(-)\\p{Blank}(\\[[\\p{Blank}\\*x]\\])(?=\\p{Blank})"
         name: "markup.todo.asciidoc"
         captures:
           "1":
@@ -85,7 +100,7 @@ repository:
       }
       {
         name: "markup.list.asciidoc"
-        match: "^\\s*([\\*\\-\\.]{1,5})[ \\t]+"
+        match: "^\\s*([\\*\\-\\.]{1,5})(?=\\p{Blank})"
         captures:
           "1":
             name: "markup.list.bullet.asciidoc"
@@ -141,34 +156,8 @@ repository:
             name: "support.constant.asciidoc"
       }
     ]
-  inlines:
+  emphasis:
     patterns: [
-      {
-        begin: "\\\\?(\\[(?:[^\\]]+?)\\])?(\\*\\*(?=.))"
-        beginCaptures:
-          "1":
-            name: "support.constant.asciidoc"
-        end: "(?<=.|^)\\*\\*"
-        name: "markup.bold.asciidoc"
-        patterns: [
-          {
-            match: ".+?(?=\\*\\*)"
-          }
-        ]
-      }
-      {
-        begin: "(?<=^|[^\\w;:}])(\\[(?:[^\\]]+?)\\])?((?<!\\*)\\*(?=[^\\s\\*]))"
-        beginCaptures:
-          "1":
-            name: "support.constant.asciidoc"
-        end: "(?<![\\s\\*])\\*(?!\\w)"
-        name: "markup.bold.asciidoc"
-        patterns: [
-          {
-            match: ".+?(?=\\*\\W)"
-          }
-        ]
-      }
       {
         match: "(?!_{4,}\\s*$)(?<=^|[^\\w;:])(?:\\[(?:[^\\]]+?)\\])?(_\\S_|_\\S[\\s\\S]*?\\S_)(?!\\w)"
         captures:
@@ -181,6 +170,65 @@ repository:
           "0":
             name: "markup.italic.asciidoc"
       }
+    ]
+  "link-macro":
+    patterns: [
+      {
+        name: "markup.link.inline.asciidoc"
+        match: "(^|link:|<|[\\s>\\(\\)\\[\\];])(\\\\?(?:https?|file|ftp|irc)://[^\\s\\[\\]<]*[^\\s.,\\[\\]<])(?:\\[((?:\\\\\\]|[^\\]])*?)\\])?"
+        captures:
+          "2":
+            name: "support.constant.link.inline.asciidoc"
+      }
+      {
+        name: "markup.link.inline.asciidoc"
+        match: "\\\\?(?:link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])"
+        captures:
+          "1":
+            name: "support.constant.link.inline.asciidoc"
+      }
+      {
+        name: "markup.link.menu.inline.asciidoc"
+        match: "\\\\?menu:(\\p{Word}|\\p{Word}.*?\\S)\\[\\p{Blank}*(.+?)?\\]"
+        captures:
+          "1":
+            name: "support.constant.link.inline.asciidoc"
+      }
+      {
+        name: "markup.macro.block.asciidoc"
+        match: "(?<=^|\\s)(\\w+:{2})([^:]*?)(\\[)([^\\]]*?)(\\])"
+        captures:
+          "1":
+            name: "support.constant.asciidoc"
+          "3":
+            name: "support.constant.asciidoc"
+          "5":
+            name: "support.constant.asciidoc"
+      }
+    ]
+  strong:
+    patterns: [
+      {
+        name: "markup.bold.unconstrained.asciidoc"
+        match: "\\\\?(?:\\[([^\\]]+?)])?(\\*\\*)(.+?)(\\*\\*)"
+        captures:
+          "2":
+            name: "support.constant.asciidoc"
+          "4":
+            name: "support.constant.asciidoc"
+      }
+      {
+        name: "markup.bold.constrained.asciidoc"
+        match: "(?<=^|[^\\p{Word};:}])(?:\\[([^\\]]+?)\\])?(\\*)(\\S|\\S.*?\\S)(\\*)(?!\\p{Word})"
+        captures:
+          "2":
+            name: "support.constant.asciidoc"
+          "4":
+            name: "support.constant.asciidoc"
+      }
+    ]
+  "various-inlines":
+    patterns: [
       {
         name: "markup.substitution.asciidoc"
         match: "(?<=^|\\s)({)([^/\\:\\s]+)(})"
@@ -228,32 +276,6 @@ repository:
           "1":
             name: "support.constant.asciidoc"
           "3":
-            name: "support.constant.asciidoc"
-      }
-      {
-        name: "markup.macro.inline.asciidoc"
-        match: "(?<=^|\\s)(\\w+:)([^:]*?)(\\[)([^\\]]*?)(\\])"
-        captures:
-          "1":
-            name: "support.constant.asciidoc"
-          "3":
-            name: "support.constant.asciidoc"
-          "5":
-            name: "support.constant.asciidoc"
-      }
-      {
-        name: "markup.underline.link.asciidoc"
-        match: "(?<=^|\\s)(\\S+://\\S+\\.(com|net|org|edu|gov)(/\\S+)?)"
-      }
-      {
-        name: "markup.macro.block.asciidoc"
-        match: "(?<=^|\\s)(\\w+:{2})([^:]*?)(\\[)([^\\]]*?)(\\])"
-        captures:
-          "1":
-            name: "support.constant.asciidoc"
-          "3":
-            name: "support.constant.asciidoc"
-          "5":
             name: "support.constant.asciidoc"
       }
     ]
@@ -346,9 +368,9 @@ repository:
         end: "\\1"
       }
       {
+        name: "markup.block.literal.asciidoc"
         begin: "(^\\.{4,}$)"
         end: "\\1"
-        name: "markup.block.literal.asciidoc"
       }
       {
         name: "markup.block.passthrough.asciidoc"

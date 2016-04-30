@@ -37,3 +37,13 @@ repository:
     ,
       include: '#source-markdown'
     ]
+  inlines:
+    patterns: [
+      include: '#strong'
+    ,
+      include: '#emphasis'
+    ,
+      include: '#link-macro'
+    ,
+      include: '#various-inlines'
+    ]

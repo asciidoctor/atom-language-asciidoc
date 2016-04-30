@@ -1,6 +1,7 @@
 key: 'admonition'
 
 patterns: [
+
   # Matches admonition blocks
   #
   # Examples

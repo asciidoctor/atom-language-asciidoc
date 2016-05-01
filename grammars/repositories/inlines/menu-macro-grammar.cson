@@ -1,0 +1,17 @@
+key: 'menu-macro'
+
+patterns: [
+
+  # Matches a menu inline macro.
+  #
+  # Examples
+  #
+  #   menu:File[New...]
+  #   menu:View[Page Style > No Style]
+  #   menu:View[Page Style, No Style]
+  #
+  name: 'markup.link.menu.inline.asciidoc'
+  match: '\\\\?menu:(\\p{Word}|\\p{Word}.*?\\S)\\[\\p{Blank}*(.+?)?\\]'
+  captures:
+    1: name: 'support.constant.menu.inline.asciidoc'
+]

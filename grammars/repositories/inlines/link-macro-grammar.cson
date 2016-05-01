@@ -25,19 +25,6 @@ patterns: [
   captures:
     1: name: 'support.constant.link.inline.asciidoc'
 ,
-  # Matches a menu inline macro.
-  #
-  # Examples
-  #
-  #   menu:File[New...]
-  #   menu:View[Page Style > No Style]
-  #   menu:View[Page Style, No Style]
-  #
-  name: 'markup.link.menu.inline.asciidoc'
-  match: '\\\\?menu:(\\p{Word}|\\p{Word}.*?\\S)\\[\\p{Blank}*(.+?)?\\]'
-  captures:
-    1: name: 'support.constant.menu.inline.asciidoc'
-,
   # Matches block macros
   #
   # Examples
@@ -50,15 +37,4 @@ patterns: [
     1: name: 'support.constant.asciidoc'
     3: name: 'support.constant.asciidoc'
     5: name: 'support.constant.asciidoc'
-,
-  # Matches the pass inline macro allowed in value of attribute assignment.
-  #
-  # Examples
-  #
-  #   pass:[text]
-  #
-  name: 'markup.reference.pass.asciidoc'
-  match: '^(pass:)([a-z,]*)\\[(.*)\\]$'
-  captures:
-    1: name: 'support.constant.pass.inline.asciidoc'
 ]

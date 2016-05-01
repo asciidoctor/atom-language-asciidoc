@@ -67,6 +67,12 @@ repository:
         include: "#link-macro"
       }
       {
+        include: "#menu-macro"
+      }
+      {
+        include: "#pass-macro"
+      }
+      {
         include: "#superscript"
       }
       {
@@ -242,13 +248,6 @@ repository:
             name: "support.constant.link.inline.asciidoc"
       }
       {
-        name: "markup.link.menu.inline.asciidoc"
-        match: "\\\\?menu:(\\p{Word}|\\p{Word}.*?\\S)\\[\\p{Blank}*(.+?)?\\]"
-        captures:
-          "1":
-            name: "support.constant.menu.inline.asciidoc"
-      }
-      {
         name: "markup.macro.block.asciidoc"
         match: "(?<=^|\\s)(\\w+:{2})([^:]*?)(\\[)([^\\]]*?)(\\])"
         captures:
@@ -259,12 +258,15 @@ repository:
           "5":
             name: "support.constant.asciidoc"
       }
+    ]
+  "menu-macro":
+    patterns: [
       {
-        name: "markup.reference.pass.asciidoc"
-        match: "^(pass:)([a-z,]*)\\[(.*)\\]$"
+        name: "markup.link.menu.inline.asciidoc"
+        match: "\\\\?menu:(\\p{Word}|\\p{Word}.*?\\S)\\[\\p{Blank}*(.+?)?\\]"
         captures:
           "1":
-            name: "support.constant.pass.inline.asciidoc"
+            name: "support.constant.menu.inline.asciidoc"
       }
     ]
   monospaced:
@@ -276,6 +278,16 @@ repository:
       {
         name: "markup.raw.unconstrained.monospaced.asciidoc"
         match: "\\\\?(?:\\[([^\\]]+?)\\])?``(.+?)``"
+      }
+    ]
+  "pass-macro":
+    patterns: [
+      {
+        name: "markup.reference.pass.asciidoc"
+        match: "^(pass:)([a-z,]*)\\[(.*)\\]$"
+        captures:
+          "1":
+            name: "support.constant.pass.inline.asciidoc"
       }
     ]
   strong:

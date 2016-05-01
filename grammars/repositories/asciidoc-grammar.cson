@@ -45,6 +45,10 @@ repository:
     ,
       include: '#link-macro'
     ,
+      include: '#menu-macro'
+    ,
+      include: '#pass-macro'
+    ,
       include: '#superscript'
     ,
       include: '#subscript'

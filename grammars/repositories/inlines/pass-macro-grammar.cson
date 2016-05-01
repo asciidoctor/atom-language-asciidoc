@@ -8,7 +8,7 @@ patterns: [
   #
   #   pass:[text]
   #
-  name: 'markup.reference.pass.asciidoc'
+  name: 'markup.macro.inline.pass.asciidoc'
   match: '^(pass:)([a-z,]*)\\[(.*)\\]$'
   captures:
     1: name: 'support.constant.pass.inline.asciidoc'

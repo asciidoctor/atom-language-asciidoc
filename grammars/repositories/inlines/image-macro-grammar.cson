@@ -11,7 +11,7 @@ patterns: [
   #   image:filename.png[More [Alt\] Text] (alt text becomes "More [Alt] Text")
   #   icon:github[large]
   #
-  name: 'markup.macro.block.image.general.asciidoc'
+  name: 'markup.macro.inline.image.general.asciidoc'
   match: '\\\\?(?:image|icon):([^:\\[][^\\[]*)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])'
   captures:
     1: name: 'support.constant.asciidoc'

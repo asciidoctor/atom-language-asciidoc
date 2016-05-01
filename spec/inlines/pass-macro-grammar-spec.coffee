@@ -21,8 +21,8 @@ describe 'AsciiDoc grammar', ->
     it 'started at the beginning of the line and without text after.', ->
       {tokens} = grammar.tokenizeLine 'pass:[text]'
       expect(tokens).toHaveLength 2
-      expect(tokens[0]).toEqual value: 'pass:', scopes: ['source.asciidoc', 'markup.reference.pass.asciidoc', 'support.constant.pass.inline.asciidoc']
-      expect(tokens[1]).toEqual value: '[text]', scopes: ['source.asciidoc', 'markup.reference.pass.asciidoc']
+      expect(tokens[0]).toEqual value: 'pass:', scopes: ['source.asciidoc', 'markup.macro.inline.pass.asciidoc', 'support.constant.pass.inline.asciidoc']
+      expect(tokens[1]).toEqual value: '[text]', scopes: ['source.asciidoc', 'markup.macro.inline.pass.asciidoc']
 
     it 'not started at the beginning of the line', ->
       {tokens} = grammar.tokenizeLine 'foo pass:[text]'

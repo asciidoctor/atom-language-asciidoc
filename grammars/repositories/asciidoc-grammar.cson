@@ -51,5 +51,7 @@ repository:
     ,
       include: '#xref'
     ,
+      include: '#monospaced'
+    ,
       include: '#various-inlines'
     ]

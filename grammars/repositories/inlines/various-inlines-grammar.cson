@@ -33,16 +33,6 @@ patterns: [
     2: name: 'markup.biblioref.asciidoc'
     3: name: 'support.constant.asciidoc'
 ,
-  # Matches monospace inlines
-  #
-  # Examples
-  #
-  #   `Text in {backticks}` renders exactly as entered, in `monospace`.
-  #
-  match: '(^|[^\\p{Word};:"\'`\\}])((?:\\[([^\\\\]]+?)\\])?`(\\S|\\S.*?\\S)`(?![\\p{Word}"\'`]))'
-  captures:
-    2: name: 'markup.raw.inline.asciidoc'
-,
   # Matches characters
   #
   # Examples

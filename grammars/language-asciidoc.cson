@@ -5,6 +5,7 @@ fileTypes: [
   "asc"
   "adoc"
   "asciidoc"
+  "adoc.txt"
 ]
 maxTokensPerLine: 100
 patterns: [

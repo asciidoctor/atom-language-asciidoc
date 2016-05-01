@@ -26,6 +26,7 @@ module.exports =
         'asc'
         'adoc'
         'asciidoc'
+        'adoc.txt'
       ]
 
       helper.appendPartialGrammarsDirectory rootGrammar, ['partials/', 'inlines/', 'blocks/']

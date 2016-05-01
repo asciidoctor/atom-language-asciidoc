@@ -79,6 +79,9 @@ repository:
         include: "#monospaced"
       }
       {
+        include: "#attribute-reference"
+      }
+      {
         include: "#various-inlines"
       }
     ]
@@ -166,6 +169,13 @@ repository:
         captures:
           "1":
             name: "support.constant.asciidoc"
+      }
+    ]
+  "attribute-reference":
+    patterns: [
+      {
+        name: "markup.substitution.attribute-reference.asciidoc"
+        match: "(\\\\)?(\\{)((set|counter2?):.+?|\\w+(?:[\\-]\\w+)*)(\\\\)?(\\})"
       }
     ]
   emphasis:
@@ -283,10 +293,6 @@ repository:
     ]
   "various-inlines":
     patterns: [
-      {
-        name: "markup.substitution.asciidoc"
-        match: "(?<=^|\\s)({)([^/\\:\\s]+)(})"
-      }
       {
         match: "(?<=^|\\s)(\\[{2})([^\\[\\]]+)(\\]{2})"
         captures:

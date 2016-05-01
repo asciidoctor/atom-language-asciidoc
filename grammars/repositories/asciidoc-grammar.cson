@@ -53,5 +53,7 @@ repository:
     ,
       include: '#monospaced'
     ,
+      include: '#attribute-reference'
+    ,
       include: '#various-inlines'
     ]

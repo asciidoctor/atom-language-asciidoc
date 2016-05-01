@@ -2,17 +2,6 @@ key: 'various-inlines'
 
 patterns: [
 
-  # Matches substitutions
-  #
-  # Examples
-  #
-  #   Check out {docslink} too!
-  #
-  #   {checkedbox} That's done!
-  #
-  name: 'markup.substitution.asciidoc'
-  match: '(?<=^|\\s)({)([^\/\\:\\s]+)(})'
-,
   # Matches block ID elements
   #
   # Example: [[section-title]]

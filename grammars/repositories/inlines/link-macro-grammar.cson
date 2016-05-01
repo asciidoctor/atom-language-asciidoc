@@ -50,4 +50,15 @@ patterns: [
     1: name: 'support.constant.asciidoc'
     3: name: 'support.constant.asciidoc'
     5: name: 'support.constant.asciidoc'
+,
+  # Matches the pass inline macro allowed in value of attribute assignment.
+  #
+  # Examples
+  #
+  #   pass:[text]
+  #
+  name: 'markup.reference.pass.asciidoc'
+  match: '^(pass:)([a-z,]*)\\[(.*)\\]$'
+  captures:
+    1: name: 'support.constant.pass.inline.asciidoc'
 ]

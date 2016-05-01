@@ -217,6 +217,13 @@ repository:
           "5":
             name: "support.constant.asciidoc"
       }
+      {
+        name: "markup.reference.pass.asciidoc"
+        match: "^(pass:)([a-z,]*)\\[(.*)\\]$"
+        captures:
+          "1":
+            name: "support.constant.pass.inline.asciidoc"
+      }
     ]
   monospaced:
     patterns: [

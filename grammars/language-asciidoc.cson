@@ -18,6 +18,9 @@ patterns: [
     include: "#list"
   }
   {
+    include: "#callout-list-item"
+  }
+  {
     include: "#titles"
   }
   {
@@ -113,6 +116,26 @@ repository:
       }
       {
         include: "#bibliography-anchor"
+      }
+    ]
+  "callout-list-item":
+    patterns: [
+      {
+        name: "callout.asciidoc"
+        match: "^(<)(\\d+)(>)\\p{Blank}+(.*)$"
+        captures:
+          "1":
+            name: "constant.other.symbol.asciidoc"
+          "2":
+            name: "constant.numeric.asciidoc"
+          "3":
+            name: "constant.other.symbol.asciidoc"
+          "4":
+            patterns: [
+              {
+                include: "#inlines"
+              }
+            ]
       }
     ]
   comment:

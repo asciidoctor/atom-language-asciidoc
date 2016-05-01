@@ -12,6 +12,8 @@ patterns: [
 ,
   include: '#list'
 ,
+  include: '#callout-list-item'
+,
   include: '#titles'
 ,
   include: '#various'

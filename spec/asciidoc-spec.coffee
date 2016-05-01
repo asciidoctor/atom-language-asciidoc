@@ -16,14 +16,6 @@ describe "AsciiDoc grammar", ->
     expect(grammar).toBeDefined()
     expect(grammar.scopeName).toBe "source.asciidoc"
 
-  it "tokenizes HTML elements", ->
-    {tokens} = grammar.tokenizeLine "Dungeons &amp; Dragons"
-    expect(tokens[0]).toEqual value: "Dungeons ", scopes: ["source.asciidoc"]
-    expect(tokens[1]).toEqual value: "&", scopes: ["source.asciidoc", "markup.htmlentity.asciidoc", "support.constant.asciidoc"]
-    expect(tokens[2]).toEqual value: "amp", scopes: ["source.asciidoc", "markup.htmlentity.asciidoc"]
-    expect(tokens[3]).toEqual value: ";", scopes: ["source.asciidoc", "markup.htmlentity.asciidoc", "support.constant.asciidoc"]
-    expect(tokens[4]).toEqual value: " Dragons", scopes: ["source.asciidoc"]
-
   it "does not tokenizes email addresses as URLs", ->
     {tokens} = grammar.tokenizeLine "John Smith <johnSmith@example.com>"
     expect(tokens[0]).toEqual value: "John Smith <johnSmith@example.com>", scopes: ["source.asciidoc"]

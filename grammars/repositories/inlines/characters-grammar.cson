@@ -1,0 +1,16 @@
+key: 'characters'
+
+patterns: [
+
+  # Matches characters
+  #
+  # Examples
+  #
+  #   Dungeons &amp; Dragons
+  #
+  name: 'markup.htmlentity.asciidoc'
+  match: '(\&)(\\S+?)(;)'
+  captures:
+    1: name: 'support.constant.asciidoc'
+    3: name: 'support.constant.asciidoc'
+]

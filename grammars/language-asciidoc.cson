@@ -82,6 +82,9 @@ repository:
         include: "#attribute-reference"
       }
       {
+        include: "#characters"
+      }
+      {
         include: "#various-inlines"
       }
     ]
@@ -176,6 +179,18 @@ repository:
       {
         name: "markup.substitution.attribute-reference.asciidoc"
         match: "(\\\\)?(\\{)((set|counter2?):.+?|\\w+(?:[\\-]\\w+)*)(\\\\)?(\\})"
+      }
+    ]
+  characters:
+    patterns: [
+      {
+        name: "markup.htmlentity.asciidoc"
+        match: "(&)(\\S+?)(;)"
+        captures:
+          "1":
+            name: "support.constant.asciidoc"
+          "3":
+            name: "support.constant.asciidoc"
       }
     ]
   emphasis:
@@ -310,15 +325,6 @@ repository:
             name: "support.constant.asciidoc"
           "2":
             name: "markup.biblioref.asciidoc"
-          "3":
-            name: "support.constant.asciidoc"
-      }
-      {
-        name: "markup.htmlentity.asciidoc"
-        match: "(&)(.+?)(;)"
-        captures:
-          "1":
-            name: "support.constant.asciidoc"
           "3":
             name: "support.constant.asciidoc"
       }

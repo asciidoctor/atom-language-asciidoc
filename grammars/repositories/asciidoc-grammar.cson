@@ -55,5 +55,7 @@ repository:
     ,
       include: '#attribute-reference'
     ,
+      include: '#characters'
+    ,
       include: '#various-inlines'
     ]

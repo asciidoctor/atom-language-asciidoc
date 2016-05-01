@@ -21,16 +21,4 @@ patterns: [
     1: name: 'support.constant.asciidoc'
     2: name: 'markup.biblioref.asciidoc'
     3: name: 'support.constant.asciidoc'
-,
-  # Matches characters
-  #
-  # Examples
-  #
-  #   Dungeons &amp; Dragons
-  #
-  name: 'markup.htmlentity.asciidoc'
-  match: '(\&)(.+?)(;)'
-  captures:
-    1: name: 'support.constant.asciidoc'
-    3: name: 'support.constant.asciidoc'
 ]

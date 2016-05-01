@@ -1,0 +1,18 @@
+key: 'general-block-macro'
+
+patterns: [
+
+ # Matches the general block macro pattern.
+ #
+ # Examples
+ #
+ #   gist::123456[]
+ #
+ name: 'markup.macro.block.general.asciidoc'
+ match: '^(\\p{Word}+::)(\\S*?)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])$'
+ captures:
+   1: name: 'support.constant.asciidoc'
+   3: name: 'support.constant.asciidoc'
+   5: name: 'support.constant.asciidoc'
+
+]

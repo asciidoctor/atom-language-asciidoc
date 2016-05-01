@@ -24,17 +24,4 @@ patterns: [
   match: '\\\\?(?:link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])'
   captures:
     1: name: 'support.constant.link.inline.asciidoc'
-,
-  # Matches block macros
-  #
-  # Examples
-  #
-  #   image::tiger.png[Tyger tyger]
-  #
-  name: 'markup.macro.block.asciidoc'
-  match: '(?<=^|\\s)(\\w+\:{2})([^\:]*?)(\\[)([^\\]]*?)(\\])'
-  captures:
-    1: name: 'support.constant.asciidoc'
-    3: name: 'support.constant.asciidoc'
-    5: name: 'support.constant.asciidoc'
 ]

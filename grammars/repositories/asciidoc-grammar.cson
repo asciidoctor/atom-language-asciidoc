@@ -51,6 +51,14 @@ repository:
     ,
       include: '#pass-macro'
     ,
+      include: '#footnote-macro'
+    ,
+      include: '#kbd-macro'
+    ,
+      include: '#image-macro'
+    ,
+      include: '#general-block-macro'
+    ,
       include: '#superscript'
     ,
       include: '#subscript'

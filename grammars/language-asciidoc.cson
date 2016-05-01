@@ -76,6 +76,18 @@ repository:
         include: "#pass-macro"
       }
       {
+        include: "#footnote-macro"
+      }
+      {
+        include: "#kbd-macro"
+      }
+      {
+        include: "#image-macro"
+      }
+      {
+        include: "#general-block-macro"
+      }
+      {
         include: "#superscript"
       }
       {
@@ -258,6 +270,54 @@ repository:
             name: "markup.italic.asciidoc"
       }
     ]
+  "footnote-macro":
+    patterns: [
+      {
+        name: "markup.link.footnote.asciidoc"
+        match: "\\\\?(footnote(?:ref)?):\\[(.*?[^\\\\])\\]"
+        captures:
+          "2":
+            name: "support.constant.footnote.inline.asciidoc"
+      }
+    ]
+  "general-block-macro":
+    patterns: [
+      {
+        name: "markup.macro.block.general.asciidoc"
+        match: "^(\\p{Word}+::)(\\S*?)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])$"
+        captures:
+          "1":
+            name: "support.constant.asciidoc"
+          "3":
+            name: "support.constant.asciidoc"
+          "5":
+            name: "support.constant.asciidoc"
+      }
+    ]
+  "image-macro":
+    patterns: [
+      {
+        name: "markup.macro.block.image.general.asciidoc"
+        match: "\\\\?(?:image|icon):([^:\\[][^\\[]*)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])"
+        captures:
+          "1":
+            name: "support.constant.asciidoc"
+          "2":
+            name: "support.constant.asciidoc"
+          "4":
+            name: "support.constant.asciidoc"
+      }
+    ]
+  "kbd-macro":
+    patterns: [
+      {
+        name: "markup.macro.block.kbd.general.asciidoc"
+        match: "\\\\?(?:kbd|btn):(\\[)((?:\\\\\\]|[^\\]])+?)(\\])"
+        captures:
+          "2":
+            name: "support.constant.asciidoc"
+      }
+    ]
   "link-macro":
     patterns: [
       {
@@ -273,17 +333,6 @@ repository:
         captures:
           "1":
             name: "support.constant.link.inline.asciidoc"
-      }
-      {
-        name: "markup.macro.block.asciidoc"
-        match: "(?<=^|\\s)(\\w+:{2})([^:]*?)(\\[)([^\\]]*?)(\\])"
-        captures:
-          "1":
-            name: "support.constant.asciidoc"
-          "3":
-            name: "support.constant.asciidoc"
-          "5":
-            name: "support.constant.asciidoc"
       }
     ]
   "menu-macro":

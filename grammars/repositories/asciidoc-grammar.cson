@@ -8,6 +8,8 @@ maxTokensPerLine: 100
 patterns: [
   include: '#comment'
 ,
+  include: '#horizontal-rule'
+,
   include: '#list'
 ,
   include: '#titles'

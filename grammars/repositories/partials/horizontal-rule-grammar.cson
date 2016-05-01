@@ -1,0 +1,16 @@
+key: 'horizontal-rule'
+
+patterns: [
+
+  # Matches an AsciiDoc or Markdown horizontal rule or AsciiDoc page break.
+  #
+  # Examples
+  #
+  #   ''' or ' ' ' (horizontal rule)
+  #   --- or - - - (horizontal rule)
+  #   *** or * * * (horizontal rule)
+  #   <<< (page break)
+  #
+  name: 'constant.other.symbol.horizontal-rule.asciidoc'
+  match: '^(?:\'|<){3,}$|^ {0,3}([-\\*\'])( *)\\1\\2\\1$'
+]

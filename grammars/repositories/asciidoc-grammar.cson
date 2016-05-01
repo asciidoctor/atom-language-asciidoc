@@ -47,6 +47,8 @@ repository:
     ,
       include: '#menu-macro'
     ,
+      include: '#anchor-macro'
+    ,
       include: '#pass-macro'
     ,
       include: '#superscript'
@@ -62,6 +64,4 @@ repository:
       include: '#characters'
     ,
       include: '#bibliography-anchor'
-    ,
-      include: '#various-inlines'
     ]

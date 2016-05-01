@@ -70,6 +70,9 @@ repository:
         include: "#menu-macro"
       }
       {
+        include: "#anchor-macro"
+      }
+      {
         include: "#pass-macro"
       }
       {
@@ -92,9 +95,6 @@ repository:
       }
       {
         include: "#bibliography-anchor"
-      }
-      {
-        include: "#various-inlines"
       }
     ]
   comment:
@@ -180,6 +180,33 @@ repository:
         match: "^\\[((sect[1-4]|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index))\\]$"
         captures:
           "1":
+            name: "support.constant.asciidoc"
+      }
+    ]
+  "anchor-macro":
+    patterns: [
+      {
+        match: "\\\\?(?:(\\[{2})([\\p{Alpha}:_][\\p{Word}:.-]*)(?:,\\p{Blank}*(\\S.*?))?(\\]{2}))"
+        captures:
+          "1":
+            name: "support.constant.asciidoc"
+          "2":
+            name: "markup.blockid.asciidoc"
+          "4":
+            name: "support.constant.asciidoc"
+      }
+      {
+        match: "\\\\?(anchor:)(\\S+)(\\[)(.*?[^\\\\])?(\\])"
+        captures:
+          "1":
+            name: "support.constant.asciidoc"
+          "2":
+            name: "markup.blockid.asciidoc"
+          "3":
+            name: "support.constant.asciidoc"
+          "4":
+            name: "support.constant.asciidoc"
+          "5":
             name: "support.constant.asciidoc"
       }
     ]
@@ -333,19 +360,6 @@ repository:
             name: "constant.super.asciidoc"
           "4":
             name: "constant.super.asciidoc"
-      }
-    ]
-  "various-inlines":
-    patterns: [
-      {
-        match: "(?<=^|\\s)(\\[{2})([^\\[\\]]+)(\\]{2})"
-        captures:
-          "1":
-            name: "support.constant.asciidoc"
-          "2":
-            name: "markup.blockid.asciidoc"
-          "3":
-            name: "support.constant.asciidoc"
       }
     ]
   xref:

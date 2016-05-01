@@ -11,14 +11,4 @@ patterns: [
     1: name: 'support.constant.asciidoc'
     2: name: 'markup.blockid.asciidoc'
     3: name: 'support.constant.asciidoc'
-,
-  # Matches bibliography entities
-  #
-  # Example: [[[bib-ref]]]
-  #
-  match: '(?<=^|\\s)(\\[{3})([^\\[\\]]+)(\\]{3})'
-  captures:
-    1: name: 'support.constant.asciidoc'
-    2: name: 'markup.biblioref.asciidoc'
-    3: name: 'support.constant.asciidoc'
 ]

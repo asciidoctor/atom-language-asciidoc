@@ -85,6 +85,9 @@ repository:
         include: "#characters"
       }
       {
+        include: "#bibliography-anchor"
+      }
+      {
         include: "#various-inlines"
       }
     ]
@@ -179,6 +182,20 @@ repository:
       {
         name: "markup.substitution.attribute-reference.asciidoc"
         match: "(\\\\)?(\\{)((set|counter2?):.+?|\\w+(?:[\\-]\\w+)*)(\\\\)?(\\})"
+      }
+    ]
+  "bibliography-anchor":
+    patterns: [
+      {
+        name: "bibliography-anchor.asciidoc"
+        match: "\\\\?(\\[{3})([\\p{Word}:][\\p{Word}:.-]*?)(\\]{3})"
+        captures:
+          "1":
+            name: "support.constant.asciidoc"
+          "2":
+            name: "markup.biblioref.asciidoc"
+          "3":
+            name: "support.constant.asciidoc"
       }
     ]
   characters:
@@ -315,16 +332,6 @@ repository:
             name: "support.constant.asciidoc"
           "2":
             name: "markup.blockid.asciidoc"
-          "3":
-            name: "support.constant.asciidoc"
-      }
-      {
-        match: "(?<=^|\\s)(\\[{3})([^\\[\\]]+)(\\]{3})"
-        captures:
-          "1":
-            name: "support.constant.asciidoc"
-          "2":
-            name: "markup.biblioref.asciidoc"
           "3":
             name: "support.constant.asciidoc"
       }

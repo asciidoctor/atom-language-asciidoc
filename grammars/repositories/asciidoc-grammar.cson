@@ -57,5 +57,7 @@ repository:
     ,
       include: '#characters'
     ,
+      include: '#bibliography-anchor'
+    ,
       include: '#various-inlines'
     ]

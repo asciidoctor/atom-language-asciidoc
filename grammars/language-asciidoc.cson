@@ -64,31 +64,10 @@ repository:
         include: "#strong"
       }
       {
+        include: "#monospaced"
+      }
+      {
         include: "#emphasis"
-      }
-      {
-        include: "#link-macro"
-      }
-      {
-        include: "#menu-macro"
-      }
-      {
-        include: "#anchor-macro"
-      }
-      {
-        include: "#pass-macro"
-      }
-      {
-        include: "#footnote-macro"
-      }
-      {
-        include: "#kbd-macro"
-      }
-      {
-        include: "#image-macro"
-      }
-      {
-        include: "#general-block-macro"
       }
       {
         include: "#superscript"
@@ -97,10 +76,34 @@ repository:
         include: "#subscript"
       }
       {
-        include: "#xref"
+        include: "#general-block-macro"
       }
       {
-        include: "#monospaced"
+        include: "#anchor-macro"
+      }
+      {
+        include: "#footnote-macro"
+      }
+      {
+        include: "#image-macro"
+      }
+      {
+        include: "#kbd-macro"
+      }
+      {
+        include: "#link-macro"
+      }
+      {
+        include: "#stem-macro"
+      }
+      {
+        include: "#menu-macro"
+      }
+      {
+        include: "#pass-macro"
+      }
+      {
+        include: "#xref-macro"
       }
       {
         include: "#attribute-reference"
@@ -307,7 +310,7 @@ repository:
   "image-macro":
     patterns: [
       {
-        name: "markup.macro.block.image.general.asciidoc"
+        name: "markup.macro.inline.image.general.asciidoc"
         match: "\\\\?(?:image|icon):([^:\\[][^\\[]*)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])"
         captures:
           "1":
@@ -321,7 +324,7 @@ repository:
   "kbd-macro":
     patterns: [
       {
-        name: "markup.macro.block.kbd.general.asciidoc"
+        name: "markup.macro.inline.kbd.general.asciidoc"
         match: "\\\\?(?:kbd|btn):(\\[)((?:\\\\\\]|[^\\]])+?)(\\])"
         captures:
           "2":
@@ -369,11 +372,23 @@ repository:
   "pass-macro":
     patterns: [
       {
-        name: "markup.reference.pass.asciidoc"
+        name: "markup.macro.inline.pass.asciidoc"
         match: "^(pass:)([a-z,]*)\\[(.*)\\]$"
         captures:
           "1":
             name: "support.constant.pass.inline.asciidoc"
+      }
+    ]
+  "stem-macro":
+    patterns: [
+      {
+        name: "markup.macro.inline.stem.general.asciidoc"
+        match: "\\\\?(stem|(?:latex|ascii)math):([a-z,]*)(\\[)(.*?[^\\\\])(\\])"
+        captures:
+          "2":
+            name: "support.constant.asciidoc"
+          "4":
+            name: "support.constant.asciidoc"
       }
     ]
   strong:
@@ -421,7 +436,7 @@ repository:
             name: "constant.super.asciidoc"
       }
     ]
-  xref:
+  "xref-macro":
     patterns: [
       {
         name: "markup.reference.xref.asciidoc"

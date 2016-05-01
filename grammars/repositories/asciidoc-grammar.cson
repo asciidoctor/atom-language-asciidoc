@@ -43,31 +43,33 @@ repository:
     patterns: [
       include: '#strong'
     ,
+      include: '#monospaced'
+    ,
       include: '#emphasis'
-    ,
-      include: '#link-macro'
-    ,
-      include: '#menu-macro'
-    ,
-      include: '#anchor-macro'
-    ,
-      include: '#pass-macro'
-    ,
-      include: '#footnote-macro'
-    ,
-      include: '#kbd-macro'
-    ,
-      include: '#image-macro'
-    ,
-      include: '#general-block-macro'
     ,
       include: '#superscript'
     ,
       include: '#subscript'
     ,
-      include: '#xref'
+      include: '#general-block-macro'
     ,
-      include: '#monospaced'
+      include: '#anchor-macro'
+    ,
+      include: '#footnote-macro'
+    ,
+      include: '#image-macro'
+    ,
+      include: '#kbd-macro'
+    ,
+      include: '#link-macro'
+    ,
+      include: '#stem-macro'
+    ,
+      include: '#menu-macro'
+    ,
+      include: '#pass-macro'
+    ,
+      include: '#xref-macro'
     ,
       include: '#attribute-reference'
     ,

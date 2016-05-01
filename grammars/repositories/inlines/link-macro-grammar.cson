@@ -36,7 +36,7 @@ patterns: [
   name: 'markup.link.menu.inline.asciidoc'
   match: '\\\\?menu:(\\p{Word}|\\p{Word}.*?\\S)\\[\\p{Blank}*(.+?)?\\]'
   captures:
-    1: name: 'support.constant.link.inline.asciidoc'
+    1: name: 'support.constant.menu.inline.asciidoc'
 ,
   # Matches block macros
   #

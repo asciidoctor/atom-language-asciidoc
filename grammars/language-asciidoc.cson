@@ -204,7 +204,7 @@ repository:
         match: "\\\\?menu:(\\p{Word}|\\p{Word}.*?\\S)\\[\\p{Blank}*(.+?)?\\]"
         captures:
           "1":
-            name: "support.constant.link.inline.asciidoc"
+            name: "support.constant.menu.inline.asciidoc"
       }
       {
         name: "markup.macro.block.asciidoc"

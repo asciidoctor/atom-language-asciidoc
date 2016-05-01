@@ -1,0 +1,18 @@
+key: 'block-callout'
+
+patterns: [
+
+    # Matches a callout reference inside literal text.
+    #
+    # Examples
+    #   <1> (optionally prefixed by //, #, -- or ;; line comment chars)
+    #   <1> <2> (multiple callouts on one line)
+    #   <!--1--> (for XML-based languages)
+    #
+    name: 'callout.source.code.asciidoc'
+    match: '(?:(?:\\/\\/|#|--|;;) ?)?(\\\\)?(<)!?(--|)(\\d+)\\3(>)(?=(?: ?\\\\?<!?\\3\\d+\\3>)*$)'
+    captures:
+      2: name: 'constant.other.symbol.asciidoc'
+      4: name: 'constant.numeric.asciidoc'
+      5: name: 'constant.other.symbol.asciidoc'
+]

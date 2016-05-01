@@ -16,7 +16,11 @@ module.exports =
         endCaptures:
           0: name: 'support.asciidoc'
         contentName: "#{lang.type}.embedded.#{lang.code}"
-        patterns: [include: "#{lang.type}.#{lang.code}"]
+        patterns: [
+          include: '#block-callout'
+        ,
+          include: "#{lang.type}.#{lang.code}"
+        ]
       ]
       end: '(?<=----)[\\r\\n]+$'
 
@@ -31,6 +35,7 @@ module.exports =
         begin: '^(-{4,})\\s*$'
         beginCaptures:
           0: name: 'support.asciidoc'
+        patterns: [include: '#block-callout']
         end: '^\\1*$'
         endCaptures:
           0: name: 'support.asciidoc'
@@ -51,7 +56,11 @@ module.exports =
       endCaptures:
         0: name: 'support.asciidoc'
       contentName: "#{lang.type}.embedded.#{lang.code}"
-      patterns: [include: "#{lang.type}.#{lang.code}"]
+      patterns: [
+        include: '#block-callout'
+      ,
+        include: "#{lang.type}.#{lang.code}"
+      ]
 
     # add generic block
     codeBlocks.push
@@ -59,6 +68,7 @@ module.exports =
       begin: '^\\s*(`{3,}).*$'
       beginCaptures:
         0: name: 'support.asciidoc'
+      patterns: [include: '#block-callout']
       end: '^\\s*\\1\\s*$'
       endCaptures:
         0: name: 'support.asciidoc'

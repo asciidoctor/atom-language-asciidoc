@@ -119,6 +119,20 @@ repository:
         include: "#bibliography-anchor"
       }
     ]
+  "block-callout":
+    patterns: [
+      {
+        name: "callout.source.code.asciidoc"
+        match: "(?:(?:\\/\\/|#|--|;;) ?)?(\\\\)?(<)!?(--|)(\\d+)\\3(>)(?=(?: ?\\\\?<!?\\3\\d+\\3>)*$)"
+        captures:
+          "2":
+            name: "constant.other.symbol.asciidoc"
+          "4":
+            name: "constant.numeric.asciidoc"
+          "5":
+            name: "constant.other.symbol.asciidoc"
+      }
+    ]
   "callout-list-item":
     patterns: [
       {
@@ -608,6 +622,9 @@ repository:
             contentName: "source.embedded.c"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.c"
               }
             ]
@@ -633,6 +650,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.clojure"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.clojure"
               }
@@ -660,6 +680,9 @@ repository:
             contentName: "source.embedded.coffee"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.coffee"
               }
             ]
@@ -685,6 +708,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.cpp"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.cpp"
               }
@@ -712,6 +738,9 @@ repository:
             contentName: "source.embedded.css"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.css"
               }
             ]
@@ -737,6 +766,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.cs"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.cs"
               }
@@ -764,6 +796,9 @@ repository:
             contentName: "source.embedded.diff"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.diff"
               }
             ]
@@ -789,6 +824,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.dockerfile"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.dockerfile"
               }
@@ -816,6 +854,9 @@ repository:
             contentName: "source.embedded.elixir"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.elixir"
               }
             ]
@@ -841,6 +882,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.elm"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.elm"
               }
@@ -868,6 +912,9 @@ repository:
             contentName: "source.embedded.erlang"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.erlang"
               }
             ]
@@ -893,6 +940,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.go"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.go"
               }
@@ -920,6 +970,9 @@ repository:
             contentName: "source.embedded.haskell"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.haskell"
               }
             ]
@@ -945,6 +998,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "text.embedded.html.basic"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "text.html.basic"
               }
@@ -972,6 +1028,9 @@ repository:
             contentName: "source.embedded.java"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.java"
               }
             ]
@@ -997,6 +1056,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.js"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.js"
               }
@@ -1024,6 +1086,9 @@ repository:
             contentName: "source.embedded.json"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.json"
               }
             ]
@@ -1049,6 +1114,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.julia"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.julia"
               }
@@ -1076,6 +1144,9 @@ repository:
             contentName: "source.embedded.css.less"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.css.less"
               }
             ]
@@ -1101,6 +1172,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.makefile"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.makefile"
               }
@@ -1128,6 +1202,9 @@ repository:
             contentName: "source.embedded.gfm"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.gfm"
               }
             ]
@@ -1153,6 +1230,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.objc"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.objc"
               }
@@ -1180,6 +1260,9 @@ repository:
             contentName: "source.embedded.perl"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.perl"
               }
             ]
@@ -1205,6 +1288,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.perl6"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.perl6"
               }
@@ -1232,6 +1318,9 @@ repository:
             contentName: "text.embedded.html.php"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "text.html.php"
               }
             ]
@@ -1257,6 +1346,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.asciidoc.properties"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.asciidoc.properties"
               }
@@ -1284,6 +1376,9 @@ repository:
             contentName: "source.embedded.python"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.python"
               }
             ]
@@ -1309,6 +1404,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.r"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.r"
               }
@@ -1336,6 +1434,9 @@ repository:
             contentName: "source.embedded.ruby"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.ruby"
               }
             ]
@@ -1361,6 +1462,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.rust"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.rust"
               }
@@ -1388,6 +1492,9 @@ repository:
             contentName: "source.embedded.sass"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.sass"
               }
             ]
@@ -1413,6 +1520,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.css.scss"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.css.scss"
               }
@@ -1440,6 +1550,9 @@ repository:
             contentName: "source.embedded.shell"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.shell"
               }
             ]
@@ -1465,6 +1578,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.sql"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.sql"
               }
@@ -1492,6 +1608,9 @@ repository:
             contentName: "source.embedded.swift"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.swift"
               }
             ]
@@ -1517,6 +1636,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "source.embedded.toml"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "source.toml"
               }
@@ -1544,6 +1666,9 @@ repository:
             contentName: "source.embedded.ts"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.ts"
               }
             ]
@@ -1569,6 +1694,9 @@ repository:
                 name: "support.asciidoc"
             contentName: "text.embedded.xml"
             patterns: [
+              {
+                include: "#block-callout"
+              }
               {
                 include: "text.xml"
               }
@@ -1596,6 +1724,9 @@ repository:
             contentName: "source.embedded.yaml"
             patterns: [
               {
+                include: "#block-callout"
+              }
+              {
                 include: "source.yaml"
               }
             ]
@@ -1616,6 +1747,11 @@ repository:
             beginCaptures:
               "0":
                 name: "support.asciidoc"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+            ]
             end: "^\\1*$"
             endCaptures:
               "0":
@@ -1639,6 +1775,9 @@ repository:
         contentName: "source.embedded.c"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.c"
           }
         ]
@@ -1655,6 +1794,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.clojure"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.clojure"
           }
@@ -1673,6 +1815,9 @@ repository:
         contentName: "source.embedded.coffee"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.coffee"
           }
         ]
@@ -1689,6 +1834,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.cpp"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.cpp"
           }
@@ -1707,6 +1855,9 @@ repository:
         contentName: "source.embedded.css"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.css"
           }
         ]
@@ -1723,6 +1874,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.cs"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.cs"
           }
@@ -1741,6 +1895,9 @@ repository:
         contentName: "source.embedded.diff"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.diff"
           }
         ]
@@ -1757,6 +1914,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.dockerfile"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.dockerfile"
           }
@@ -1775,6 +1935,9 @@ repository:
         contentName: "source.embedded.elixir"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.elixir"
           }
         ]
@@ -1791,6 +1954,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.elm"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.elm"
           }
@@ -1809,6 +1975,9 @@ repository:
         contentName: "source.embedded.erlang"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.erlang"
           }
         ]
@@ -1825,6 +1994,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.go"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.go"
           }
@@ -1843,6 +2015,9 @@ repository:
         contentName: "source.embedded.haskell"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.haskell"
           }
         ]
@@ -1859,6 +2034,9 @@ repository:
             name: "support.asciidoc"
         contentName: "text.embedded.html.basic"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "text.html.basic"
           }
@@ -1877,6 +2055,9 @@ repository:
         contentName: "source.embedded.java"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.java"
           }
         ]
@@ -1893,6 +2074,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.js"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.js"
           }
@@ -1911,6 +2095,9 @@ repository:
         contentName: "source.embedded.json"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.json"
           }
         ]
@@ -1927,6 +2114,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.julia"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.julia"
           }
@@ -1945,6 +2135,9 @@ repository:
         contentName: "source.embedded.css.less"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.css.less"
           }
         ]
@@ -1961,6 +2154,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.makefile"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.makefile"
           }
@@ -1979,6 +2175,9 @@ repository:
         contentName: "source.embedded.gfm"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.gfm"
           }
         ]
@@ -1995,6 +2194,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.objc"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.objc"
           }
@@ -2013,6 +2215,9 @@ repository:
         contentName: "source.embedded.perl"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.perl"
           }
         ]
@@ -2029,6 +2234,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.perl6"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.perl6"
           }
@@ -2047,6 +2255,9 @@ repository:
         contentName: "text.embedded.html.php"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "text.html.php"
           }
         ]
@@ -2063,6 +2274,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.asciidoc.properties"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.asciidoc.properties"
           }
@@ -2081,6 +2295,9 @@ repository:
         contentName: "source.embedded.python"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.python"
           }
         ]
@@ -2097,6 +2314,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.r"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.r"
           }
@@ -2115,6 +2335,9 @@ repository:
         contentName: "source.embedded.ruby"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.ruby"
           }
         ]
@@ -2131,6 +2354,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.rust"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.rust"
           }
@@ -2149,6 +2375,9 @@ repository:
         contentName: "source.embedded.sass"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.sass"
           }
         ]
@@ -2165,6 +2394,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.css.scss"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.css.scss"
           }
@@ -2183,6 +2415,9 @@ repository:
         contentName: "source.embedded.shell"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.shell"
           }
         ]
@@ -2199,6 +2434,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.sql"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.sql"
           }
@@ -2217,6 +2455,9 @@ repository:
         contentName: "source.embedded.swift"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.swift"
           }
         ]
@@ -2233,6 +2474,9 @@ repository:
             name: "support.asciidoc"
         contentName: "source.embedded.toml"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "source.toml"
           }
@@ -2251,6 +2495,9 @@ repository:
         contentName: "source.embedded.ts"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.ts"
           }
         ]
@@ -2267,6 +2514,9 @@ repository:
             name: "support.asciidoc"
         contentName: "text.embedded.xml"
         patterns: [
+          {
+            include: "#block-callout"
+          }
           {
             include: "text.xml"
           }
@@ -2285,6 +2535,9 @@ repository:
         contentName: "source.embedded.yaml"
         patterns: [
           {
+            include: "#block-callout"
+          }
+          {
             include: "source.yaml"
           }
         ]
@@ -2295,6 +2548,11 @@ repository:
         beginCaptures:
           "0":
             name: "support.asciidoc"
+        patterns: [
+          {
+            include: "#block-callout"
+          }
+        ]
         end: "^\\s*\\1\\s*$"
         endCaptures:
           "0":

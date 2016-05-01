@@ -1,4 +1,4 @@
-describe 'AsciiDoc grammar', ->
+describe 'Should tokenizes pass macro when', ->
   grammar = null
 
   beforeEach ->
@@ -16,20 +16,18 @@ describe 'AsciiDoc grammar', ->
     expect(grammar).toBeDefined()
     expect(grammar.scopeName).toBe 'source.asciidoc'
 
-  describe 'Should tokenizes pass macro when', ->
+  it 'started at the beginning of the line and without text after.', ->
+    {tokens} = grammar.tokenizeLine 'pass:[text]'
+    expect(tokens).toHaveLength 2
+    expect(tokens[0]).toEqual value: 'pass:', scopes: ['source.asciidoc', 'markup.macro.inline.pass.asciidoc', 'support.constant.pass.inline.asciidoc']
+    expect(tokens[1]).toEqual value: '[text]', scopes: ['source.asciidoc', 'markup.macro.inline.pass.asciidoc']
 
-    it 'started at the beginning of the line and without text after.', ->
-      {tokens} = grammar.tokenizeLine 'pass:[text]'
-      expect(tokens).toHaveLength 2
-      expect(tokens[0]).toEqual value: 'pass:', scopes: ['source.asciidoc', 'markup.macro.inline.pass.asciidoc', 'support.constant.pass.inline.asciidoc']
-      expect(tokens[1]).toEqual value: '[text]', scopes: ['source.asciidoc', 'markup.macro.inline.pass.asciidoc']
+  it 'not started at the beginning of the line', ->
+    {tokens} = grammar.tokenizeLine 'foo pass:[text]'
+    expect(tokens).toHaveLength 1
+    expect(tokens[0]).toEqual value: 'foo pass:[text]', scopes: ['source.asciidoc']
 
-    it 'not started at the beginning of the line', ->
-      {tokens} = grammar.tokenizeLine 'foo pass:[text]'
-      expect(tokens).toHaveLength 1
-      expect(tokens[0]).toEqual value: 'foo pass:[text]', scopes: ['source.asciidoc']
-
-    it 'have text after', ->
-      {tokens} = grammar.tokenizeLine 'pass:[text] bar'
-      expect(tokens).toHaveLength 1
-      expect(tokens[0]).toEqual value: 'pass:[text] bar', scopes: ['source.asciidoc']
+  it 'have text after', ->
+    {tokens} = grammar.tokenizeLine 'pass:[text] bar'
+    expect(tokens).toHaveLength 1
+    expect(tokens[0]).toEqual value: 'pass:[text] bar', scopes: ['source.asciidoc']

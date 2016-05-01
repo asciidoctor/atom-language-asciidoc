@@ -1,4 +1,4 @@
-describe 'AsciiDoc grammar', ->
+describe '`monospaced`', ->
   grammar = null
 
   beforeEach ->

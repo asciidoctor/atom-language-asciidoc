@@ -1,4 +1,4 @@
-describe 'AsciiDoc grammar', ->
+describe 'horizontal rule and page break', ->
   grammar = null
 
   beforeEach ->

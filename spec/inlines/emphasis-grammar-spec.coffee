@@ -1,4 +1,4 @@
-describe 'AsciiDoc grammar', ->
+describe '_italic_ text', ->
   grammar = null
 
   beforeEach ->

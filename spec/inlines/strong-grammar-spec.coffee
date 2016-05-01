@@ -1,4 +1,4 @@
-describe 'AsciiDoc grammar', ->
+describe '*strong* text', ->
   grammar = null
 
   beforeEach ->

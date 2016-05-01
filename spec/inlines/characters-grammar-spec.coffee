@@ -1,4 +1,4 @@
-describe 'AsciiDoc grammar', ->
+describe 'Should tokenizes characters when', ->
   grammar = null
 
   beforeEach ->
@@ -16,18 +16,16 @@ describe 'AsciiDoc grammar', ->
     expect(grammar).toBeDefined()
     expect(grammar.scopeName).toBe 'source.asciidoc'
 
-  describe 'Should tokenizes characters when', ->
+  it 'is in a phrase', ->
+    {tokens} = grammar.tokenizeLine 'Dungeons &amp; Dragons'
+    expect(tokens).toHaveLength 5
+    expect(tokens[0]).toEqual value: 'Dungeons ', scopes: ['source.asciidoc']
+    expect(tokens[1]).toEqual value: '&', scopes: ['source.asciidoc', 'markup.htmlentity.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[2]).toEqual value: 'amp', scopes: ['source.asciidoc', 'markup.htmlentity.asciidoc']
+    expect(tokens[3]).toEqual value: ';', scopes: ['source.asciidoc', 'markup.htmlentity.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[4]).toEqual value: ' Dragons', scopes: ['source.asciidoc']
 
-    it 'is in a phrase', ->
-      {tokens} = grammar.tokenizeLine 'Dungeons &amp; Dragons'
-      expect(tokens).toHaveLength 5
-      expect(tokens[0]).toEqual value: 'Dungeons ', scopes: ['source.asciidoc']
-      expect(tokens[1]).toEqual value: '&', scopes: ['source.asciidoc', 'markup.htmlentity.asciidoc', 'support.constant.asciidoc']
-      expect(tokens[2]).toEqual value: 'amp', scopes: ['source.asciidoc', 'markup.htmlentity.asciidoc']
-      expect(tokens[3]).toEqual value: ';', scopes: ['source.asciidoc', 'markup.htmlentity.asciidoc', 'support.constant.asciidoc']
-      expect(tokens[4]).toEqual value: ' Dragons', scopes: ['source.asciidoc']
-
-    it 'contains space (invalid context)', ->
-      {tokens} = grammar.tokenizeLine 'Dungeons &a mp; Dragons'
-      expect(tokens).toHaveLength 1
-      expect(tokens[0]).toEqual value: 'Dungeons &a mp; Dragons', scopes: ['source.asciidoc']
+  it 'contains space (invalid context)', ->
+    {tokens} = grammar.tokenizeLine 'Dungeons &a mp; Dragons'
+    expect(tokens).toHaveLength 1
+    expect(tokens[0]).toEqual value: 'Dungeons &a mp; Dragons', scopes: ['source.asciidoc']

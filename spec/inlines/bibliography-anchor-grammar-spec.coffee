@@ -1,4 +1,4 @@
-describe 'AsciiDoc grammar', ->
+describe 'Should tokenizes bibliography-anchor when', ->
   grammar = null
 
   beforeEach ->
@@ -16,13 +16,11 @@ describe 'AsciiDoc grammar', ->
     expect(grammar).toBeDefined()
     expect(grammar.scopeName).toBe 'source.asciidoc'
 
-  describe 'Should tokenizes bibliography-anchor when', ->
-
-    it 'is in a phrase', ->
-      {tokens} = grammar.tokenizeLine 'foobar [[[bib-ref]]] foobar'
-      expect(tokens).toHaveLength 5
-      expect(tokens[0]).toEqual value: 'foobar ', scopes: ['source.asciidoc']
-      expect(tokens[1]).toEqual value: '[[[', scopes: ['source.asciidoc', 'bibliography-anchor.asciidoc', 'support.constant.asciidoc']
-      expect(tokens[2]).toEqual value: 'bib-ref', scopes: ['source.asciidoc', 'bibliography-anchor.asciidoc', 'markup.biblioref.asciidoc']
-      expect(tokens[3]).toEqual value: ']]]', scopes: ['source.asciidoc', 'bibliography-anchor.asciidoc', 'support.constant.asciidoc']
-      expect(tokens[4]).toEqual value: ' foobar', scopes: ['source.asciidoc']
+  it 'is in a phrase', ->
+    {tokens} = grammar.tokenizeLine 'foobar [[[bib-ref]]] foobar'
+    expect(tokens).toHaveLength 5
+    expect(tokens[0]).toEqual value: 'foobar ', scopes: ['source.asciidoc']
+    expect(tokens[1]).toEqual value: '[[[', scopes: ['source.asciidoc', 'bibliography-anchor.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[2]).toEqual value: 'bib-ref', scopes: ['source.asciidoc', 'bibliography-anchor.asciidoc', 'markup.biblioref.asciidoc']
+    expect(tokens[3]).toEqual value: ']]]', scopes: ['source.asciidoc', 'bibliography-anchor.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[4]).toEqual value: ' foobar', scopes: ['source.asciidoc']

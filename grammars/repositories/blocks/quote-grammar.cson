@@ -1,4 +1,4 @@
-key: 'quote'
+key: 'quote-block'
 
 patterns: [
 
@@ -7,32 +7,46 @@ patterns: [
   # Examples
   #
   # [quote]
-  # ____________________________________________________________________
+  # ____
   # Huh?
-  # ____________________________________________________________________
+  # ____
   #
   # [quote, Homer Simpson]
-  # ____________________________________________________________________
+  # ____
   # D'oh!
-  # ____________________________________________________________________
+  # ____
   #
   # [quote, Erwin Schrödinger, Sorry]
-  # ____________________________________________________________________
+  # ____
   # I don't like it, and I'm sorry I ever had anything to do with it.
-  # ____________________________________________________________________
+  # ____
   #
+  name: 'markup.italic.quotes.attributes.asciidoc'
   begin: '^\\[(quote|verse)(, ([\\w ]+))?(, ([\\w ]+))?'
   beginCaptures:
-    1: name: 'markup.quote.declaration.asciidoc'
-    3: name: 'markup.quote.attribution.asciidoc'
-    5: name: 'markup.quote.citation.asciidoc'
+    1: name: 'none.quotes.label.asciidoc'
+    3: name: 'none.quotes.attribution.asciidoc'
+    5: name: 'none.quotes.citetitle.asciidoc'
   end: '\\]$'
+  # name: 'markup.block.quotes.attributes.asciidoc'
+  # begin: '^\\[(quote|verse)(, ([\\w ]+))?(, ([\\w ]+))?'
+  # beginCaptures:
+  #   1: name: 'markup.quotes.label.asciidoc'
+  #   3: name: 'markup.quotes.attribution.asciidoc'
+  #   5: name: 'markup.quotes.citetitle.asciidoc'
+  # end: '\\]$'
 ,
   # Matches quote block
-  name: 'markup.quote.block.asciidoc'
+  name: 'markup.italic.quotes.asciidoc'
   begin: '(^_{4,}$)'
   patterns: [
-    include: '#inline'
+    include: '#inlines'
   ]
   end: '\\1'
+  # name: 'markup.block.quotes.asciidoc'
+  # begin: '(^_{4,}$)'
+  # patterns: [
+  #   include: '#inlines'
+  # ]
+  # end: '\\1'
 ]

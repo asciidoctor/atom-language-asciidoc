@@ -38,10 +38,10 @@ repository:
   blocks:
     patterns: [
       {
-        include: "#admonition"
+        include: "#admonition-block"
       }
       {
-        include: "#quote"
+        include: "#quote-block"
       }
       {
         include: "#table"
@@ -50,7 +50,16 @@ repository:
         include: "#code-blocks"
       }
       {
-        include: "#various-blocks"
+        include: "#example-block"
+      }
+      {
+        include: "#sidebar-block"
+      }
+      {
+        include: "#literal-block"
+      }
+      {
+        include: "#passthrough-block"
       }
     ]
   "code-blocks":
@@ -104,7 +113,7 @@ repository:
         include: "#menu-macro"
       }
       {
-        include: "#pass-macro"
+        include: "#passthrough-macro"
       }
       {
         include: "#xref-macro"
@@ -160,7 +169,7 @@ repository:
         begin: "(^/{4,}$)"
         patterns: [
           {
-            include: "#inline"
+            include: "#inlines"
           }
         ]
         end: "\\1"
@@ -414,14 +423,43 @@ repository:
         match: "\\\\?(?:\\[([^\\]]+?)\\])?``(.+?)``"
       }
     ]
-  "pass-macro":
+  "passthrough-macro":
     patterns: [
       {
-        name: "markup.macro.inline.pass.asciidoc"
+        name: "markup.macro.inline.passthrough.asciidoc"
         match: "^(pass:)([a-z,]*)\\[(.*)\\]$"
         captures:
           "1":
-            name: "support.constant.pass.inline.asciidoc"
+            name: "support.constant.passthrough.inline.asciidoc"
+          "3":
+            patterns: [
+              {
+                include: "text.html.basic"
+              }
+            ]
+      }
+      {
+        name: "markup.macro.inline.passthrough.asciidoc"
+        match: "(?:(?:(\\\\?)\\[([^\\]]+?)\\])?(\\\\{0,2})(\\+{2,3}|\\${2})(.*?)(\\4)|(\\\\?)(pass:)([a-z,]*)\\[(.*?[^\\\\])\\])"
+        captures:
+          "4":
+            name: "support.constant.passthrough.inline.asciidoc"
+          "5":
+            patterns: [
+              {
+                include: "text.html.basic"
+              }
+            ]
+          "6":
+            name: "support.constant.passthrough.inline.asciidoc"
+          "8":
+            name: "support.constant.passthrough.inline.asciidoc"
+          "10":
+            patterns: [
+              {
+                include: "text.html.basic"
+              }
+            ]
       }
     ]
   "stem-macro":
@@ -502,7 +540,7 @@ repository:
             name: "constant.id.xref.asciidoc"
       }
     ]
-  admonition:
+  "admonition-block":
     patterns: [
       {
         name: "markup.admonition.asciidoc"
@@ -512,31 +550,79 @@ repository:
             name: "support.constant.asciidoc"
         patterns: [
           {
-            include: "#inline"
+            include: "#inlines"
           }
         ]
         end: "$"
       }
     ]
-  quote:
+  "example-block":
     patterns: [
       {
+        name: "markup.block.example.asciidoc"
+        begin: "^(={4,})$"
+        patterns: [
+          {
+            include: "#inlines"
+          }
+        ]
+        end: "\\1"
+      }
+    ]
+  "literal-block":
+    patterns: [
+      {
+        name: "markup.block.literal.asciidoc"
+        begin: "(^\\.{4,}$)"
+        end: "\\1"
+      }
+    ]
+  "passthrough-block":
+    patterns: [
+      {
+        name: "markup.block.passthrough.asciidoc"
+        begin: "(^\\+{4,}$)"
+        patterns: [
+          {
+            include: "text.html.basic"
+          }
+        ]
+        end: "\\1"
+      }
+    ]
+  "quote-block":
+    patterns: [
+      {
+        name: "markup.italic.quotes.attributes.asciidoc"
         begin: "^\\[(quote|verse)(, ([\\w ]+))?(, ([\\w ]+))?"
         beginCaptures:
           "1":
-            name: "markup.quote.declaration.asciidoc"
+            name: "none.quotes.label.asciidoc"
           "3":
-            name: "markup.quote.attribution.asciidoc"
+            name: "none.quotes.attribution.asciidoc"
           "5":
-            name: "markup.quote.citation.asciidoc"
+            name: "none.quotes.citetitle.asciidoc"
         end: "\\]$"
       }
       {
-        name: "markup.quote.block.asciidoc"
+        name: "markup.italic.quotes.asciidoc"
         begin: "(^_{4,}$)"
         patterns: [
           {
-            include: "#inline"
+            include: "#inlines"
+          }
+        ]
+        end: "\\1"
+      }
+    ]
+  "sidebar-block":
+    patterns: [
+      {
+        name: "markup.block.sidebar.asciidoc"
+        begin: "(^\\*{4,}$)"
+        patterns: [
+          {
+            include: "#inlines"
           }
         ]
         end: "\\1"
@@ -559,46 +645,13 @@ repository:
                 name: "support.table.asciidoc"
           }
           {
-            include: "#inline"
+            include: "#inlines"
           }
         ]
         end: "^\\1$"
         endCaptures:
           "0":
             name: "support.table.asciidoc"
-      }
-    ]
-  "various-blocks":
-    patterns: [
-      {
-        name: "markup.block.example.asciidoc"
-        begin: "^(={4,})$"
-        patterns: [
-          {
-            include: "#inline"
-          }
-        ]
-        end: "\\1"
-      }
-      {
-        name: "markup.block.sidebar.asciidoc"
-        begin: "(^\\*{4,}$)"
-        patterns: [
-          {
-            include: "#inline"
-          }
-        ]
-        end: "\\1"
-      }
-      {
-        name: "markup.block.literal.asciidoc"
-        begin: "(^\\.{4,}$)"
-        end: "\\1"
-      }
-      {
-        name: "markup.block.passthrough.asciidoc"
-        begin: "(^\\+{4,}$)"
-        end: "\\1"
       }
     ]
   "source-asciidoctor":

@@ -15,7 +15,7 @@ patterns: [
   name: 'comment.block.asciidoc'
   begin: '(^/{4,}$)'
   patterns: [
-    include: '#inline'
+    include: '#inlines'
   ]
   end: '\\1'
 ,

@@ -1,0 +1,16 @@
+key: 'literal-block'
+
+patterns: [
+
+  # Matches literal block
+  #
+  # Examples
+  #
+  # ....
+  # Daleks EXTERMINATE in monospace!
+  # ....
+  #
+  name: 'markup.block.literal.asciidoc'
+  begin: '(^\\.{4,}$)'
+  end: '\\1'
+]

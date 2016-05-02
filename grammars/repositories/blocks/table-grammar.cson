@@ -36,7 +36,7 @@ patterns: [
       2: name: 'support.table.spec.asciidoc'
       3: name: 'support.table.asciidoc'
     ,
-      include: '#inline'
+      include: '#inlines'
   ]
   end: '^\\1$'
   endCaptures:

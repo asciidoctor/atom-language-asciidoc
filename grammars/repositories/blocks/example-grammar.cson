@@ -1,0 +1,21 @@
+key: 'example-block'
+
+patterns: [
+
+  # Matches example block
+  #
+  # Examples
+  #
+  #   ====
+  #   A multi-line example.
+  #
+  #   Notice it's a delimited block.
+  #   ====
+  #
+  name: 'markup.block.example.asciidoc'
+  begin: '^(={4,})$'
+  patterns: [
+    include: '#inlines'
+  ]
+  end: '\\1'
+]

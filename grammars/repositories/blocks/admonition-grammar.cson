@@ -1,4 +1,4 @@
-key: 'admonition'
+key: 'admonition-block'
 
 patterns: [
 
@@ -15,7 +15,7 @@ patterns: [
   captures:
     1: name: 'support.constant.asciidoc'
   patterns: [
-    include: '#inline'
+    include: '#inlines'
   ]
   end: '$'
 ]

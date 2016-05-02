@@ -25,15 +25,21 @@ patterns: [
 repository:
   blocks:
     patterns: [
-      include: '#admonition'
+      include: '#admonition-block'
     ,
-      include: '#quote'
+      include: '#quote-block'
     ,
       include: '#table'
     ,
       include: '#code-blocks'
     ,
-      include: '#various-blocks'
+      include: '#example-block'
+    ,
+      include: '#sidebar-block'
+    ,
+      include: '#literal-block'
+    ,
+      include: '#passthrough-block'
     ]
   'code-blocks':
     patterns: [

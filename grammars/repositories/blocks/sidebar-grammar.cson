@@ -1,0 +1,19 @@
+key: 'sidebar-block'
+
+patterns: [
+
+  # Matches sidebar block
+  #
+  # Examples
+  #
+  # ****
+  # As an aside, I love Asciidoc
+  # ****
+  #
+  name: 'markup.block.sidebar.asciidoc'
+  begin: '(^\\*{4,}$)'
+  patterns: [
+    include: '#inlines'
+  ]
+  end: '\\1'
+]

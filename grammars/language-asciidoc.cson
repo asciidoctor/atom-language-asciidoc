@@ -38,10 +38,10 @@ repository:
   blocks:
     patterns: [
       {
-        include: "#admonition"
+        include: "#admonition-block"
       }
       {
-        include: "#quote"
+        include: "#quote-block"
       }
       {
         include: "#table"
@@ -50,7 +50,16 @@ repository:
         include: "#code-blocks"
       }
       {
-        include: "#various-blocks"
+        include: "#example-block"
+      }
+      {
+        include: "#sidebar-block"
+      }
+      {
+        include: "#literal-block"
+      }
+      {
+        include: "#passthrough-block"
       }
     ]
   "code-blocks":
@@ -502,7 +511,7 @@ repository:
             name: "constant.id.xref.asciidoc"
       }
     ]
-  admonition:
+  "admonition-block":
     patterns: [
       {
         name: "markup.admonition.asciidoc"
@@ -518,7 +527,36 @@ repository:
         end: "$"
       }
     ]
-  quote:
+  "example-block":
+    patterns: [
+      {
+        name: "markup.block.example.asciidoc"
+        begin: "^(={4,})$"
+        patterns: [
+          {
+            include: "#inlines"
+          }
+        ]
+        end: "\\1"
+      }
+    ]
+  "literal-block":
+    patterns: [
+      {
+        name: "markup.block.literal.asciidoc"
+        begin: "(^\\.{4,}$)"
+        end: "\\1"
+      }
+    ]
+  "passthrough-block":
+    patterns: [
+      {
+        name: "markup.block.passthrough.asciidoc"
+        begin: "(^\\+{4,}$)"
+        end: "\\1"
+      }
+    ]
+  "quote-block":
     patterns: [
       {
         begin: "^\\[(quote|verse)(, ([\\w ]+))?(, ([\\w ]+))?"
@@ -536,7 +574,20 @@ repository:
         begin: "(^_{4,}$)"
         patterns: [
           {
-            include: "#inline"
+            include: "#inlines"
+          }
+        ]
+        end: "\\1"
+      }
+    ]
+  "sidebar-block":
+    patterns: [
+      {
+        name: "markup.block.sidebar.asciidoc"
+        begin: "(^\\*{4,}$)"
+        patterns: [
+          {
+            include: "#inlines"
           }
         ]
         end: "\\1"
@@ -566,39 +617,6 @@ repository:
         endCaptures:
           "0":
             name: "support.table.asciidoc"
-      }
-    ]
-  "various-blocks":
-    patterns: [
-      {
-        name: "markup.block.example.asciidoc"
-        begin: "^(={4,})$"
-        patterns: [
-          {
-            include: "#inline"
-          }
-        ]
-        end: "\\1"
-      }
-      {
-        name: "markup.block.sidebar.asciidoc"
-        begin: "(^\\*{4,}$)"
-        patterns: [
-          {
-            include: "#inline"
-          }
-        ]
-        end: "\\1"
-      }
-      {
-        name: "markup.block.literal.asciidoc"
-        begin: "(^\\.{4,}$)"
-        end: "\\1"
-      }
-      {
-        name: "markup.block.passthrough.asciidoc"
-        begin: "(^\\+{4,}$)"
-        end: "\\1"
       }
     ]
   "source-asciidoctor":

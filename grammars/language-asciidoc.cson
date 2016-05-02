@@ -169,7 +169,7 @@ repository:
         begin: "(^/{4,}$)"
         patterns: [
           {
-            include: "#inline"
+            include: "#inlines"
           }
         ]
         end: "\\1"
@@ -521,7 +521,7 @@ repository:
             name: "support.constant.asciidoc"
         patterns: [
           {
-            include: "#inline"
+            include: "#inlines"
           }
         ]
         end: "$"
@@ -610,7 +610,7 @@ repository:
                 name: "support.table.asciidoc"
           }
           {
-            include: "#inline"
+            include: "#inlines"
           }
         ]
         end: "^\\1$"

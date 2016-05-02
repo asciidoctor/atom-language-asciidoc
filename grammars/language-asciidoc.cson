@@ -614,6 +614,16 @@ repository:
         ]
         end: "\\1"
       }
+      {
+        name: "markup.italic.quotes.asciidoc"
+        begin: "^\\p{Blank}*(>) "
+        patterns: [
+          {
+            include: "#inlines"
+          }
+        ]
+        end: "^\\p{Blank}*?$"
+      }
     ]
   "sidebar-block":
     patterns: [

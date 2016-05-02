@@ -28,13 +28,6 @@ patterns: [
     3: name: 'none.quotes.attribution.asciidoc'
     5: name: 'none.quotes.citetitle.asciidoc'
   end: '\\]$'
-  # name: 'markup.block.quotes.attributes.asciidoc'
-  # begin: '^\\[(quote|verse)(, ([\\w ]+))?(, ([\\w ]+))?'
-  # beginCaptures:
-  #   1: name: 'markup.quotes.label.asciidoc'
-  #   3: name: 'markup.quotes.attribution.asciidoc'
-  #   5: name: 'markup.quotes.citetitle.asciidoc'
-  # end: '\\]$'
 ,
   # Matches quote block
   name: 'markup.italic.quotes.asciidoc'
@@ -43,10 +36,17 @@ patterns: [
     include: '#inlines'
   ]
   end: '\\1'
-  # name: 'markup.block.quotes.asciidoc'
-  # begin: '(^_{4,}$)'
-  # patterns: [
-  #   include: '#inlines'
-  # ]
-  # end: '\\1'
+,
+  # Matches Markdown style quote
+  #
+  # > I don't like it, and I'm sorry I ever had anything to do with it.
+  # Erwin Schrödinger, Sorry
+  #
+  name: 'markup.italic.quotes.asciidoc'
+  begin: '^\\p{Blank}*(>) '
+  patterns: [
+    include: '#inlines'
+  ]
+  end: '^\\p{Blank}*?$'
+
 ]

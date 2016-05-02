@@ -1,0 +1,34 @@
+key: 'passthrough-macro'
+
+patterns: [
+
+  # Matches the passthrough inline macro allowed in value of attribute assignment.
+  #
+  # Examples
+  #
+  #   pass:[text]
+  #
+  name: 'markup.macro.inline.passthrough.asciidoc'
+  match: '^(pass:)([a-z,]*)\\[(.*)\\]$'
+  captures:
+    1: name: 'support.constant.passthrough.inline.asciidoc'
+    3: patterns: [include: 'text.html.basic']
+,
+  # Matches several variants of the passthrough inline macro.
+  #
+  # Examples
+  #
+  #   +++text+++
+  #   $$text$$
+  #   pass:quotes[text]
+  #
+  name: 'markup.macro.inline.passthrough.asciidoc'
+  match: '(?:(?:(\\\\?)\\[([^\\]]+?)\\])?(\\\\{0,2})(\\+{2,3}|\\${2})(.*?)(\\4)|(\\\\?)(pass:)([a-z,]*)\\[(.*?[^\\\\])\\])'
+  captures:
+    4: name: 'support.constant.passthrough.inline.asciidoc'
+    5: patterns: [include: 'text.html.basic']
+    6: name: 'support.constant.passthrough.inline.asciidoc'
+    8: name: 'support.constant.passthrough.inline.asciidoc'
+    10: patterns: [include: 'text.html.basic']
+
+]

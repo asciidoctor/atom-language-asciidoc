@@ -12,5 +12,8 @@ patterns: [
   #
   name: 'markup.block.passthrough.asciidoc'
   begin: '(^\\+{4,}$)'
+  patterns: [
+    include: 'text.html.basic'
+  ]
   end: '\\1'
 ]

@@ -75,7 +75,7 @@ repository:
     ,
       include: '#menu-macro'
     ,
-      include: '#pass-macro'
+      include: '#passthrough-macro'
     ,
       include: '#xref-macro'
     ,

@@ -46,14 +46,3 @@ describe "AsciiDoc grammar", ->
     {tokens} = grammar.tokenizeLine "[sect1]\nThis is an section.\n"
     expect(tokens[1]).toEqual value: "sect1", scopes: ["source.asciidoc", "markup.section.asciidoc", "support.constant.asciidoc"]
     expect(tokens[3]).toEqual value: "\nThis is an section.\n", scopes: ["source.asciidoc"]
-
-  it "tokenizes quote declarations with attribution", ->
-    {tokens} = grammar.tokenizeLine "[verse, Homer Simpson]\n"
-    expect(tokens[1]).toEqual value: "verse", scopes: ["source.asciidoc", "markup.quote.declaration.asciidoc"]
-    expect(tokens[3]).toEqual value: "Homer Simpson", scopes: ["source.asciidoc", "markup.quote.attribution.asciidoc"]
-
-  it "tokenizes quote declarations with attribution and citation", ->
-    {tokens} = grammar.tokenizeLine "[quote, Erwin Schrödinger, Sorry]\n"
-    expect(tokens[1]).toEqual value: "quote", scopes: ["source.asciidoc", "markup.quote.declaration.asciidoc"]
-    expect(tokens[3]).toEqual value: "Erwin Schrödinger", scopes: ["source.asciidoc", "markup.quote.attribution.asciidoc"]
-    expect(tokens[5]).toEqual value: "Sorry", scopes: ["source.asciidoc", "markup.quote.citation.asciidoc"]

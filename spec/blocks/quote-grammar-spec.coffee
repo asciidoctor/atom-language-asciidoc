@@ -25,16 +25,38 @@ describe 'Should tokenizes quote block when', ->
       '''
     expect(tokens).toHaveLength 4
     expect(tokens[0]).toHaveLength 7
-    expect(tokens[0][0]).toEqual value: '[', scopes: ['source.asciidoc']
-    expect(tokens[0][1]).toEqual value: 'quote', scopes: ['source.asciidoc', 'markup.quote.declaration.asciidoc']
-    expect(tokens[0][2]).toEqual value: ', ', scopes: ['source.asciidoc']
-    expect(tokens[0][3]).toEqual value: 'Erwin Schrödinger', scopes: ['source.asciidoc', 'markup.quote.attribution.asciidoc']
-    expect(tokens[0][4]).toEqual value: ', ', scopes: ['source.asciidoc']
-    expect(tokens[0][5]).toEqual value: 'Sorry', scopes: ['source.asciidoc', 'markup.quote.citation.asciidoc']
-    expect(tokens[0][6]).toEqual value: ']', scopes: ['source.asciidoc']
+    expect(tokens[0][0]).toEqual value: '[', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
+    expect(tokens[0][1]).toEqual value: 'quote', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.label.asciidoc' ]
+    expect(tokens[0][2]).toEqual value: ', ', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
+    expect(tokens[0][3]).toEqual value: 'Erwin Schrödinger', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.attribution.asciidoc']
+    expect(tokens[0][4]).toEqual value: ', ', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
+    expect(tokens[0][5]).toEqual value: 'Sorry', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.citetitle.asciidoc']
+    expect(tokens[0][6]).toEqual value: ']', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
     expect(tokens[1]).toHaveLength 1
-    expect(tokens[1][0]).toEqual value: '____', scopes: ['source.asciidoc', 'markup.quote.block.asciidoc']
+    expect(tokens[1][0]).toEqual value: '____', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc']
     expect(tokens[2]).toHaveLength 1
-    expect(tokens[2][0]).toEqual value: 'I don\'t like it, and I\'m sorry I ever had anything to do with it.', scopes: ['source.asciidoc', 'markup.quote.block.asciidoc']
+    expect(tokens[2][0]).toEqual value: 'I don\'t like it, and I\'m sorry I ever had anything to do with it.', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc']
     expect(tokens[3]).toHaveLength 1
-    expect(tokens[3][0]).toEqual value: '____', scopes: ['source.asciidoc', 'markup.quote.block.asciidoc']
+    expect(tokens[3][0]).toEqual value: '____', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc']
+
+  it 'tokenizes quote declarations with attribution', ->
+    {tokens} = grammar.tokenizeLine '[verse, Homer Simpson]\n'
+    expect(tokens).toHaveLength 6
+    expect(tokens[0]).toEqual value: '[', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
+    expect(tokens[1]).toEqual value: 'verse', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.label.asciidoc']
+    expect(tokens[2]).toEqual value: ', ', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
+    expect(tokens[3]).toEqual value: 'Homer Simpson', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.attribution.asciidoc']
+    expect(tokens[4]).toEqual value: ']', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
+    expect(tokens[5]).toEqual value: '\n', scopes: ['source.asciidoc']
+
+  it 'tokenizes quote declarations with attribution and citation', ->
+    {tokens} = grammar.tokenizeLine '[quote, Erwin Schrödinger, Sorry]\n'
+    expect(tokens).toHaveLength 8
+    expect(tokens[0]).toEqual value: '[', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
+    expect(tokens[1]).toEqual value: 'quote', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.label.asciidoc']
+    expect(tokens[2]).toEqual value: ', ', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
+    expect(tokens[3]).toEqual value: 'Erwin Schrödinger', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.attribution.asciidoc']
+    expect(tokens[4]).toEqual value: ', ', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
+    expect(tokens[5]).toEqual value: 'Sorry', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.citetitle.asciidoc']
+    expect(tokens[6]).toEqual value: ']', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
+    expect(tokens[7]).toEqual value: '\n', scopes: ['source.asciidoc']

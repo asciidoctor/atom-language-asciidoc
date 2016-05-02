@@ -8,7 +8,11 @@ maxTokensPerLine: 100
 patterns: [
   include: '#comment'
 ,
+  include: '#horizontal-rule'
+,
   include: '#list'
+,
+  include: '#callout-list-item'
 ,
   include: '#titles'
 ,
@@ -36,4 +40,42 @@ repository:
       include: '#source-asciidoctor'
     ,
       include: '#source-markdown'
+    ]
+  inlines:
+    patterns: [
+      include: '#strong'
+    ,
+      include: '#monospaced'
+    ,
+      include: '#emphasis'
+    ,
+      include: '#superscript'
+    ,
+      include: '#subscript'
+    ,
+      include: '#general-block-macro'
+    ,
+      include: '#anchor-macro'
+    ,
+      include: '#footnote-macro'
+    ,
+      include: '#image-macro'
+    ,
+      include: '#kbd-macro'
+    ,
+      include: '#link-macro'
+    ,
+      include: '#stem-macro'
+    ,
+      include: '#menu-macro'
+    ,
+      include: '#pass-macro'
+    ,
+      include: '#xref-macro'
+    ,
+      include: '#attribute-reference'
+    ,
+      include: '#characters'
+    ,
+      include: '#bibliography-anchor'
     ]

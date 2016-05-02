@@ -1,0 +1,28 @@
+key: 'xref-macro'
+
+patterns: [
+
+  # Matches an xref (i.e., cross-reference) inline macro.
+  #
+  # Examples
+  #
+  #   <<id,reftext>>
+  #
+  name: 'markup.reference.xref.asciidoc'
+  match: '\\\\?(?:(<<)([\\p{Word}":.\/].*?)(>>))'
+  captures:
+    1: name: 'constant.asciidoc'
+    3: name: 'constant.asciidoc'
+,
+  # Matches an xref (i.e., cross-reference) inline macro.
+  #
+  # Examples
+  #
+  #   xref:id[reftext]
+  #
+  name: 'markup.reference.xref.asciidoc'
+  match: '\\\\?((xref:)([\\p{Word}":.\\/].*?)(\\[(.*?)\\]))'
+  captures:
+    2: name: 'constant.asciidoc'
+    3: name: 'constant.id.xref.asciidoc'
+]

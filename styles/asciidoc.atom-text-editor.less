@@ -60,6 +60,27 @@ atom-text-editor, :host {
       &.list.bullet {
         color: mix(red, @syntax-text-color, 40%);
       }
+
+      &.macro.inline,
+      &.macro.block {
+          color: mix(green, @syntax-text-color, 20%);
+      }
+
+      &.macro.block {
+          font-weight: bold;
+      }
+
+      &.super {
+        vertical-align: super;
+        font-size: @font-size * .8;
+        color: mix(green, @syntax-text-color, 50%);
+      }
+
+      &.sub {
+        vertical-align: sub;
+        font-size: @font-size * .8;
+        color: mix(green, @syntax-text-color, 50%);
+      }
     }
 
     .block,
@@ -69,15 +90,6 @@ atom-text-editor, :host {
 
     .quote {
       color: mix(blue, @syntax-text-color, 20%);
-    }
-
-    .markup.macro.inline,
-    .markup.macro.block {
-        color: mix(green, @syntax-text-color, 20%);
-    }
-
-    .markup.macro.block {
-        font-weight: bold;
     }
 
   }

@@ -1,0 +1,17 @@
+key: 'attribute-reference'
+
+patterns: [
+
+  # Matches an inline attribute reference.
+  #
+  # Examples
+  #
+  #   {foo}
+  #   {counter:pcount:1}
+  #   {set:foo:bar}
+  #   {set:name!}
+  #
+  name: 'markup.substitution.attribute-reference.asciidoc'
+  match: '(\\\\)?(\\{)((set|counter2?):.+?|\\w+(?:[\\-]\\w+)*)(\\\\)?(\\})'
+
+]

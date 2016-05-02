@@ -18,6 +18,7 @@ describe "Code block generator", ->
           begin: '^(-{4,})\\s*$'
           beginCaptures:
             0: name: 'support.asciidoc'
+          patterns: [include: '#block-callout']
           end: '^\\1*$'
           endCaptures:
             0: name: 'support.asciidoc'
@@ -42,7 +43,11 @@ describe "Code block generator", ->
           endCaptures:
             0: name: 'support.asciidoc'
           contentName: 'source.embedded.js'
-          patterns: [include: 'source.js']
+          patterns: [
+            include: '#block-callout'
+          ,
+            include: 'source.js'
+          ]
         ]
         end: '(?<=----)[\\r\\n]+$'
 
@@ -66,7 +71,11 @@ describe "Code block generator", ->
           endCaptures:
             0: name: 'support.asciidoc'
           contentName: 'source.embedded.cpp'
-          patterns: [include: 'source.cpp']
+          patterns: [
+            include: '#block-callout'
+          ,
+            include: 'source.cpp'
+          ]
         ]
 
   describe "with Markdown syntax", ->
@@ -80,6 +89,7 @@ describe "Code block generator", ->
         begin: '^\\s*(`{3,}).*$'
         beginCaptures:
           0: name: 'support.asciidoc'
+        patterns: [include: '#block-callout']
         end: '^\\s*\\1\\s*$'
         endCaptures:
           0: name: 'support.asciidoc'
@@ -99,7 +109,11 @@ describe "Code block generator", ->
         endCaptures:
           0: name: 'support.asciidoc'
         contentName: 'source.embedded.js'
-        patterns: [include: 'source.js']
+        patterns: [
+          include: '#block-callout'
+        ,
+          include: 'source.js'
+        ]
 
     it 'should generate C++ code block', ->
       languages = [
@@ -116,4 +130,8 @@ describe "Code block generator", ->
         endCaptures:
           0: name: 'support.asciidoc'
         contentName: 'source.embedded.cpp'
-        patterns: [include: 'source.cpp']
+        patterns: [
+          include: '#block-callout'
+        ,
+          include: 'source.cpp'
+        ]

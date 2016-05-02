@@ -10,26 +10,38 @@ patterns: [
   # - [x] done
   # - [*] done
   #
-  match: '^\\s*(-)\\s(\\[[\\s\\*x]\\])(?=\\s)'
+  match: '^\\s*(-)\\p{Blank}(\\[[\\p{Blank}\\*x]\\])(?=\\p{Blank})'
   name: 'markup.todo.asciidoc'
   captures:
     1: name: 'markup.list.bullet.asciidoc'
     2: name: 'markup.todo.box.asciidoc'
 ,
-  # Matches ordered and unordered list items
+  # Matches an unordered list item (one level for hyphens, up to 5 levels for asterisks).
   #
   # Examples
   #
-  #   * level 1
-  #   ** level 2
-  #   *** level 3
-  #
-  #   . level 1
-  #   .. level 2
-  #   ... level 3
+  #   * Foo
+  #   - Foo
   #
   name: 'markup.list.asciidoc'
-  match: '^\\s*([\\*\\-\\.]{1,5})[ \\t]+'
+  match: '^\\p{Blank}*(-|\\*{1,5}|\\u2022{1,5})(?=\\p{Blank})'
+  captures:
+    1: name: 'markup.list.bullet.asciidoc'
+,
+  # Matches an ordered list item (explicit numbering or up to 5 consecutive dots).
+  #
+  # Examples
+  #
+  #   . Foo
+  #   .. Foo
+  #   1. Foo (arabic, default)
+  #   a. Foo (loweralpha)
+  #   A. Foo (upperalpha)
+  #   i) Foo (lowerroman)
+  #   I) Foo (upperroman)
+  #
+  name: 'markup.list.asciidoc'
+  match: '^\\p{Blank}*(\\.{1,5}|\\d+\\.|[a-zA-Z]\\.|[IVXivx]+\\))(?=\\p{Blank})'
   captures:
     1: name: 'markup.list.bullet.asciidoc'
 ]

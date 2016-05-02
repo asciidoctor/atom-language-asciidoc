@@ -1,0 +1,15 @@
+key: 'superscript'
+
+patterns: [
+  # Matches superscript
+  #
+  # Examples
+  #
+  #   ^superscript^
+  #
+  name: 'markup.super.asciidoc'
+  match: '\\\\?(?:\\[([^\\]]+?)\\])?(\\^)(\\S+?)(\\^)'
+  captures:
+    2: name: 'constant.super.asciidoc'
+    4: name: 'constant.super.asciidoc'
+]

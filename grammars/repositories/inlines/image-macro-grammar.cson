@@ -1,0 +1,20 @@
+key: 'image-macro'
+
+patterns: [
+
+  # Matches an image or icon inline macro.
+  #
+  # Examples
+  #
+  #   image:filename.png[Alt Text]
+  #   image:http://example.com/images/filename.png[Alt Text]
+  #   image:filename.png[More [Alt\] Text] (alt text becomes "More [Alt] Text")
+  #   icon:github[large]
+  #
+  name: 'markup.macro.inline.image.general.asciidoc'
+  match: '\\\\?(?:image|icon):([^:\\[][^\\[]*)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])'
+  captures:
+    1: name: 'support.constant.asciidoc'
+    2: name: 'support.constant.asciidoc'
+    4: name: 'support.constant.asciidoc'
+]

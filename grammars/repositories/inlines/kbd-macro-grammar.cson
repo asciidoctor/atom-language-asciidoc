@@ -1,0 +1,19 @@
+key: 'kbd-macro'
+
+patterns: [
+
+  # Matches either the kbd or btn inline macro.
+  #
+  # Examples
+  #
+  #   kbd:[F3]
+  #   kbd:[Ctrl+Shift+T]
+  #   kbd:[Ctrl+\]]
+  #   kbd:[Ctrl,T]
+  #   btn:[Save]
+  #
+  name: 'markup.macro.inline.kbd.general.asciidoc'
+  match: '\\\\?(?:kbd|btn):(\\[)((?:\\\\\\]|[^\\]])+?)(\\])'
+  captures:
+    2: name: 'support.constant.asciidoc'
+]

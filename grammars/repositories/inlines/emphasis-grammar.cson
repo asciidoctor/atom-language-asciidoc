@@ -1,0 +1,24 @@
+key: 'emphasis'
+
+patterns: [
+
+  # Matches emphasis constrained phrases
+  #
+  # Examples
+  #
+  #   _italic phrase_
+  #
+  match: '(?!_{4,}\\s*$)(?<=^|[^\\w;:])(?:\\[(?:[^\\]]+?)\\])?(_\\S_|_\\S[\\s\\S]*?\\S_)(?!\\w)'
+  captures:
+    0: name: 'markup.italic.asciidoc'
+,
+  # Matches emphasis unconstrained phrases
+  #
+  # Examples
+  #
+  #   i__talic__ phrase
+  #
+  match: '\\\\?(?:\\[([^\\]]+?)\\])?(__(?!_)[\\s\\S]+?__)' # now including the underscores in the match
+  captures:
+    0: name: 'markup.italic.asciidoc'
+]

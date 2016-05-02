@@ -1,0 +1,27 @@
+key: 'link-macro'
+
+patterns: [
+
+  # Matches an implicit link and some of the link inline macro.
+  #
+  # Examples
+  #
+  #   http://github.com
+  #   http://github.com[GitHub]
+  #
+  name: 'markup.link.inline.asciidoc'
+  match: '(^|link:|<|[\\s>\\(\\)\\[\\];])(\\\\?(?:https?|file|ftp|irc)://[^\\s\\[\\]<]*[^\\s.,\\[\\]<])(?:\\[((?:\\\\\\]|[^\\]])*?)\\])?'
+  captures:
+    2: name: 'support.constant.link.inline.asciidoc'
+,
+  # Match a link or e-mail inline macro
+  # Examples
+  #
+  #   link:path[label]
+  #   mailto:doc.writer@example.com[]
+  #
+  name: 'markup.link.inline.asciidoc'
+  match: '\\\\?(?:link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])'
+  captures:
+    1: name: 'support.constant.link.inline.asciidoc'
+]

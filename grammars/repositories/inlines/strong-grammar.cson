@@ -1,0 +1,28 @@
+key: 'strong'
+
+patterns: [
+
+  # Matches bold unconstrained phrases
+  #
+  # Examples
+  #
+  #   b**old** phrase
+  #
+  name: 'markup.bold.unconstrained.asciidoc'
+  match: '\\\\?(?:\\[([^\\]]+?)\])?(\\*\\*)(.+?)(\\*\\*)'
+  captures:
+    2: name: 'support.constant.asciidoc'
+    4: name: 'support.constant.asciidoc'
+,
+  # Matches strong constrained phrases
+  #
+  # Examples
+  #
+  #   *bold phrase*
+  #
+  name: 'markup.bold.constrained.asciidoc'
+  match: '(?<=^|[^\\p{Word};:}])(?:\\[([^\\]]+?)\\])?(\\*)(\\S|\\S.*?\\S)(\\*)(?!\\p{Word})'
+  captures:
+    2: name: 'support.constant.asciidoc'
+    4: name: 'support.constant.asciidoc'
+]

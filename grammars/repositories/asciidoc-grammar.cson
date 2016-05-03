@@ -16,7 +16,13 @@ patterns: [
 ,
   include: '#titles'
 ,
-  include: '#various'
+  include: '#attribute-entry'
+,
+  include: '#block-title'
+,
+  include: '#explicit-paragraph'
+,
+  include: '#section'
 ,
   include: '#blocks'
 ,

@@ -1,0 +1,18 @@
+key: 'block-title'
+
+patterns: [
+
+  # Matches block titles
+  #
+  # Examples
+  #
+  # .An example example
+  # ========================
+  # This is an example.
+  # ========================
+  #
+  begin: '^\\.([^\\s.].*)'
+  captures:
+    1: name: 'markup.heading.blocktitle.asciidoc'
+  end: '$'
+]

@@ -1,0 +1,16 @@
+key: 'section'
+
+patterns: [
+
+  # Matches section templates
+  #
+  # Examples
+  #
+  #   [appendix]
+  #   This is an appendix.
+  #
+  name: 'markup.section.asciidoc'
+  match: '^\\[((sect[1-4]|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index))\\]$'
+  captures:
+    1: name: 'support.constant.asciidoc'
+]

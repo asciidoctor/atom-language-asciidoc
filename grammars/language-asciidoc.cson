@@ -25,7 +25,16 @@ patterns: [
     include: "#titles"
   }
   {
-    include: "#various"
+    include: "#attribute-entry"
+  }
+  {
+    include: "#block-title"
+  }
+  {
+    include: "#explicit-paragraph"
+  }
+  {
+    include: "#section"
   }
   {
     include: "#blocks"
@@ -128,6 +137,22 @@ repository:
         include: "#bibliography-anchor"
       }
     ]
+  "attribute-entry":
+    patterns: [
+      {
+        name: "meta.definition.attribute-entry.asciidoc"
+        match: "^(:)(!?\\w[\\p{Blank}\\w-]*?|\\w[\\p{Blank}\\w-]*?!?)(:)(\\p{Blank}+.*)?$"
+        captures:
+          "1":
+            name: "punctuation.separator.attribute-entry.asciidoc"
+          "2":
+            name: "support.constant.attribute-name.asciidoc"
+          "3":
+            name: "punctuation.separator.attribute-entry.asciidoc"
+          "4":
+            name: "string.unquoted.attribute-value.asciidoc"
+      }
+    ]
   "block-callout":
     patterns: [
       {
@@ -140,6 +165,16 @@ repository:
             name: "constant.numeric.asciidoc"
           "5":
             name: "constant.other.symbol.asciidoc"
+      }
+    ]
+  "block-title":
+    patterns: [
+      {
+        begin: "^\\.([^\\s.].*)"
+        captures:
+          "1":
+            name: "markup.heading.blocktitle.asciidoc"
+        end: "$"
       }
     ]
   "callout-list-item":
@@ -179,6 +214,16 @@ repository:
         match: "^/{2}\\p{Blank}(.*)$"
       }
     ]
+  "explicit-paragraph":
+    patterns: [
+      {
+        name: "markup.explicit.asciidoc"
+        match: "^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]$"
+        captures:
+          "1":
+            name: "support.constant.asciidoc"
+      }
+    ]
   "horizontal-rule":
     patterns: [
       {
@@ -212,6 +257,16 @@ repository:
             name: "markup.list.bullet.asciidoc"
       }
     ]
+  section:
+    patterns: [
+      {
+        name: "markup.section.asciidoc"
+        match: "^\\[((sect[1-4]|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index))\\]$"
+        captures:
+          "1":
+            name: "support.constant.asciidoc"
+      }
+    ]
   titles:
     patterns: [
       {
@@ -223,43 +278,6 @@ repository:
           }
         ]
         end: "$"
-      }
-    ]
-  various:
-    patterns: [
-      {
-        begin: "^\\.([^\\s.].*)"
-        captures:
-          "1":
-            name: "markup.heading.blocktitle.asciidoc"
-        end: "$"
-      }
-      {
-        name: "meta.definition.attribute-entry.asciidoc"
-        match: "^(:)(!?\\w[\\p{Blank}\\w-]*?|\\w[\\p{Blank}\\w-]*?!?)(:)(\\p{Blank}+.*)?$"
-        captures:
-          "1":
-            name: "punctuation.separator.attribute-entry.asciidoc"
-          "2":
-            name: "support.constant.attribute-name.asciidoc"
-          "3":
-            name: "punctuation.separator.attribute-entry.asciidoc"
-          "4":
-            name: "string.unquoted.attribute-value.asciidoc"
-      }
-      {
-        name: "markup.explicit.asciidoc"
-        match: "^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]$"
-        captures:
-          "1":
-            name: "support.constant.asciidoc"
-      }
-      {
-        name: "markup.section.asciidoc"
-        match: "^\\[((sect[1-4]|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index))\\]$"
-        captures:
-          "1":
-            name: "support.constant.asciidoc"
       }
     ]
   "anchor-macro":

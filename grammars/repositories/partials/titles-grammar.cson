@@ -2,20 +2,99 @@ key: 'titles'
 
 patterns: [
 
-  # Matches section titles (headers)
+  # Matches level 5 section titles (headers)
   #
-  # Examples
+  # Example
   #
-  #   = Document Title (Level 0)
+  #   ====== Level 5 Section
   #
-  #   == Level 1 Section
-  #
-  #   === Level 2 Section
-  #
-  name: 'markup.heading.asciidoc'
-  begin: '^((?:=|#){1,6})([\\p{Blank}]+)(?=\\S+)'
+  name: 'markup.heading-5.asciidoc'
+  begin: '^((?:=|#){6})([\\p{Blank}]+)(?=\\S+)'
+  end: '$'
+  captures:
+    1: name: 'markup.heading.marker.asciidoc'
+    2: name: 'markup.heading.space.asciidoc'
   patterns: [
     include: '$self'
   ]
+,
+  # Matches level 4 section titles (headers)
+  #
+  # Example
+  #
+  #   ===== Level 4 Section
+  #
+  name: 'markup.heading-4.asciidoc'
+  begin: '^((?:=|#){5})([\\p{Blank}]+)(?=\\S+)'
   end: '$'
+  captures:
+    1: name: 'markup.heading.marker.asciidoc'
+    2: name: 'markup.heading.space.asciidoc'
+  patterns: [
+    include: '$self'
+  ]
+,
+  # Matches level 3 section titles (headers)
+  #
+  # Example
+  #
+  #   ==== Level 3 Section
+  #
+  name: 'markup.heading-3.asciidoc'
+  begin: '^((?:=|#){4})([\\p{Blank}]+)(?=\\S+)'
+  end: '$'
+  captures:
+    1: name: 'markup.heading.marker.asciidoc'
+    2: name: 'markup.heading.space.asciidoc'
+  patterns: [
+    include: '$self'
+  ]
+,
+  # Matches level 2 section titles (headers)
+  #
+  # Example
+  #
+  #   === Level 2 Section
+  #
+  name: 'markup.heading-2.asciidoc'
+  begin: '^((?:=|#){3})([\\p{Blank}]+)(?=\\S+)'
+  end: '$'
+  captures:
+    1: name: 'markup.heading.marker.asciidoc'
+    2: name: 'markup.heading.space.asciidoc'
+  patterns: [
+    include: '$self'
+  ]
+,
+  # Matches level 1 section titles (headers)
+  #
+  # Example
+  #
+  #   == Level 1 Section
+  #
+  name: 'markup.heading-1.asciidoc'
+  begin: '^((?:=|#){2})([\\p{Blank}]+)(?=\\S+)'
+  end: '$'
+  captures:
+    1: name: 'markup.heading.marker.asciidoc'
+    2: name: 'markup.heading.space.asciidoc'
+  patterns: [
+    include: '$self'
+  ]
+,
+  # Matches level 0 section titles (headers)
+  #
+  # Example
+  #
+  #   = Document Title (Level 0)
+  #
+  name: 'markup.heading-0.asciidoc'
+  begin: '^((?:=|#){1})([\\p{Blank}]+)(?=\\S+)'
+  end: '$'
+  captures:
+    1: name: 'markup.heading.marker.asciidoc'
+    2: name: 'markup.heading.space.asciidoc'
+  patterns: [
+    include: '$self'
+  ]
 ]

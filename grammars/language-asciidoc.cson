@@ -215,14 +215,94 @@ repository:
   titles:
     patterns: [
       {
-        name: "markup.heading.asciidoc"
-        begin: "^((?:=|#){1,6})([\\p{Blank}]+)(?=\\S+)"
+        name: "markup.heading-5.asciidoc"
+        begin: "^((?:=|#){6})([\\p{Blank}]+)(?=\\S+)"
+        end: "$"
+        captures:
+          "1":
+            name: "markup.heading.marker.asciidoc"
+          "2":
+            name: "markup.heading.space.asciidoc"
         patterns: [
           {
             include: "$self"
           }
         ]
+      }
+      {
+        name: "markup.heading-4.asciidoc"
+        begin: "^((?:=|#){5})([\\p{Blank}]+)(?=\\S+)"
         end: "$"
+        captures:
+          "1":
+            name: "markup.heading.marker.asciidoc"
+          "2":
+            name: "markup.heading.space.asciidoc"
+        patterns: [
+          {
+            include: "$self"
+          }
+        ]
+      }
+      {
+        name: "markup.heading-3.asciidoc"
+        begin: "^((?:=|#){4})([\\p{Blank}]+)(?=\\S+)"
+        end: "$"
+        captures:
+          "1":
+            name: "markup.heading.marker.asciidoc"
+          "2":
+            name: "markup.heading.space.asciidoc"
+        patterns: [
+          {
+            include: "$self"
+          }
+        ]
+      }
+      {
+        name: "markup.heading-2.asciidoc"
+        begin: "^((?:=|#){3})([\\p{Blank}]+)(?=\\S+)"
+        end: "$"
+        captures:
+          "1":
+            name: "markup.heading.marker.asciidoc"
+          "2":
+            name: "markup.heading.space.asciidoc"
+        patterns: [
+          {
+            include: "$self"
+          }
+        ]
+      }
+      {
+        name: "markup.heading-1.asciidoc"
+        begin: "^((?:=|#){2})([\\p{Blank}]+)(?=\\S+)"
+        end: "$"
+        captures:
+          "1":
+            name: "markup.heading.marker.asciidoc"
+          "2":
+            name: "markup.heading.space.asciidoc"
+        patterns: [
+          {
+            include: "$self"
+          }
+        ]
+      }
+      {
+        name: "markup.heading-0.asciidoc"
+        begin: "^((?:=|#){1})([\\p{Blank}]+)(?=\\S+)"
+        end: "$"
+        captures:
+          "1":
+            name: "markup.heading.marker.asciidoc"
+          "2":
+            name: "markup.heading.space.asciidoc"
+        patterns: [
+          {
+            include: "$self"
+          }
+        ]
       }
     ]
   various:

@@ -1,8 +1,8 @@
 generator = require '../lib/code-block-generator'
 
-describe "Code block generator", ->
+describe 'Code block generator', ->
 
-  describe "with AsciiDoc syntax", ->
+  describe 'with AsciiDoc syntax', ->
 
     it 'should generate default code block', ->
       languages = []
@@ -78,7 +78,7 @@ describe "Code block generator", ->
           ]
         ]
 
-  describe "with Markdown syntax", ->
+  describe 'with Markdown syntax', ->
 
     it 'should generate default code block', ->
       languages = []

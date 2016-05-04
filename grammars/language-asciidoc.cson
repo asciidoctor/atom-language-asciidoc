@@ -547,13 +547,13 @@ repository:
         begin: "^((NOTE|TIP|IMPORTANT|WARNING|CAUTION)\\:)\\p{Blank}+"
         captures:
           "1":
-            name: "support.constant.asciidoc"
+            name: "support.constant.label.asciidoc"
         patterns: [
           {
             include: "#inlines"
           }
         ]
-        end: "$"
+        end: "^\\p{Blank}*$"
       }
     ]
   "example-block":

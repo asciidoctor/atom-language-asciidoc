@@ -4,6 +4,8 @@ Adds syntax highlighting and snippets to AsciiDoc files. Supports [Asciidoctor](
 
 ![](https://raw.github.com/wiki/asciidoctor/atom-language-asciidoc/writers-guide-screenshot.png)
 
+The default file extensions for AsciiDoc files are _ad_, _asc_, _adoc_ and _asciidoc_.  To add a different file extension such as _.txt_, click on the *Settings* button in the package listing and then click the *View Code* button on the settings page.  Find the file named 'language-asciidoc.cson' under 'language-asciidoc > grammars'.  In the list of fileTypes, add a new line below "asciidoc" and type "txt". Then save the file and restart atom or press ctrl+alt+r to refresh the UI.  You should now see the new file type recognized by the atom-language-asciidoc package.
+
 ## Contributing
 
 In the spirit of free software, _everyone_ is encouraged to help improve this project.

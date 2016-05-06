@@ -8,7 +8,7 @@ describe "Code block generator", ->
       languages = []
       codeBlocks = generator.makeAsciidocBlocks(languages)
       expect(codeBlocks).toHaveLength 1 # Number of blocks
-      expect(codeBlocks[0]).toEqual
+      expect(codeBlocks[0]).toEqualJson
         begin: '^\\s*\\[source(,[^\\],]*)?\\]$'
         beginCaptures:
           0: name: 'support.asciidoc'
@@ -30,7 +30,7 @@ describe "Code block generator", ->
       ]
       codeBlocks = generator.makeAsciidocBlocks(languages)
       expect(codeBlocks).toHaveLength 2 # Number of blocks
-      expect(codeBlocks[0]).toEqual
+      expect(codeBlocks[0]).toEqualJson
         begin: '^\\[source,\\s*(?i:(javascript|js))\\]$'
         beginCaptures:
           0: name: 'support.asciidoc'
@@ -57,7 +57,7 @@ describe "Code block generator", ->
       ]
       codeBlocks = generator.makeAsciidocBlocks(languages)
       expect(codeBlocks).toHaveLength 2 # Number of blocks
-      expect(codeBlocks[0]).toEqual
+      expect(codeBlocks[0]).toEqualJson
         begin: '^\\[source,\\s*(?i:(c(pp|\\+\\+)))\\]$'
         beginCaptures:
           0: name: 'support.asciidoc'
@@ -84,7 +84,7 @@ describe "Code block generator", ->
       languages = []
       codeBlocks = generator.makeMarkdownBlocks(languages)
       expect(codeBlocks).toHaveLength 1 # Number of blocks
-      expect(codeBlocks[0]).toEqual
+      expect(codeBlocks[0]).toEqualJson
         name: 'markup.raw.asciidoc'
         begin: '^\\s*(`{3,}).*$'
         beginCaptures:
@@ -100,7 +100,7 @@ describe "Code block generator", ->
       ]
       codeBlocks = generator.makeMarkdownBlocks(languages)
       expect(codeBlocks).toHaveLength 2 # Number of blocks
-      expect(codeBlocks[0]).toEqual
+      expect(codeBlocks[0]).toEqualJson
         name: 'markup.code.js.asciidoc'
         begin: '^\\s*(`{3,})\\s*(?i:(javascript|js))\\s*$'
         beginCaptures:
@@ -121,7 +121,7 @@ describe "Code block generator", ->
       ]
       codeBlocks = generator.makeMarkdownBlocks(languages)
       expect(codeBlocks).toHaveLength 2 # Number of blocks
-      expect(codeBlocks[0]).toEqual
+      expect(codeBlocks[0]).toEqualJson
         name: 'markup.code.cpp.asciidoc'
         begin: '^\\s*(`{3,})\\s*(?i:(c(pp|\\+\\+)))\\s*$'
         beginCaptures:

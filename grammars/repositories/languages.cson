@@ -23,6 +23,8 @@
 ,
   pattern: 'go(lang)?', type: 'source', code: 'go'
 ,
+  pattern: 'groovy', type: 'source', code: 'groovy'
+,
   pattern: 'haskell', type: 'source', code: 'haskell'
 ,
   pattern: 'html', type: 'text', code: 'html.basic'
@@ -33,6 +35,8 @@
 ,
   pattern: 'json', type: 'source', code: 'json'
 ,
+  pattern: 'jsx', type: 'source', code: 'js.jsx'
+,
   pattern: 'julia', type: 'source', code: 'julia'
 ,
   pattern: 'less', type: 'source', code: 'css.less'
@@ -41,7 +45,11 @@
 ,
   pattern: 'markdown|mdown|md', type: 'source', code: 'gfm'
 ,
+  pattern: 'mustache', type: 'text', code: 'html.mustache'
+,
   pattern: 'objc|objective-c', type: 'source', code: 'objc'
+,
+  pattern: 'ocaml', type: 'source', code: 'ocaml'
 ,
   pattern: 'perl', type: 'source', code: 'perl'
 ,
@@ -60,6 +68,8 @@
   pattern: 'rust|rs', type: 'source', code: 'rust'
 ,
   pattern: 'sass', type: 'source', code: 'sass'
+,
+  pattern: 'scala', type: 'source', code: 'scala'
 ,
   pattern: 'scss', type: 'source', code: 'css.scss'
 ,

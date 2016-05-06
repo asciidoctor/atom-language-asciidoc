@@ -1033,6 +1033,35 @@ repository:
         end: "(?<=----)[\\r\\n]+$"
       }
       {
+        begin: "^\\[source,\\s*(?i:(groovy))\\]$"
+        beginCaptures:
+          "0":
+            name: "support.asciidoc"
+        patterns: [
+          {
+            name: "markup.code.groovy.asciidoc"
+            begin: "^(-{4,})\\s*$"
+            beginCaptures:
+              "0":
+                name: "support.asciidoc"
+            end: "^\\1*$"
+            endCaptures:
+              "0":
+                name: "support.asciidoc"
+            contentName: "source.embedded.groovy"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.groovy"
+              }
+            ]
+          }
+        ]
+        end: "(?<=----)[\\r\\n]+$"
+      }
+      {
         begin: "^\\[source,\\s*(?i:(haskell))\\]$"
         beginCaptures:
           "0":
@@ -1178,6 +1207,35 @@ repository:
         end: "(?<=----)[\\r\\n]+$"
       }
       {
+        begin: "^\\[source,\\s*(?i:(jsx))\\]$"
+        beginCaptures:
+          "0":
+            name: "support.asciidoc"
+        patterns: [
+          {
+            name: "markup.code.js.jsx.asciidoc"
+            begin: "^(-{4,})\\s*$"
+            beginCaptures:
+              "0":
+                name: "support.asciidoc"
+            end: "^\\1*$"
+            endCaptures:
+              "0":
+                name: "support.asciidoc"
+            contentName: "source.embedded.js.jsx"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.js.jsx"
+              }
+            ]
+          }
+        ]
+        end: "(?<=----)[\\r\\n]+$"
+      }
+      {
         begin: "^\\[source,\\s*(?i:(julia))\\]$"
         beginCaptures:
           "0":
@@ -1294,6 +1352,35 @@ repository:
         end: "(?<=----)[\\r\\n]+$"
       }
       {
+        begin: "^\\[source,\\s*(?i:(mustache))\\]$"
+        beginCaptures:
+          "0":
+            name: "support.asciidoc"
+        patterns: [
+          {
+            name: "markup.code.html.mustache.asciidoc"
+            begin: "^(-{4,})\\s*$"
+            beginCaptures:
+              "0":
+                name: "support.asciidoc"
+            end: "^\\1*$"
+            endCaptures:
+              "0":
+                name: "support.asciidoc"
+            contentName: "text.embedded.html.mustache"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "text.html.mustache"
+              }
+            ]
+          }
+        ]
+        end: "(?<=----)[\\r\\n]+$"
+      }
+      {
         begin: "^\\[source,\\s*(?i:(objc|objective-c))\\]$"
         beginCaptures:
           "0":
@@ -1316,6 +1403,35 @@ repository:
               }
               {
                 include: "source.objc"
+              }
+            ]
+          }
+        ]
+        end: "(?<=----)[\\r\\n]+$"
+      }
+      {
+        begin: "^\\[source,\\s*(?i:(ocaml))\\]$"
+        beginCaptures:
+          "0":
+            name: "support.asciidoc"
+        patterns: [
+          {
+            name: "markup.code.ocaml.asciidoc"
+            begin: "^(-{4,})\\s*$"
+            beginCaptures:
+              "0":
+                name: "support.asciidoc"
+            end: "^\\1*$"
+            endCaptures:
+              "0":
+                name: "support.asciidoc"
+            contentName: "source.embedded.ocaml"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.ocaml"
               }
             ]
           }
@@ -1577,6 +1693,35 @@ repository:
               }
               {
                 include: "source.sass"
+              }
+            ]
+          }
+        ]
+        end: "(?<=----)[\\r\\n]+$"
+      }
+      {
+        begin: "^\\[source,\\s*(?i:(scala))\\]$"
+        beginCaptures:
+          "0":
+            name: "support.asciidoc"
+        patterns: [
+          {
+            name: "markup.code.scala.asciidoc"
+            begin: "^(-{4,})\\s*$"
+            beginCaptures:
+              "0":
+                name: "support.asciidoc"
+            end: "^\\1*$"
+            endCaptures:
+              "0":
+                name: "support.asciidoc"
+            contentName: "source.embedded.scala"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.scala"
               }
             ]
           }
@@ -2084,6 +2229,26 @@ repository:
         ]
       }
       {
+        name: "markup.code.groovy.asciidoc"
+        begin: "^\\s*(`{3,})\\s*(?i:(groovy))\\s*$"
+        beginCaptures:
+          "0":
+            name: "support.asciidoc"
+        end: "^\\s*\\1\\s*$"
+        endCaptures:
+          "0":
+            name: "support.asciidoc"
+        contentName: "source.embedded.groovy"
+        patterns: [
+          {
+            include: "#block-callout"
+          }
+          {
+            include: "source.groovy"
+          }
+        ]
+      }
+      {
         name: "markup.code.haskell.asciidoc"
         begin: "^\\s*(`{3,})\\s*(?i:(haskell))\\s*$"
         beginCaptures:
@@ -2184,6 +2349,26 @@ repository:
         ]
       }
       {
+        name: "markup.code.js.jsx.asciidoc"
+        begin: "^\\s*(`{3,})\\s*(?i:(jsx))\\s*$"
+        beginCaptures:
+          "0":
+            name: "support.asciidoc"
+        end: "^\\s*\\1\\s*$"
+        endCaptures:
+          "0":
+            name: "support.asciidoc"
+        contentName: "source.embedded.js.jsx"
+        patterns: [
+          {
+            include: "#block-callout"
+          }
+          {
+            include: "source.js.jsx"
+          }
+        ]
+      }
+      {
         name: "markup.code.julia.asciidoc"
         begin: "^\\s*(`{3,})\\s*(?i:(julia))\\s*$"
         beginCaptures:
@@ -2264,6 +2449,26 @@ repository:
         ]
       }
       {
+        name: "markup.code.html.mustache.asciidoc"
+        begin: "^\\s*(`{3,})\\s*(?i:(mustache))\\s*$"
+        beginCaptures:
+          "0":
+            name: "support.asciidoc"
+        end: "^\\s*\\1\\s*$"
+        endCaptures:
+          "0":
+            name: "support.asciidoc"
+        contentName: "text.embedded.html.mustache"
+        patterns: [
+          {
+            include: "#block-callout"
+          }
+          {
+            include: "text.html.mustache"
+          }
+        ]
+      }
+      {
         name: "markup.code.objc.asciidoc"
         begin: "^\\s*(`{3,})\\s*(?i:(objc|objective-c))\\s*$"
         beginCaptures:
@@ -2280,6 +2485,26 @@ repository:
           }
           {
             include: "source.objc"
+          }
+        ]
+      }
+      {
+        name: "markup.code.ocaml.asciidoc"
+        begin: "^\\s*(`{3,})\\s*(?i:(ocaml))\\s*$"
+        beginCaptures:
+          "0":
+            name: "support.asciidoc"
+        end: "^\\s*\\1\\s*$"
+        endCaptures:
+          "0":
+            name: "support.asciidoc"
+        contentName: "source.embedded.ocaml"
+        patterns: [
+          {
+            include: "#block-callout"
+          }
+          {
+            include: "source.ocaml"
           }
         ]
       }
@@ -2460,6 +2685,26 @@ repository:
           }
           {
             include: "source.sass"
+          }
+        ]
+      }
+      {
+        name: "markup.code.scala.asciidoc"
+        begin: "^\\s*(`{3,})\\s*(?i:(scala))\\s*$"
+        beginCaptures:
+          "0":
+            name: "support.asciidoc"
+        end: "^\\s*\\1\\s*$"
+        endCaptures:
+          "0":
+            name: "support.asciidoc"
+        contentName: "source.embedded.scala"
+        patterns: [
+          {
+            include: "#block-callout"
+          }
+          {
+            include: "source.scala"
           }
         ]
       }

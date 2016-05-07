@@ -42,6 +42,9 @@ patterns: [
   {
     include: "#inlines"
   }
+  {
+    include: "#line-break"
+  }
 ]
 repository:
   blocks:
@@ -229,6 +232,15 @@ repository:
       {
         name: "constant.other.symbol.horizontal-rule.asciidoc"
         match: "^(?:'|<){3,}$|^ {0,3}([-\\*'])( *)\\1\\2\\1$"
+      }
+    ]
+  "line-break":
+    patterns: [
+      {
+        match: "\\p{Blank}(\\+)$"
+        captures:
+          "1":
+            name: "variable.line-break.asciidoc"
       }
     ]
   list:

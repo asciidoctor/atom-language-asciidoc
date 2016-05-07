@@ -27,6 +27,8 @@ patterns: [
   include: '#blocks'
 ,
   include: '#inlines'
+,
+  include: '#line-break'
 ]
 repository:
   blocks:

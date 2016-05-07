@@ -434,11 +434,11 @@ repository:
     patterns: [
       {
         name: "markup.raw.constrained.monospaced.asciidoc"
-        match: "(^|[^\\p{Word};:\"'`}])(?:\\[([^\\]]+?)\\])?`(\\S|\\S.*?\\S)`(?![\\p{Word}\"'`])"
+        match: "(?<![\\\\;:\\p{Word}\"'`])(?:\\[.+?\\])?`(?:\\S|\\S.*?\\S)`(?![\\p{Word}\"'`])"
       }
       {
         name: "markup.raw.unconstrained.monospaced.asciidoc"
-        match: "\\\\?(?:\\[([^\\]]+?)\\])?``(.+?)``"
+        match: "(?<!\\\\)(?:\\[.+?\\])?``(?:.+?)``"
       }
     ]
   "passthrough-macro":

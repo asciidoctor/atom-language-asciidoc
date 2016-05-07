@@ -16,51 +16,30 @@ describe 'Titles', ->
     expect(grammar).toBeDefined()
     expect(grammar.scopeName).toBe 'source.asciidoc'
 
-  describe 'description', ->
+  describe 'asciidoc headers', ->
 
     asciidocHeadersChecker = (level) ->
       equalsSigns = level + 1
       marker = Array(equalsSigns + 1).join('=')
       {tokens} = grammar.tokenizeLine "#{marker} Heading #{level}"
-      expect(tokens[0]).toEqual value: "#{marker} ", scopes: ['source.asciidoc', 'markup.heading.asciidoc']
-      expect(tokens[1]).toEqual value: "Heading #{level}", scopes: ['source.asciidoc', 'markup.heading.asciidoc']
+      expect(tokens).toHaveLength 3
+      expect(tokens[0]).toEqual value: "#{marker}", scopes: ['source.asciidoc', "markup.heading-#{level}.asciidoc", 'markup.heading.marker.asciidoc']
+      expect(tokens[1]).toEqual value: " ", scopes: ['source.asciidoc', "markup.heading-#{level}.asciidoc", 'markup.heading.space.asciidoc']
+      expect(tokens[2]).toEqual value: "Heading #{level}", scopes: ['source.asciidoc', "markup.heading-#{level}.asciidoc"]
 
     it 'tokenizes AsciiDoc-style headings', ->
       asciidocHeadersChecker(level) for level in [0..5]
 
-  describe 'Should tokenizes Mardown-style headings when', ->
+  describe 'markdown headers', ->
 
-    it 'was a level 0', ->
-      {tokens} = grammar.tokenizeLine '# Heading 0'
-      expect(tokens).toHaveLength 2
-      expect(tokens[0]).toEqual value: '# ', scopes: ['source.asciidoc', 'markup.heading.asciidoc']
-      expect(tokens[1]).toEqual value: 'Heading 0', scopes: ['source.asciidoc', 'markup.heading.asciidoc']
+    markdownHeadersChecker = (level) ->
+      equalsSigns = level + 1
+      marker = Array(equalsSigns + 1).join('#')
+      {tokens} = grammar.tokenizeLine "#{marker} Heading #{level}"
+      expect(tokens).toHaveLength 3
+      expect(tokens[0]).toEqual value: "#{marker}", scopes: ['source.asciidoc', "markup.heading-#{level}.asciidoc", 'markup.heading.marker.asciidoc']
+      expect(tokens[1]).toEqual value: " ", scopes: ['source.asciidoc', "markup.heading-#{level}.asciidoc", 'markup.heading.space.asciidoc']
+      expect(tokens[2]).toEqual value: "Heading #{level}", scopes: ['source.asciidoc', "markup.heading-#{level}.asciidoc"]
 
-    it 'was a level 1', ->
-      {tokens} = grammar.tokenizeLine '## Heading 1'
-      expect(tokens).toHaveLength 2
-      expect(tokens[0]).toEqual value: '## ', scopes: ['source.asciidoc', 'markup.heading.asciidoc']
-      expect(tokens[1]).toEqual value: 'Heading 1', scopes: ['source.asciidoc', 'markup.heading.asciidoc']
-
-    it 'was a level 2', ->
-      {tokens} = grammar.tokenizeLine '### Heading 2'
-      expect(tokens).toHaveLength 2
-      expect(tokens[0]).toEqual value: '### ', scopes: ['source.asciidoc', 'markup.heading.asciidoc']
-      expect(tokens[1]).toEqual value: 'Heading 2', scopes: ['source.asciidoc', 'markup.heading.asciidoc']
-
-    it 'was a level 3', ->
-      {tokens} = grammar.tokenizeLine '#### Heading 3'
-      expect(tokens).toHaveLength 2
-      expect(tokens[0]).toEqual value: '#### ', scopes: ['source.asciidoc', 'markup.heading.asciidoc']
-      expect(tokens[1]).toEqual value: 'Heading 3', scopes: ['source.asciidoc', 'markup.heading.asciidoc']
-
-    it 'was a level 4', ->
-      {tokens} = grammar.tokenizeLine '##### Heading 4'
-      expect(tokens[0]).toEqual value: '##### ', scopes: ['source.asciidoc', 'markup.heading.asciidoc']
-      expect(tokens[1]).toEqual value: 'Heading 4', scopes: ['source.asciidoc', 'markup.heading.asciidoc']
-
-    it 'was a level 5', ->
-      {tokens} = grammar.tokenizeLine '###### Heading 5'
-      expect(tokens).toHaveLength 2
-      expect(tokens[0]).toEqual value: '###### ', scopes: ['source.asciidoc', 'markup.heading.asciidoc']
-      expect(tokens[1]).toEqual value: 'Heading 5', scopes: ['source.asciidoc', 'markup.heading.asciidoc']
+    it 'tokenizes Markdown-style headings', ->
+      markdownHeadersChecker(level) for level in [0..5]

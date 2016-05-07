@@ -7,6 +7,13 @@ script: 'curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.
 
 sudo: false
 
+git:
+  depth: 10
+
+branches:
+  only:
+    - master
+
 os:
   - linux
   - osx

@@ -13,7 +13,7 @@ class GrammarHelper
     CSON.readFileSync filepath
 
   writeGrammarFile: (grammar, file) ->
-    outputFilepath = path.join __dirname,  @rootOutputDirectory, file
+    outputFilepath = path.join __dirname, @rootOutputDirectory, file
     CSON.writeFileSync outputFilepath, grammar
 
   appendPartialGrammars: (grammar, partialGrammarFiles) ->
@@ -25,11 +25,11 @@ class GrammarHelper
 
   appendPartialGrammarsDirectory: (grammar, grammarDirectories) ->
     for directoryName in grammarDirectories
-      directory = new Directory(path.join(__dirname, @rootInputDirectory, directoryName))
+      directory = new Directory path.join(__dirname, @rootInputDirectory, directoryName)
       entries = directory.getEntriesSync()
       for entry in entries
-        if (entry.isFile() and entry.getBaseName().endsWith '.cson')
-          {key, patterns} = CSON.readFileSync(entry.path)
+        if entry.isFile() and entry.getBaseName().endsWith '.cson'
+          {key, patterns} = CSON.readFileSync entry.path
           if key? and patterns?
             grammar.repository[key] =
               patterns: patterns

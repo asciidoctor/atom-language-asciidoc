@@ -135,6 +135,14 @@ Generally it can be said that POSIX-style regex elements are preferred (e.g., `+
 * http://www.regular-expressions.info/ruby.html[Ruby regexp introduction]
 * http://www.regular-expressions.info/refflavors.html[Regexp reference index] (select Ruby in the table header dropdown)
 
+=== Regex inspiration from upstream
+
+The https://github.com/asciidoctor/asciidoctor[upstream Asciidoctor project], written in Ruby, contains all regexes to support the full Asciidoctor ecosystem. Checking out the https://github.com/asciidoctor/asciidoctor/blob/master/lib/asciidoctor.rb[upstream code] can thus be a great source for regex inspiration. There are however a few things to keep in mind when looking at the regular expressions in Asciidoctor core (`asciidoctor.rb`):
+
+. The regular expressions in core are written for the http://ruby-doc.org/core-1.8.7/Regexp.html[Ruby 1.8 regexp engine], so they are more primitive than what https://github.com/kkos/oniguruma[Oniguruma] supports. Most notably, the Ruby 1.8 regexp engine doesn't support http://www.regular-expressions.info/lookaround.html#lookbehind[look-behind matches] (We're going to start using the Oniguruma engine in Asciidoctor 1.6).
+. The regular expressions in core often capture groups in order to populate the https://en.wikipedia.org/wiki/Abstract_syntax_treed[AST] node, or to perform more fine-grained parsing. The grammar doesn't need to capture a group unless that span of text is needed for highlighting.
+. The grammar should skip matching escaped syntax. Core captures it only because the regexp engine doesn't support look-behind matches.
+
 === Code language support
 
 AsciiDoc offers the ability to include source code blocks, in a variety of languages.

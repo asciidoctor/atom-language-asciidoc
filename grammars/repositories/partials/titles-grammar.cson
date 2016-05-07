@@ -8,7 +8,7 @@ patterns: [
   #
   #   ====== Level 5 Section
   #
-  name: 'markup.heading-5.asciidoc'
+  name: 'markup.heading.heading-5.asciidoc'
   begin: '^((?:=|#){6})([\\p{Blank}]+)(?=\\S+)'
   end: '$'
   beginCaptures:
@@ -24,7 +24,7 @@ patterns: [
   #
   #   ===== Level 4 Section
   #
-  name: 'markup.heading-4.asciidoc'
+  name: 'markup.heading.heading-4.asciidoc'
   begin: '^((?:=|#){5})([\\p{Blank}]+)(?=\\S+)'
   end: '$'
   beginCaptures:
@@ -40,7 +40,7 @@ patterns: [
   #
   #   ==== Level 3 Section
   #
-  name: 'markup.heading-3.asciidoc'
+  name: 'markup.heading.heading-3.asciidoc'
   begin: '^((?:=|#){4})([\\p{Blank}]+)(?=\\S+)'
   end: '$'
   beginCaptures:
@@ -56,7 +56,7 @@ patterns: [
   #
   #   === Level 2 Section
   #
-  name: 'markup.heading-2.asciidoc'
+  name: 'markup.heading.heading-2.asciidoc'
   begin: '^((?:=|#){3})([\\p{Blank}]+)(?=\\S+)'
   end: '$'
   beginCaptures:
@@ -72,7 +72,7 @@ patterns: [
   #
   #   == Level 1 Section
   #
-  name: 'markup.heading-1.asciidoc'
+  name: 'markup.heading.heading-1.asciidoc'
   begin: '^((?:=|#){2})([\\p{Blank}]+)(?=\\S+)'
   end: '$'
   beginCaptures:
@@ -88,7 +88,7 @@ patterns: [
   #
   #   = Document Title (Level 0)
   #
-  name: 'markup.heading-0.asciidoc'
+  name: 'markup.heading.heading-0.asciidoc'
   begin: '^((?:=|#){1})([\\p{Blank}]+)(?=\\S+)'
   end: '$'
   beginCaptures:

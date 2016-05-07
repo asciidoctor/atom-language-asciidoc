@@ -18,17 +18,16 @@ describe 'Should tokenize line break when', ->
 
   it 'contains simple character', ->
     tokens = grammar.tokenizeLines '''
-       +
       Foo +
+      Bar
       '''
     expect(tokens).toHaveLength 2
-    expect(tokens[0]).toHaveLength 2
-    expect(tokens[0][0]).toEqual value: ' ', scopes: ['source.asciidoc']
-    expect(tokens[0][1]).toEqual value: '+', scopes: ['source.asciidoc', 'variable.line-break.asciidoc']
-    expect(tokens[1]).toHaveLength 3
-    expect(tokens[1][0]).toEqual value: 'Foo', scopes: ['source.asciidoc']
-    expect(tokens[1][1]).toEqual value: ' ', scopes: ['source.asciidoc']
-    expect(tokens[1][2]).toEqual value: '+', scopes: ['source.asciidoc', 'variable.line-break.asciidoc']
+    expect(tokens[0]).toHaveLength 3
+    expect(tokens[0][0]).toEqual value: 'Foo', scopes: ['source.asciidoc']
+    expect(tokens[0][1]).toEqual value: ' ', scopes: ['source.asciidoc']
+    expect(tokens[0][2]).toEqual value: '+', scopes: ['source.asciidoc', 'variable.line-break.asciidoc']
+    expect(tokens[1]).toHaveLength 1
+    expect(tokens[1][0]).toEqual value: 'Bar', scopes: ['source.asciidoc']
 
   it 'ending with strong', ->
     {tokens} = grammar.tokenizeLine 'Rubies are *red* +'

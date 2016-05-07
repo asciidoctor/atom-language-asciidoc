@@ -1,3 +1,5 @@
+# To run a specific `it` or `describe` block add an `f` to the front (e.g. `fit`
+# or `fdescribe`). Remove the `f` to unfocus the block.
 describe 'Titles', ->
   grammar = null
 
@@ -23,9 +25,9 @@ describe 'Titles', ->
       marker = Array(equalsSigns + 1).join('=')
       {tokens} = grammar.tokenizeLine "#{marker} Heading #{level}"
       expect(tokens).toHaveLength 3
-      expect(tokens[0]).toEqual value: "#{marker}", scopes: ['source.asciidoc', "markup.heading-#{level}.asciidoc", 'markup.heading.marker.asciidoc']
-      expect(tokens[1]).toEqual value: " ", scopes: ['source.asciidoc', "markup.heading-#{level}.asciidoc", 'markup.heading.space.asciidoc']
-      expect(tokens[2]).toEqual value: "Heading #{level}", scopes: ['source.asciidoc', "markup.heading-#{level}.asciidoc"]
+      expect(tokens[0]).toEqualJson value: "#{marker}", scopes: ['source.asciidoc', "markup.heading.heading-#{level}.asciidoc", 'markup.heading.marker.asciidoc']
+      expect(tokens[1]).toEqualJson value: " ", scopes: ['source.asciidoc', "markup.heading.heading-#{level}.asciidoc", 'markup.heading.space.asciidoc']
+      expect(tokens[2]).toEqualJson value: "Heading #{level}", scopes: ['source.asciidoc', "markup.heading.heading-#{level}.asciidoc"]
 
     it 'tokenizes AsciiDoc-style headings', ->
       asciidocHeadersChecker(level) for level in [0..5]
@@ -37,9 +39,9 @@ describe 'Titles', ->
       marker = Array(equalsSigns + 1).join('#')
       {tokens} = grammar.tokenizeLine "#{marker} Heading #{level}"
       expect(tokens).toHaveLength 3
-      expect(tokens[0]).toEqual value: "#{marker}", scopes: ['source.asciidoc', "markup.heading-#{level}.asciidoc", 'markup.heading.marker.asciidoc']
-      expect(tokens[1]).toEqual value: " ", scopes: ['source.asciidoc', "markup.heading-#{level}.asciidoc", 'markup.heading.space.asciidoc']
-      expect(tokens[2]).toEqual value: "Heading #{level}", scopes: ['source.asciidoc', "markup.heading-#{level}.asciidoc"]
+      expect(tokens[0]).toEqualJson value: "#{marker}", scopes: ['source.asciidoc', "markup.heading.heading-#{level}.asciidoc", 'markup.heading.marker.asciidoc']
+      expect(tokens[1]).toEqualJson value: " ", scopes: ['source.asciidoc', "markup.heading.heading-#{level}.asciidoc", 'markup.heading.space.asciidoc']
+      expect(tokens[2]).toEqualJson value: "Heading #{level}", scopes: ['source.asciidoc', "markup.heading.heading-#{level}.asciidoc"]
 
     it 'tokenizes Markdown-style headings', ->
       markdownHeadersChecker(level) for level in [0..5]

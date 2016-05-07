@@ -9,7 +9,7 @@ patterns: [
   #   `Text in backticks` renders exactly as entered, in `monospaced`.
   #
   name: 'markup.raw.constrained.monospaced.asciidoc'
-  match: '(^|[^\\p{Word};:"\'`}])(?:\\[([^\\]]+?)\\])?`(\\S|\\S.*?\\S)`(?![\\p{Word}"\'`])'
+  match: '(?<![\\\\;:\\p{Word}"\'`])(?:\\[.+?\\])?`(?:\\S|\\S.*?\\S)`(?![\\p{Word}"\'`])'
 ,
   # Matches unconstrained monospaced inlines
   #
@@ -18,5 +18,5 @@ patterns: [
   #   Text in back``ticks`` renders exactly as entered, in mono``spaced``.
   #
   name: 'markup.raw.unconstrained.monospaced.asciidoc'
-  match: '\\\\?(?:\\[([^\\]]+?)\\])?``(.+?)``'
+  match: '(?<!\\\\)(?:\\[.+?\\])?``(?:.+?)``'
 ]

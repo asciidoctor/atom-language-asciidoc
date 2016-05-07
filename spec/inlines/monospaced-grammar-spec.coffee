@@ -22,8 +22,8 @@ describe '`monospaced`', ->
       {tokens} = grammar.tokenizeLine '`Text in backticks` renders exactly as entered, in `monospaced`.'
       expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqual value: '`Text in backticks`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc']
-      expect(tokens[1]).toEqual value: ' renders exactly as entered, in', scopes: ['source.asciidoc']
-      expect(tokens[2]).toEqual value: ' `monospaced`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc']
+      expect(tokens[1]).toEqual value: ' renders exactly as entered, in ', scopes: ['source.asciidoc']
+      expect(tokens[2]).toEqual value: '`monospaced`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc']
       expect(tokens[3]).toEqual value: '.', scopes: ['source.asciidoc']
 
     it 'is not in valid context', ->

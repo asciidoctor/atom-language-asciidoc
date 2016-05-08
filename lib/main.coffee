@@ -31,6 +31,7 @@ module.exports =
 
     # Calls immediately and every time the value is changed
     @subscriptions.add atom.config.observe 'language-asciidoc.liveReload', (newValue) =>
+      return unless atom.inDevMode()
       if newValue
         @compileGrammar()
         @liveReloadSubscriptions = new CompositeDisposable

@@ -9,6 +9,10 @@ module.exports =
         0: name: 'support.asciidoc'
         1: name: 'constant.asciidoc'
         2: name: 'string.asciidoc'
+        3:
+          patterns: [
+            include: '#attribute-reference'
+          ]
       patterns: [
         name: "markup.code.#{lang.code}.asciidoc"
         begin: '^(-{4,})\\s*$'
@@ -44,6 +48,16 @@ module.exports =
         endCaptures:
           0: name: 'support.asciidoc'
       ]
+    # add listing block
+    codeBlocks.push
+      name: 'markup.raw.asciidoc'
+      begin: '^(-{4,})\\s*$'
+      beginCaptures:
+        0: name: 'support.asciidoc'
+      patterns: [include: '#block-callout']
+      end: '^\\1*$'
+      endCaptures:
+        0: name: 'support.asciidoc'
 
     if debug
       console.log CSON.stringify codeBlocks

@@ -62,3 +62,29 @@ describe 'Should tokenizes code block when', ->
     expect(tokens[6][6]).toEqualJson value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
     expect(tokens[6][7]).toEqualJson value: ' ', scopes: ['source.asciidoc', 'callout.asciidoc']
     expect(tokens[6][8]).toEqualJson value: '_rules_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.italic.asciidoc']
+
+  it 'contains substitutions in additional attributes', ->
+    tokens = grammar.tokenizeLines '''
+      [source,java,subs="{markup-in-source}"]
+      ----
+      System.out.println("Hello *bold* text").
+      ----
+      '''
+    expect(tokens).toHaveLength 4 # Number of lines
+    expect(tokens[0]).toHaveLength 9
+    expect(tokens[0][0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'support.asciidoc']
+    expect(tokens[0][1]).toEqualJson value: 'source', scopes: ['source.asciidoc', 'support.asciidoc', 'constant.asciidoc']
+    expect(tokens[0][2]).toEqualJson value: ',', scopes: ['source.asciidoc', 'support.asciidoc']
+    expect(tokens[0][3]).toEqualJson value: 'java', scopes: ['source.asciidoc', 'support.asciidoc', 'string.asciidoc']
+    expect(tokens[0][4]).toEqualJson value: ',', scopes: ['source.asciidoc', 'support.asciidoc']
+    expect(tokens[0][5]).toEqualJson value: 'subs="', scopes: ['source.asciidoc', 'support.asciidoc']
+    expect(tokens[0][6]).toEqualJson value: '{markup-in-source}', scopes: ['source.asciidoc', 'support.asciidoc', 'markup.substitution.attribute-reference.asciidoc']
+    expect(tokens[0][7]).toEqualJson value: '"', scopes: ['source.asciidoc', 'support.asciidoc']
+    expect(tokens[0][8]).toEqualJson value: ']', scopes: ['source.asciidoc', 'support.asciidoc']
+    expect(tokens[1]).toHaveLength 1
+    expect(tokens[1][0]).toEqualJson value: '----', scopes: ['source.asciidoc', 'markup.code.java.asciidoc', 'support.asciidoc']
+    expect(tokens[2]).toHaveLength 1
+    expect(tokens[2][0]).toEqualJson value: 'System.out.println("Hello *bold* text").', scopes: ['source.asciidoc', 'markup.code.java.asciidoc', 'source.embedded.java']
+    expect(tokens[3]).toHaveLength 2
+    expect(tokens[3][0]).toEqualJson value: '----', scopes: ['source.asciidoc', 'markup.code.java.asciidoc', 'support.asciidoc']
+    expect(tokens[3][1]).toEqualJson value: '', scopes: ['source.asciidoc']

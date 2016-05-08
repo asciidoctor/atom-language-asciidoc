@@ -7,7 +7,7 @@ describe 'Code block generator', ->
     it 'should generate default code block', ->
       languages = []
       codeBlocks = generator.makeAsciidocBlocks(languages)
-      expect(codeBlocks).toHaveLength 1 # Number of blocks
+      expect(codeBlocks).toHaveLength 2 # Number of blocks
       expect(codeBlocks[0]).toEqualJson
         begin: '^\\[(source)(?:,([^,\\]]*)){0,2}\\]$'
         beginCaptures:
@@ -26,18 +26,36 @@ describe 'Code block generator', ->
         ]
         end: '(?<=----)[\\r\\n]+$'
 
+    it 'should generate listing block', ->
+      languages = []
+      codeBlocks = generator.makeAsciidocBlocks(languages)
+      expect(codeBlocks).toHaveLength 2 # Number of blocks
+      expect(codeBlocks[1]).toEqualJson
+        name: 'markup.raw.asciidoc'
+        begin: '^(-{4,})\\s*$'
+        beginCaptures:
+          0: name: 'support.asciidoc'
+        patterns: [include: '#block-callout']
+        end: '^\\1*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
+
     it 'should generate Javascript code block', ->
       languages = [
         pattern: 'javascript|js', type: 'source', code: 'js'
       ]
       codeBlocks = generator.makeAsciidocBlocks(languages)
-      expect(codeBlocks).toHaveLength 2 # Number of blocks
+      expect(codeBlocks).toHaveLength 3 # Number of blocks
       expect(codeBlocks[0]).toEqualJson
         begin: '^\\[(source),\\p{Blank}*(?i:(javascript|js))(?:,([^\]]*))?\\]$'
         beginCaptures:
           0: name: 'support.asciidoc'
           1: name: 'constant.asciidoc'
           2: name: 'string.asciidoc'
+          3:
+            patterns: [
+              include: '#attribute-reference'
+            ]
         patterns: [
           name: 'markup.code.js.asciidoc'
           begin: '^(-{4,})\\s*$'
@@ -60,13 +78,17 @@ describe 'Code block generator', ->
         pattern: 'c(pp|\\+\\+)', type: 'source', code: 'cpp'
       ]
       codeBlocks = generator.makeAsciidocBlocks(languages)
-      expect(codeBlocks).toHaveLength 2 # Number of blocks
+      expect(codeBlocks).toHaveLength 3 # Number of blocks
       expect(codeBlocks[0]).toEqualJson
         begin: '^\\[(source),\\p{Blank}*(?i:(c(pp|\\+\\+)))(?:,([^\]]*))?\\]$'
         beginCaptures:
           0: name: 'support.asciidoc'
           1: name: 'constant.asciidoc'
           2: name: 'string.asciidoc'
+          3:
+            patterns: [
+              include: '#attribute-reference'
+            ]
         end: '(?<=----)[\\r\\n]+$'
         patterns: [
           name: 'markup.code.cpp.asciidoc'

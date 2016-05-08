@@ -35,6 +35,11 @@ describe '*strong* text', ->
       expect(tokens[2]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
       expect(tokens[3]).toEqual value: ' from the start.', scopes: ['source.asciidoc']
 
+    it 'when constrained *strong* is escaped', ->
+      {tokens} = grammar.tokenizeLine '\\*strong text*'
+      expect(tokens).toHaveLength 1
+      expect(tokens[0]).toEqual value: '\\*strong text*', scopes: ['source.asciidoc']
+
     it 'when constrained *bold* in a * bulleted list', ->
       {tokens} = grammar.tokenizeLine '* *bold text* followed by normal text'
       expect(tokens).toHaveLength 6
@@ -157,6 +162,11 @@ describe '*strong* text', ->
       expect(tokens[1]).toEqual value: '**', scopes: ['source.asciidoc', 'markup.bold.unconstrained.asciidoc', 'support.constant.asciidoc']
       expect(tokens[2]).toEqual value: 'bold*text', scopes: ['source.asciidoc', 'markup.bold.unconstrained.asciidoc']
       expect(tokens[3]).toEqual value: '**', scopes: ['source.asciidoc', 'markup.bold.unconstrained.asciidoc', 'support.constant.asciidoc']
+
+    it 'when unconstrained **strong** is double escaped', ->
+      {tokens} = grammar.tokenizeLine '\\\\**strong text**'
+      expect(tokens).toHaveLength 1
+      expect(tokens[0]).toEqual value: '\\\\**strong text**', scopes: ['source.asciidoc']
 
     it 'when having a [role] set on unconstrained *bold* text', ->
       {tokens} = grammar.tokenizeLine '[role]**bold**'

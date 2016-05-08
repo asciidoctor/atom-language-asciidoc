@@ -588,20 +588,20 @@ repository:
     patterns: [
       {
         name: "markup.bold.unconstrained.asciidoc"
-        match: "\\\\?(?:\\[([^\\]]+?)])?(\\*\\*)(.+?)(\\*\\*)"
+        match: "(?<!\\\\\\\\)(?:\\[.+?\\])?(\\*\\*).+?(\\*\\*)"
         captures:
-          "2":
+          "1":
             name: "support.constant.asciidoc"
-          "4":
+          "2":
             name: "support.constant.asciidoc"
       }
       {
         name: "markup.bold.constrained.asciidoc"
-        match: "(?<=^|[^\\p{Word};:}])(?:\\[([^\\]]+?)\\])?(\\*)(\\S|\\S.*?\\S)(\\*)(?!\\p{Word})"
+        match: "(?<![\\\\;:\\p{Word}\\*])(?:\\[.+?\\])?(\\*)(?:\\S|\\S.*?\\S)(\\*)(?!\\p{Word})"
         captures:
-          "2":
+          "1":
             name: "support.constant.asciidoc"
-          "4":
+          "2":
             name: "support.constant.asciidoc"
       }
     ]

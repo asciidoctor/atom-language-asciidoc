@@ -598,21 +598,25 @@ repository:
   strong:
     patterns: [
       {
-        name: "markup.bold.unconstrained.asciidoc"
-        match: "(?<!\\\\\\\\)(?:\\[.+?\\])?(\\*\\*).+?(\\*\\*)"
+        name: "markup.bold.strong.unconstrained.asciidoc"
+        match: "(?<!\\\\\\\\)(\\[.+?\\])?(\\*\\*).+?(\\*\\*)"
         captures:
           "1":
-            name: "support.constant.asciidoc"
+            name: "markup.meta.attrlist.asciidoc"
           "2":
+            name: "support.constant.asciidoc"
+          "3":
             name: "support.constant.asciidoc"
       }
       {
-        name: "markup.bold.constrained.asciidoc"
-        match: "(?<![\\\\;:\\p{Word}\\*])(?:\\[.+?\\])?(\\*)(?:\\S|\\S.*?\\S)(\\*)(?!\\p{Word})"
+        name: "markup.bold.strong.constrained.asciidoc"
+        match: "(?<![\\\\;:\\p{Word}\\*])(\\[.+?\\])?(\\*)(?:\\S|\\S.*?\\S)(\\*)(?!\\p{Word})"
         captures:
           "1":
-            name: "support.constant.asciidoc"
+            name: "markup.meta.attrlist.asciidoc"
           "2":
+            name: "support.constant.asciidoc"
+          "3":
             name: "support.constant.asciidoc"
       }
     ]

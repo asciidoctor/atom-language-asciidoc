@@ -47,9 +47,9 @@ describe 'Should tokenizes admonition when', ->
     expect(tokens[3][0]).toEqual value: 'auxiliary information.', scopes: ['source.asciidoc', 'markup.admonition.asciidoc']
     expect(tokens[4]).toHaveLength 5
     expect(tokens[4][0]).toEqual value: 'Its purpose is ', scopes: ['source.asciidoc', 'markup.admonition.asciidoc']
-    expect(tokens[4][1]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
-    expect(tokens[4][2]).toEqual value: 'determined', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.bold.constrained.asciidoc']
-    expect(tokens[4][3]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[4][1]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[4][2]).toEqual value: 'determined', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.bold.strong.constrained.asciidoc']
+    expect(tokens[4][3]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
     expect(tokens[4][4]).toEqual value: ' by the label', scopes: ['source.asciidoc', 'markup.admonition.asciidoc']
     expect(tokens[5]).toHaveLength 3
     expect(tokens[5][0]).toEqual value: 'at the ', scopes: ['source.asciidoc', 'markup.admonition.asciidoc']

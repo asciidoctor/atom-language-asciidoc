@@ -29,7 +29,7 @@ describe 'Should tokenizes footnote macro when', ->
     expect(tokens).toHaveLength 6
     expect(tokens[0]).toEqual value: 'footnote', scopes: ['source.asciidoc', 'markup.other.footnote.asciidoc', 'entity.name.function.asciidoc']
     expect(tokens[1]).toEqual value: ':[', scopes: ['source.asciidoc', 'markup.other.footnote.asciidoc']
-    expect(tokens[3]).toEqual value: 'text', scopes: ['source.asciidoc', 'markup.other.footnote.asciidoc', 'string.unquoted.asciidoc', 'markup.bold.constrained.asciidoc']
+    expect(tokens[3]).toEqual value: 'text', scopes: ['source.asciidoc', 'markup.other.footnote.asciidoc', 'string.unquoted.asciidoc', 'markup.bold.strong.constrained.asciidoc']
     expect(tokens[5]).toEqual value: ']', scopes: ['source.asciidoc', 'markup.other.footnote.asciidoc']
 
   it 'simple footnoteref with id and text', ->

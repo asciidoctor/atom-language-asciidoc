@@ -47,9 +47,9 @@ describe 'Should tokenizes code block when', ->
     expect(tokens[5][1]).toEqualJson value: '1', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.numeric.asciidoc']
     expect(tokens[5][2]).toEqualJson value: '>', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.other.symbol.asciidoc']
     expect(tokens[5][3]).toEqualJson value: ' ', scopes: ['source.asciidoc', 'callout.asciidoc']
-    expect(tokens[5][4]).toEqualJson value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
-    expect(tokens[5][5]).toEqualJson value: 'Grammars', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.constrained.asciidoc']
-    expect(tokens[5][6]).toEqualJson value: '*', scopes: [ 'source.asciidoc', 'callout.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[5][4]).toEqualJson value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[5][5]).toEqualJson value: 'Grammars', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.strong.constrained.asciidoc']
+    expect(tokens[5][6]).toEqualJson value: '*', scopes: [ 'source.asciidoc', 'callout.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
     expect(tokens[5][7]).toEqualJson value: ' ', scopes: ['source.asciidoc', 'callout.asciidoc']
     expect(tokens[5][8]).toEqualJson value: '_definition_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.italic.asciidoc']
     expect(tokens[5]).toHaveLength 9
@@ -57,9 +57,9 @@ describe 'Should tokenizes code block when', ->
     expect(tokens[6][1]).toEqualJson value: '2', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.numeric.asciidoc']
     expect(tokens[6][2]).toEqualJson value: '>', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.other.symbol.asciidoc']
     expect(tokens[6][3]).toEqualJson value: ' ', scopes: ['source.asciidoc', 'callout.asciidoc']
-    expect(tokens[6][4]).toEqualJson value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
-    expect(tokens[6][5]).toEqualJson value: 'CoffeeLint', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.constrained.asciidoc']
-    expect(tokens[6][6]).toEqualJson value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[6][4]).toEqualJson value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[6][5]).toEqualJson value: 'CoffeeLint', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.strong.constrained.asciidoc']
+    expect(tokens[6][6]).toEqualJson value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
     expect(tokens[6][7]).toEqualJson value: ' ', scopes: ['source.asciidoc', 'callout.asciidoc']
     expect(tokens[6][8]).toEqualJson value: '_rules_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.italic.asciidoc']
 
@@ -67,7 +67,7 @@ describe 'Should tokenizes code block when', ->
     tokens = grammar.tokenizeLines '''
       [source,java,subs="{markup-in-source}"]
       ----
-      System.out.println("Hello *bold* text").
+      System.out.println("Hello *strong* text").
       ----
       '''
     expect(tokens).toHaveLength 4 # Number of lines
@@ -84,7 +84,7 @@ describe 'Should tokenizes code block when', ->
     expect(tokens[1]).toHaveLength 1
     expect(tokens[1][0]).toEqualJson value: '----', scopes: ['source.asciidoc', 'markup.code.java.asciidoc', 'support.asciidoc']
     expect(tokens[2]).toHaveLength 1
-    expect(tokens[2][0]).toEqualJson value: 'System.out.println("Hello *bold* text").', scopes: ['source.asciidoc', 'markup.code.java.asciidoc', 'source.embedded.java']
+    expect(tokens[2][0]).toEqualJson value: 'System.out.println("Hello *strong* text").', scopes: ['source.asciidoc', 'markup.code.java.asciidoc', 'source.embedded.java']
     expect(tokens[3]).toHaveLength 2
     expect(tokens[3][0]).toEqualJson value: '----', scopes: ['source.asciidoc', 'markup.code.java.asciidoc', 'support.asciidoc']
     expect(tokens[3][1]).toEqualJson value: '', scopes: ['source.asciidoc']

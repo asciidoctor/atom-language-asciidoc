@@ -29,9 +29,9 @@ describe 'Should tokenizes sidebar block when', ->
     expect(tokens[0][0]).toEqual value: '****', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']
     expect(tokens[1]).toHaveLength 5
     expect(tokens[1][0]).toEqual value: 'A multi-line ', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']
-    expect(tokens[1][1]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
-    expect(tokens[1][2]).toEqual value: 'sidebar', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.bold.constrained.asciidoc']
-    expect(tokens[1][3]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[1][1]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[1][2]).toEqual value: 'sidebar', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.bold.strong.constrained.asciidoc']
+    expect(tokens[1][3]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
     expect(tokens[1][4]).toEqual value: '.', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']
     expect(tokens[2]).toHaveLength 1
     expect(tokens[2][0]).toEqual value: '', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']

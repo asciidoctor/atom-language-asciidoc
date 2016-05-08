@@ -6,23 +6,25 @@ patterns: [
   #
   # Examples
   #
-  #   **b**old character(s)
+  #   s**trong** phrase
   #
-  name: 'markup.bold.unconstrained.asciidoc'
-  match: '(?<!\\\\\\\\)(?:\\[.+?\\])?(\\*\\*).+?(\\*\\*)'
+  name: 'markup.bold.strong.unconstrained.asciidoc'
+  match: '(?<!\\\\\\\\)(\\[.+?\\])?(\\*\\*).+?(\\*\\*)'
   captures:
-    1: name: 'support.constant.asciidoc'
+    1: name: 'markup.meta.attrlist.asciidoc'
     2: name: 'support.constant.asciidoc'
+    3: name: 'support.constant.asciidoc'
 ,
   # Matches strong constrained phrases
   #
   # Examples
   #
-  #   *bold phrase*
+  #   *strong phrase*
   #
-  name: 'markup.bold.constrained.asciidoc'
-  match: '(?<![\\\\;:\\p{Word}\\*])(?:\\[.+?\\])?(\\*)(?:\\S|\\S.*?\\S)(\\*)(?!\\p{Word})'
+  name: 'markup.bold.strong.constrained.asciidoc'
+  match: '(?<![\\\\;:\\p{Word}\\*])(\\[.+?\\])?(\\*)(?:\\S|\\S.*?\\S)(\\*)(?!\\p{Word})'
   captures:
-    1: name: 'support.constant.asciidoc'
+    1: name: 'markup.meta.attrlist.asciidoc'
     2: name: 'support.constant.asciidoc'
+    3: name: 'support.constant.asciidoc'
 ]

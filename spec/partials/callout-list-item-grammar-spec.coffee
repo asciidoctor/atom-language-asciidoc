@@ -32,9 +32,9 @@ describe 'Should tokenizes callout list item when', ->
     expect(tokens[1]).toEqual value: '1', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.numeric.asciidoc']
     expect(tokens[2]).toEqual value: '>', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.other.symbol.asciidoc']
     expect(tokens[3]).toEqual value: ' ', scopes: ['source.asciidoc', 'callout.asciidoc']
-    expect(tokens[4]).toEqual value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
-    expect(tokens[5]).toEqual value: 'Grammars', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.constrained.asciidoc']
-    expect(tokens[6]).toEqual value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[4]).toEqual value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[5]).toEqual value: 'Grammars', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.strong.constrained.asciidoc']
+    expect(tokens[6]).toEqual value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
     expect(tokens[7]).toEqual value: ' ', scopes: ['source.asciidoc', 'callout.asciidoc']
     expect(tokens[8]).toEqual value: '_definition_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.italic.asciidoc']
 

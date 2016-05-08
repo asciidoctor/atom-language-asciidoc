@@ -33,8 +33,8 @@ describe 'Should tokenize line break when', ->
     {tokens} = grammar.tokenizeLine 'Rubies are *red* +'
     expect(tokens).toHaveLength 6
     expect(tokens[0]).toEqual value: 'Rubies are ', scopes: ['source.asciidoc']
-    expect(tokens[1]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
-    expect(tokens[2]).toEqual value: 'red', scopes: ['source.asciidoc', 'markup.bold.constrained.asciidoc']
-    expect(tokens[3]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[1]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[2]).toEqual value: 'red', scopes: ['source.asciidoc', 'markup.bold.strong.constrained.asciidoc']
+    expect(tokens[3]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
     expect(tokens[4]).toEqual value: ' ', scopes: ['source.asciidoc']
     expect(tokens[5]).toEqual value: '+', scopes: ['source.asciidoc', 'variable.line-break.asciidoc']

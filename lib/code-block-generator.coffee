@@ -4,16 +4,15 @@ module.exports =
   makeAsciidocBlocks: (languages, debug = false) ->
     # add languages blocks
     codeBlocks = languages.map (lang) ->
-      begin: "^\\[source,\\s*(?i:(#{lang.pattern}))\\]$"
+      begin: "^\\[(source),\\p{Blank}*(?i:(#{lang.pattern}))(?:,([^\]]*))?\\]$"
       beginCaptures:
         0: name: 'support.asciidoc'
+        1: name: 'constant.asciidoc'
+        2: name: 'string.asciidoc'
       patterns: [
         name: "markup.code.#{lang.code}.asciidoc"
         begin: '^(-{4,})\\s*$'
         beginCaptures:
-          0: name: 'support.asciidoc'
-        end: '^\\1*$'
-        endCaptures:
           0: name: 'support.asciidoc'
         contentName: "#{lang.type}.embedded.#{lang.code}"
         patterns: [
@@ -21,14 +20,19 @@ module.exports =
         ,
           include: "#{lang.type}.#{lang.code}"
         ]
+        end: '^\\1*$'
+        endCaptures:
+          0: name: 'support.asciidoc'
       ]
       end: '(?<=----)[\\r\\n]+$'
 
     # add generic block
     codeBlocks.push
-      begin: '^\\s*\\[source(,[^\\],]*)?\\]$'
+      begin: '^\\[(source)(?:,([^,\\]]*)){0,2}\\]$'
       beginCaptures:
         0: name: 'support.asciidoc'
+        1: name: 'constant.asciidoc'
+        2: name: 'string.asciidoc'
       end: '(?<=----)[\\r\\n]+$'
       patterns: [
         name: 'markup.raw.asciidoc'

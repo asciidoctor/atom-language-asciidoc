@@ -450,11 +450,18 @@ repository:
   "footnote-macro":
     patterns: [
       {
-        name: "markup.link.footnote.asciidoc"
-        match: "\\\\?(footnote(?:ref)?):\\[(.*?[^\\\\])\\]"
+        name: "markup.other.footnote.asciidoc"
+        match: "(?<!\\\\)(footnote(?:ref)?):\\[(.*?[^\\\\])\\]"
         captures:
+          "1":
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "support.constant.footnote.inline.asciidoc"
+            name: "string.unquoted.asciidoc"
+            patterns: [
+              {
+                include: "#inlines"
+              }
+            ]
       }
     ]
   "general-block-macro":

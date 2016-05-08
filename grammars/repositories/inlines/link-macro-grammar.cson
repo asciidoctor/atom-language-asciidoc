@@ -24,4 +24,11 @@ patterns: [
   match: '\\\\?(?:link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])'
   captures:
     1: name: 'support.constant.link.inline.asciidoc'
+,
+  # Matches an inline e-mail address.
+  #
+  #   doc.writer@example.com
+  #
+  name: 'markup.link.inline.email.asciidoc'
+  match: '\\p{Word}[\\p{Word}.%+-]*(@)\\p{Alnum}[\\p{Alnum}.-]*(\\.)\\p{Alpha}{2,4}\\b'
 ]

@@ -1,7 +1,7 @@
 # AsciiDoc Package for Atom
 
-[![Atom Package](https://img.shields.io/apm/v/language-asciidoc.svg)](https://atom.io/packages/language-asciido)
-[![Atom Package Downloads](https://img.shields.io/apm/dm/language-asciidoc.svg)](https://atom.io/packages/language-asciido)
+[![Atom Package](https://img.shields.io/apm/v/language-asciidoc.svg)](https://atom.io/packages/language-asciidoc)
+[![Atom Package Downloads](https://img.shields.io/apm/dm/language-asciidoc.svg)](https://atom.io/packages/language-asciidoc)
 [![Build Status](https://travis-ci.org/asciidoctor/atom-language-asciidoc.svg?branch=master)](https://travis-ci.org/asciidoctor/atom-language-asciidoc)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/asciidoctor/atom-language-asciidoc/blob/master/LICENSE.md)
 

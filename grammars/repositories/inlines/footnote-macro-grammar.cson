@@ -9,8 +9,13 @@ patterns: [
   #   footnoteref:[id,text]
   #   footnoteref:[id]
   #
-  name: 'markup.link.footnote.asciidoc'
-  match: '\\\\?(footnote(?:ref)?):\\[(.*?[^\\\\])\\]'
+  name: 'markup.other.footnote.asciidoc'
+  match: '(?<!\\\\)(footnote(?:ref)?):\\[(.*?[^\\\\])\\]'
   captures:
-    2: name: 'support.constant.footnote.inline.asciidoc'
+    1: name: 'entity.name.function.asciidoc'
+    2:
+      name: 'string.unquoted.asciidoc'
+      patterns: [
+        include: '#inlines'
+      ]
 ]

@@ -27,29 +27,33 @@ describe 'Should tokenizes callout in code block when', ->
                                       ----
                                       '''
     expect(tokens).toHaveLength 8
-    expect(tokens[0]).toHaveLength 1
-    expect(tokens[0][0]).toEqual value: '[source, js]', scopes: ['source.asciidoc', 'support.asciidoc']
+    expect(tokens[0]).toHaveLength 5
+    expect(tokens[0][0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'support.asciidoc']
+    expect(tokens[0][1]).toEqualJson value: 'source', scopes: ['source.asciidoc', 'support.asciidoc', 'constant.asciidoc']
+    expect(tokens[0][2]).toEqualJson value: ', ', scopes: ['source.asciidoc', 'support.asciidoc']
+    expect(tokens[0][3]).toEqualJson value: 'js', scopes: ['source.asciidoc', 'support.asciidoc', 'string.asciidoc']
+    expect(tokens[0][4]).toEqualJson value: ']', scopes: ['source.asciidoc', 'support.asciidoc']
     expect(tokens[1]).toHaveLength 1
-    expect(tokens[1][0]).toEqual value: '----', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'support.asciidoc']
+    expect(tokens[1][0]).toEqualJson value: '----', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'support.asciidoc']
     expect(tokens[2]).toHaveLength 4
-    expect(tokens[2][0]).toEqual value: 'var http = require(\'http\'); ', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js']
-    expect(tokens[2][1]).toEqual value: '<', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.other.symbol.asciidoc']
-    expect(tokens[2][2]).toEqual value: '1', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.numeric.asciidoc']
-    expect(tokens[2][3]).toEqual value: '>', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.other.symbol.asciidoc']
+    expect(tokens[2][0]).toEqualJson value: 'var http = require(\'http\'); ', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js']
+    expect(tokens[2][1]).toEqualJson value: '<', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.other.symbol.asciidoc']
+    expect(tokens[2][2]).toEqualJson value: '1', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.numeric.asciidoc']
+    expect(tokens[2][3]).toEqualJson value: '>', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.other.symbol.asciidoc']
     expect(tokens[3]).toHaveLength 4
-    expect(tokens[3][0]).toEqual value: 'http.createServer(function (req, res) { ', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js']
-    expect(tokens[3][1]).toEqual value: '<', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.other.symbol.asciidoc']
-    expect(tokens[3][2]).toEqual value: '2', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.numeric.asciidoc']
-    expect(tokens[3][3]).toEqual value: '>', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.other.symbol.asciidoc']
+    expect(tokens[3][0]).toEqualJson value: 'http.createServer(function (req, res) { ', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js']
+    expect(tokens[3][1]).toEqualJson value: '<', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.other.symbol.asciidoc']
+    expect(tokens[3][2]).toEqualJson value: '2', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.numeric.asciidoc']
+    expect(tokens[3][3]).toEqualJson value: '>', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.other.symbol.asciidoc']
     expect(tokens[4]).toHaveLength 1
-    expect(tokens[4][0]).toEqual value: '  res.end(\'Hello World', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js']
+    expect(tokens[4][0]).toEqualJson value: '  res.end(\'Hello World', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js']
     expect(tokens[5]).toHaveLength 4
-    expect(tokens[5][0]).toEqual value: '\'); ', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js']
-    expect(tokens[5][1]).toEqual value: '<', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.other.symbol.asciidoc']
-    expect(tokens[5][2]).toEqual value: '3', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.numeric.asciidoc']
-    expect(tokens[5][3]).toEqual value: '>', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.other.symbol.asciidoc']
+    expect(tokens[5][0]).toEqualJson value: '\'); ', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js']
+    expect(tokens[5][1]).toEqualJson value: '<', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.other.symbol.asciidoc']
+    expect(tokens[5][2]).toEqualJson value: '3', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.numeric.asciidoc']
+    expect(tokens[5][3]).toEqualJson value: '>', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.other.symbol.asciidoc']
     expect(tokens[6]).toHaveLength 1
-    expect(tokens[6][0]).toEqual value: '}).listen(1337, \'127.0.0.1\');', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js']
+    expect(tokens[6][0]).toEqualJson value: '}).listen(1337, \'127.0.0.1\');', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js']
     expect(tokens[7]).toHaveLength 2
-    expect(tokens[7][0]).toEqual value: '----', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'support.asciidoc']
-    expect(tokens[7][1]).toEqual value: '', scopes: ['source.asciidoc']
+    expect(tokens[7][0]).toEqualJson value: '----', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'support.asciidoc']
+    expect(tokens[7][1]).toEqualJson value: '', scopes: ['source.asciidoc']

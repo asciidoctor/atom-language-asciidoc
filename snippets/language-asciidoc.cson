@@ -1,4 +1,4 @@
-'.source.asciidoc':
+'.source.asciidoc:not(.markup.code)':
 
   # Blocks
   #
@@ -39,6 +39,16 @@
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#listing-blocks'
     prefix: '--'
     body: '''
+      ----
+      $1
+      ----
+      $0
+      '''
+  'Code Block':
+    description: 'Code Block'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#listing-blocks'
+    prefix: '--s'
+    body: '''
       [source, $1]
       ----
       $2
@@ -48,7 +58,7 @@
   'Literal Block':
     description: 'Literal Block'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#literal-text-and-blocks'
-    prefix: '/..'
+    prefix: ',,'
     body: '''
       ....
       $1
@@ -76,99 +86,41 @@
       ____
       $0
       '''
+  'Open Block':
+    description: 'Open Block'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#open-blocks'
+    prefix: '~~'
+    body: '''
+      --
+      $1
+      --
+      $0
+      '''
 
+  # Table
+  #
   'Table':
     description: 'Table'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#tables'
     prefix: '|='
     body: '''
-      ${1:Legend}
-      [width="${2:100%}", cols="$3", options="$4"]
       |===
-      |$5
+      |$1
       |===
       '''
-
-  # Macro
-  #
-  'Keyboard':
-    description: 'Keyboard shortcuts'
-    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#keyboard-shortcuts'
-    prefix: 'akbd'
-    body: 'kbd:[$1] $0'
-  'Menu selection':
-    description: 'Menu Selection'
-    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#menu-selections'
-    prefix: 'amenu'
-    body: 'menu:$1[$2] $0'
-  'UI buttons':
-    description: 'UI buttons'
-    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#ui-buttons'
-    prefix: 'abtn'
-    body: 'btn:[$1] $0'
-  'Inline Icons':
-    description: 'Inline Icons'
-    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#inline-icons'
-    prefix: 'aicon'
-    body: 'icon:$1[$2] $0'
-  'Link macro':
-    description: 'Link macro'
-    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#url'
-    prefix: 'alink'
-    body: 'link:${1:url}[$2] $0'
-  'mailto link':
-    description: 'mailto link'
-    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#url'
-    prefix: 'amailto'
-    body: 'mailto:${1:email}[$2] $0'
-  'stem':
-    description: 'stem'
-    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#activating-stem-support'
-    prefix: 'astem'
-    body: 'stem:$2[$1] $0'
-  'stem asciimath':
-    description: 'stem asciimath'
-    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#activating-stem-support'
-    prefix: 'aasciimath'
-    body: 'asciimath:$2[$1] $0'
-  'stem latexmath':
-    description: 'stem latexmath'
-    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#activating-stem-support'
-    prefix: 'alatexmath'
-    body: 'latexmath:$2[$1] $0'
-  'Footnote':
-    description: 'Footnote'
-    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#user-footnotes'
-    prefix: 'afootnote'
-    body: 'footnote:[$1] $0'
-  'Footnote reference':
-    description: 'Footnote reference'
-    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#user-footnotes'
-    prefix: 'afootnoteref'
-    body: 'footnoteref:[$1] $0'
 
   # Headings
   #
   'Heading 0':
     description: 'Heading 0 (one-liner)'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#sections'
-    prefix: '=0'
+    prefix: '=1'
     body: '''
-       $1
-
+      = $1
       $0
       '''
   'Heading 1':
     description: 'Heading 1 (one-liner)'
-    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#sections'
-    prefix: '=1'
-    body: '''
-      = $1
-
-      $0
-      '''
-  'Heading 2':
-    description: 'Heading 2 (one-liner)'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#sections'
     prefix: '=2'
     body: '''
@@ -176,8 +128,8 @@
 
       $0
       '''
-  'Heading 3':
-    description: 'Heading 3 (one-liner)'
+  'Heading 2':
+    description: 'Heading 2 (one-liner)'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#sections'
     prefix: '=3'
     body: '''
@@ -185,8 +137,8 @@
 
       $0
       '''
-  'Heading 4':
-    description: 'Heading 4 (one-liner)'
+  'Heading 3':
+    description: 'Heading 3 (one-liner)'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#sections'
     prefix: '=4'
     body: '''
@@ -194,8 +146,8 @@
 
       $0
       '''
-  'Heading 5':
-    description: 'Heading 5 (one-liner)'
+  'Heading 4':
+    description: 'Heading 4 (one-liner)'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#sections'
     prefix: '=5'
     body: '''
@@ -204,17 +156,84 @@
       $0
       '''
 
+  # Macro
+  #
+  'Keyboard':
+    description: 'Keyboard shortcuts'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#keyboard-shortcuts'
+    prefix: '/kbd'
+    body: 'kbd:[$1] $0'
+  'Menu selection':
+    description: 'Menu Selection'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#menu-selections'
+    prefix: '/mn'
+    body: 'menu:$1[$2] $0'
+  'UI buttons':
+    description: 'UI buttons'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#ui-buttons'
+    prefix: '/btn'
+    body: 'btn:[$1] $0'
+  'Inline Image':
+    description: 'Inline Image'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#images'
+    prefix: '/img'
+    body: 'image:$1[$2] $0'
+  'Link macro':
+    description: 'Link macro'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#url'
+    prefix: '/lk'
+    body: 'link:${1:url}[$2] $0'
+  'mailto link':
+    description: 'mailto link'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#url'
+    prefix: '/mt'
+    body: 'mailto:${1:email}[$2] $0'
+  'stem':
+    description: 'stem'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#activating-stem-support'
+    prefix: '/stem'
+    body: 'stem:$2[$1] $0'
+  'stem asciimath':
+    description: 'stem asciimath'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#activating-stem-support'
+    prefix: '/asciimath'
+    body: 'asciimath:$2[$1] $0'
+  'stem latexmath':
+    description: 'stem latexmath'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#activating-stem-support'
+    prefix: '/latexmath'
+    body: 'latexmath:$2[$1] $0'
+  'Footnote':
+    description: 'Footnote'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#user-footnotes'
+    prefix: '/fn'
+    body: 'footnote:[$1] $0'
+  'Footnote reference':
+    description: 'Footnote reference'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#user-footnotes'
+    prefix: '/fnr'
+    body: 'footnoteref:[$1] $0'
+
   # Others
   #
+  'Image include':
+    description: 'Image include'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#images'
+    prefix: '/imgi'
+    body: '''
+      image::$1[$2]
+
+      $0
+      '''
   'Author':
     description: 'Author and Email'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#author-and-email'
-    prefix: 'aauthor'
+    prefix: '/aut'
     body: '${1:author} <${2:email}>$0'
   'Revision information':
     description: 'A document\'s revision information'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#revision-number-date-and-remark'
-    prefix: 'arev'
+    prefix: '/rev'
     body: '''
       v1.0, ${3:revdate}: ${4:revremark}
       $0
@@ -222,15 +241,15 @@
   'Subscript':
     description: 'subscript'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#subscript-and-superscript'
-    prefix: 'asub'
+    prefix: '/sub'
     body: '~$1~ $0'
   'Superscript':
     description: 'superscript'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#subscript-and-superscript'
-    prefix: 'asub'
+    prefix: '/sup'
     body: '^$1^ $0'
   'Callout':
     description: 'Callout numbers'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#callouts'
-    prefix: 'acallout'
+    prefix: '/co'
     body: '<$1> $0'

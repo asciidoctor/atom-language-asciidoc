@@ -536,12 +536,12 @@ repository:
   monospaced:
     patterns: [
       {
-        name: "markup.raw.constrained.monospaced.asciidoc"
-        match: "(?<![\\\\;:\\p{Word}\"'`])(?:\\[.+?\\])?`(?:\\S|\\S.*?\\S)`(?![\\p{Word}\"'`])"
-      }
-      {
         name: "markup.raw.unconstrained.monospaced.asciidoc"
         match: "(?<!\\\\)(?:\\[.+?\\])?``(?:.+?)``"
+      }
+      {
+        name: "markup.raw.constrained.monospaced.asciidoc"
+        match: "(?<![\\\\;:\\p{Word}\"'`])(?:\\[.+?\\])?`(?:\\S|\\S.*?\\S)`(?![\\p{Word}\"'`])"
       }
     ]
   "passthrough-macro":

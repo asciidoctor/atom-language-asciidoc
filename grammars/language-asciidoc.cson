@@ -511,6 +511,10 @@ repository:
           "1":
             name: "support.constant.link.inline.asciidoc"
       }
+      {
+        name: "markup.link.inline.email.asciidoc"
+        match: "\\p{Word}[\\p{Word}.%+-]*(@)\\p{Alnum}[\\p{Alnum}.-]*(\\.)\\p{Alpha}{2,4}\\b"
+      }
     ]
   "menu-macro":
     patterns: [

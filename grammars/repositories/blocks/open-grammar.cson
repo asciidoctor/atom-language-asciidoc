@@ -1,0 +1,16 @@
+key: 'open-block'
+
+patterns: [
+
+  # Matches open block.
+  #
+  # Examples
+  #
+  # --
+  # An open block can be an anonymous container
+  # --
+  #
+  name: 'markup.raw.open.asciidoc'
+  begin: '^(-{2})$'
+  end: '\\1'
+]

@@ -120,6 +120,25 @@ The regexps are based on the https://github.com/kkos/oniguruma[Oniguruma] regexp
 * http://www.apeth.com/nonblog/stories/textmatebundle.html[Practical TextMate guide]
 * http://manual.macromates.com/en/language_grammars.html[TextMate language grammars manual]
 
+==== Naming conventions
+
+We're trying as much as possible to adhere to the naming guidelines described in the http://manual.macromates.com/en/language_grammars.html#naming_conventions[Naming Conventions] section of the TextMate language manual.
+Since the grammar framework was designed with computer programming languages in mind, it's not always clear what name to select.
+We must find the most logical way to map to the existing names, then try to stick to it.
+
+Here are (some of) the patterns we're currently using:
+
+* `markup.heading` - encloses a section title
+* `markup.bold` - encloses strong text
+* `markup.italic` - encloses emphasized text
+* `markup.raw` - encloses monospaced text
+* `markup.link` - encloses a raw URL or target of a link macro
+* `comment.line` - encloses a line comment
+* `comment.block` - encloses a block comment
+* `entity.name.function` - encloses the macro name
+* `string.unquoted` - nested content (such as inside a macro or attribute value)
+* ...
+
 === Regexp handling
 
 Atom uses the https://github.com/kkos/oniguruma[Oniguruma] library for parsing regular expressions via the https://github.com/atom/node-oniguruma[node-oniguruma] JavaScript module.

@@ -24,7 +24,7 @@ describe 'Should tokenizes subscript when', ->
     expect(tokens[2]).toEqual value: '~', scopes: ['source.asciidoc', 'markup.sub.asciidoc', 'support.constant.asciidoc']
     expect(tokens[3]).toEqual value: ' is good', scopes: ['source.asciidoc']
 
-  it 'when having a [role] set on constrained ~subscript~ text', ->
+  it 'when having a [role] set on ~subscript~ text', ->
     {tokens} = grammar.tokenizeLine '[role]~subscript~'
     expect(tokens).toHaveLength 4
     expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.sub.asciidoc', 'markup.meta.attrlist.asciidoc']
@@ -32,7 +32,7 @@ describe 'Should tokenizes subscript when', ->
     expect(tokens[2]).toEqual value: 'subscript', scopes: ['source.asciidoc', 'markup.sub.asciidoc']
     expect(tokens[3]).toEqual value: '~', scopes: ['source.asciidoc', 'markup.sub.asciidoc', 'support.constant.asciidoc']
 
-  it 'when having [role1 role2] set on constrained ~subscript~ text', ->
+  it 'when having [role1 role2] set on ~subscript~ text', ->
     {tokens} = grammar.tokenizeLine '[role1 role2]~subscript~'
     expect(tokens).toHaveLength 4
     expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.sub.asciidoc', 'markup.meta.attrlist.asciidoc']

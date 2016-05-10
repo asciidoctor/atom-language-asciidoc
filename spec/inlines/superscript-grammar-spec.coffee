@@ -19,7 +19,23 @@ describe 'Should tokenizes superscript when', ->
   it 'simple phrase', ->
     {tokens} = grammar.tokenizeLine '^superscript^ is good'
     expect(tokens).toHaveLength 4
-    expect(tokens[0]).toEqual value: '^', scopes: ['source.asciidoc', 'markup.super.asciidoc', 'constant.super.asciidoc']
+    expect(tokens[0]).toEqual value: '^', scopes: ['source.asciidoc', 'markup.super.asciidoc', 'support.constant.asciidoc']
     expect(tokens[1]).toEqual value: 'superscript', scopes: ['source.asciidoc', 'markup.super.asciidoc']
-    expect(tokens[2]).toEqual value: '^', scopes: ['source.asciidoc', 'markup.super.asciidoc', 'constant.super.asciidoc']
+    expect(tokens[2]).toEqual value: '^', scopes: ['source.asciidoc', 'markup.super.asciidoc', 'support.constant.asciidoc']
     expect(tokens[3]).toEqual value: ' is good', scopes: ['source.asciidoc']
+
+  it 'when having a [role] set on ^superscript^ text', ->
+    {tokens} = grammar.tokenizeLine '[role]^superscript^'
+    expect(tokens).toHaveLength 4
+    expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.super.asciidoc', 'markup.meta.attrlist.asciidoc']
+    expect(tokens[1]).toEqual value: '^', scopes: ['source.asciidoc', 'markup.super.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[2]).toEqual value: 'superscript', scopes: ['source.asciidoc', 'markup.super.asciidoc']
+    expect(tokens[3]).toEqual value: '^', scopes: ['source.asciidoc', 'markup.super.asciidoc', 'support.constant.asciidoc']
+
+  it 'when having [role1 role2] set on ^superscript^ text', ->
+    {tokens} = grammar.tokenizeLine '[role1 role2]^superscript^'
+    expect(tokens).toHaveLength 4
+    expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.super.asciidoc', 'markup.meta.attrlist.asciidoc']
+    expect(tokens[1]).toEqual value: '^', scopes: ['source.asciidoc', 'markup.super.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[2]).toEqual value: 'superscript', scopes: ['source.asciidoc', 'markup.super.asciidoc']
+    expect(tokens[3]).toEqual value: '^', scopes: ['source.asciidoc', 'markup.super.asciidoc', 'support.constant.asciidoc']

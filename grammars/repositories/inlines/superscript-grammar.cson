@@ -8,8 +8,9 @@ patterns: [
   #   ^superscript^
   #
   name: 'markup.super.asciidoc'
-  match: '\\\\?(?:\\[([^\\]]+?)\\])?(\\^)(\\S+?)(\\^)'
+  match: '(?<!\\\\)(\\[.+?\\])?(\\^)(?:\\S+?)(\\^)'
   captures:
-    2: name: 'constant.super.asciidoc'
-    4: name: 'constant.super.asciidoc'
+    1: name: 'markup.meta.attrlist.asciidoc'
+    2: name: 'support.constant.asciidoc'
+    3: name: 'support.constant.asciidoc'
 ]

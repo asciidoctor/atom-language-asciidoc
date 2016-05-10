@@ -224,7 +224,7 @@ repository:
         match: "^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]$"
         captures:
           "1":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
       }
     ]
   "horizontal-rule":
@@ -276,7 +276,7 @@ repository:
         match: "^\\[((sect[1-4]|abstract|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index))\\]$"
         captures:
           "1":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
       }
     ]
   titles:
@@ -378,25 +378,25 @@ repository:
         match: "\\\\?(?:(\\[{2})([\\p{Alpha}:_][\\p{Word}:.-]*)(?:,\\p{Blank}*(\\S.*?))?(\\]{2}))"
         captures:
           "1":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
           "2":
             name: "markup.blockid.asciidoc"
           "4":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
       }
       {
         match: "\\\\?(anchor:)(\\S+)(\\[)(.*?[^\\\\])?(\\])"
         captures:
           "1":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
           "2":
             name: "markup.blockid.asciidoc"
           "3":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
           "4":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
           "5":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
       }
     ]
   "attribute-reference":
@@ -413,11 +413,11 @@ repository:
         match: "\\\\?(\\[{3})([\\p{Word}:][\\p{Word}:.-]*?)(\\]{3})"
         captures:
           "1":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
           "2":
             name: "markup.biblioref.asciidoc"
           "3":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
       }
     ]
   characters:
@@ -427,9 +427,9 @@ repository:
         match: "(&)(\\S+?)(;)"
         captures:
           "1":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
           "3":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
       }
     ]
   emphasis:
@@ -481,11 +481,11 @@ repository:
         match: "^(\\p{Word}+::)(\\S*?)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])$"
         captures:
           "1":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
           "3":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
           "5":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
       }
     ]
   "image-macro":
@@ -495,11 +495,11 @@ repository:
         match: "\\\\?(?:image|icon):([^:\\[][^\\[]*)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])"
         captures:
           "1":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
           "2":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
           "4":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
       }
     ]
   "kbd-macro":
@@ -509,7 +509,7 @@ repository:
         match: "\\\\?(?:kbd|btn):(\\[)((?:\\\\\\]|[^\\]])+?)(\\])"
         captures:
           "2":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
       }
     ]
   "link-macro":
@@ -614,9 +614,9 @@ repository:
         match: "\\\\?(stem|(?:latex|ascii)math):([a-z,]*)(\\[)(.*?[^\\\\])(\\])"
         captures:
           "2":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
           "4":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "support.constant.asciidoc"
       }
     ]
   strong:

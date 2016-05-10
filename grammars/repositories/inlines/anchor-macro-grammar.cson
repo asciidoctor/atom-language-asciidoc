@@ -11,9 +11,9 @@ patterns: [
   #
   match: '\\\\?(?:(\\[{2})([\\p{Alpha}:_][\\p{Word}:.-]*)(?:,\\p{Blank}*(\\S.*?))?(\\]{2}))'
   captures:
-    1: name: 'punctuation.definition.entity.asciidoc'
+    1: name: 'support.constant.asciidoc'
     2: name: 'markup.blockid.asciidoc'
-    4: name: 'punctuation.definition.entity.asciidoc'
+    4: name: 'support.constant.asciidoc'
 ,
   # Matches an anchor (i.e., id + optional reference text) in the flow of text.
   #
@@ -24,9 +24,9 @@ patterns: [
   #
   match: '\\\\?(anchor:)(\\S+)(\\[)(.*?[^\\\\])?(\\])'
   captures:
-    1: name: 'punctuation.definition.entity.asciidoc'
+    1: name: 'support.constant.asciidoc'
     2: name: 'markup.blockid.asciidoc'
-    3: name: 'punctuation.definition.entity.asciidoc'
-    4: name: 'punctuation.definition.entity.asciidoc'
-    5: name: 'punctuation.definition.entity.asciidoc'
+    3: name: 'support.constant.asciidoc'
+    4: name: 'support.constant.asciidoc'
+    5: name: 'support.constant.asciidoc'
 ]

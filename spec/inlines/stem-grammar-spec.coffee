@@ -21,7 +21,7 @@ describe 'Should tokenizes stem macro when', ->
     expect(tokens).toHaveLength 5
     expect(tokens[0]).toEqual value: 'foo ', scopes: ['source.asciidoc']
     expect(tokens[1]).toEqual value: 'stem:[', scopes: ['source.asciidoc', 'markup.macro.inline.stem.general.asciidoc']
-    expect(tokens[2]).toEqual value: 'x != 0', scopes: ['source.asciidoc', 'markup.macro.inline.stem.general.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[2]).toEqual value: 'x != 0', scopes: ['source.asciidoc', 'markup.macro.inline.stem.general.asciidoc', 'support.constant.asciidoc']
     expect(tokens[3]).toEqual value: ']', scopes: ['source.asciidoc', 'markup.macro.inline.stem.general.asciidoc']
     expect(tokens[4]).toEqual value: ' bar', scopes: ['source.asciidoc']
 
@@ -30,7 +30,7 @@ describe 'Should tokenizes stem macro when', ->
     expect(tokens).toHaveLength 5
     expect(tokens[0]).toEqual value: 'foo ', scopes: ['source.asciidoc']
     expect(tokens[1]).toEqual value: 'asciimath:[', scopes: ['source.asciidoc', 'markup.macro.inline.stem.general.asciidoc']
-    expect(tokens[2]).toEqual value: 'x != 0', scopes: ['source.asciidoc', 'markup.macro.inline.stem.general.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[2]).toEqual value: 'x != 0', scopes: ['source.asciidoc', 'markup.macro.inline.stem.general.asciidoc', 'support.constant.asciidoc']
     expect(tokens[3]).toEqual value: ']', scopes: ['source.asciidoc', 'markup.macro.inline.stem.general.asciidoc']
     expect(tokens[4]).toEqual value: ' bar', scopes: ['source.asciidoc']
 
@@ -39,6 +39,6 @@ describe 'Should tokenizes stem macro when', ->
     expect(tokens).toHaveLength 5
     expect(tokens[0]).toEqual value: 'foo ', scopes: ['source.asciidoc']
     expect(tokens[1]).toEqual value: 'latexmath:[', scopes: ['source.asciidoc', 'markup.macro.inline.stem.general.asciidoc']
-    expect(tokens[2]).toEqual value: '\\sqrt{4} = 2', scopes: ['source.asciidoc', 'markup.macro.inline.stem.general.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[2]).toEqual value: '\\sqrt{4} = 2', scopes: ['source.asciidoc', 'markup.macro.inline.stem.general.asciidoc', 'support.constant.asciidoc']
     expect(tokens[3]).toEqual value: ']', scopes: ['source.asciidoc', 'markup.macro.inline.stem.general.asciidoc']
     expect(tokens[4]).toEqual value: ' bar', scopes: ['source.asciidoc']

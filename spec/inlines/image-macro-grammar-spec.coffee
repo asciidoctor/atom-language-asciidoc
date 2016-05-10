@@ -21,10 +21,10 @@ describe 'Should tokenizes image/icon macro when', ->
     expect(tokens).toHaveLength 7
     expect(tokens[0]).toEqual value: 'foo ', scopes: ['source.asciidoc']
     expect(tokens[1]).toEqual value: 'image:', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc']
-    expect(tokens[2]).toEqual value: 'filename.png', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'punctuation.definition.entity.asciidoc']
-    expect(tokens[3]).toEqual value: '[', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[2]).toEqual value: 'filename.png', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[3]).toEqual value: '[', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'support.constant.asciidoc']
     expect(tokens[4]).toEqual value: 'Alt Text', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc']
-    expect(tokens[5]).toEqual value: ']', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[5]).toEqual value: ']', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'support.constant.asciidoc']
     expect(tokens[6]).toEqual value: ' bar', scopes: ['source.asciidoc']
 
   it 'reference a url to an image', ->
@@ -32,10 +32,10 @@ describe 'Should tokenizes image/icon macro when', ->
     expect(tokens).toHaveLength 7
     expect(tokens[0]).toEqual value: 'foo ', scopes: ['source.asciidoc']
     expect(tokens[1]).toEqual value: 'image:', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc']
-    expect(tokens[2]).toEqual value: 'http://example.com/images/filename.png', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'punctuation.definition.entity.asciidoc']
-    expect(tokens[3]).toEqual value: '[', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[2]).toEqual value: 'http://example.com/images/filename.png', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[3]).toEqual value: '[', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'support.constant.asciidoc']
     expect(tokens[4]).toEqual value: 'Alt Text', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc']
-    expect(tokens[5]).toEqual value: ']', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[5]).toEqual value: ']', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'support.constant.asciidoc']
     expect(tokens[6]).toEqual value: ' bar', scopes: ['source.asciidoc']
 
   it 'reference an icon', ->
@@ -43,8 +43,8 @@ describe 'Should tokenizes image/icon macro when', ->
     expect(tokens).toHaveLength 7
     expect(tokens[0]).toEqual value: 'foo ', scopes: ['source.asciidoc']
     expect(tokens[1]).toEqual value: 'icon:', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc']
-    expect(tokens[2]).toEqual value: 'github', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'punctuation.definition.entity.asciidoc']
-    expect(tokens[3]).toEqual value: '[', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[2]).toEqual value: 'github', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[3]).toEqual value: '[', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'support.constant.asciidoc']
     expect(tokens[4]).toEqual value: 'large', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc']
-    expect(tokens[5]).toEqual value: ']', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[5]).toEqual value: ']', scopes: ['source.asciidoc', 'markup.macro.inline.image.general.asciidoc', 'support.constant.asciidoc']
     expect(tokens[6]).toEqual value: ' bar', scopes: ['source.asciidoc']

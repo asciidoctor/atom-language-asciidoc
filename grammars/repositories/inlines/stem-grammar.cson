@@ -13,6 +13,6 @@ patterns: [
   name: 'markup.macro.inline.stem.general.asciidoc'
   match: '\\\\?(stem|(?:latex|ascii)math):([a-z,]*)(\\[)(.*?[^\\\\])(\\])'
   captures:
-    2: name: 'punctuation.definition.entity.asciidoc'
-    4: name: 'punctuation.definition.entity.asciidoc'
+    2: name: 'support.constant.asciidoc'
+    4: name: 'support.constant.asciidoc'
 ]

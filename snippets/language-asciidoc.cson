@@ -3,7 +3,7 @@
   # Blocks
   #
   'Comment Block':
-    description: 'Comment Block'
+    description: 'Comment block'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#comments'
     prefix: '//'
     body: '''
@@ -17,25 +17,25 @@
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#delimited-blocks'
     prefix: '**'
     body: '''
-      .${1:Title}
+      .${1:title}
       ****
       ${2}
       ****
       $0
       '''
   'Example Block':
-    description: 'Example Block'
+    description: 'Example block'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#example'
     prefix: '=='
     body: '''
-      .${1:Title}
+      .${1:title}
       ====
       ${2}
       ====
       $0
       '''
   'Listing Block':
-    description: 'Listing Block'
+    description: 'Listing block'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#listing-blocks'
     prefix: '--'
     body: '''
@@ -44,8 +44,8 @@
       ----
       $0
       '''
-  'Code Block':
-    description: 'Code Block'
+  'Source Block':
+    description: 'Source block'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#listing-blocks'
     prefix: '--s'
     body: '''
@@ -56,7 +56,7 @@
       $0
       '''
   'Literal Block':
-    description: 'Literal Block'
+    description: 'Literal block'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#literal-text-and-blocks'
     prefix: ',,'
     body: '''
@@ -66,7 +66,7 @@
       $0
       '''
   'Passthrough Block':
-    description: 'Passthrough Block'
+    description: 'Passthrough block'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#pass-bl'
     prefix: '++'
     body: '''
@@ -76,7 +76,7 @@
       $0
       '''
   'Quote Block':
-    description: 'Quote Block'
+    description: 'Quote block'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#quote'
     prefix: '__'
     body: '''
@@ -87,7 +87,7 @@
       $0
       '''
   'Open Block':
-    description: 'Open Block'
+    description: 'Open block'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#open-blocks'
     prefix: '~~'
     body: '''
@@ -96,11 +96,8 @@
       --
       $0
       '''
-
-  # Table
-  #
-  'Table':
-    description: 'Table'
+  'Table Block':
+    description: 'Table block'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#tables'
     prefix: '|='
     body: '''
@@ -108,19 +105,37 @@
       |$1
       |===
       '''
+  'Block Image':
+    description: 'Block image'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#images'
+    prefix: 'image'
+    body: '''
+      image::${1:target}[${2:alt}]
 
-  # Headings
+      $0
+      '''
+
+  # Sections
   #
-  'Heading 0':
-    description: 'Heading 0 (one-liner)'
-    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#sections'
-    prefix: '=1'
+  'Document Title':
+    description: 'Document title (single-line syntax)'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#document-title'
+    prefix: '=0'
     body: '''
       = $1
       $0
       '''
-  'Heading 1':
-    description: 'Heading 1 (one-liner)'
+  'Section 0 / Part':
+    description: 'Level 0 section / part (single-line syntax)'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#sections'
+    prefix: '=1'
+    body: '''
+      = $1
+
+      $0
+      '''
+  'Section 1 / Chapter':
+    description: 'Level 1 section / chapter (single-line syntax)'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#sections'
     prefix: '=2'
     body: '''
@@ -128,8 +143,8 @@
 
       $0
       '''
-  'Heading 2':
-    description: 'Heading 2 (one-liner)'
+  'Section 2':
+    description: 'Level 2 section (single-line syntax)'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#sections'
     prefix: '=3'
     body: '''
@@ -137,8 +152,8 @@
 
       $0
       '''
-  'Heading 3':
-    description: 'Heading 3 (one-liner)'
+  'Section 3':
+    description: 'Level 3 section (single-line syntax)'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#sections'
     prefix: '=4'
     body: '''
@@ -146,8 +161,8 @@
 
       $0
       '''
-  'Heading 4':
-    description: 'Heading 4 (one-liner)'
+  'Section 4':
+    description: 'Level 4 section (single-line syntax)'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#sections'
     prefix: '=5'
     body: '''
@@ -155,85 +170,85 @@
 
       $0
       '''
+  'Section 5':
+    description: 'Level 5 section (single-line syntax)'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#sections'
+    prefix: '=6'
+    body: '''
+      ====== $1
 
-  # Macro
+      $0
+      '''
+
+  # Inline Macros
   #
   'Keyboard':
-    description: 'Keyboard shortcuts'
+    description: 'Keyboard shortcut'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#keyboard-shortcuts'
-    prefix: '/kbd'
+    prefix: 'kbd'
     body: 'kbd:[$1] $0'
   'Menu selection':
-    description: 'Menu Selection'
+    description: 'Menu selection'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#menu-selections'
-    prefix: '/mn'
+    prefix: 'menu'
     body: 'menu:$1[$2] $0'
   'UI buttons':
-    description: 'UI buttons'
+    description: 'UI button'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#ui-buttons'
-    prefix: '/btn'
+    prefix: 'btn'
     body: 'btn:[$1] $0'
   'Inline Image':
-    description: 'Inline Image'
+    description: 'Inline image'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#images'
-    prefix: '/img'
-    body: 'image:$1[$2] $0'
+    prefix: 'img'
+    body: 'image:${1:target}[${2:alt}] $0'
   'Link macro':
-    description: 'Link macro'
+    description: 'Explicit link'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#url'
-    prefix: '/lk'
-    body: 'link:${1:url}[$2] $0'
+    prefix: 'link'
+    body: 'link:${1:url}[${2:label}] $0'
   'mailto link':
-    description: 'mailto link'
+    description: 'E-mail link'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#url'
-    prefix: '/mt'
-    body: 'mailto:${1:email}[$2] $0'
+    prefix: 'mail'
+    body: 'mailto:${1:email}[${2:label}] $0'
   'stem':
-    description: 'stem'
+    description: 'STEM expression'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#activating-stem-support'
-    prefix: '/stem'
-    body: 'stem:$2[$1] $0'
+    prefix: 'stem'
+    body: 'stem:[${1:expr}] $0'
   'stem asciimath':
-    description: 'stem asciimath'
+    description: 'AsciiMath STEM expression'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#activating-stem-support'
-    prefix: '/asciimath'
-    body: 'asciimath:$2[$1] $0'
+    prefix: 'asciimath'
+    body: 'asciimath:[${1:expr}] $0'
   'stem latexmath':
-    description: 'stem latexmath'
+    description: 'LaTeX STEM expression'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#activating-stem-support'
-    prefix: '/latexmath'
-    body: 'latexmath:$2[$1] $0'
+    prefix: 'latex'
+    body: 'latexmath:[${1:expr}] $0'
   'Footnote':
     description: 'Footnote'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#user-footnotes'
-    prefix: '/fn'
+    prefix: 'fn'
     body: 'footnote:[$1] $0'
   'Footnote reference':
     description: 'Footnote reference'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#user-footnotes'
-    prefix: '/fnr'
+    prefix: 'fnref'
     body: 'footnoteref:[$1] $0'
 
   # Others
   #
-  'Image include':
-    description: 'Image include'
-    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#images'
-    prefix: '/imgi'
-    body: '''
-      image::$1[$2]
-
-      $0
-      '''
   'Author':
-    description: 'Author and Email'
+    description: 'Author and email line'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#author-and-email'
-    prefix: '/aut'
+    prefix: 'author'
     body: '${1:author} <${2:email}>$0'
   'Revision information':
-    description: 'A document\'s revision information'
+    description: 'Document revision line'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#revision-number-date-and-remark'
-    prefix: '/rev'
+    prefix: 'rev'
     body: '''
       v1.0, ${3:revdate}: ${4:revremark}
       $0
@@ -241,15 +256,15 @@
   'Subscript':
     description: 'subscript'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#subscript-and-superscript'
-    prefix: '/sub'
+    prefix: 'sub'
     body: '~$1~ $0'
   'Superscript':
     description: 'superscript'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#subscript-and-superscript'
-    prefix: '/sup'
+    prefix: 'sup'
     body: '^$1^ $0'
   'Callout':
-    description: 'Callout numbers'
+    description: 'Callout number'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#callouts'
-    prefix: '/co'
+    prefix: 'co'
     body: '<$1> $0'

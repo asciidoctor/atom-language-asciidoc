@@ -435,16 +435,26 @@ repository:
   emphasis:
     patterns: [
       {
-        match: "(?!_{4,}\\s*$)(?<=^|[^\\w;:])(?:\\[(?:[^\\]]+?)\\])?(_\\S_|_\\S[\\s\\S]*?\\S_)(?!\\w)"
+        name: "markup.italic.emphasis.unconstrained.asciidoc"
+        match: "(?<!\\\\\\\\)(\\[(?:[^\\]]+?)\\])?(__)(?:(?!_).+?)(__)"
         captures:
-          "0":
-            name: "markup.italic.asciidoc"
+          "1":
+            name: "markup.meta.attrlist.asciidoc"
+          "2":
+            name: "support.constant.asciidoc"
+          "3":
+            name: "support.constant.asciidoc"
       }
       {
-        match: "\\\\?(?:\\[([^\\]]+?)\\])?(__(?!_)[\\s\\S]+?__)"
+        name: "markup.italic.emphasis.constrained.asciidoc"
+        match: "(?!_{4,}\\s*$)(?<=^|[^\\p{Word};:])(\\[(?:[^\\]]+?)\\])?(_)(?:\\S|\\S.*?\\S)(_)(?!\\p{Word})"
         captures:
-          "0":
-            name: "markup.italic.asciidoc"
+          "1":
+            name: "markup.meta.attrlist.asciidoc"
+          "2":
+            name: "support.constant.asciidoc"
+          "3":
+            name: "support.constant.asciidoc"
       }
     ]
   "footnote-macro":

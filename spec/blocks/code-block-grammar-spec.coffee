@@ -42,7 +42,7 @@ describe 'Should tokenizes code block when', ->
     expect(tokens[4]).toHaveLength 2
     expect(tokens[4][0]).toEqualJson value: '----', scopes: ['source.asciidoc', 'markup.code.shell.asciidoc', 'support.asciidoc']
     expect(tokens[4][1]).toEqualJson value: '', scopes: ['source.asciidoc']
-    expect(tokens[5]).toHaveLength 9
+    expect(tokens[5]).toHaveLength 11
     expect(tokens[5][0]).toEqualJson value: '<', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.other.symbol.asciidoc']
     expect(tokens[5][1]).toEqualJson value: '1', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.numeric.asciidoc']
     expect(tokens[5][2]).toEqualJson value: '>', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.other.symbol.asciidoc']
@@ -51,8 +51,10 @@ describe 'Should tokenizes code block when', ->
     expect(tokens[5][5]).toEqualJson value: 'Grammars', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.strong.constrained.asciidoc']
     expect(tokens[5][6]).toEqualJson value: '*', scopes: [ 'source.asciidoc', 'callout.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
     expect(tokens[5][7]).toEqualJson value: ' ', scopes: ['source.asciidoc', 'callout.asciidoc']
-    expect(tokens[5][8]).toEqualJson value: '_definition_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.italic.asciidoc']
-    expect(tokens[5]).toHaveLength 9
+    expect(tokens[5][8]).toEqualJson value: '_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.italic.emphasis.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[5][9]).toEqualJson value: 'definition', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.italic.emphasis.constrained.asciidoc']
+    expect(tokens[5][10]).toEqualJson value: '_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.italic.emphasis.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[5]).toHaveLength 11
     expect(tokens[6][0]).toEqualJson value: '<', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.other.symbol.asciidoc']
     expect(tokens[6][1]).toEqualJson value: '2', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.numeric.asciidoc']
     expect(tokens[6][2]).toEqualJson value: '>', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.other.symbol.asciidoc']
@@ -61,7 +63,9 @@ describe 'Should tokenizes code block when', ->
     expect(tokens[6][5]).toEqualJson value: 'CoffeeLint', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.strong.constrained.asciidoc']
     expect(tokens[6][6]).toEqualJson value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
     expect(tokens[6][7]).toEqualJson value: ' ', scopes: ['source.asciidoc', 'callout.asciidoc']
-    expect(tokens[6][8]).toEqualJson value: '_rules_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.italic.asciidoc']
+    expect(tokens[6][8]).toEqualJson value: '_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.italic.emphasis.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[6][9]).toEqualJson value: 'rules', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.italic.emphasis.constrained.asciidoc']
+    expect(tokens[6][10]).toEqualJson value: '_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.italic.emphasis.constrained.asciidoc', 'support.constant.asciidoc']
 
   it 'contains substitutions in additional attributes', ->
     tokens = grammar.tokenizeLines '''

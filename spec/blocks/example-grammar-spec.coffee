@@ -35,9 +35,11 @@ describe 'Should tokenizes example block when', ->
     expect(tokens[1][4]).toEqual value: '.', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
     expect(tokens[2]).toHaveLength 1
     expect(tokens[2][0]).toEqual value: '', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
-    expect(tokens[3]).toHaveLength 3
+    expect(tokens[3]).toHaveLength 5
     expect(tokens[3][0]).toEqual value: 'Notice it\'s a ', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
-    expect(tokens[3][1]).toEqual value: '_delimited_', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.italic.asciidoc']
-    expect(tokens[3][2]).toEqual value: ' block.', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
+    expect(tokens[3][1]).toEqual value: '_', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.italic.emphasis.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[3][2]).toEqual value: 'delimited', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.italic.emphasis.constrained.asciidoc']
+    expect(tokens[3][3]).toEqual value: '_', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.italic.emphasis.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[3][4]).toEqual value: ' block.', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
     expect(tokens[4]).toHaveLength 1
     expect(tokens[4][0]).toEqual value: '====', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']

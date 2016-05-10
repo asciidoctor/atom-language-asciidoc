@@ -168,7 +168,7 @@ describe '*strong* text', ->
       expect(tokens).toHaveLength 1
       expect(tokens[0]).toEqual value: '\\\\**strong text**', scopes: ['source.asciidoc']
 
-    it 'when having a [role] set on unconstrained *strong* text', ->
+    it 'when having a [role] set on unconstrained **strong** text', ->
       {tokens} = grammar.tokenizeLine '[role]**strong**'
       expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.bold.strong.unconstrained.asciidoc', 'markup.meta.attrlist.asciidoc']

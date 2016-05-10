@@ -1,0 +1,21 @@
+key: 'front-matter-block'
+
+patterns: [
+
+  # Matches front matter block
+  #
+  # Examples:
+  #
+  # ---
+  # title:   "Free Operating Systems: A Comparison and Overview"
+  # date:    2016-04-19 +1000
+  # layout:  post
+  # ---
+  #
+  name: 'markup.block.front-matter.asciidoc'
+  begin: '\\A(-{3}$)'
+  patterns: [
+    include: 'source.yaml'
+  ]
+  end: '^(\\1)$'
+]

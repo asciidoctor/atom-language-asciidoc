@@ -8,10 +8,6 @@ maxTokensPerLine: 100
 patterns: [
   include: '#comment'
 ,
-  include: '#horizontal-rule'
-,
-  include: '#list'
-,
   include: '#callout-list-item'
 ,
   include: '#titles'
@@ -26,6 +22,10 @@ patterns: [
 ,
   include: '#blocks'
 ,
+  include: '#horizontal-rule'
+,
+  include: '#list'
+,
   include: '#inlines'
 ,
   include: '#line-break'
@@ -33,6 +33,8 @@ patterns: [
 repository:
   blocks:
     patterns: [
+      include: '#front-matter-block'
+    ,
       include: '#admonition-block'
     ,
       include: '#quote-block'

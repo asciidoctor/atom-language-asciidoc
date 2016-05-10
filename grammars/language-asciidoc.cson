@@ -13,12 +13,6 @@ patterns: [
     include: "#comment"
   }
   {
-    include: "#horizontal-rule"
-  }
-  {
-    include: "#list"
-  }
-  {
     include: "#callout-list-item"
   }
   {
@@ -40,6 +34,12 @@ patterns: [
     include: "#blocks"
   }
   {
+    include: "#horizontal-rule"
+  }
+  {
+    include: "#list"
+  }
+  {
     include: "#inlines"
   }
   {
@@ -49,6 +49,9 @@ patterns: [
 repository:
   blocks:
     patterns: [
+      {
+        include: "#front-matter-block"
+      }
       {
         include: "#admonition-block"
       }
@@ -691,6 +694,19 @@ repository:
           }
         ]
         end: "\\1"
+      }
+    ]
+  "front-matter-block":
+    patterns: [
+      {
+        name: "markup.block.front-matter.asciidoc"
+        begin: "\\A(-{3}$)"
+        patterns: [
+          {
+            include: "source.yaml"
+          }
+        ]
+        end: "^(\\1)$"
       }
     ]
   "literal-block":

@@ -206,7 +206,7 @@
     description: 'Inline icon'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#inline-icons'
     prefix: 'icon'
-    body: 'icon:${1:target}[${2:alt}] $0'
+    body: 'icon:${1:name}[] $0'
   'Link macro':
     description: 'Explicit link'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#url'

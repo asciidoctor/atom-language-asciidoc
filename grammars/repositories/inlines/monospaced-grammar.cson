@@ -1,4 +1,4 @@
-key: 'monospaced'
+key: 'monospace'
 
 patterns: [
   # Matches unconstrained monospace inlines

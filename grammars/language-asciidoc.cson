@@ -89,7 +89,7 @@ repository:
         include: "#strong"
       }
       {
-        include: "#monospaced"
+        include: "#monospace"
       }
       {
         include: "#emphasis"
@@ -543,7 +543,7 @@ repository:
             name: "support.constant.menu.inline.asciidoc"
       }
     ]
-  monospaced:
+  monospace:
     patterns: [
       {
         name: "markup.raw.unconstrained.monospaced.asciidoc"

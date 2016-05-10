@@ -1,4 +1,4 @@
-describe '`monospaced`', ->
+describe '`monospace`', ->
   grammar = null
 
   beforeEach ->

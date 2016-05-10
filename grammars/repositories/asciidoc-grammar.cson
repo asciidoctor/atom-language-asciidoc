@@ -59,7 +59,7 @@ repository:
     patterns: [
       include: '#strong'
     ,
-      include: '#monospaced'
+      include: '#monospace'
     ,
       include: '#emphasis'
     ,

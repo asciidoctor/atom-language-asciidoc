@@ -47,7 +47,7 @@
   'Source Block':
     description: 'Source block'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#listing-blocks'
-    prefix: '--s'
+    prefix: '--$'
     body: '''
       [source, $1]
       ----
@@ -202,6 +202,11 @@
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#images'
     prefix: 'img'
     body: 'image:${1:target}[${2:alt}] $0'
+  'Inline Icon':
+    description: 'Inline icon'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#inline-icons'
+    prefix: 'icon'
+    body: 'icon:${1:target}[${2:alt}] $0'
   'Link macro':
     description: 'Explicit link'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#url'
@@ -250,7 +255,7 @@
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#revision-number-date-and-remark'
     prefix: 'rev'
     body: '''
-      v1.0, ${3:revdate}: ${4:revremark}
+      v${1:1.0.0}, ${2:date}
       $0
       '''
   'Subscript':

@@ -73,6 +73,9 @@ repository:
       {
         include: "#passthrough-block"
       }
+      {
+        include: "#open-block"
+      }
     ]
   "code-blocks":
     patterns: [
@@ -695,6 +698,14 @@ repository:
       {
         name: "markup.block.literal.asciidoc"
         begin: "(^\\.{4,}$)"
+        end: "\\1"
+      }
+    ]
+  "open-block":
+    patterns: [
+      {
+        name: "markup.raw.open.asciidoc"
+        begin: "^(-{2})$"
         end: "\\1"
       }
     ]

@@ -48,6 +48,8 @@ repository:
       include: '#literal-block'
     ,
       include: '#passthrough-block'
+    ,
+      include: '#open-block'
     ]
   'code-blocks':
     patterns: [

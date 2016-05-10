@@ -245,6 +245,14 @@
 
   # Others
   #
+  'Attribute Entry':
+    description: 'Define or update a document attribute'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#setting-attributes-on-a-document'
+    prefix: '::'
+    body: '''
+      :${1:name}:${2: value}
+      $0
+      '''
   'Author':
     description: 'Author and email line'
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#author-and-email'

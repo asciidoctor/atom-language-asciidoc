@@ -8,8 +8,9 @@ patterns: [
   #   ~subscript~
   #
   name: 'markup.sub.asciidoc'
-  match: '\\\\?(?:\\[([^\\]]+?)\\])?(~)(\\S+?)(~)'
+  match: '(?<!\\\\)(\\[.+?\\])?(~)(?:\\S+?)(~)'
   captures:
-    2: name: 'constant.sub.asciidoc'
-    4: name: 'constant.sub.asciidoc'
+    1: name: 'markup.meta.attrlist.asciidoc'
+    2: name: 'support.constant.asciidoc'
+    3: name: 'support.constant.asciidoc'
 ]

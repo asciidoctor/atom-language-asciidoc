@@ -20,9 +20,9 @@ describe 'Should tokenizes characters when', ->
     {tokens} = grammar.tokenizeLine 'Dungeons &amp; Dragons'
     expect(tokens).toHaveLength 5
     expect(tokens[0]).toEqual value: 'Dungeons ', scopes: ['source.asciidoc']
-    expect(tokens[1]).toEqual value: '&', scopes: ['source.asciidoc', 'markup.htmlentity.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[1]).toEqual value: '&', scopes: ['source.asciidoc', 'markup.htmlentity.asciidoc', 'punctuation.definition.entity.asciidoc']
     expect(tokens[2]).toEqual value: 'amp', scopes: ['source.asciidoc', 'markup.htmlentity.asciidoc']
-    expect(tokens[3]).toEqual value: ';', scopes: ['source.asciidoc', 'markup.htmlentity.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[3]).toEqual value: ';', scopes: ['source.asciidoc', 'markup.htmlentity.asciidoc', 'punctuation.definition.entity.asciidoc']
     expect(tokens[4]).toEqual value: ' Dragons', scopes: ['source.asciidoc']
 
   it 'contains space (invalid context)', ->

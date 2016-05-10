@@ -76,9 +76,9 @@ describe 'Should tokenizes quote block when', ->
     expect(tokens[1][0]).toEqual value: '>', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc']
     expect(tokens[2]).toHaveLength 4
     expect(tokens[2][0]).toEqual value: '> ', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc']
-    expect(tokens[2][1]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[2][1]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'punctuation.definition.entity.asciidoc']
     expect(tokens[2][2]).toEqual value: 'strong', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc', 'markup.bold.strong.constrained.asciidoc']
-    expect(tokens[2][3]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[2][3]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'punctuation.definition.entity.asciidoc']
     expect(tokens[3]).toHaveLength 1
     expect(tokens[3][0]).toEqual value: '> Yep. AsciiDoc and Markdown share a lot of common syntax already.', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc']
 

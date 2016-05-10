@@ -59,8 +59,12 @@ atom-text-editor, :host {
       }
 
       &.heading.blocktitle,
-      &.substitution,
+      &.substitution{
+        color: @syntax-text-color-unobtrusive;
+      }
       &.meta.attrlist {
+        font-weight: normal;
+        font-style: normal;
         color: @syntax-text-color-unobtrusive;
       }
       &.todo.box,

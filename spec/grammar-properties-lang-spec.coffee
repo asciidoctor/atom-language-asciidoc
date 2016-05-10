@@ -61,7 +61,7 @@ describe 'Properties grammar', ->
     it 'have a simple value', ->
       {tokens} = grammar.tokenizeLine 'name = foobar'
       expect(tokens).toHaveLength 5
-      expect(tokens[0]).toEqual value: 'name', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties', 'support.constant.asciidoc.properties']
+      expect(tokens[0]).toEqual value: 'name', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties', 'punctuation.definition.entity.asciidoc.properties']
       expect(tokens[1]).toEqual value: ' ', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties']
       expect(tokens[2]).toEqual value: '=', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties', 'punctuation.separator.key-value.asciidoc.properties']
       expect(tokens[3]).toEqual value: ' ', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties']
@@ -70,7 +70,7 @@ describe 'Properties grammar', ->
     it 'have a value embedded in double quote', ->
       {tokens} = grammar.tokenizeLine 'name = "foobar"'
       expect(tokens).toHaveLength 7
-      expect(tokens[0]).toEqual value: 'name', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties', 'support.constant.asciidoc.properties']
+      expect(tokens[0]).toEqual value: 'name', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties', 'punctuation.definition.entity.asciidoc.properties']
       expect(tokens[1]).toEqual value: ' ', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties']
       expect(tokens[2]).toEqual value: '=', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties', 'punctuation.separator.key-value.asciidoc.properties']
       expect(tokens[3]).toEqual value: ' ', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties']
@@ -81,7 +81,7 @@ describe 'Properties grammar', ->
     it 'have a boolean value', ->
       {tokens} = grammar.tokenizeLine 'name = true'
       expect(tokens).toHaveLength 5
-      expect(tokens[0]).toEqual value: 'name', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties', 'support.constant.asciidoc.properties']
+      expect(tokens[0]).toEqual value: 'name', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties', 'punctuation.definition.entity.asciidoc.properties']
       expect(tokens[1]).toEqual value: ' ', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties']
       expect(tokens[2]).toEqual value: '=', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties', 'punctuation.separator.key-value.asciidoc.properties']
       expect(tokens[3]).toEqual value: ' ', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties']
@@ -90,7 +90,7 @@ describe 'Properties grammar', ->
     it 'have a value contains escaped double quote', ->
       {tokens} = grammar.tokenizeLine 'name = \\"foobar\\"'
       expect(tokens).toHaveLength 7
-      expect(tokens[0]).toEqual value: 'name', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties', 'support.constant.asciidoc.properties']
+      expect(tokens[0]).toEqual value: 'name', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties', 'punctuation.definition.entity.asciidoc.properties']
       expect(tokens[1]).toEqual value: ' ', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties']
       expect(tokens[2]).toEqual value: '=', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties', 'punctuation.separator.key-value.asciidoc.properties']
       expect(tokens[3]).toEqual value: ' ', scopes: ['source.asciidoc.properties', 'meta.value-pair.section-item.asciidoc.properties']

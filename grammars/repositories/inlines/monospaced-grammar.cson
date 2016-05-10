@@ -11,8 +11,8 @@ patterns: [
   match: '(?<!\\\\)(\\[.+?\\])?(``)(?:.+?)(``)'
   captures:
     1: name: 'markup.meta.attrlist.asciidoc'
-    2: name: 'support.constant.asciidoc'
-    3: name: 'support.constant.asciidoc'
+    2: name: 'punctuation.definition.entity.asciidoc'
+    3: name: 'punctuation.definition.entity.asciidoc'
 ,
   # Matches constrained monospace inlines
   #
@@ -24,6 +24,6 @@ patterns: [
   match: '(?<![\\\\;:\\p{Word}"\'`])(\\[.+?\\])?(`)(?:\\S|\\S.*?\\S)(`)(?![\\p{Word}"\'`])'
   captures:
     1: name: 'markup.meta.attrlist.asciidoc'
-    2: name: 'support.constant.asciidoc'
-    3: name: 'support.constant.asciidoc'
+    2: name: 'punctuation.definition.entity.asciidoc'
+    3: name: 'punctuation.definition.entity.asciidoc'
 ]

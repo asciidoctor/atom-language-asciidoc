@@ -11,6 +11,6 @@ patterns: [
   name: 'markup.htmlentity.asciidoc'
   match: '(\&)(\\S+?)(;)'
   captures:
-    1: name: 'support.constant.asciidoc'
-    3: name: 'support.constant.asciidoc'
+    1: name: 'punctuation.definition.entity.asciidoc'
+    3: name: 'punctuation.definition.entity.asciidoc'
 ]

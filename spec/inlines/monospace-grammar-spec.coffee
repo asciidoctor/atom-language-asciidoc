@@ -21,13 +21,13 @@ describe '`monospace`', ->
     it 'is in a phrase', ->
       {tokens} = grammar.tokenizeLine '`Text in backticks` renders exactly as entered, in `monospace`.'
       expect(tokens).toHaveLength 8
-      expect(tokens[0]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[0]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
       expect(tokens[1]).toEqual value: 'Text in backticks', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc']
-      expect(tokens[2]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[2]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
       expect(tokens[3]).toEqual value: ' renders exactly as entered, in ', scopes: ['source.asciidoc']
-      expect(tokens[4]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[4]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
       expect(tokens[5]).toEqual value: 'monospace', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc']
-      expect(tokens[6]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[6]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
       expect(tokens[7]).toEqual value: '.', scopes: ['source.asciidoc']
 
     it 'is not in valid context', ->
@@ -39,17 +39,17 @@ describe '`monospace`', ->
       {tokens} = grammar.tokenizeLine '[role]`monospace`'
       expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'markup.meta.attrlist.asciidoc']
-      expect(tokens[1]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[1]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
       expect(tokens[2]).toEqual value: 'monospace', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc']
-      expect(tokens[3]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[3]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
 
     it 'when having [role1 role2] set on constrained `monospace` text', ->
       {tokens} = grammar.tokenizeLine '[role1 role2]`monospace`'
       expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'markup.meta.attrlist.asciidoc']
-      expect(tokens[1]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[1]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
       expect(tokens[2]).toEqual value: 'monospace', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc']
-      expect(tokens[3]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[3]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.raw.constrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
 
   describe 'Should tokenizes unconstrained `monospace` when', ->
 
@@ -57,27 +57,27 @@ describe '`monospace`', ->
       {tokens} = grammar.tokenizeLine 'Text in back``ticks`` renders exactly as entered, in mono``space``.'
       expect(tokens).toHaveLength 9
       expect(tokens[0]).toEqual value: 'Text in back', scopes: ['source.asciidoc']
-      expect(tokens[1]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[1]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
       expect(tokens[2]).toEqual value: 'ticks', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc']
-      expect(tokens[3]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[3]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
       expect(tokens[4]).toEqual value: ' renders exactly as entered, in mono', scopes: ['source.asciidoc']
-      expect(tokens[5]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[5]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
       expect(tokens[6]).toEqual value: 'space', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc']
-      expect(tokens[7]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[7]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
       expect(tokens[8]).toEqual value: '.', scopes: ['source.asciidoc']
 
     it 'when having a [role] set on unconstrained ``monospace`` text', ->
       {tokens} = grammar.tokenizeLine '[role]``monospace``'
       expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'markup.meta.attrlist.asciidoc']
-      expect(tokens[1]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[1]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
       expect(tokens[2]).toEqual value: 'monospace', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc']
-      expect(tokens[3]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[3]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
 
     it 'when having [role1 role2] set on unconstrained ``monospace`` text', ->
       {tokens} = grammar.tokenizeLine '[role1 role2]``monospace``'
       expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'markup.meta.attrlist.asciidoc']
-      expect(tokens[1]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[1]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']
       expect(tokens[2]).toEqual value: 'monospace', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc']
-      expect(tokens[3]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'support.constant.asciidoc']
+      expect(tokens[3]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.raw.unconstrained.monospaced.asciidoc', 'punctuation.definition.entity.asciidoc']

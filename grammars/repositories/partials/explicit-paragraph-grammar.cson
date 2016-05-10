@@ -12,5 +12,5 @@ patterns: [
   name: 'markup.explicit.asciidoc'
   match: '^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]$'
   captures:
-    1: name: 'support.constant.asciidoc'
+    1: name: 'punctuation.definition.entity.asciidoc'
 ]

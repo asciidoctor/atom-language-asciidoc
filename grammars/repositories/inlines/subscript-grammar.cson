@@ -11,6 +11,6 @@ patterns: [
   match: '(?<!\\\\)(\\[.+?\\])?(~)(?:\\S+?)(~)'
   captures:
     1: name: 'markup.meta.attrlist.asciidoc'
-    2: name: 'support.constant.asciidoc'
-    3: name: 'support.constant.asciidoc'
+    2: name: 'punctuation.definition.entity.asciidoc'
+    3: name: 'punctuation.definition.entity.asciidoc'
 ]

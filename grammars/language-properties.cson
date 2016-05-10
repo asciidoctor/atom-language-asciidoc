@@ -49,7 +49,7 @@ repository:
     begin: '([-\\w]+)\\s*(=)\\s*(?!$)'
     captures:
       1:
-        name: 'support.constant.asciidoc.properties'
+        name: 'punctuation.definition.entity.asciidoc.properties'
       2:
         name: 'punctuation.separator.key-value.asciidoc.properties'
     end: '$|(?=[#;])'

@@ -1,21 +1,29 @@
 key: 'monospaced'
 
 patterns: [
-  # Matches unconstrained monospaced inlines
+  # Matches unconstrained monospace inlines
   #
   # Examples
   #`
-  #   Text in back``ticks`` renders exactly as entered, in mono``spaced``.
+  #   Text in back``ticks`` renders exactly as entered, in mono``space``.
   #
   name: 'markup.raw.unconstrained.monospaced.asciidoc'
-  match: '(?<!\\\\)(?:\\[.+?\\])?``(?:.+?)``'
+  match: '(?<!\\\\)(\\[.+?\\])?(``)(?:.+?)(``)'
+  captures:
+    1: name: 'markup.meta.attrlist.asciidoc'
+    2: name: 'support.constant.asciidoc'
+    3: name: 'support.constant.asciidoc'
 ,
-  # Matches constrained monospaced inlines
+  # Matches constrained monospace inlines
   #
   # Examples
   #
-  #   `Text in backticks` renders exactly as entered, in `monospaced`.
+  #   `Text in backticks` renders exactly as entered, in `monospace`.
   #
   name: 'markup.raw.constrained.monospaced.asciidoc'
-  match: '(?<![\\\\;:\\p{Word}"\'`])(?:\\[.+?\\])?`(?:\\S|\\S.*?\\S)`(?![\\p{Word}"\'`])'
+  match: '(?<![\\\\;:\\p{Word}"\'`])(\\[.+?\\])?(`)(?:\\S|\\S.*?\\S)(`)(?![\\p{Word}"\'`])'
+  captures:
+    1: name: 'markup.meta.attrlist.asciidoc'
+    2: name: 'support.constant.asciidoc'
+    3: name: 'support.constant.asciidoc'
 ]

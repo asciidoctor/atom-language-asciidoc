@@ -547,11 +547,25 @@ repository:
     patterns: [
       {
         name: "markup.raw.unconstrained.monospaced.asciidoc"
-        match: "(?<!\\\\)(?:\\[.+?\\])?``(?:.+?)``"
+        match: "(?<!\\\\)(\\[.+?\\])?(``)(?:.+?)(``)"
+        captures:
+          "1":
+            name: "markup.meta.attrlist.asciidoc"
+          "2":
+            name: "support.constant.asciidoc"
+          "3":
+            name: "support.constant.asciidoc"
       }
       {
         name: "markup.raw.constrained.monospaced.asciidoc"
-        match: "(?<![\\\\;:\\p{Word}\"'`])(?:\\[.+?\\])?`(?:\\S|\\S.*?\\S)`(?![\\p{Word}\"'`])"
+        match: "(?<![\\\\;:\\p{Word}\"'`])(\\[.+?\\])?(`)(?:\\S|\\S.*?\\S)(`)(?![\\p{Word}\"'`])"
+        captures:
+          "1":
+            name: "markup.meta.attrlist.asciidoc"
+          "2":
+            name: "support.constant.asciidoc"
+          "3":
+            name: "support.constant.asciidoc"
       }
     ]
   "passthrough-macro":

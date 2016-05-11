@@ -24,8 +24,8 @@ describe 'Should tokenizes literal block when', ->
       '''
     expect(tokens).toHaveLength 3
     expect(tokens[0]).toHaveLength 1
-    expect(tokens[0][0]).toEqual value: '....', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
+    expect(tokens[0][0]).toEqualJson value: '....', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
     expect(tokens[1]).toHaveLength 1
-    expect(tokens[1][0]).toEqual value: 'Daleks EXTERMINATE in monospace!', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
+    expect(tokens[1][0]).toEqualJson value: 'Daleks EXTERMINATE in monospace!', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
     expect(tokens[2]).toHaveLength 1
-    expect(tokens[2][0]).toEqual value: '....', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
+    expect(tokens[2][0]).toEqualJson value: '....', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']

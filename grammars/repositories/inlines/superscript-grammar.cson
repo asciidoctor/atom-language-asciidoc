@@ -8,10 +8,10 @@ patterns: [
   #   ^superscript^
   #
   name: 'markup.superscript.asciidoc'
-  match: '(?<!\\\\)(\\[.+?\\])?(\\^)(\\S+?)(\\^)'
+  match: '(?<!\\\\)(\\[.+?\\])?((\\^)(\\S+?)(\\^))'
   captures:
     1: name: 'markup.meta.attribute-list.asciidoc'
-    2: name: 'punctuation.definition.super.asciidoc'
-    3: name: 'markup.super.superscript.asciidoc'
-    4: name: 'punctuation.definition.super.asciidoc'
+    2: name: 'markup.super.superscript.asciidoc'
+    3: name: 'punctuation.definition.super.asciidoc'
+    5: name: 'punctuation.definition.super.asciidoc'
 ]

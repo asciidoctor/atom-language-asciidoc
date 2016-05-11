@@ -5,7 +5,7 @@
 atom-text-editor::shadow, :host {
   .asciidoc {
 
-    .markup{
+    .markup {
 
       &.bold {
         font-weight: bold;
@@ -13,10 +13,6 @@ atom-text-editor::shadow, :host {
 
       &.italic {
         font-style: italic;
-      }
-
-      &.url {
-        color: mix(red, @syntax-text-color, 20%);
       }
 
       &.htmlentity {
@@ -63,8 +59,6 @@ atom-text-editor::shadow, :host {
         color: @syntax-text-color-unobtrusive;
       }
       &.meta.attribute-list {
-        font-weight: normal;
-        font-style: normal;
         color: @syntax-text-color-unobtrusive;
       }
       &.todo.box,
@@ -86,27 +80,15 @@ atom-text-editor::shadow, :host {
       }
 
       &.super {
-        vertical-align: super;
-        font-size: @font-size * .8;
+        vertical-align: text-top;
+        font-size: @font-size * .7;
         color: mix(green, @syntax-text-color, 50%);
       }
 
       &.sub {
-        vertical-align: sub;
-        font-size: @font-size * .8;
+        vertical-align: text-bottom;
+        font-size: @font-size * .7;
         color: mix(green, @syntax-text-color, 50%);
-      }
-    }
-
-    .punctuation {
-      &.super {
-        vertical-align: super;
-        font-size: @font-size * .8;
-      }
-
-      &.sub {
-        vertical-align: sub;
-        font-size: @font-size * .8;
       }
     }
 

@@ -24,8 +24,8 @@ describe 'Should tokenizes passthrough block when', ->
       '''
     expect(tokens).toHaveLength 3
     expect(tokens[0]).toHaveLength 1
-    expect(tokens[0][0]).toEqual value: '++++', scopes: ['source.asciidoc', 'markup.block.passthrough.asciidoc']
+    expect(tokens[0][0]).toEqualJson value: '++++', scopes: ['source.asciidoc', 'markup.block.passthrough.asciidoc']
     expect(tokens[1]).toHaveLength 1
-    expect(tokens[1][0]).toEqual value: '<s>Could be struck through</s>', scopes: ['source.asciidoc', 'markup.block.passthrough.asciidoc']
+    expect(tokens[1][0]).toEqualJson value: '<s>Could be struck through</s>', scopes: ['source.asciidoc', 'markup.block.passthrough.asciidoc']
     expect(tokens[2]).toHaveLength 1
-    expect(tokens[2][0]).toEqual value: '++++', scopes: ['source.asciidoc', 'markup.block.passthrough.asciidoc']
+    expect(tokens[2][0]).toEqualJson value: '++++', scopes: ['source.asciidoc', 'markup.block.passthrough.asciidoc']

@@ -26,20 +26,20 @@ describe 'Should tokenizes example block when', ->
       '''
     expect(tokens).toHaveLength 5
     expect(tokens[0]).toHaveLength 1
-    expect(tokens[0][0]).toEqual value: '====', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
+    expect(tokens[0][0]).toEqualJson value: '====', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
     expect(tokens[1]).toHaveLength 5
-    expect(tokens[1][0]).toEqual value: 'A multi-line ', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
-    expect(tokens[1][1]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
-    expect(tokens[1][2]).toEqual value: 'example', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.strong.asciidoc']
-    expect(tokens[1][3]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
-    expect(tokens[1][4]).toEqual value: '.', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
+    expect(tokens[1][0]).toEqualJson value: 'A multi-line ', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
+    expect(tokens[1][1]).toEqualJson value: '*', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
+    expect(tokens[1][2]).toEqualJson value: 'example', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.strong.asciidoc']
+    expect(tokens[1][3]).toEqualJson value: '*', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
+    expect(tokens[1][4]).toEqualJson value: '.', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
     expect(tokens[2]).toHaveLength 1
-    expect(tokens[2][0]).toEqual value: '', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
+    expect(tokens[2][0]).toEqualJson value: '', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
     expect(tokens[3]).toHaveLength 5
-    expect(tokens[3][0]).toEqual value: 'Notice it\'s a ', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
-    expect(tokens[3][1]).toEqual value: '_', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.emphasis.constrained.asciidoc', 'punctuation.definition.italic.asciidoc']
-    expect(tokens[3][2]).toEqual value: 'delimited', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.emphasis.asciidoc']
-    expect(tokens[3][3]).toEqual value: '_', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.emphasis.constrained.asciidoc', 'punctuation.definition.italic.asciidoc']
-    expect(tokens[3][4]).toEqual value: ' block.', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
+    expect(tokens[3][0]).toEqualJson value: 'Notice it\'s a ', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
+    expect(tokens[3][1]).toEqualJson value: '_', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.emphasis.asciidoc', 'punctuation.definition.italic.asciidoc']
+    expect(tokens[3][2]).toEqualJson value: 'delimited', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.emphasis.asciidoc']
+    expect(tokens[3][3]).toEqualJson value: '_', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.emphasis.asciidoc', 'punctuation.definition.italic.asciidoc']
+    expect(tokens[3][4]).toEqualJson value: ' block.', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
     expect(tokens[4]).toHaveLength 1
-    expect(tokens[4][0]).toEqual value: '====', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
+    expect(tokens[4][0]).toEqualJson value: '====', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']

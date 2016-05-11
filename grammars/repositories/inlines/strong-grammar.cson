@@ -9,12 +9,12 @@ patterns: [
   #   s**trong** phrase
   #
   name: 'markup.strong.unconstrained.asciidoc'
-  match: '(?<!\\\\\\\\)(\\[.+?\\])?(\\*\\*)(.+?)(\\*\\*)'
+  match: '(?<!\\\\\\\\)(\\[.+?\\])?((\\*\\*)(.+?)(\\*\\*))'
   captures:
     1: name: 'markup.meta.attribute-list.asciidoc'
-    2: name: 'punctuation.definition.bold.asciidoc'
-    3: name: 'markup.bold.strong.asciidoc'
-    4: name: 'punctuation.definition.bold.asciidoc'
+    2: name: 'markup.bold.strong.asciidoc'
+    3: name: 'punctuation.definition.bold.asciidoc'
+    5: name: 'punctuation.definition.bold.asciidoc'
 ,
   # Matches strong constrained phrases
   #

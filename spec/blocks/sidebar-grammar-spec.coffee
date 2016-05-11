@@ -29,17 +29,17 @@ describe 'Should tokenizes sidebar block when', ->
     expect(tokens[0][0]).toEqual value: '****', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']
     expect(tokens[1]).toHaveLength 5
     expect(tokens[1][0]).toEqual value: 'A multi-line ', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']
-    expect(tokens[1][1]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'punctuation.definition.entity.asciidoc']
-    expect(tokens[1][2]).toEqual value: 'sidebar', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.bold.strong.constrained.asciidoc']
-    expect(tokens[1][3]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.bold.strong.constrained.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[1][1]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[1][2]).toEqual value: 'sidebar', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.strong.asciidoc']
+    expect(tokens[1][3]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.entity.asciidoc']
     expect(tokens[1][4]).toEqual value: '.', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']
     expect(tokens[2]).toHaveLength 1
     expect(tokens[2][0]).toEqual value: '', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']
     expect(tokens[3]).toHaveLength 5
     expect(tokens[3][0]).toEqual value: 'Notice it\'s a ', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']
-    expect(tokens[3][1]).toEqual value: '_', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.italic.emphasis.constrained.asciidoc', 'punctuation.definition.entity.asciidoc']
-    expect(tokens[3][2]).toEqual value: 'delimited', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.italic.emphasis.constrained.asciidoc']
-    expect(tokens[3][3]).toEqual value: '_', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.italic.emphasis.constrained.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[3][1]).toEqual value: '_', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.emphasis.constrained.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[3][2]).toEqual value: 'delimited', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.emphasis.asciidoc']
+    expect(tokens[3][3]).toEqual value: '_', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.emphasis.constrained.asciidoc', 'punctuation.definition.entity.asciidoc']
     expect(tokens[3][4]).toEqual value: ' block.', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']
     expect(tokens[4]).toHaveLength 1
     expect(tokens[4][0]).toEqual value: '****', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']

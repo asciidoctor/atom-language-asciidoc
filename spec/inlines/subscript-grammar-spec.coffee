@@ -19,23 +19,23 @@ describe 'Should tokenizes subscript when', ->
   it 'simple phrase', ->
     {tokens} = grammar.tokenizeLine '~subscript~ is good'
     expect(tokens).toHaveLength 4
-    expect(tokens[0]).toEqual value: '~', scopes: ['source.asciidoc', 'markup.sub.asciidoc', 'punctuation.definition.entity.asciidoc']
-    expect(tokens[1]).toEqual value: 'subscript', scopes: ['source.asciidoc', 'markup.sub.asciidoc']
-    expect(tokens[2]).toEqual value: '~', scopes: ['source.asciidoc', 'markup.sub.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[0]).toEqual value: '~', scopes: ['source.asciidoc', 'markup.subscript.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[1]).toEqual value: 'subscript', scopes: ['source.asciidoc', 'markup.subscript.asciidoc', 'markup.sub.subscript.asciidoc']
+    expect(tokens[2]).toEqual value: '~', scopes: ['source.asciidoc', 'markup.subscript.asciidoc', 'punctuation.definition.entity.asciidoc']
     expect(tokens[3]).toEqual value: ' is good', scopes: ['source.asciidoc']
 
   it 'when having a [role] set on ~subscript~ text', ->
     {tokens} = grammar.tokenizeLine '[role]~subscript~'
     expect(tokens).toHaveLength 4
-    expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.sub.asciidoc', 'markup.meta.attrlist.asciidoc']
-    expect(tokens[1]).toEqual value: '~', scopes: ['source.asciidoc', 'markup.sub.asciidoc', 'punctuation.definition.entity.asciidoc']
-    expect(tokens[2]).toEqual value: 'subscript', scopes: ['source.asciidoc', 'markup.sub.asciidoc']
-    expect(tokens[3]).toEqual value: '~', scopes: ['source.asciidoc', 'markup.sub.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.subscript.asciidoc', 'markup.meta.attrlist.asciidoc']
+    expect(tokens[1]).toEqual value: '~', scopes: ['source.asciidoc', 'markup.subscript.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[2]).toEqual value: 'subscript', scopes: ['source.asciidoc', 'markup.subscript.asciidoc', 'markup.sub.subscript.asciidoc']
+    expect(tokens[3]).toEqual value: '~', scopes: ['source.asciidoc', 'markup.subscript.asciidoc', 'punctuation.definition.entity.asciidoc']
 
   it 'when having [role1 role2] set on ~subscript~ text', ->
     {tokens} = grammar.tokenizeLine '[role1 role2]~subscript~'
     expect(tokens).toHaveLength 4
-    expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.sub.asciidoc', 'markup.meta.attrlist.asciidoc']
-    expect(tokens[1]).toEqual value: '~', scopes: ['source.asciidoc', 'markup.sub.asciidoc', 'punctuation.definition.entity.asciidoc']
-    expect(tokens[2]).toEqual value: 'subscript', scopes: ['source.asciidoc', 'markup.sub.asciidoc']
-    expect(tokens[3]).toEqual value: '~', scopes: ['source.asciidoc', 'markup.sub.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.subscript.asciidoc', 'markup.meta.attrlist.asciidoc']
+    expect(tokens[1]).toEqual value: '~', scopes: ['source.asciidoc', 'markup.subscript.asciidoc', 'punctuation.definition.entity.asciidoc']
+    expect(tokens[2]).toEqual value: 'subscript', scopes: ['source.asciidoc', 'markup.subscript.asciidoc', 'markup.sub.subscript.asciidoc']
+    expect(tokens[3]).toEqual value: '~', scopes: ['source.asciidoc', 'markup.subscript.asciidoc', 'punctuation.definition.entity.asciidoc']

@@ -435,25 +435,29 @@ repository:
   emphasis:
     patterns: [
       {
-        name: "markup.italic.emphasis.unconstrained.asciidoc"
-        match: "(?<!\\\\\\\\)(\\[(?:[^\\]]+?)\\])?(__)(?:(?!_).+?)(__)"
+        name: "markup.emphasis.unconstrained.asciidoc"
+        match: "(?<!\\\\\\\\)(\\[(?:[^\\]]+?)\\])?(__)((?!_).+?)(__)"
         captures:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
             name: "punctuation.definition.entity.asciidoc"
           "3":
+            name: "markup.italic.emphasis.asciidoc"
+          "4":
             name: "punctuation.definition.entity.asciidoc"
       }
       {
-        name: "markup.italic.emphasis.constrained.asciidoc"
-        match: "(?!_{4,}\\s*$)(?<=^|[^\\p{Word};:])(\\[(?:[^\\]]+?)\\])?(_)(?:\\S|\\S.*?\\S)(_)(?!\\p{Word})"
+        name: "markup.emphasis.constrained.asciidoc"
+        match: "(?!_{4,}\\s*$)(?<=^|[^\\p{Word};:])(\\[(?:[^\\]]+?)\\])?(_)(\\S|\\S.*?\\S)(_)(?!\\p{Word})"
         captures:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
             name: "punctuation.definition.entity.asciidoc"
           "3":
+            name: "markup.italic.emphasis.asciidoc"
+          "4":
             name: "punctuation.definition.entity.asciidoc"
       }
     ]
@@ -546,25 +550,29 @@ repository:
   monospace:
     patterns: [
       {
-        name: "markup.raw.unconstrained.monospaced.asciidoc"
-        match: "(?<!\\\\)(\\[.+?\\])?(``)(?:.+?)(``)"
+        name: "markup.monospace.unconstrained.asciidoc"
+        match: "(?<!\\\\)(\\[.+?\\])?(``)(.+?)(``)"
         captures:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
             name: "punctuation.definition.entity.asciidoc"
           "3":
+            name: "markup.raw.monospace.asciidoc"
+          "4":
             name: "punctuation.definition.entity.asciidoc"
       }
       {
-        name: "markup.raw.constrained.monospaced.asciidoc"
-        match: "(?<![\\\\;:\\p{Word}\"'`])(\\[.+?\\])?(`)(?:\\S|\\S.*?\\S)(`)(?![\\p{Word}\"'`])"
+        name: "markup.monospace.constrained.asciidoc"
+        match: "(?<![\\\\;:\\p{Word}\"'`])(\\[.+?\\])?(`)(\\S|\\S.*?\\S)(`)(?![\\p{Word}\"'`])"
         captures:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
             name: "punctuation.definition.entity.asciidoc"
           "3":
+            name: "markup.raw.monospace.asciidoc"
+          "4":
             name: "punctuation.definition.entity.asciidoc"
       }
     ]
@@ -622,53 +630,61 @@ repository:
   strong:
     patterns: [
       {
-        name: "markup.bold.strong.unconstrained.asciidoc"
-        match: "(?<!\\\\\\\\)(\\[.+?\\])?(\\*\\*).+?(\\*\\*)"
+        name: "markup.strong.unconstrained.asciidoc"
+        match: "(?<!\\\\\\\\)(\\[.+?\\])?(\\*\\*)(.+?)(\\*\\*)"
         captures:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
             name: "punctuation.definition.entity.asciidoc"
           "3":
+            name: "markup.bold.strong.asciidoc"
+          "4":
             name: "punctuation.definition.entity.asciidoc"
       }
       {
-        name: "markup.bold.strong.constrained.asciidoc"
-        match: "(?<![\\\\;:\\p{Word}\\*])(\\[.+?\\])?(\\*)(?:\\S|\\S.*?\\S)(\\*)(?!\\p{Word})"
+        name: "markup.strong.constrained.asciidoc"
+        match: "(?<![\\\\;:\\p{Word}\\*])(\\[.+?\\])?(\\*)(\\S|\\S.*?\\S)(\\*)(?!\\p{Word})"
         captures:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
             name: "punctuation.definition.entity.asciidoc"
           "3":
+            name: "markup.bold.strong.asciidoc"
+          "4":
             name: "punctuation.definition.entity.asciidoc"
       }
     ]
   subscript:
     patterns: [
       {
-        name: "markup.sub.asciidoc"
-        match: "(?<!\\\\)(\\[.+?\\])?(~)(?:\\S+?)(~)"
+        name: "markup.subscript.asciidoc"
+        match: "(?<!\\\\)(\\[.+?\\])?(~)(\\S+?)(~)"
         captures:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
             name: "punctuation.definition.entity.asciidoc"
           "3":
+            name: "markup.sub.subscript.asciidoc"
+          "4":
             name: "punctuation.definition.entity.asciidoc"
       }
     ]
   superscript:
     patterns: [
       {
-        name: "markup.super.asciidoc"
-        match: "(?<!\\\\)(\\[.+?\\])?(\\^)(?:\\S+?)(\\^)"
+        name: "markup.superscript.asciidoc"
+        match: "(?<!\\\\)(\\[.+?\\])?(\\^)(\\S+?)(\\^)"
         captures:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
             name: "punctuation.definition.entity.asciidoc"
           "3":
+            name: "markup.super.superscript.asciidoc"
+          "4":
             name: "punctuation.definition.entity.asciidoc"
       }
     ]

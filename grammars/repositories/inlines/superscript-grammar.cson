@@ -7,10 +7,11 @@ patterns: [
   #
   #   ^superscript^
   #
-  name: 'markup.super.asciidoc'
-  match: '(?<!\\\\)(\\[.+?\\])?(\\^)(?:\\S+?)(\\^)'
+  name: 'markup.superscript.asciidoc'
+  match: '(?<!\\\\)(\\[.+?\\])?(\\^)(\\S+?)(\\^)'
   captures:
     1: name: 'markup.meta.attrlist.asciidoc'
     2: name: 'punctuation.definition.entity.asciidoc'
-    3: name: 'punctuation.definition.entity.asciidoc'
+    3: name: 'markup.super.superscript.asciidoc'
+    4: name: 'punctuation.definition.entity.asciidoc'
 ]

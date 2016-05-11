@@ -77,7 +77,7 @@ describe '_emphasis_ text', ->
     it 'when having a [role] set on constrained _emphasis_ text', ->
       {tokens} = grammar.tokenizeLine '[role]_emphasis_'
       expect(tokens).toHaveLength 4
-      expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.meta.attrlist.asciidoc']
+      expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
       expect(tokens[1]).toEqual value: '_', scopes: ['source.asciidoc', 'markup.emphasis.constrained.asciidoc', 'punctuation.definition.italic.asciidoc']
       expect(tokens[2]).toEqual value: 'emphasis', scopes: ['source.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.emphasis.asciidoc']
       expect(tokens[3]).toEqual value: '_', scopes: ['source.asciidoc', 'markup.emphasis.constrained.asciidoc', 'punctuation.definition.italic.asciidoc']
@@ -85,7 +85,7 @@ describe '_emphasis_ text', ->
     it 'when having [role1 role2] set on constrained _emphasis_ text', ->
       {tokens} = grammar.tokenizeLine '[role1 role2]_emphasis_'
       expect(tokens).toHaveLength 4
-      expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.meta.attrlist.asciidoc']
+      expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
       expect(tokens[1]).toEqual value: '_', scopes: ['source.asciidoc', 'markup.emphasis.constrained.asciidoc', 'punctuation.definition.italic.asciidoc']
       expect(tokens[2]).toEqual value: 'emphasis', scopes: ['source.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.emphasis.asciidoc']
       expect(tokens[3]).toEqual value: '_', scopes: ['source.asciidoc', 'markup.emphasis.constrained.asciidoc', 'punctuation.definition.italic.asciidoc']
@@ -104,7 +104,7 @@ describe '_emphasis_ text', ->
     it 'when having a [role] set on unconstrained __emphasis__ text', ->
       {tokens} = grammar.tokenizeLine '[role]__emphasis__'
       expect(tokens).toHaveLength 4
-      expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.emphasis.unconstrained.asciidoc', 'markup.meta.attrlist.asciidoc']
+      expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.emphasis.unconstrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
       expect(tokens[1]).toEqual value: '__', scopes: ['source.asciidoc', 'markup.emphasis.unconstrained.asciidoc', 'punctuation.definition.italic.asciidoc']
       expect(tokens[2]).toEqual value: 'emphasis', scopes: ['source.asciidoc', 'markup.emphasis.unconstrained.asciidoc', 'markup.italic.emphasis.asciidoc']
       expect(tokens[3]).toEqual value: '__', scopes: ['source.asciidoc', 'markup.emphasis.unconstrained.asciidoc', 'punctuation.definition.italic.asciidoc']
@@ -112,7 +112,7 @@ describe '_emphasis_ text', ->
     it 'when having [role1 role2] set on unconstrained _emphasis__ text', ->
       {tokens} = grammar.tokenizeLine '[role1 role2]__emphasis__'
       expect(tokens).toHaveLength 4
-      expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.emphasis.unconstrained.asciidoc', 'markup.meta.attrlist.asciidoc']
+      expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.emphasis.unconstrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
       expect(tokens[1]).toEqual value: '__', scopes: ['source.asciidoc', 'markup.emphasis.unconstrained.asciidoc', 'punctuation.definition.italic.asciidoc']
       expect(tokens[2]).toEqual value: 'emphasis', scopes: ['source.asciidoc', 'markup.emphasis.unconstrained.asciidoc', 'markup.italic.emphasis.asciidoc']
       expect(tokens[3]).toEqual value: '__', scopes: ['source.asciidoc', 'markup.emphasis.unconstrained.asciidoc', 'punctuation.definition.italic.asciidoc']

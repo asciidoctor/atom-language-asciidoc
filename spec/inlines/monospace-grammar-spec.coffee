@@ -38,7 +38,7 @@ describe '`monospace`', ->
     it 'when having a [role] set on constrained `monospace` text', ->
       {tokens} = grammar.tokenizeLine '[role]`monospace`'
       expect(tokens).toHaveLength 4
-      expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.monospace.constrained.asciidoc', 'markup.meta.attrlist.asciidoc']
+      expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.monospace.constrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
       expect(tokens[1]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.monospace.constrained.asciidoc', 'punctuation.definition.raw.asciidoc']
       expect(tokens[2]).toEqual value: 'monospace', scopes: ['source.asciidoc', 'markup.monospace.constrained.asciidoc', 'markup.raw.monospace.asciidoc']
       expect(tokens[3]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.monospace.constrained.asciidoc', 'punctuation.definition.raw.asciidoc']
@@ -46,7 +46,7 @@ describe '`monospace`', ->
     it 'when having [role1 role2] set on constrained `monospace` text', ->
       {tokens} = grammar.tokenizeLine '[role1 role2]`monospace`'
       expect(tokens).toHaveLength 4
-      expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.monospace.constrained.asciidoc', 'markup.meta.attrlist.asciidoc']
+      expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.monospace.constrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
       expect(tokens[1]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.monospace.constrained.asciidoc', 'punctuation.definition.raw.asciidoc']
       expect(tokens[2]).toEqual value: 'monospace', scopes: ['source.asciidoc', 'markup.monospace.constrained.asciidoc', 'markup.raw.monospace.asciidoc']
       expect(tokens[3]).toEqual value: '`', scopes: ['source.asciidoc', 'markup.monospace.constrained.asciidoc', 'punctuation.definition.raw.asciidoc']
@@ -69,7 +69,7 @@ describe '`monospace`', ->
     it 'when having a [role] set on unconstrained ``monospace`` text', ->
       {tokens} = grammar.tokenizeLine '[role]``monospace``'
       expect(tokens).toHaveLength 4
-      expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.monospace.unconstrained.asciidoc', 'markup.meta.attrlist.asciidoc']
+      expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.monospace.unconstrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
       expect(tokens[1]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.monospace.unconstrained.asciidoc', 'punctuation.definition.raw.asciidoc']
       expect(tokens[2]).toEqual value: 'monospace', scopes: ['source.asciidoc', 'markup.monospace.unconstrained.asciidoc', 'markup.raw.monospace.asciidoc']
       expect(tokens[3]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.monospace.unconstrained.asciidoc', 'punctuation.definition.raw.asciidoc']
@@ -77,7 +77,7 @@ describe '`monospace`', ->
     it 'when having [role1 role2] set on unconstrained ``monospace`` text', ->
       {tokens} = grammar.tokenizeLine '[role1 role2]``monospace``'
       expect(tokens).toHaveLength 4
-      expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.monospace.unconstrained.asciidoc', 'markup.meta.attrlist.asciidoc']
+      expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.monospace.unconstrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
       expect(tokens[1]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.monospace.unconstrained.asciidoc', 'punctuation.definition.raw.asciidoc']
       expect(tokens[2]).toEqual value: 'monospace', scopes: ['source.asciidoc', 'markup.monospace.unconstrained.asciidoc', 'markup.raw.monospace.asciidoc']
       expect(tokens[3]).toEqual value: '``', scopes: ['source.asciidoc', 'markup.monospace.unconstrained.asciidoc', 'punctuation.definition.raw.asciidoc']

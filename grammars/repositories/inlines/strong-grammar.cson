@@ -11,7 +11,7 @@ patterns: [
   name: 'markup.strong.unconstrained.asciidoc'
   match: '(?<!\\\\\\\\)(\\[.+?\\])?(\\*\\*)(.+?)(\\*\\*)'
   captures:
-    1: name: 'markup.meta.attrlist.asciidoc'
+    1: name: 'markup.meta.attribute-list.asciidoc'
     2: name: 'punctuation.definition.bold.asciidoc'
     3: name: 'markup.bold.strong.asciidoc'
     4: name: 'punctuation.definition.bold.asciidoc'
@@ -25,7 +25,7 @@ patterns: [
   name: 'markup.strong.constrained.asciidoc'
   match: '(?<![\\\\;:\\p{Word}\\*])(\\[.+?\\])?(\\*)(\\S|\\S.*?\\S)(\\*)(?!\\p{Word})'
   captures:
-    1: name: 'markup.meta.attrlist.asciidoc'
+    1: name: 'markup.meta.attribute-list.asciidoc'
     2: name: 'punctuation.definition.bold.asciidoc'
     3: name: 'markup.bold.strong.asciidoc'
     4: name: 'punctuation.definition.bold.asciidoc'

@@ -10,7 +10,7 @@ patterns: [
   name: 'markup.monospace.unconstrained.asciidoc'
   match: '(?<!\\\\)(\\[.+?\\])?(``)(.+?)(``)'
   captures:
-    1: name: 'markup.meta.attrlist.asciidoc'
+    1: name: 'markup.meta.attribute-list.asciidoc'
     2: name: 'punctuation.definition.raw.asciidoc'
     3: name: 'markup.raw.monospace.asciidoc'
     4: name: 'punctuation.definition.raw.asciidoc'
@@ -24,7 +24,7 @@ patterns: [
   name: 'markup.monospace.constrained.asciidoc'
   match: '(?<![\\\\;:\\p{Word}"\'`])(\\[.+?\\])?(`)(\\S|\\S.*?\\S)(`)(?![\\p{Word}"\'`])'
   captures:
-    1: name: 'markup.meta.attrlist.asciidoc'
+    1: name: 'markup.meta.attribute-list.asciidoc'
     2: name: 'punctuation.definition.raw.asciidoc'
     3: name: 'markup.raw.monospace.asciidoc'
     4: name: 'punctuation.definition.raw.asciidoc'

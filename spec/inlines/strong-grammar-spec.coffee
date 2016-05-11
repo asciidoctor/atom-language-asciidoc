@@ -133,7 +133,7 @@ describe '*strong* text', ->
     it 'when having a [role] set on constrained *strong* text', ->
       {tokens} = grammar.tokenizeLine '[role]*strong*'
       expect(tokens).toHaveLength 4
-      expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.meta.attrlist.asciidoc']
+      expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
       expect(tokens[1]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
       expect(tokens[2]).toEqual value: 'strong', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.strong.asciidoc']
       expect(tokens[3]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
@@ -141,7 +141,7 @@ describe '*strong* text', ->
     it 'when having [role1 role2] set on constrained *strong* text', ->
       {tokens} = grammar.tokenizeLine '[role1 role2]*strong*'
       expect(tokens).toHaveLength 4
-      expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.meta.attrlist.asciidoc']
+      expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
       expect(tokens[1]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
       expect(tokens[2]).toEqual value: 'strong', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.strong.asciidoc']
       expect(tokens[3]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
@@ -171,7 +171,7 @@ describe '*strong* text', ->
     it 'when having a [role] set on unconstrained **strong** text', ->
       {tokens} = grammar.tokenizeLine '[role]**strong**'
       expect(tokens).toHaveLength 4
-      expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.strong.unconstrained.asciidoc', 'markup.meta.attrlist.asciidoc']
+      expect(tokens[0]).toEqual value: '[role]', scopes: ['source.asciidoc', 'markup.strong.unconstrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
       expect(tokens[1]).toEqual value: '**', scopes: ['source.asciidoc', 'markup.strong.unconstrained.asciidoc', 'punctuation.definition.bold.asciidoc']
       expect(tokens[2]).toEqual value: 'strong', scopes: ['source.asciidoc', 'markup.strong.unconstrained.asciidoc', 'markup.bold.strong.asciidoc']
       expect(tokens[3]).toEqual value: '**', scopes: ['source.asciidoc', 'markup.strong.unconstrained.asciidoc', 'punctuation.definition.bold.asciidoc']
@@ -179,7 +179,7 @@ describe '*strong* text', ->
     it 'when having [role1 role2] set on unconstrained **strong** text', ->
       {tokens} = grammar.tokenizeLine '[role1 role2]**strong**'
       expect(tokens).toHaveLength 4
-      expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.strong.unconstrained.asciidoc', 'markup.meta.attrlist.asciidoc']
+      expect(tokens[0]).toEqual value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.strong.unconstrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
       expect(tokens[1]).toEqual value: '**', scopes: ['source.asciidoc', 'markup.strong.unconstrained.asciidoc', 'punctuation.definition.bold.asciidoc']
       expect(tokens[2]).toEqual value: 'strong', scopes: ['source.asciidoc', 'markup.strong.unconstrained.asciidoc', 'markup.bold.strong.asciidoc']
       expect(tokens[3]).toEqual value: '**', scopes: ['source.asciidoc', 'markup.strong.unconstrained.asciidoc', 'punctuation.definition.bold.asciidoc']

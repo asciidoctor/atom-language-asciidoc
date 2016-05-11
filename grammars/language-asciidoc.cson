@@ -439,7 +439,7 @@ repository:
         match: "(?<!\\\\\\\\)(\\[(?:[^\\]]+?)\\])?(__)((?!_).+?)(__)"
         captures:
           "1":
-            name: "markup.meta.attrlist.asciidoc"
+            name: "markup.meta.attribute-list.asciidoc"
           "2":
             name: "punctuation.definition.italic.asciidoc"
           "3":
@@ -452,7 +452,7 @@ repository:
         match: "(?!_{4,}\\s*$)(?<=^|[^\\p{Word};:])(\\[(?:[^\\]]+?)\\])?(_)(\\S|\\S.*?\\S)(_)(?!\\p{Word})"
         captures:
           "1":
-            name: "markup.meta.attrlist.asciidoc"
+            name: "markup.meta.attribute-list.asciidoc"
           "2":
             name: "punctuation.definition.italic.asciidoc"
           "3":
@@ -554,7 +554,7 @@ repository:
         match: "(?<!\\\\)(\\[.+?\\])?(``)(.+?)(``)"
         captures:
           "1":
-            name: "markup.meta.attrlist.asciidoc"
+            name: "markup.meta.attribute-list.asciidoc"
           "2":
             name: "punctuation.definition.raw.asciidoc"
           "3":
@@ -567,7 +567,7 @@ repository:
         match: "(?<![\\\\;:\\p{Word}\"'`])(\\[.+?\\])?(`)(\\S|\\S.*?\\S)(`)(?![\\p{Word}\"'`])"
         captures:
           "1":
-            name: "markup.meta.attrlist.asciidoc"
+            name: "markup.meta.attribute-list.asciidoc"
           "2":
             name: "punctuation.definition.raw.asciidoc"
           "3":
@@ -634,7 +634,7 @@ repository:
         match: "(?<!\\\\\\\\)(\\[.+?\\])?(\\*\\*)(.+?)(\\*\\*)"
         captures:
           "1":
-            name: "markup.meta.attrlist.asciidoc"
+            name: "markup.meta.attribute-list.asciidoc"
           "2":
             name: "punctuation.definition.bold.asciidoc"
           "3":
@@ -647,7 +647,7 @@ repository:
         match: "(?<![\\\\;:\\p{Word}\\*])(\\[.+?\\])?(\\*)(\\S|\\S.*?\\S)(\\*)(?!\\p{Word})"
         captures:
           "1":
-            name: "markup.meta.attrlist.asciidoc"
+            name: "markup.meta.attribute-list.asciidoc"
           "2":
             name: "punctuation.definition.bold.asciidoc"
           "3":
@@ -663,7 +663,7 @@ repository:
         match: "(?<!\\\\)(\\[.+?\\])?(~)(\\S+?)(~)"
         captures:
           "1":
-            name: "markup.meta.attrlist.asciidoc"
+            name: "markup.meta.attribute-list.asciidoc"
           "2":
             name: "punctuation.definition.sub.asciidoc"
           "3":
@@ -679,7 +679,7 @@ repository:
         match: "(?<!\\\\)(\\[.+?\\])?(\\^)(\\S+?)(\\^)"
         captures:
           "1":
-            name: "markup.meta.attrlist.asciidoc"
+            name: "markup.meta.attribute-list.asciidoc"
           "2":
             name: "punctuation.definition.super.asciidoc"
           "3":

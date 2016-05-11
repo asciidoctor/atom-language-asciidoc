@@ -669,7 +669,7 @@ repository:
         match: "(?<!\\\\)(\\[.+?\\])?((~)(\\S+?)(~))"
         captures:
           "1":
-            name: "markup.meta.attribute-list.asciidoc"
+            name: "markup.meta.sub.attribute-list.asciidoc"
           "2":
             name: "markup.sub.subscript.asciidoc"
           "3":
@@ -685,7 +685,7 @@ repository:
         match: "(?<!\\\\)(\\[.+?\\])?((\\^)(\\S+?)(\\^))"
         captures:
           "1":
-            name: "markup.meta.attribute-list.asciidoc"
+            name: "markup.meta.super.attribute-list.asciidoc"
           "2":
             name: "markup.super.superscript.asciidoc"
           "3":

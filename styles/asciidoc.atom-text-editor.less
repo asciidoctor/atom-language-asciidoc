@@ -80,16 +80,21 @@ atom-text-editor::shadow, :host {
       }
 
       &.super {
-        vertical-align: text-top;
-        font-size: @font-size * .7;
         color: mix(green, @syntax-text-color, 50%);
       }
 
       &.sub {
-        vertical-align: text-bottom;
-        font-size: @font-size * .7;
         color: mix(green, @syntax-text-color, 50%);
       }
+    }
+
+    .super {
+      vertical-align: text-top;
+      font-size: @font-size * .7;
+    }
+    .sub {
+      vertical-align: text-bottom;
+      font-size: @font-size * .7;
     }
 
     .block,

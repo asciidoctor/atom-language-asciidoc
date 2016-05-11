@@ -98,6 +98,18 @@ atom-text-editor, :host {
       }
     }
 
+    .punctuation {
+      &.super {
+        vertical-align: super;
+        font-size: @font-size * .8;
+      }
+
+      &.sub {
+        vertical-align: sub;
+        font-size: @font-size * .8;
+      }
+    }
+
     .block,
     .table.spec {
       color: @syntax-text-color-unobtrusive;

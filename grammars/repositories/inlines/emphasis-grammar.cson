@@ -12,9 +12,9 @@ patterns: [
   match: '(?<!\\\\\\\\)(\\[(?:[^\\]]+?)\\])?(__)((?!_).+?)(__)' # now including the underscores in the match
   captures:
     1: name: 'markup.meta.attrlist.asciidoc'
-    2: name: 'punctuation.definition.entity.asciidoc'
+    2: name: 'punctuation.definition.italic.asciidoc'
     3: name: 'markup.italic.emphasis.asciidoc'
-    4: name: 'punctuation.definition.entity.asciidoc'
+    4: name: 'punctuation.definition.italic.asciidoc'
 ,
   # Matches emphasis constrained phrases
   #
@@ -26,7 +26,7 @@ patterns: [
   match: '(?!_{4,}\\s*$)(?<=^|[^\\p{Word};:])(\\[(?:[^\\]]+?)\\])?(_)(\\S|\\S.*?\\S)(_)(?!\\p{Word})'
   captures:
     1: name: 'markup.meta.attrlist.asciidoc'
-    2: name: 'punctuation.definition.entity.asciidoc'
+    2: name: 'punctuation.definition.italic.asciidoc'
     3: name: 'markup.italic.emphasis.asciidoc'
-    4: name: 'punctuation.definition.entity.asciidoc'
+    4: name: 'punctuation.definition.italic.asciidoc'
 ]

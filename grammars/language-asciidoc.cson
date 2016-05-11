@@ -441,11 +441,11 @@ repository:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.italic.asciidoc"
           "3":
             name: "markup.italic.emphasis.asciidoc"
           "4":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.italic.asciidoc"
       }
       {
         name: "markup.emphasis.constrained.asciidoc"
@@ -454,11 +454,11 @@ repository:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.italic.asciidoc"
           "3":
             name: "markup.italic.emphasis.asciidoc"
           "4":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.italic.asciidoc"
       }
     ]
   "footnote-macro":
@@ -556,11 +556,11 @@ repository:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.raw.asciidoc"
           "3":
             name: "markup.raw.monospace.asciidoc"
           "4":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.raw.asciidoc"
       }
       {
         name: "markup.monospace.constrained.asciidoc"
@@ -569,11 +569,11 @@ repository:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.raw.asciidoc"
           "3":
             name: "markup.raw.monospace.asciidoc"
           "4":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.raw.asciidoc"
       }
     ]
   "passthrough-macro":
@@ -636,11 +636,11 @@ repository:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.bold.asciidoc"
           "3":
             name: "markup.bold.strong.asciidoc"
           "4":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.bold.asciidoc"
       }
       {
         name: "markup.strong.constrained.asciidoc"
@@ -649,11 +649,11 @@ repository:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.bold.asciidoc"
           "3":
             name: "markup.bold.strong.asciidoc"
           "4":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.bold.asciidoc"
       }
     ]
   subscript:
@@ -665,11 +665,11 @@ repository:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.sub.asciidoc"
           "3":
             name: "markup.sub.subscript.asciidoc"
           "4":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.sub.asciidoc"
       }
     ]
   superscript:
@@ -681,11 +681,11 @@ repository:
           "1":
             name: "markup.meta.attrlist.asciidoc"
           "2":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.super.asciidoc"
           "3":
             name: "markup.super.superscript.asciidoc"
           "4":
-            name: "punctuation.definition.entity.asciidoc"
+            name: "punctuation.definition.super.asciidoc"
       }
     ]
   "xref-macro":

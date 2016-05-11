@@ -12,6 +12,6 @@ patterns: [
   captures:
     1: name: 'markup.meta.super.attribute-list.asciidoc'
     2: name: 'markup.super.superscript.asciidoc'
-    3: name: 'punctuation.definition.super.asciidoc'
-    5: name: 'punctuation.definition.super.asciidoc'
+    3: name: 'punctuation.definition.asciidoc'
+    5: name: 'punctuation.definition.asciidoc'
 ]

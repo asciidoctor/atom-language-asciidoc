@@ -32,13 +32,13 @@ describe 'Should tokenizes callout list item when', ->
     expect(tokens[1]).toEqualJson value: '1', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.numeric.asciidoc']
     expect(tokens[2]).toEqualJson value: '>', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.other.symbol.asciidoc']
     expect(tokens[3]).toEqualJson value: ' ', scopes: ['source.asciidoc', 'callout.asciidoc']
-    expect(tokens[4]).toEqualJson value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
-    expect(tokens[5]).toEqualJson value: 'Grammars', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.strong.asciidoc']
-    expect(tokens[6]).toEqualJson value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
+    expect(tokens[4]).toEqualJson value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.asciidoc', 'punctuation.definition.asciidoc']
+    expect(tokens[5]).toEqualJson value: 'Grammars', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.asciidoc']
+    expect(tokens[6]).toEqualJson value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.asciidoc', 'punctuation.definition.asciidoc']
     expect(tokens[7]).toEqualJson value: ' ', scopes: ['source.asciidoc', 'callout.asciidoc']
-    expect(tokens[8]).toEqualJson value: '_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.emphasis.asciidoc', 'punctuation.definition.italic.asciidoc']
-    expect(tokens[9]).toEqualJson value: 'definition', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.emphasis.asciidoc']
-    expect(tokens[10]).toEqualJson value: '_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.emphasis.asciidoc', 'punctuation.definition.italic.asciidoc']
+    expect(tokens[8]).toEqualJson value: '_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.asciidoc', 'punctuation.definition.asciidoc']
+    expect(tokens[9]).toEqualJson value: 'definition', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.asciidoc']
+    expect(tokens[10]).toEqualJson value: '_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.asciidoc', 'punctuation.definition.asciidoc']
 
   it 'contains misplaced callout (invalid context)', ->
     {tokens} = grammar.tokenizeLine '   <1> foobar'

@@ -76,9 +76,9 @@ describe 'Should tokenizes quote block when', ->
     expect(tokens[1][0]).toEqualJson value: '>', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc']
     expect(tokens[2]).toHaveLength 4
     expect(tokens[2][0]).toEqualJson value: '> ', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc']
-    expect(tokens[2][1]).toEqualJson value: '*', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
-    expect(tokens[2][2]).toEqualJson value: 'strong', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.strong.asciidoc']
-    expect(tokens[2][3]).toEqualJson value: '*', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
+    expect(tokens[2][1]).toEqualJson value: '*', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.asciidoc', 'punctuation.definition.asciidoc']
+    expect(tokens[2][2]).toEqualJson value: 'strong', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.asciidoc']
+    expect(tokens[2][3]).toEqualJson value: '*', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.asciidoc', 'punctuation.definition.asciidoc']
     expect(tokens[3]).toHaveLength 1
     expect(tokens[3][0]).toEqualJson value: '> Yep. AsciiDoc and Markdown share a lot of common syntax already.', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc']
 

@@ -12,8 +12,8 @@ patterns: [
   captures:
     1: name: 'markup.meta.attribute-list.asciidoc'
     2: name: 'markup.raw.monospace.asciidoc'
-    3: name: 'punctuation.definition.raw.asciidoc'
-    5: name: 'punctuation.definition.raw.asciidoc'
+    3: name: 'punctuation.definition.asciidoc'
+    5: name: 'punctuation.definition.asciidoc'
 ,
   # Matches constrained monospace inlines
   #
@@ -26,6 +26,6 @@ patterns: [
   captures:
     1: name: 'markup.meta.attribute-list.asciidoc'
     2: name: 'markup.raw.monospace.asciidoc'
-    3: name: 'punctuation.definition.raw.asciidoc'
-    5: name: 'punctuation.definition.raw.asciidoc'
+    3: name: 'punctuation.definition.asciidoc'
+    5: name: 'punctuation.definition.asciidoc'
 ]

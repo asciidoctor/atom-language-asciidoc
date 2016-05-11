@@ -47,15 +47,15 @@ describe 'Should tokenizes admonition when', ->
     expect(tokens[3][0]).toEqualJson value: 'auxiliary information.', scopes: ['source.asciidoc', 'markup.admonition.asciidoc']
     expect(tokens[4]).toHaveLength 5
     expect(tokens[4][0]).toEqualJson value: 'Its purpose is ', scopes: ['source.asciidoc', 'markup.admonition.asciidoc']
-    expect(tokens[4][1]).toEqualJson value: '*', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
-    expect(tokens[4][2]).toEqualJson value: 'determined', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.strong.asciidoc']
-    expect(tokens[4][3]).toEqualJson value: '*', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
+    expect(tokens[4][1]).toEqualJson value: '*', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.asciidoc', 'punctuation.definition.asciidoc']
+    expect(tokens[4][2]).toEqualJson value: 'determined', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.asciidoc']
+    expect(tokens[4][3]).toEqualJson value: '*', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.asciidoc', 'punctuation.definition.asciidoc']
     expect(tokens[4][4]).toEqualJson value: ' by the label', scopes: ['source.asciidoc', 'markup.admonition.asciidoc']
     expect(tokens[5]).toHaveLength 5
     expect(tokens[5][0]).toEqualJson value: 'at the ', scopes: ['source.asciidoc', 'markup.admonition.asciidoc']
-    expect(tokens[5][1]).toEqualJson value: '_', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.emphasis.asciidoc', 'punctuation.definition.italic.asciidoc']
-    expect(tokens[5][2]).toEqualJson value: 'beginning', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.emphasis.asciidoc']
-    expect(tokens[5][3]).toEqualJson value: '_', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.emphasis.asciidoc', 'punctuation.definition.italic.asciidoc']
+    expect(tokens[5][1]).toEqualJson value: '_', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.asciidoc', 'punctuation.definition.asciidoc']
+    expect(tokens[5][2]).toEqualJson value: 'beginning', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.asciidoc']
+    expect(tokens[5][3]).toEqualJson value: '_', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.asciidoc', 'punctuation.definition.asciidoc']
     expect(tokens[5][4]).toEqualJson value: ' of the paragraph.', scopes: ['source.asciidoc', 'markup.admonition.asciidoc']
     expect(tokens[6]).toHaveLength 1
     expect(tokens[6][0]).toEqualJson value: '', scopes: ['source.asciidoc']

@@ -59,7 +59,12 @@ atom-text-editor::shadow, :host {
       }
 
       &.heading.blocktitle,
-      &.substitution {
+      &.substitution{
+        color: @syntax-text-color-unobtrusive;
+      }
+      &.meta.attribute-list {
+        font-weight: normal;
+        font-style: normal;
         color: @syntax-text-color-unobtrusive;
       }
       &.todo.box,
@@ -90,6 +95,18 @@ atom-text-editor::shadow, :host {
         vertical-align: sub;
         font-size: @font-size * .8;
         color: mix(green, @syntax-text-color, 50%);
+      }
+    }
+
+    .punctuation {
+      &.super {
+        vertical-align: super;
+        font-size: @font-size * .8;
+      }
+
+      &.sub {
+        vertical-align: sub;
+        font-size: @font-size * .8;
       }
     }
 

@@ -1,0 +1,31 @@
+key: 'monospace'
+
+patterns: [
+  # Matches unconstrained monospace inlines
+  #
+  # Examples
+  #`
+  #   Text in back``ticks`` renders exactly as entered, in mono``space``.
+  #
+  name: 'markup.monospace.unconstrained.asciidoc'
+  match: '(?<!\\\\)(\\[.+?\\])?(``)(.+?)(``)'
+  captures:
+    1: name: 'markup.meta.attribute-list.asciidoc'
+    2: name: 'punctuation.definition.raw.asciidoc'
+    3: name: 'markup.raw.monospace.asciidoc'
+    4: name: 'punctuation.definition.raw.asciidoc'
+,
+  # Matches constrained monospace inlines
+  #
+  # Examples
+  #
+  #   `Text in backticks` renders exactly as entered, in `monospace`.
+  #
+  name: 'markup.monospace.constrained.asciidoc'
+  match: '(?<![\\\\;:\\p{Word}"\'`])(\\[.+?\\])?(`)(\\S|\\S.*?\\S)(`)(?![\\p{Word}"\'`])'
+  captures:
+    1: name: 'markup.meta.attribute-list.asciidoc'
+    2: name: 'punctuation.definition.raw.asciidoc'
+    3: name: 'markup.raw.monospace.asciidoc'
+    4: name: 'punctuation.definition.raw.asciidoc'
+]

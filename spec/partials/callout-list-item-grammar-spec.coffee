@@ -27,16 +27,18 @@ describe 'Should tokenizes callout list item when', ->
 
   it 'contains callout mixed with inline element', ->
     {tokens} = grammar.tokenizeLine '<1> *Grammars* _definition_'
-    expect(tokens).toHaveLength 9
+    expect(tokens).toHaveLength 11
     expect(tokens[0]).toEqual value: '<', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.other.symbol.asciidoc']
     expect(tokens[1]).toEqual value: '1', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.numeric.asciidoc']
     expect(tokens[2]).toEqual value: '>', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.other.symbol.asciidoc']
     expect(tokens[3]).toEqual value: ' ', scopes: ['source.asciidoc', 'callout.asciidoc']
-    expect(tokens[4]).toEqual value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
-    expect(tokens[5]).toEqual value: 'Grammars', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.constrained.asciidoc']
-    expect(tokens[6]).toEqual value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.bold.constrained.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[4]).toEqual value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
+    expect(tokens[5]).toEqual value: 'Grammars', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.strong.asciidoc']
+    expect(tokens[6]).toEqual value: '*', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
     expect(tokens[7]).toEqual value: ' ', scopes: ['source.asciidoc', 'callout.asciidoc']
-    expect(tokens[8]).toEqual value: '_definition_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.italic.asciidoc']
+    expect(tokens[8]).toEqual value: '_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.emphasis.constrained.asciidoc', 'punctuation.definition.italic.asciidoc']
+    expect(tokens[9]).toEqual value: 'definition', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.emphasis.constrained.asciidoc', 'markup.italic.emphasis.asciidoc']
+    expect(tokens[10]).toEqual value: '_', scopes: ['source.asciidoc', 'callout.asciidoc', 'markup.emphasis.constrained.asciidoc', 'punctuation.definition.italic.asciidoc']
 
   it 'contains misplaced callout (invalid context)', ->
     {tokens} = grammar.tokenizeLine '   <1> foobar'

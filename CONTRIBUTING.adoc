@@ -179,7 +179,10 @@ image::https://cloud.githubusercontent.com/assets/5674651/14895946/a40b08aa-0d7b
 
 
 == Compatibility mode not supported
-As the AsciiDoc syntax has changed quite a bit since the original Python implementation, Asciidoctor offers a legacy mode called `compat-mode`. This mode can be set using the `:compat-mode:` attribute. This can be done in the document iteself, or when generating the final result using `asciidoctor -a compat-mode`, or it's shorter equivalent `asciidoc`.
+
+As the AsciiDoc syntax has changed quite a bit since the original Python implementation, Asciidoctor offers a legacy mode called `compat-mode`.
+This mode can be set using the `:compat-mode:` attribute.
+This can be done in the document iteself, or when generating the final result using `asciidoctor -a compat-mode`, or it's shorter equivalent `asciidoc`.
 
 As the compatibility mode is a legacy syntax the project wants to move away from, the mode can be triggered from outside the source itself, and changing grammar on the fly introduces complexity, *compatibility mode is currently not supported by this highlighter*.
 

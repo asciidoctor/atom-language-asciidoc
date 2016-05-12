@@ -2,7 +2,7 @@ key: 'stem-macro'
 
 patterns: [
 
-  # Matches a stem (and alternatives, asciimath and latexmath) inline macro.
+  # Matches a stem (and alternatives, asciimath and latexmath) inline macro, which may span multiple lines.
   #
   # Examples
   #
@@ -10,9 +10,10 @@ patterns: [
   #   asciimath:[x != 0]
   #   latexmath:[\sqrt{4} = 2]
   #
-  name: 'markup.macro.inline.stem.general.asciidoc'
-  match: '(?<!\\\\)(stem|(?:latex|ascii)math):([a-z,]*)(\\[)(.*?[^\\\\])(\\])'
-  captures:
-    2: name: 'support.constant.asciidoc'
-    4: name: 'support.constant.asciidoc'
+  name: 'markup.macro.inline.stem.asciidoc'
+  begin: '(?<!\\\\)(stem|(?:latex|ascii)math):([a-z,]*)(\\[)'
+  beginCaptures:
+    2: name: 'markup.meta.attribute-list.asciidoc'
+  contentName: 'markup.raw.asciidoc'
+  end: '\\]|^$'
 ]

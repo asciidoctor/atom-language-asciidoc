@@ -19,20 +19,20 @@ describe 'Should tokenizes menu macro when', ->
   it 'contains File item', ->
     {tokens} = grammar.tokenizeLine 'menu:File[New...]'
     expect(tokens).toHaveLength 3
-    expect(tokens[0]).toEqual value: 'menu:', scopes: ['source.asciidoc', 'markup.link.menu.inline.asciidoc']
-    expect(tokens[1]).toEqual value: 'File', scopes: ['source.asciidoc', 'markup.link.menu.inline.asciidoc', 'support.constant.menu.inline.asciidoc']
-    expect(tokens[2]).toEqual value: '[New...]', scopes: ['source.asciidoc', 'markup.link.menu.inline.asciidoc']
+    expect(tokens[0]).toEqualJson value: 'menu:', scopes: ['source.asciidoc', 'markup.link.menu.asciidoc']
+    expect(tokens[1]).toEqualJson value: 'File', scopes: ['source.asciidoc', 'markup.link.menu.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[2]).toEqualJson value: '[New...]', scopes: ['source.asciidoc', 'markup.link.menu.asciidoc']
 
   it 'contains View item', ->
     {tokens} = grammar.tokenizeLine 'menu:View[Page Style > No Style]'
     expect(tokens).toHaveLength 3
-    expect(tokens[0]).toEqual value: 'menu:', scopes: ['source.asciidoc', 'markup.link.menu.inline.asciidoc']
-    expect(tokens[1]).toEqual value: 'View', scopes: ['source.asciidoc', 'markup.link.menu.inline.asciidoc', 'support.constant.menu.inline.asciidoc']
-    expect(tokens[2]).toEqual value: '[Page Style > No Style]', scopes: ['source.asciidoc', 'markup.link.menu.inline.asciidoc']
+    expect(tokens[0]).toEqualJson value: 'menu:', scopes: ['source.asciidoc', 'markup.link.menu.asciidoc']
+    expect(tokens[1]).toEqualJson value: 'View', scopes: ['source.asciidoc', 'markup.link.menu.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[2]).toEqualJson value: '[Page Style > No Style]', scopes: ['source.asciidoc', 'markup.link.menu.asciidoc']
 
   it 'contains View item comma', ->
     {tokens} = grammar.tokenizeLine 'menu:View[Page Style, No Style]'
     expect(tokens).toHaveLength 3
-    expect(tokens[0]).toEqual value: 'menu:', scopes: ['source.asciidoc', 'markup.link.menu.inline.asciidoc']
-    expect(tokens[1]).toEqual value: 'View', scopes: ['source.asciidoc', 'markup.link.menu.inline.asciidoc', 'support.constant.menu.inline.asciidoc']
-    expect(tokens[2]).toEqual value: '[Page Style, No Style]', scopes: ['source.asciidoc', 'markup.link.menu.inline.asciidoc']
+    expect(tokens[0]).toEqualJson value: 'menu:', scopes: ['source.asciidoc', 'markup.link.menu.asciidoc']
+    expect(tokens[1]).toEqualJson value: 'View', scopes: ['source.asciidoc', 'markup.link.menu.asciidoc', 'support.constant.asciidoc']
+    expect(tokens[2]).toEqualJson value: '[Page Style, No Style]', scopes: ['source.asciidoc', 'markup.link.menu.asciidoc']

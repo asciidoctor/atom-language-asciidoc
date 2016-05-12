@@ -501,7 +501,7 @@ repository:
   "image-macro":
     patterns: [
       {
-        name: "markup.macro.inline.image.general.asciidoc"
+        name: "markup.macro.inline.image.asciidoc"
         match: "(?<!\\\\)(?:image|icon):([^:\\[][^\\[]*)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])"
         captures:
           "1":
@@ -546,11 +546,11 @@ repository:
   "menu-macro":
     patterns: [
       {
-        name: "markup.link.menu.inline.asciidoc"
+        name: "markup.link.menu.asciidoc"
         match: "(?<!\\\\)menu:(\\p{Word}|\\p{Word}.*?\\S)\\[\\p{Blank}*(.+?)?\\]"
         captures:
           "1":
-            name: "support.constant.menu.inline.asciidoc"
+            name: "support.constant.asciidoc"
       }
     ]
   monospace:

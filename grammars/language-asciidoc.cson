@@ -409,7 +409,7 @@ repository:
     patterns: [
       {
         name: "markup.substitution.attribute-reference.asciidoc"
-        match: "(\\\\)?(\\{)((set|counter2?):.+?|\\w+(?:[\\-]\\w+)*)(\\\\)?(\\})"
+        match: "(?<!\\\\)(\\{)((set|counter2?):.+?|\\w+(?:[\\-]\\w+)*)(\\\\)?(\\})"
       }
     ]
   "bibliography-anchor":
@@ -430,7 +430,7 @@ repository:
     patterns: [
       {
         name: "markup.htmlentity.asciidoc"
-        match: "(&)(\\S+?)(;)"
+        match: "(?<!\\\\)(&)(\\S+?)(;)"
         captures:
           "1":
             name: "support.constant.asciidoc"

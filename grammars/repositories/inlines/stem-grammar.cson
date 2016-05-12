@@ -13,7 +13,8 @@ patterns: [
   name: 'markup.macro.inline.stem.asciidoc'
   begin: '(?<!\\\\)(stem|(?:latex|ascii)math):([a-z,]*)(\\[)'
   beginCaptures:
+    1: name: 'entity.name.function.asciidoc'
     2: name: 'markup.meta.attribute-list.asciidoc'
-  contentName: 'markup.raw.asciidoc'
+  contentName: 'string.unquoted.asciidoc'
   end: '\\]|^$'
 ]

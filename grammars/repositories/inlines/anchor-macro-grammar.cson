@@ -9,10 +9,12 @@ patterns: [
   #   [[idname]]
   #   [[idname,Reference Text]]
   #
+  name: 'markup.other.anchor.asciidoc'
   match: '(?<!\\\\)(?:(\\[{2})([\\p{Alpha}:_][\\p{Word}:.-]*)(?:,\\p{Blank}*(\\S.*?))?(\\]{2}))'
   captures:
     1: name: 'support.constant.asciidoc'
     2: name: 'markup.blockid.asciidoc'
+    3: name: 'string.unquoted.asciidoc'
     4: name: 'support.constant.asciidoc'
 ,
   # Matches an anchor (i.e., id + optional reference text) in the flow of text.
@@ -22,11 +24,10 @@ patterns: [
   #   anchor:idname[]
   #   anchor:idname[Reference Text]
   #
-  match: '(?<!\\\\)(anchor:)(\\S+)(\\[)(.*?[^\\\\])?(\\])'
+  name: 'markup.other.anchor.asciidoc'
+  match: '(?<!\\\\)(anchor):(\\S+)\\[(.*?[^\\\\])?\\]'
   captures:
-    1: name: 'support.constant.asciidoc'
+    1: name: 'entity.name.function.asciidoc'
     2: name: 'markup.blockid.asciidoc'
-    3: name: 'support.constant.asciidoc'
-    4: name: 'support.constant.asciidoc'
-    5: name: 'support.constant.asciidoc'
+    3: name: 'string.unquoted.asciidoc'
 ]

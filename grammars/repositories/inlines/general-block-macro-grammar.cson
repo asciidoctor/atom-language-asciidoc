@@ -9,10 +9,9 @@ patterns: [
  #   gist::123456[]
  #
  name: 'markup.macro.block.general.asciidoc'
- match: '^(\\p{Word}+::)(\\S*?)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])$'
+ match: '^(\\p{Word}+)::(\\S*?)\\[((?:\\\\\\]|[^\\]])*?)\\]$'
  captures:
-   1: name: 'support.constant.asciidoc'
-   3: name: 'support.constant.asciidoc'
-   5: name: 'support.constant.asciidoc'
-
+   1: name: 'entity.name.function.asciidoc'
+   2: name: 'markup.link.asciidoc'
+   3: name: 'string.unquoted.asciidoc'
 ]

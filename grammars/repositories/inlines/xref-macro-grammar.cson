@@ -13,7 +13,7 @@ patterns: [
   captures:
     1: name: 'constant.asciidoc'
     2: name: 'markup.meta.attribute-list.asciidoc'
-    3: name: 'markup.raw.asciidoc'
+    3: name: 'string.unquoted.asciidoc'
     4: name: 'constant.asciidoc'
 ,
   # Matches an xref (i.e., cross-reference) inline macro, which may span multiple lines.
@@ -25,7 +25,8 @@ patterns: [
   name: 'markup.reference.xref.asciidoc'
   begin: '(?<!\\\\)(xref:)([\\p{Word}":.\\/].*?)(\\[)'
   beginCaptures:
+    1: name: 'entity.name.function.asciidoc'
     2: name: 'markup.meta.attribute-list.asciidoc'
-  contentName: 'markup.raw.asciidoc'
+  contentName: 'string.unquoted.asciidoc'
   end: '\\]|^$'
 ]

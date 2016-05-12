@@ -9,7 +9,7 @@ patterns: [
   #   [[[bib-ref]]]
   #
   name: 'bibliography-anchor.asciidoc'
-  match: '\\\\?(\\[{3})([\\p{Word}:][\\p{Word}:.-]*?)(\\]{3})'
+  match: '(?<!\\\\)(\\[{3})([\\p{Word}:][\\p{Word}:.-]*?)(\\]{3})'
   captures:
     1: name: 'support.constant.asciidoc'
     2: name: 'markup.biblioref.asciidoc'

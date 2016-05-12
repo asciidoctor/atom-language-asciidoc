@@ -12,8 +12,9 @@ patterns: [
   #   kbd:[Ctrl,T]
   #   btn:[Save]
   #
-  name: 'markup.macro.inline.kbd.general.asciidoc'
-  match: '(?<!\\\\)(?:kbd|btn):(\\[)((?:\\\\\\]|[^\\]])+?)(\\])'
+  name: 'markup.macro.kbd.asciidoc'
+  match: '(?<!\\\\)(kbd|btn):(\\[)((?:\\\\\\]|[^\\]])+?)(\\])'
   captures:
-    2: name: 'support.constant.asciidoc'
+    1: name: 'entity.name.function.asciidoc'
+    3: name: 'string.unquoted.asciidoc'
 ]

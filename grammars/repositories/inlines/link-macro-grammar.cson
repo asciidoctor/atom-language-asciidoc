@@ -9,10 +9,12 @@ patterns: [
   #   http://github.com
   #   http://github.com[GitHub]
   #
-  name: 'markup.link.inline.asciidoc'
-  match: '(^|link:|<|[\\s>\\(\\)\\[\\];])(\\\\?(?:https?|file|ftp|irc)://[^\\s\\[\\]<]*[^\\s.,\\[\\]<])(?:\\[((?:\\\\\\]|[^\\]])*?)\\])?'
+  name: 'markup.other.link.asciidoc'
+  match: '(^|link:|<|[\\s>\\(\\)\\[\\];])((?<!\\\\)(?:https?|file|ftp|irc)://[^\\s\\[\\]<]*[^\\s.,\\[\\]<])(?:\\[((?:\\\\\\]|[^\\]])*?)\\])?'
   captures:
-    2: name: 'support.constant.link.inline.asciidoc'
+    1: name: 'entity.name.function.asciidoc'
+    2: name: 'markup.link.asciidoc'
+    3: name: 'string.unquoted.asciidoc'
 ,
   # Match a link or e-mail inline macro
   # Examples
@@ -20,15 +22,17 @@ patterns: [
   #   link:path[label]
   #   mailto:doc.writer@example.com[]
   #
-  name: 'markup.link.inline.asciidoc'
-  match: '(?<!\\\\)(?:link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])'
+  name: 'markup.other.link.asciidoc'
+  match: '(?<!\\\\)(link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])'
   captures:
-    1: name: 'support.constant.link.inline.asciidoc'
+    1: name: 'entity.name.function.asciidoc'
+    2: name: 'markup.link.asciidoc'
+    3: name: 'string.unquoted.asciidoc'
 ,
   # Matches an inline e-mail address.
   #
   #   doc.writer@example.com
   #
-  name: 'markup.link.inline.email.asciidoc'
+  name: 'markup.link.email.asciidoc'
   match: '\\p{Word}[\\p{Word}.%+-]*(@)\\p{Alnum}[\\p{Alnum}.-]*(\\.)\\p{Alpha}{2,4}\\b'
 ]

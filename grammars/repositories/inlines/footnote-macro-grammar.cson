@@ -5,6 +5,7 @@ patterns: [
   # Matches an inline footnote macro, which is allowed to span multiple lines.
   #
   # Examples
+  #
   #   footnote:[text]
   #   footnoteref:[id,text]
   #   footnoteref:[id]

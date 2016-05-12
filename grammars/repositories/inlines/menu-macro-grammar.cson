@@ -10,8 +10,10 @@ patterns: [
   #   menu:View[Page Style > No Style]
   #   menu:View[Page Style, No Style]
   #
-  name: 'markup.link.menu.asciidoc'
-  match: '(?<!\\\\)menu:(\\p{Word}|\\p{Word}.*?\\S)\\[\\p{Blank}*(.+?)?\\]'
+  name: 'markup.other.menu.asciidoc'
+  match: '(?<!\\\\)(menu):(\\p{Word}|\\p{Word}.*?\\S)\\[\\p{Blank}*(.+?)?\\]'
   captures:
-    1: name: 'support.constant.asciidoc'
+    1: name: 'entity.name.function.asciidoc'
+    2: name: 'markup.link.asciidoc'
+    3: name: 'string.unquoted.asciidoc'
 ]

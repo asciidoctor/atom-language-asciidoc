@@ -694,21 +694,25 @@ repository:
     patterns: [
       {
         name: "markup.reference.xref.asciidoc"
-        match: "\\\\?(?:(<<)([\\p{Word}\":./].*?)(>>))"
+        match: "(?<!\\\\)(?:(<<)([\\p{Word}\":./]+,)?(.*?)(>>))"
         captures:
           "1":
             name: "constant.asciidoc"
+          "2":
+            name: "markup.meta.attribute-list.asciidoc"
           "3":
+            name: "markup.raw.asciidoc"
+          "4":
             name: "constant.asciidoc"
       }
       {
         name: "markup.reference.xref.asciidoc"
-        match: "\\\\?((xref:)([\\p{Word}\":.\\/].*?)(\\[(.*?)\\]))"
-        captures:
+        begin: "(?<!\\\\)(xref:)([\\p{Word}\":.\\/].*?)(\\[)"
+        beginCaptures:
           "2":
-            name: "constant.asciidoc"
-          "3":
-            name: "constant.id.xref.asciidoc"
+            name: "markup.meta.attribute-list.asciidoc"
+        contentName: "markup.raw.asciidoc"
+        end: "\\]|^$"
       }
     ]
   "admonition-block":

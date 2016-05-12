@@ -18,18 +18,21 @@ describe 'Should tokenizes xref when', ->
 
   it '<<reference>> elements', ->
     {tokens} = grammar.tokenizeLine 'foobar <<id,reftext>> foobar'
-    expect(tokens).toHaveLength 5
-    expect(tokens[0]).toEqual value: 'foobar ', scopes: ['source.asciidoc']
-    expect(tokens[1]).toEqual value: '<<', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc', 'constant.asciidoc']
-    expect(tokens[2]).toEqual value: 'id,reftext', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc']
-    expect(tokens[3]).toEqual value: '>>', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc', 'constant.asciidoc']
-    expect(tokens[4]).toEqual value: ' foobar', scopes: ['source.asciidoc']
+    expect(tokens).toHaveLength 6
+    expect(tokens[0]).toEqualJson value: 'foobar ', scopes: ['source.asciidoc']
+    expect(tokens[1]).toEqualJson value: '<<', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc', 'constant.asciidoc']
+    expect(tokens[2]).toEqualJson value: 'id,', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc', 'markup.meta.attribute-list.asciidoc']
+    expect(tokens[3]).toEqualJson value: 'reftext', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc', 'markup.raw.asciidoc']
+    expect(tokens[4]).toEqualJson value: '>>', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc', 'constant.asciidoc']
+    expect(tokens[5]).toEqualJson value: ' foobar', scopes: ['source.asciidoc']
 
   it 'tokenizes xref:id[reference] elements', ->
     {tokens} = grammar.tokenizeLine 'foobar xref:id[reftext] foobar'
-    expect(tokens).toHaveLength 5
-    expect(tokens[0]).toEqual value: 'foobar ', scopes: ['source.asciidoc']
-    expect(tokens[1]).toEqual value: 'xref:', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc', 'constant.asciidoc']
-    expect(tokens[2]).toEqual value: 'id', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc', 'constant.id.xref.asciidoc']
-    expect(tokens[3]).toEqual value: '[reftext]', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc']
-    expect(tokens[4]).toEqual value: ' foobar', scopes: ['source.asciidoc']
+    expect(tokens).toHaveLength 7
+    expect(tokens[0]).toEqualJson value: 'foobar ', scopes: ['source.asciidoc']
+    expect(tokens[1]).toEqualJson value: 'xref:', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc']
+    expect(tokens[2]).toEqualJson value: 'id', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc', 'markup.meta.attribute-list.asciidoc']
+    expect(tokens[3]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc']
+    expect(tokens[4]).toEqualJson value: 'reftext', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc', 'markup.raw.asciidoc']
+    expect(tokens[5]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.reference.xref.asciidoc']
+    expect(tokens[6]).toEqualJson value: ' foobar', scopes: ['source.asciidoc']

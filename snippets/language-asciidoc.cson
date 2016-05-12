@@ -281,3 +281,13 @@
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#callouts'
     prefix: 'co'
     body: '<$1> $0'
+  'Unchecked':
+    description: 'Unchecked checklist item'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#checklist'
+    prefix: '-o'
+    body: '- [ ] $0'
+  'Checked':
+    description: 'Checked checklist item'
+    descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#checklist'
+    prefix: '-x'
+    body: '- [x] $0'

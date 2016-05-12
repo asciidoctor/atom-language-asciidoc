@@ -13,7 +13,7 @@ patterns: [
   #   btn:[Save]
   #
   name: 'markup.macro.inline.kbd.general.asciidoc'
-  match: '\\\\?(?:kbd|btn):(\\[)((?:\\\\\\]|[^\\]])+?)(\\])'
+  match: '(?<!\\\\)(?:kbd|btn):(\\[)((?:\\\\\\]|[^\\]])+?)(\\])'
   captures:
     2: name: 'support.constant.asciidoc'
 ]

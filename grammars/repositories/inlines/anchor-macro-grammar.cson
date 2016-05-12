@@ -9,7 +9,7 @@ patterns: [
   #   [[idname]]
   #   [[idname,Reference Text]]
   #
-  match: '\\\\?(?:(\\[{2})([\\p{Alpha}:_][\\p{Word}:.-]*)(?:,\\p{Blank}*(\\S.*?))?(\\]{2}))'
+  match: '(?<!\\\\)(?:(\\[{2})([\\p{Alpha}:_][\\p{Word}:.-]*)(?:,\\p{Blank}*(\\S.*?))?(\\]{2}))'
   captures:
     1: name: 'support.constant.asciidoc'
     2: name: 'markup.blockid.asciidoc'
@@ -22,7 +22,7 @@ patterns: [
   #   anchor:idname[]
   #   anchor:idname[Reference Text]
   #
-  match: '\\\\?(anchor:)(\\S+)(\\[)(.*?[^\\\\])?(\\])'
+  match: '(?<!\\\\)(anchor:)(\\S+)(\\[)(.*?[^\\\\])?(\\])'
   captures:
     1: name: 'support.constant.asciidoc'
     2: name: 'markup.blockid.asciidoc'

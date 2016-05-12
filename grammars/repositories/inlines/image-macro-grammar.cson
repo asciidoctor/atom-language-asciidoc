@@ -12,7 +12,7 @@ patterns: [
   #   icon:github[large]
   #
   name: 'markup.macro.inline.image.general.asciidoc'
-  match: '\\\\?(?:image|icon):([^:\\[][^\\[]*)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])'
+  match: '(?<!\\\\)(?:image|icon):([^:\\[][^\\[]*)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])'
   captures:
     1: name: 'support.constant.asciidoc'
     2: name: 'support.constant.asciidoc'

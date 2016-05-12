@@ -9,7 +9,7 @@ patterns: [
   #   e__mphasis__ phrase
   #
   name: 'markup.emphasis.unconstrained.asciidoc'
-  match: '(?<!\\\\\\\\)(\\[(?:[^\\]]+?)\\])?((__)((?!_).+?)(__))' # now including the underscores in the match
+  match: '(?<!\\\\\\\\)(\\[(?:[^\\]]+?)\\])?((__)((?!_).+?)(__))'
   captures:
     1: name: 'markup.meta.attribute-list.asciidoc'
     2: name: 'markup.italic.asciidoc'

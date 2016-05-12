@@ -2,6 +2,7 @@ version: '{build}'
 skip_tags: true
 # NOTE: AppVeyor automatically skips the build if the commit contains [ci skip] or [skip ci]
 clone_depth: 10
+platform: x64
 environment:
   APM_TEST_PACKAGES:
   matrix:

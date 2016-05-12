@@ -381,7 +381,7 @@ repository:
   "anchor-macro":
     patterns: [
       {
-        match: "\\\\?(?:(\\[{2})([\\p{Alpha}:_][\\p{Word}:.-]*)(?:,\\p{Blank}*(\\S.*?))?(\\]{2}))"
+        match: "(?<!\\\\)(?:(\\[{2})([\\p{Alpha}:_][\\p{Word}:.-]*)(?:,\\p{Blank}*(\\S.*?))?(\\]{2}))"
         captures:
           "1":
             name: "support.constant.asciidoc"
@@ -391,7 +391,7 @@ repository:
             name: "support.constant.asciidoc"
       }
       {
-        match: "\\\\?(anchor:)(\\S+)(\\[)(.*?[^\\\\])?(\\])"
+        match: "(?<!\\\\)(anchor:)(\\S+)(\\[)(.*?[^\\\\])?(\\])"
         captures:
           "1":
             name: "support.constant.asciidoc"
@@ -409,7 +409,7 @@ repository:
     patterns: [
       {
         name: "markup.substitution.attribute-reference.asciidoc"
-        match: "(\\\\)?(\\{)((set|counter2?):.+?|\\w+(?:[\\-]\\w+)*)(\\\\)?(\\})"
+        match: "(?<!\\\\)(\\{)((set|counter2?):.+?|\\w+(?:[\\-]\\w+)*)(\\\\)?(\\})"
       }
     ]
   "bibliography-anchor":
@@ -430,7 +430,7 @@ repository:
     patterns: [
       {
         name: "markup.htmlentity.asciidoc"
-        match: "(&)(\\S+?)(;)"
+        match: "(?<!\\\\)(&)(\\S+?)(;)"
         captures:
           "1":
             name: "support.constant.asciidoc"
@@ -502,7 +502,7 @@ repository:
     patterns: [
       {
         name: "markup.macro.inline.image.general.asciidoc"
-        match: "\\\\?(?:image|icon):([^:\\[][^\\[]*)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])"
+        match: "(?<!\\\\)(?:image|icon):([^:\\[][^\\[]*)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])"
         captures:
           "1":
             name: "support.constant.asciidoc"
@@ -516,7 +516,7 @@ repository:
     patterns: [
       {
         name: "markup.macro.inline.kbd.general.asciidoc"
-        match: "\\\\?(?:kbd|btn):(\\[)((?:\\\\\\]|[^\\]])+?)(\\])"
+        match: "(?<!\\\\)(?:kbd|btn):(\\[)((?:\\\\\\]|[^\\]])+?)(\\])"
         captures:
           "2":
             name: "support.constant.asciidoc"
@@ -533,7 +533,7 @@ repository:
       }
       {
         name: "markup.link.inline.asciidoc"
-        match: "\\\\?(?:link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])"
+        match: "(?<!\\\\)(?:link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])"
         captures:
           "1":
             name: "support.constant.link.inline.asciidoc"
@@ -547,7 +547,7 @@ repository:
     patterns: [
       {
         name: "markup.link.menu.inline.asciidoc"
-        match: "\\\\?menu:(\\p{Word}|\\p{Word}.*?\\S)\\[\\p{Blank}*(.+?)?\\]"
+        match: "(?<!\\\\)menu:(\\p{Word}|\\p{Word}.*?\\S)\\[\\p{Blank}*(.+?)?\\]"
         captures:
           "1":
             name: "support.constant.menu.inline.asciidoc"
@@ -625,7 +625,7 @@ repository:
     patterns: [
       {
         name: "markup.macro.inline.stem.general.asciidoc"
-        match: "\\\\?(stem|(?:latex|ascii)math):([a-z,]*)(\\[)(.*?[^\\\\])(\\])"
+        match: "(?<!\\\\)(stem|(?:latex|ascii)math):([a-z,]*)(\\[)(.*?[^\\\\])(\\])"
         captures:
           "2":
             name: "support.constant.asciidoc"

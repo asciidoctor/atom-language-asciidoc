@@ -21,7 +21,7 @@ patterns: [
   #   mailto:doc.writer@example.com[]
   #
   name: 'markup.link.inline.asciidoc'
-  match: '\\\\?(?:link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])'
+  match: '(?<!\\\\)(?:link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])'
   captures:
     1: name: 'support.constant.link.inline.asciidoc'
 ,

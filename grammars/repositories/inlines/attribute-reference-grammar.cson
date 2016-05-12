@@ -12,6 +12,6 @@ patterns: [
   #   {set:name!}
   #
   name: 'markup.substitution.attribute-reference.asciidoc'
-  match: '(\\\\)?(\\{)((set|counter2?):.+?|\\w+(?:[\\-]\\w+)*)(\\\\)?(\\})'
+  match: '(?<!\\\\)(\\{)((set|counter2?):.+?|\\w+(?:[\\-]\\w+)*)(\\\\)?(\\})'
 
 ]

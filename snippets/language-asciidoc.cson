@@ -250,7 +250,7 @@
     descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#setting-attributes-on-a-document'
     prefix: '::'
     body: '''
-      :${1:name}:${2: value}
+      :${1:name}: ${2:value}
       $0
       '''
   'Author':

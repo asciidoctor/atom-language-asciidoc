@@ -23,18 +23,18 @@ describe 'Should tokenize line break when', ->
       '''
     expect(tokens).toHaveLength 2
     expect(tokens[0]).toHaveLength 3
-    expect(tokens[0][0]).toEqual value: 'Foo', scopes: ['source.asciidoc']
-    expect(tokens[0][1]).toEqual value: ' ', scopes: ['source.asciidoc']
-    expect(tokens[0][2]).toEqual value: '+', scopes: ['source.asciidoc', 'variable.line-break.asciidoc']
+    expect(tokens[0][0]).toEqualJson value: 'Foo', scopes: ['source.asciidoc']
+    expect(tokens[0][1]).toEqualJson value: ' ', scopes: ['source.asciidoc']
+    expect(tokens[0][2]).toEqualJson value: '+', scopes: ['source.asciidoc', 'variable.line-break.asciidoc']
     expect(tokens[1]).toHaveLength 1
-    expect(tokens[1][0]).toEqual value: 'Bar', scopes: ['source.asciidoc']
+    expect(tokens[1][0]).toEqualJson value: 'Bar', scopes: ['source.asciidoc']
 
   it 'ending with strong', ->
     {tokens} = grammar.tokenizeLine 'Rubies are *red* +'
     expect(tokens).toHaveLength 6
-    expect(tokens[0]).toEqual value: 'Rubies are ', scopes: ['source.asciidoc']
-    expect(tokens[1]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
-    expect(tokens[2]).toEqual value: 'red', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.strong.asciidoc']
-    expect(tokens[3]).toEqual value: '*', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'punctuation.definition.bold.asciidoc']
-    expect(tokens[4]).toEqual value: ' ', scopes: ['source.asciidoc']
-    expect(tokens[5]).toEqual value: '+', scopes: ['source.asciidoc', 'variable.line-break.asciidoc']
+    expect(tokens[0]).toEqualJson value: 'Rubies are ', scopes: ['source.asciidoc']
+    expect(tokens[1]).toEqualJson value: '*', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.asciidoc', 'punctuation.definition.asciidoc']
+    expect(tokens[2]).toEqualJson value: 'red', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.asciidoc']
+    expect(tokens[3]).toEqualJson value: '*', scopes: ['source.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.asciidoc', 'punctuation.definition.asciidoc']
+    expect(tokens[4]).toEqualJson value: ' ', scopes: ['source.asciidoc']
+    expect(tokens[5]).toEqualJson value: '+', scopes: ['source.asciidoc', 'variable.line-break.asciidoc']

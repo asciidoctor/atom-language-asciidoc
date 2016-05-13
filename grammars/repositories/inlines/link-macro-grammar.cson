@@ -9,7 +9,7 @@ patterns: [
   #   http://github.com
   #   http://github.com[GitHub]
   #
-  name: 'markup.other.links.asciidoc'
+  name: 'markup.other.url.asciidoc'
   match: '(^|link:|<|[\\s>\\(\\)\\[\\];])((?<!\\\\)(?:https?|file|ftp|irc)://[^\\s\\[\\]<]*[^\\s.,\\[\\]<])(?:\\[((?:\\\\\\]|[^\\]])*?)\\])?'
   captures:
     1: name: 'entity.name.function.asciidoc'
@@ -22,7 +22,7 @@ patterns: [
   #   link:path[label]
   #   mailto:doc.writer@example.com[]
   #
-  name: 'markup.other.links.asciidoc'
+  name: 'markup.other.url.asciidoc'
   match: '(?<!\\\\)(link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])'
   captures:
     1: name: 'entity.name.function.asciidoc'

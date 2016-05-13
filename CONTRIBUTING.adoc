@@ -68,7 +68,7 @@ apm install
 . Fork the project to your personal account
 . Check out your forked project for local development using git
 . Navigate to the directory using the command line interface
-. Start atom in dev-mode using the command `atom -d .`
+. Link the package using `apm link`, and start atom in dev-mode using the command `atom -d .`
 . _Develop_ (this is where the magic happens)
 . Commit and push your code onto your forked project
 . Make a pull request to get the changes merged into the upstream project

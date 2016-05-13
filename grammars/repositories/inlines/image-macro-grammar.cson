@@ -11,10 +11,10 @@ patterns: [
   #   image:filename.png[More [Alt\] Text] (alt text becomes "More [Alt] Text")
   #   icon:github[large]
   #
-  name: 'markup.macro.inline.image.general.asciidoc'
-  match: '(?<!\\\\)(?:image|icon):([^:\\[][^\\[]*)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])'
+  name: 'markup.macro.image.asciidoc'
+  match: '(?<!\\\\)(image|icon):([^:\\[][^\\[]*)\\[((?:\\\\\\]|[^\\]])*?)\\]'
   captures:
-    1: name: 'support.constant.asciidoc'
-    2: name: 'support.constant.asciidoc'
-    4: name: 'support.constant.asciidoc'
+    1: name: 'entity.name.function.asciidoc'
+    2: name: 'markup.link.asciidoc'
+    3: name: 'string.unquoted.asciidoc'
 ]

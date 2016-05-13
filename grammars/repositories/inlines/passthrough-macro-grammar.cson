@@ -2,33 +2,39 @@ key: 'passthrough-macro'
 
 patterns: [
 
-  # Matches the passthrough inline macro allowed in value of attribute assignment.
-  #
-  # Examples
-  #
-  #   pass:[text]
-  #
-  name: 'markup.macro.inline.passthrough.asciidoc'
-  match: '^(pass:)([a-z,]*)\\[(.*)\\]$'
-  captures:
-    1: name: 'support.constant.passthrough.inline.asciidoc'
-    3: patterns: [include: 'text.html.basic']
-,
-  # Matches several variants of the passthrough inline macro.
+  # Matches several variants of the passthrough inline macro, which may span multiple lines.
   #
   # Examples
   #
   #   +++text+++
   #   $$text$$
+  #
+  name: 'markup.macro.inline.passthrough.asciidoc'
+  match: '(?:(?<!\\\\)(\\[([^\\]]+?)\\]))?(?:\\\\{0,2})(?<delim>\\+{2,3}|\\${2})(.*?)(\\k<delim>)'
+  captures:
+    1: name: 'markup.meta.attribute-list.asciidoc'
+    3: name: 'support.constant.asciidoc'
+    4:
+      name: 'string.unquoted.asciidoc'
+      patterns: [
+        include: 'text.html.basic'
+      ]
+    5: name: 'support.constant.asciidoc'
+,
+  # Matches several variants of the passthrough inline macro, which may span multiple lines.
+  #
+  # Examples
+  #
   #   pass:quotes[text]
   #
   name: 'markup.macro.inline.passthrough.asciidoc'
-  match: '(?:(?:(\\\\?)\\[([^\\]]+?)\\])?(\\\\{0,2})(\\+{2,3}|\\${2})(.*?)(\\4)|(\\\\?)(pass:)([a-z,]*)\\[(.*?[^\\\\])\\])'
-  captures:
-    4: name: 'support.constant.passthrough.inline.asciidoc'
-    5: patterns: [include: 'text.html.basic']
-    6: name: 'support.constant.passthrough.inline.asciidoc'
-    8: name: 'support.constant.passthrough.inline.asciidoc'
-    10: patterns: [include: 'text.html.basic']
-
+  begin: '(?<!\\\\)(pass:)([a-z,]*)(\\[)'
+  beginCaptures:
+    1: name: 'entity.name.function.asciidoc'
+    2: name: 'markup.meta.attribute-list.asciidoc'
+  contentName: 'string.unquoted.asciidoc'
+  patterns: [
+    include: 'text.html.basic'
+  ]
+  end: '\\]|^$'
 ]

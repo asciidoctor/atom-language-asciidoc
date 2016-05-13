@@ -381,28 +381,28 @@ repository:
   "anchor-macro":
     patterns: [
       {
+        name: "markup.other.anchor.asciidoc"
         match: "(?<!\\\\)(?:(\\[{2})([\\p{Alpha}:_][\\p{Word}:.-]*)(?:,\\p{Blank}*(\\S.*?))?(\\]{2}))"
         captures:
           "1":
             name: "support.constant.asciidoc"
           "2":
             name: "markup.blockid.asciidoc"
+          "3":
+            name: "string.unquoted.asciidoc"
           "4":
             name: "support.constant.asciidoc"
       }
       {
-        match: "(?<!\\\\)(anchor:)(\\S+)(\\[)(.*?[^\\\\])?(\\])"
+        name: "markup.other.anchor.asciidoc"
+        match: "(?<!\\\\)(anchor):(\\S+)\\[(.*?[^\\\\])?\\]"
         captures:
           "1":
-            name: "support.constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
             name: "markup.blockid.asciidoc"
           "3":
-            name: "support.constant.asciidoc"
-          "4":
-            name: "support.constant.asciidoc"
-          "5":
-            name: "support.constant.asciidoc"
+            name: "string.unquoted.asciidoc"
       }
     ]
   "attribute-reference":
@@ -416,7 +416,7 @@ repository:
     patterns: [
       {
         name: "bibliography-anchor.asciidoc"
-        match: "\\\\?(\\[{3})([\\p{Word}:][\\p{Word}:.-]*?)(\\]{3})"
+        match: "(?<!\\\\)(\\[{3})([\\p{Word}:][\\p{Word}:.-]*?)(\\]{3})"
         captures:
           "1":
             name: "support.constant.asciidoc"
@@ -471,86 +471,100 @@ repository:
     patterns: [
       {
         name: "markup.other.footnote.asciidoc"
-        match: "(?<!\\\\)(footnote(?:ref)?):\\[(.*?[^\\\\])\\]"
-        captures:
+        begin: "(?<!\\\\)(footnote(?:ref)?):\\["
+        beginCaptures:
           "1":
             name: "entity.name.function.asciidoc"
-          "2":
-            name: "string.unquoted.asciidoc"
-            patterns: [
-              {
-                include: "#inlines"
-              }
-            ]
+        contentName: "string.unquoted.asciidoc"
+        patterns: [
+          {
+            include: "#inlines"
+          }
+        ]
+        end: "\\]|^$"
       }
     ]
   "general-block-macro":
     patterns: [
       {
         name: "markup.macro.block.general.asciidoc"
-        match: "^(\\p{Word}+::)(\\S*?)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])$"
+        match: "^(\\p{Word}+)::(\\S*?)\\[((?:\\\\\\]|[^\\]])*?)\\]$"
         captures:
           "1":
-            name: "support.constant.asciidoc"
+            name: "entity.name.function.asciidoc"
+          "2":
+            name: "markup.link.asciidoc"
           "3":
-            name: "support.constant.asciidoc"
-          "5":
-            name: "support.constant.asciidoc"
+            name: "string.unquoted.asciidoc"
       }
     ]
   "image-macro":
     patterns: [
       {
-        name: "markup.macro.inline.image.general.asciidoc"
-        match: "(?<!\\\\)(?:image|icon):([^:\\[][^\\[]*)(\\[)((?:\\\\\\]|[^\\]])*?)(\\])"
+        name: "markup.macro.image.asciidoc"
+        match: "(?<!\\\\)(image|icon):([^:\\[][^\\[]*)\\[((?:\\\\\\]|[^\\]])*?)\\]"
         captures:
           "1":
-            name: "support.constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "support.constant.asciidoc"
-          "4":
-            name: "support.constant.asciidoc"
+            name: "markup.link.asciidoc"
+          "3":
+            name: "string.unquoted.asciidoc"
       }
     ]
   "kbd-macro":
     patterns: [
       {
-        name: "markup.macro.inline.kbd.general.asciidoc"
-        match: "(?<!\\\\)(?:kbd|btn):(\\[)((?:\\\\\\]|[^\\]])+?)(\\])"
+        name: "markup.macro.kbd.asciidoc"
+        match: "(?<!\\\\)(kbd|btn):(\\[)((?:\\\\\\]|[^\\]])+?)(\\])"
         captures:
-          "2":
-            name: "support.constant.asciidoc"
+          "1":
+            name: "entity.name.function.asciidoc"
+          "3":
+            name: "string.unquoted.asciidoc"
       }
     ]
   "link-macro":
     patterns: [
       {
-        name: "markup.link.inline.asciidoc"
-        match: "(^|link:|<|[\\s>\\(\\)\\[\\];])(\\\\?(?:https?|file|ftp|irc)://[^\\s\\[\\]<]*[^\\s.,\\[\\]<])(?:\\[((?:\\\\\\]|[^\\]])*?)\\])?"
-        captures:
-          "2":
-            name: "support.constant.link.inline.asciidoc"
-      }
-      {
-        name: "markup.link.inline.asciidoc"
-        match: "(?<!\\\\)(?:link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])"
+        name: "markup.other.link.asciidoc"
+        match: "(^|link:|<|[\\s>\\(\\)\\[\\];])((?<!\\\\)(?:https?|file|ftp|irc)://[^\\s\\[\\]<]*[^\\s.,\\[\\]<])(?:\\[((?:\\\\\\]|[^\\]])*?)\\])?"
         captures:
           "1":
-            name: "support.constant.link.inline.asciidoc"
+            name: "entity.name.function.asciidoc"
+          "2":
+            name: "markup.link.asciidoc"
+          "3":
+            name: "string.unquoted.asciidoc"
       }
       {
-        name: "markup.link.inline.email.asciidoc"
+        name: "markup.other.link.asciidoc"
+        match: "(?<!\\\\)(link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])"
+        captures:
+          "1":
+            name: "entity.name.function.asciidoc"
+          "2":
+            name: "markup.link.asciidoc"
+          "3":
+            name: "string.unquoted.asciidoc"
+      }
+      {
+        name: "markup.link.email.asciidoc"
         match: "\\p{Word}[\\p{Word}.%+-]*(@)\\p{Alnum}[\\p{Alnum}.-]*(\\.)\\p{Alpha}{2,4}\\b"
       }
     ]
   "menu-macro":
     patterns: [
       {
-        name: "markup.link.menu.inline.asciidoc"
-        match: "(?<!\\\\)menu:(\\p{Word}|\\p{Word}.*?\\S)\\[\\p{Blank}*(.+?)?\\]"
+        name: "markup.other.menu.asciidoc"
+        match: "(?<!\\\\)(menu):(\\p{Word}|\\p{Word}.*?\\S)\\[\\p{Blank}*(.+?)?\\]"
         captures:
           "1":
-            name: "support.constant.menu.inline.asciidoc"
+            name: "entity.name.function.asciidoc"
+          "2":
+            name: "markup.link.asciidoc"
+          "3":
+            name: "string.unquoted.asciidoc"
       }
     ]
   monospace:
@@ -586,51 +600,51 @@ repository:
     patterns: [
       {
         name: "markup.macro.inline.passthrough.asciidoc"
-        match: "^(pass:)([a-z,]*)\\[(.*)\\]$"
+        match: "(?:(?<!\\\\)(\\[([^\\]]+?)\\]))?(?:\\\\{0,2})(?<delim>\\+{2,3}|\\${2})(.*?)(\\k<delim>)"
         captures:
           "1":
-            name: "support.constant.passthrough.inline.asciidoc"
+            name: "markup.meta.attribute-list.asciidoc"
           "3":
+            name: "support.constant.asciidoc"
+          "4":
+            name: "string.unquoted.asciidoc"
             patterns: [
               {
                 include: "text.html.basic"
               }
             ]
+          "5":
+            name: "support.constant.asciidoc"
       }
       {
         name: "markup.macro.inline.passthrough.asciidoc"
-        match: "(?:(?:(\\\\?)\\[([^\\]]+?)\\])?(\\\\{0,2})(\\+{2,3}|\\${2})(.*?)(\\4)|(\\\\?)(pass:)([a-z,]*)\\[(.*?[^\\\\])\\])"
-        captures:
-          "4":
-            name: "support.constant.passthrough.inline.asciidoc"
-          "5":
-            patterns: [
-              {
-                include: "text.html.basic"
-              }
-            ]
-          "6":
-            name: "support.constant.passthrough.inline.asciidoc"
-          "8":
-            name: "support.constant.passthrough.inline.asciidoc"
-          "10":
-            patterns: [
-              {
-                include: "text.html.basic"
-              }
-            ]
+        begin: "(?<!\\\\)(pass:)([a-z,]*)(\\[)"
+        beginCaptures:
+          "1":
+            name: "entity.name.function.asciidoc"
+          "2":
+            name: "markup.meta.attribute-list.asciidoc"
+        contentName: "string.unquoted.asciidoc"
+        patterns: [
+          {
+            include: "text.html.basic"
+          }
+        ]
+        end: "\\]|^$"
       }
     ]
   "stem-macro":
     patterns: [
       {
-        name: "markup.macro.inline.stem.general.asciidoc"
-        match: "(?<!\\\\)(stem|(?:latex|ascii)math):([a-z,]*)(\\[)(.*?[^\\\\])(\\])"
-        captures:
+        name: "markup.macro.inline.stem.asciidoc"
+        begin: "(?<!\\\\)(stem|(?:latex|ascii)math):([a-z,]*)(\\[)"
+        beginCaptures:
+          "1":
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "support.constant.asciidoc"
-          "4":
-            name: "support.constant.asciidoc"
+            name: "markup.meta.attribute-list.asciidoc"
+        contentName: "string.unquoted.asciidoc"
+        end: "\\]|^$"
       }
     ]
   strong:
@@ -698,21 +712,27 @@ repository:
     patterns: [
       {
         name: "markup.reference.xref.asciidoc"
-        match: "\\\\?(?:(<<)([\\p{Word}\":./].*?)(>>))"
+        match: "(?<!\\\\)(?:(<<)([\\p{Word}\":./]+,)?(.*?)(>>))"
         captures:
           "1":
             name: "constant.asciidoc"
+          "2":
+            name: "markup.meta.attribute-list.asciidoc"
           "3":
+            name: "string.unquoted.asciidoc"
+          "4":
             name: "constant.asciidoc"
       }
       {
         name: "markup.reference.xref.asciidoc"
-        match: "\\\\?((xref:)([\\p{Word}\":.\\/].*?)(\\[(.*?)\\]))"
-        captures:
+        begin: "(?<!\\\\)(xref:)([\\p{Word}\":.\\/].*?)(\\[)"
+        beginCaptures:
+          "1":
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "constant.asciidoc"
-          "3":
-            name: "constant.id.xref.asciidoc"
+            name: "markup.meta.attribute-list.asciidoc"
+        contentName: "string.unquoted.asciidoc"
+        end: "\\]|^$"
       }
     ]
   "admonition-block":

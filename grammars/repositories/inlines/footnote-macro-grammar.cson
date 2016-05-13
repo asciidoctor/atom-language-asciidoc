@@ -5,17 +5,18 @@ patterns: [
   # Matches an inline footnote macro, which is allowed to span multiple lines.
   #
   # Examples
+  #
   #   footnote:[text]
   #   footnoteref:[id,text]
   #   footnoteref:[id]
   #
   name: 'markup.other.footnote.asciidoc'
-  match: '(?<!\\\\)(footnote(?:ref)?):\\[(.*?[^\\\\])\\]'
-  captures:
+  begin: '(?<!\\\\)(footnote(?:ref)?):\\['
+  beginCaptures:
     1: name: 'entity.name.function.asciidoc'
-    2:
-      name: 'string.unquoted.asciidoc'
-      patterns: [
-        include: '#inlines'
-      ]
+  contentName: 'string.unquoted.asciidoc'
+  patterns: [
+     include: '#inlines'
+   ]
+  end: '\\]|^$'
 ]

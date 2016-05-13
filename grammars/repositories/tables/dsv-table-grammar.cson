@@ -1,0 +1,18 @@
+key: 'table-dsv'
+
+patterns: [
+  name: 'markup.table.dsv.asciidoc'
+  begin: '^(:===)$'
+  beginCaptures:
+    0: name: 'constant.other.symbol.asciidoc'
+  contentName: 'string.unquoted.asciidoc'
+  patterns: [
+    comment: 'cell separator'
+    match: ':'
+    captures:
+      0: name: 'constant.other.symbol.asciidoc'
+  ]
+  end: '^(\\1)$'
+  endCaptures:
+    0: name: 'constant.other.symbol.asciidoc'
+]

@@ -81,6 +81,18 @@ atom-text-editor::shadow, :host {
       &.sub {
         color: mix(green, @syntax-text-color, 50%);
       }
+
+      &.table.content {
+        // Lighten headers for dark themes.
+        & when (lightness(@syntax-background-color) < 50%) {
+          color: darken(@syntax-text-color, 5%);
+        }
+
+        // Darken headers for light themes.
+        & when (lightness(@syntax-background-color) > 50%) {
+          color: lighten(@syntax-text-color, 5%);
+        }
+      }
     }
 
     .super {

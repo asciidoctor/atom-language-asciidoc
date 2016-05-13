@@ -31,6 +31,9 @@ patterns: [
     include: "#section"
   }
   {
+    include: "#tables"
+  }
+  {
     include: "#blocks"
   }
   {
@@ -59,9 +62,6 @@ repository:
         include: "#quote-block"
       }
       {
-        include: "#table"
-      }
-      {
         include: "#code-blocks"
       }
       {
@@ -87,6 +87,21 @@ repository:
       }
       {
         include: "#source-markdown"
+      }
+    ]
+  tables:
+    patterns: [
+      {
+        include: "#table-standard"
+      }
+      {
+        include: "#table-nested"
+      }
+      {
+        include: "#table-csv"
+      }
+      {
+        include: "#table-dsv"
       }
     ]
   inlines:
@@ -859,30 +874,113 @@ repository:
         end: "\\1"
       }
     ]
-  table:
+  "table-csv":
     patterns: [
       {
-        begin: "^(\\|={3,}\\s*)$"
+        name: "markup.table.csv.asciidoc"
+        begin: "^(,===)$"
         beginCaptures:
           "0":
-            name: "support.table.asciidoc"
+            name: "constant.other.symbol.asciidoc"
+        contentName: "string.unquoted.asciidoc"
         patterns: [
           {
-            match: "(^|\\s+)([^\\|\\s\\\\]*)(\\|)(?!={3,}|\\|)"
+            comment: "cell separator"
+            match: ","
             captures:
+              "0":
+                name: "constant.other.symbol.asciidoc"
+          }
+        ]
+        end: "^(\\1)$"
+        endCaptures:
+          "0":
+            name: "constant.other.symbol.asciidoc"
+      }
+    ]
+  "table-dsv":
+    patterns: [
+      {
+        name: "markup.table.dsv.asciidoc"
+        begin: "^(:===)$"
+        beginCaptures:
+          "0":
+            name: "constant.other.symbol.asciidoc"
+        contentName: "string.unquoted.asciidoc"
+        patterns: [
+          {
+            comment: "cell separator"
+            match: ":"
+            captures:
+              "0":
+                name: "constant.other.symbol.asciidoc"
+          }
+        ]
+        end: "^(\\1)$"
+        endCaptures:
+          "0":
+            name: "constant.other.symbol.asciidoc"
+      }
+    ]
+  "table-nested":
+    patterns: [
+      {
+        name: "markup.table.nested.asciidoc"
+        begin: "^(!===)$"
+        beginCaptures:
+          "0":
+            name: "constant.other.symbol.asciidoc"
+        contentName: "markup.table.content.asciidoc"
+        patterns: [
+          {
+            comment: "cell separator and attributes"
+            match: "(^|[^\\\\\\p{Blank}]*)(!)"
+            captures:
+              "1":
+                name: "markup.meta.attribute-list.asciidoc"
               "2":
-                name: "support.table.spec.asciidoc"
-              "3":
-                name: "support.table.asciidoc"
+                name: "constant.other.symbol.cell.asciidoc"
+          }
+        ]
+        end: "^(\\1)$"
+        endCaptures:
+          "0":
+            name: "constant.other.symbol.asciidoc"
+      }
+    ]
+  "table-standard":
+    patterns: [
+      {
+        name: "markup.table.asciidoc"
+        begin: "^(\\|===)$"
+        beginCaptures:
+          "0":
+            name: "constant.other.symbol.asciidoc"
+        contentName: "markup.table.content.asciidoc"
+        patterns: [
+          {
+            comment: "cell separator and attributes"
+            match: "(^|[^\\p{Blank}\\\\]*)(\\|)"
+            captures:
+              "1":
+                name: "markup.meta.attribute-list.asciidoc"
+              "2":
+                name: "constant.other.symbol.cell.asciidoc"
           }
           {
             include: "#inlines"
           }
+          {
+            include: "#blocks"
+          }
+          {
+            include: "#list"
+          }
         ]
-        end: "^\\1$"
+        end: "^(\\1)$"
         endCaptures:
           "0":
-            name: "support.table.asciidoc"
+            name: "constant.other.symbol.asciidoc"
       }
     ]
   "source-asciidoctor":

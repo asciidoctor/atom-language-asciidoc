@@ -1,0 +1,27 @@
+key: 'table-standard'
+
+patterns: [
+# 1: name: 'variable.asciidoc'
+
+  name: 'markup.table.asciidoc'
+  begin: '^(\\|===)$'
+  beginCaptures:
+    0: name: 'constant.other.symbol.asciidoc'
+  contentName: 'markup.table.content.asciidoc'
+  patterns: [
+    comment: 'cell separator and attributes'
+    match: '(^|[^\\p{Blank}\\\\]*)(\\|)'
+    captures:
+      1: name: 'markup.meta.attribute-list.asciidoc'
+      2: name: 'constant.other.symbol.cell.asciidoc'
+  ,
+    include: '#inlines'
+  ,
+    include: '#blocks'
+  ,
+    include: '#list'
+  ]
+  end: '^(\\1)$'
+  endCaptures:
+    0: name: 'constant.other.symbol.asciidoc'
+]

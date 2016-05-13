@@ -20,6 +20,8 @@ patterns: [
 ,
   include: '#section'
 ,
+  include: '#tables'
+,
   include: '#blocks'
 ,
   include: '#horizontal-rule'
@@ -39,8 +41,6 @@ repository:
     ,
       include: '#quote-block'
     ,
-      include: '#table'
-    ,
       include: '#code-blocks'
     ,
       include: '#example-block'
@@ -58,6 +58,16 @@ repository:
       include: '#source-asciidoctor'
     ,
       include: '#source-markdown'
+    ]
+  tables:
+    patterns: [
+      include: '#table-standard'
+    ,
+      include: '#table-nested'
+    ,
+      include: '#table-csv'
+    ,
+      include: '#table-dsv'
     ]
   inlines:
     patterns: [

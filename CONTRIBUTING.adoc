@@ -5,6 +5,42 @@ In the spirit of free software, _everyone_ is encouraged to help improve this pr
 To contribute code, simply fork the project on GitHub, hack away and send a pull request with your proposed changes.
 Feel free to use the https://github.com/asciidoctor/atom-language-asciidoc/issues[issue tracker] to provide feedback or suggestions in other ways.
 
+== Project organization
+
+The project is hosted and run using GitHub.
+The issue tracker is in place to report bugs, discuss improvements, show our ambitious goals and desires for the future, and encourage each other.
+Classification labels and versioning tags are added for clarity and the ability to search
+
+=== Labels
+
+Labels are added to issues and pull request for clarity, in the present but also when looking back at previous issues and pull requests.
+
+.Type labels
+|===
+|bug         | the current implementation has a flaw that needs to be resolved
+|question    | generic question
+|improvement | refinement on top of an existing feature
+|enhancement | new feature
+|duplicate   | a similar (open) issue already exsists
+|invalid     | not, or no longer, true
+|declined    | not accepted for inclusion
+|===
+
+.Category labels
+|===
+|grammar        | how the syntax is parsed into smaller elements
+|snippets       | included snippets to reduce the amount of typing
+|infrastructure | infrastructure for developing, building, testing, and hosting the project
+|documentation  | documentation of the project, inside the code, in the included documents, or at other projects
+|styling        | element naming and how the elements render, also for the included stylesheet
+|===
+
+.Status labels
+|===
+|WIP   | currently a Work In Progress, not ready for a merge
+|ready | development is done
+|===
+
 == Development
 
 Before diving into the code, we recommend reading the article http://www.sitepoint.com/how-to-write-a-syntax-highlighting-package-for-atom/[How to Write a Syntax Highlighting Package for Atom].
@@ -27,7 +63,18 @@ apm install
 
 === Prepare for business
 
-*todo*
+. Decide what you want to work on, and what should be the result
+. Have a GitHub account
+. Fork the project to your personal account
+. Check out your forked project for local development using git
+. Navigate to the directory using the command line interface
+. Start atom in dev-mode using the command `atom -d .`
+. _Develop_ (this is where the magic happens)
+. Commit and push your code onto your forked project
+. Make a pull request to get the changes merged into the upstream project
+. Answer questions or make adjustments based on the discussion around the pull request
+. Wait for the merge, wait for the next release, use it in your normal Atom install
+. _Show off to others what you have made, and feel proud for you have improved the lives of many by contributing to this package!_
 
 == Quality assurance
 

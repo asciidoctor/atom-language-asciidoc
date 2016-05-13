@@ -10,7 +10,7 @@ patterns: [
   #   This is a normal paragraph.
   #
   name: 'markup.explicit.asciidoc'
-  match: '^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]$'
+  match: '^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]$(?<!\n---)'
   captures:
-    1: name: 'support.constant.asciidoc'
+    1: name: 'entity.name.function.asciidoc'
 ]

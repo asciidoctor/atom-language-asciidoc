@@ -26,11 +26,11 @@ describe 'Should tokenizes quote block when', ->
     expect(tokens).toHaveLength 4
     expect(tokens[0]).toHaveLength 7
     expect(tokens[0][0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
-    expect(tokens[0][1]).toEqualJson value: 'quote', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.label.asciidoc' ]
+    expect(tokens[0][1]).toEqualJson value: 'quote', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'entity.name.function.label.asciidoc' ]
     expect(tokens[0][2]).toEqualJson value: ', ', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
-    expect(tokens[0][3]).toEqualJson value: 'Erwin Schrödinger', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.attribution.asciidoc']
+    expect(tokens[0][3]).toEqualJson value: 'Erwin Schrödinger', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'string.unquoted.attribution.asciidoc']
     expect(tokens[0][4]).toEqualJson value: ', ', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
-    expect(tokens[0][5]).toEqualJson value: 'Sorry', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.citetitle.asciidoc']
+    expect(tokens[0][5]).toEqualJson value: 'Sorry', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'string.unquoted.citetitle.asciidoc']
     expect(tokens[0][6]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
     expect(tokens[1]).toHaveLength 1
     expect(tokens[1][0]).toEqualJson value: '____', scopes: ['source.asciidoc', 'markup.italic.quotes.asciidoc']
@@ -43,9 +43,9 @@ describe 'Should tokenizes quote block when', ->
     {tokens} = grammar.tokenizeLine '[verse, Homer Simpson]\n'
     expect(tokens).toHaveLength 6
     expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
-    expect(tokens[1]).toEqualJson value: 'verse', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.label.asciidoc']
+    expect(tokens[1]).toEqualJson value: 'verse', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'entity.name.function.label.asciidoc']
     expect(tokens[2]).toEqualJson value: ', ', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
-    expect(tokens[3]).toEqualJson value: 'Homer Simpson', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.attribution.asciidoc']
+    expect(tokens[3]).toEqualJson value: 'Homer Simpson', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'string.unquoted.attribution.asciidoc']
     expect(tokens[4]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
     expect(tokens[5]).toEqualJson value: '\n', scopes: ['source.asciidoc']
 
@@ -53,11 +53,11 @@ describe 'Should tokenizes quote block when', ->
     {tokens} = grammar.tokenizeLine '[quote, Erwin Schrödinger, Sorry]\n'
     expect(tokens).toHaveLength 8
     expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
-    expect(tokens[1]).toEqualJson value: 'quote', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.label.asciidoc']
+    expect(tokens[1]).toEqualJson value: 'quote', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'entity.name.function.label.asciidoc']
     expect(tokens[2]).toEqualJson value: ', ', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
-    expect(tokens[3]).toEqualJson value: 'Erwin Schrödinger', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.attribution.asciidoc']
+    expect(tokens[3]).toEqualJson value: 'Erwin Schrödinger', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'string.unquoted.attribution.asciidoc']
     expect(tokens[4]).toEqualJson value: ', ', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
-    expect(tokens[5]).toEqualJson value: 'Sorry', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'none.quotes.citetitle.asciidoc']
+    expect(tokens[5]).toEqualJson value: 'Sorry', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc', 'string.unquoted.citetitle.asciidoc']
     expect(tokens[6]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.italic.quotes.attributes.asciidoc']
     expect(tokens[7]).toEqualJson value: '\n', scopes: ['source.asciidoc']
 

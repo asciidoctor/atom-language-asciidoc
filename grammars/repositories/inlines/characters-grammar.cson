@@ -2,15 +2,15 @@ key: 'characters'
 
 patterns: [
 
-  # Matches characters
+  # Matches characters references.
   #
   # Examples
   #
   #   Dungeons &amp; Dragons
   #
-  name: 'markup.htmlentity.asciidoc'
+  name: 'markup.character-reference.asciidoc'
   match: '(?<!\\\\)(\&)(\\S+?)(;)'
   captures:
-    1: name: 'support.constant.asciidoc'
-    3: name: 'support.constant.asciidoc'
+    1: name: 'constant.character.asciidoc'
+    3: name: 'constant.character.asciidoc'
 ]

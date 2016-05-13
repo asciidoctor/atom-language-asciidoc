@@ -227,10 +227,13 @@ repository:
     patterns: [
       {
         name: "markup.explicit.asciidoc"
-        match: "^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]$"
+        match: '''
+          ^\\[((normal|literal|listing|TIP|NOTE|IMPORTANT|WARNING|CAUTION|partintro|comment|example|sidebar|source|music|latex|graphviz))\\]$(?<!
+          ---)
+        '''
         captures:
           "1":
-            name: "support.constant.asciidoc"
+            name: "entity.name.function.asciidoc"
       }
     ]
   "horizontal-rule":
@@ -429,13 +432,13 @@ repository:
   characters:
     patterns: [
       {
-        name: "markup.htmlentity.asciidoc"
+        name: "markup.character-reference.asciidoc"
         match: "(?<!\\\\)(&)(\\S+?)(;)"
         captures:
           "1":
-            name: "support.constant.asciidoc"
+            name: "constant.character.asciidoc"
           "3":
-            name: "support.constant.asciidoc"
+            name: "constant.character.asciidoc"
       }
     ]
   emphasis:
@@ -496,6 +499,11 @@ repository:
             name: "markup.link.asciidoc"
           "3":
             name: "string.unquoted.asciidoc"
+            patterns: [
+              {
+                include: "#attribute-reference"
+              }
+            ]
       }
     ]
   "image-macro":
@@ -813,11 +821,11 @@ repository:
         begin: "^\\[(quote|verse)(, ([\\w ]+))?(, ([\\w ]+))?"
         beginCaptures:
           "1":
-            name: "none.quotes.label.asciidoc"
+            name: "entity.name.function.label.asciidoc"
           "3":
-            name: "none.quotes.attribution.asciidoc"
+            name: "string.unquoted.attribution.asciidoc"
           "5":
-            name: "none.quotes.citetitle.asciidoc"
+            name: "string.unquoted.citetitle.asciidoc"
         end: "\\]$"
       }
       {
@@ -888,10 +896,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -927,10 +936,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -966,10 +976,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1005,10 +1016,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1044,10 +1056,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1083,10 +1096,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1122,10 +1136,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1161,10 +1176,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1200,10 +1216,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1239,10 +1256,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1278,10 +1296,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1317,10 +1336,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1356,10 +1376,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1395,10 +1416,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1434,10 +1456,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1473,10 +1496,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1512,10 +1536,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1551,10 +1576,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1590,10 +1616,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1629,10 +1656,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1668,10 +1696,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1707,10 +1736,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1746,10 +1776,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1785,10 +1816,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1824,10 +1856,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1863,10 +1896,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1902,10 +1936,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1941,10 +1976,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1980,10 +2016,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2019,10 +2056,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2058,10 +2096,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2097,10 +2136,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2136,10 +2176,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2175,10 +2216,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2214,10 +2256,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2253,10 +2296,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2292,10 +2336,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2331,10 +2376,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2370,10 +2416,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2409,10 +2456,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2448,10 +2496,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2487,10 +2536,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2526,10 +2576,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2565,10 +2616,11 @@ repository:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "entity.name.type.asciidoc"
           "3":
+            name: "markup.meta.attribute-list.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -2599,14 +2651,41 @@ repository:
         end: "(?<=----)[\\r\\n]+$"
       }
       {
-        begin: "^\\[(source)(?:,([^,\\]]*)){0,2}\\]$"
+        begin: "^\\[(source)(,([^\\]]*))?\\]$"
         beginCaptures:
           "0":
             name: "support.asciidoc"
           "1":
-            name: "constant.asciidoc"
+            name: "entity.name.function.asciidoc"
           "2":
-            name: "string.asciidoc"
+            name: "markup.meta.attribute-list.asciidoc"
+        end: "(?<=----)[\\r\\n]+$"
+        patterns: [
+          {
+            name: "markup.raw.asciidoc"
+            begin: "^(-{4,})\\s*$"
+            beginCaptures:
+              "0":
+                name: "support.asciidoc"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+            ]
+            end: "^\\1*$"
+            endCaptures:
+              "0":
+                name: "support.asciidoc"
+          }
+        ]
+      }
+      {
+        begin: "^\\[([^\\]]+)\\]$"
+        beginCaptures:
+          "0":
+            name: "support.asciidoc"
+          "1":
+            name: "markup.meta.attribute-list.asciidocc"
         end: "(?<=----)[\\r\\n]+$"
         patterns: [
           {

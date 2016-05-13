@@ -29,9 +29,9 @@ describe 'Should tokenizes callout in code block when', ->
     expect(tokens).toHaveLength 8
     expect(tokens[0]).toHaveLength 5
     expect(tokens[0][0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'support.asciidoc']
-    expect(tokens[0][1]).toEqualJson value: 'source', scopes: ['source.asciidoc', 'support.asciidoc', 'constant.asciidoc']
+    expect(tokens[0][1]).toEqualJson value: 'source', scopes: ['source.asciidoc', 'support.asciidoc', 'entity.name.function.asciidoc']
     expect(tokens[0][2]).toEqualJson value: ', ', scopes: ['source.asciidoc', 'support.asciidoc']
-    expect(tokens[0][3]).toEqualJson value: 'js', scopes: ['source.asciidoc', 'support.asciidoc', 'string.asciidoc']
+    expect(tokens[0][3]).toEqualJson value: 'js', scopes: ['source.asciidoc', 'support.asciidoc', 'entity.name.type.asciidoc']
     expect(tokens[0][4]).toEqualJson value: ']', scopes: ['source.asciidoc', 'support.asciidoc']
     expect(tokens[1]).toHaveLength 1
     expect(tokens[1][0]).toEqualJson value: '----', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'support.asciidoc']

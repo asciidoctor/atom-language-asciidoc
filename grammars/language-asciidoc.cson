@@ -409,7 +409,7 @@ repository:
     patterns: [
       {
         name: "markup.substitution.attribute-reference.asciidoc"
-        match: "(?<!\\\\)(\\{)((set|counter2?):.+?|\\w+(?:[\\-]\\w+)*)(\\\\)?(\\})"
+        match: "(?<!\\\\)(\\{)((set|counter2?):.+?|\\w+(?:[\\-]\\w+)*)(?<!\\\\)(\\})"
       }
     ]
   "bibliography-anchor":
@@ -533,23 +533,40 @@ repository:
     patterns: [
       {
         name: "markup.other.url.asciidoc"
-        match: "(^|link:|<|[\\s>\\(\\)\\[\\];])((?<!\\\\)(?:https?|file|ftp|irc)://[^\\s\\[\\]<]*[^\\s.,\\[\\]<])(?:\\[((?:\\\\\\]|[^\\]])*?)\\])?"
+        match: "(?:^|<|[\\s>\\(\\)\\[\\];])((?<!\\\\)(?:https?|file|ftp|irc)://[^\\s\\[\\]<]*[^\\s.,\\[\\]<\\)])(?:\\[((?:\\\\\\]|[^\\]])*?)\\])?"
         captures:
           "1":
-            name: "entity.name.function.asciidoc"
-          "2":
             name: "markup.link.asciidoc"
-          "3":
+            patterns: [
+              {
+                include: "#attribute-reference"
+              }
+            ]
+          "2":
             name: "string.unquoted.asciidoc"
       }
       {
         name: "markup.other.url.asciidoc"
-        match: "(?<!\\\\)(link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])"
+        match: "(?:^|<|[\\p{Blank}>\\(\\)\\[\\];])((?<!\\\\)\\{\\w+(?:[\\-]\\w+)*(?<!\\\\)\\})(?:\\[((?:\\\\\\]|[^\\]])*?)\\])"
+        captures:
+          "1":
+            name: "markup.substitution.attribute-reference.asciidoc"
+          "2":
+            name: "string.unquoted.asciidoc"
+      }
+      {
+        name: "markup.other.url.asciidoc"
+        match: "(?<!\\\\)(link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])?"
         captures:
           "1":
             name: "entity.name.function.asciidoc"
           "2":
             name: "markup.link.asciidoc"
+            patterns: [
+              {
+                include: "#attribute-reference"
+              }
+            ]
           "3":
             name: "string.unquoted.asciidoc"
       }

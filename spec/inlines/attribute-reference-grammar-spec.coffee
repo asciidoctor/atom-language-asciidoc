@@ -36,3 +36,15 @@ describe 'Should tokenizes inline attribute-reference when', ->
     expect(tokens[0]).toEqualJson value: 'foobar ', scopes: ['source.asciidoc']
     expect(tokens[1]).toEqualJson value: '{set:foo:bar}', scopes: ['source.asciidoc', 'markup.substitution.attribute-reference.asciidoc']
     expect(tokens[2]).toEqualJson value: ' foobar', scopes: ['source.asciidoc']
+
+  describe 'Should not tokenizes inline attribute-reference when', ->
+
+    it '"{" escaped', ->
+      {tokens} = grammar.tokenizeLine 'foobar \\\\{mylink} foobar'
+      expect(tokens).toHaveLength 1
+      expect(tokens[0]).toEqualJson value: 'foobar \\\\{mylink} foobar', scopes: ['source.asciidoc']
+
+    it '"}" escaped', ->
+      {tokens} = grammar.tokenizeLine 'foobar {mylink\\\} foobar'
+      expect(tokens).toHaveLength 1
+      expect(tokens[0]).toEqualJson value: 'foobar {mylink\\\} foobar', scopes: ['source.asciidoc']

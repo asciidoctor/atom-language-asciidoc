@@ -189,3 +189,10 @@ describe 'Should tokenizes text link when', ->
       expect(tokens[4]).toEqualJson value: 'Asciidoctor', scopes: ['source.asciidoc', 'markup.other.url.asciidoc', 'string.unquoted.asciidoc']
       expect(tokens[5]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.other.url.asciidoc']
       expect(tokens[6]).toEqualJson value: ' bar', scopes: ['source.asciidoc']
+
+    it 'attribute reference doesn\'t contains "uri-" (invalid context)', ->
+      {tokens} = grammar.tokenizeLine 'foo {foo}[bar] bar'
+      expect(tokens).toHaveLength 3
+      expect(tokens[0]).toEqualJson value: 'foo ', scopes: ['source.asciidoc']
+      expect(tokens[1]).toEqualJson value: '{foo}', scopes: ['source.asciidoc', 'markup.substitution.attribute-reference.asciidoc']
+      expect(tokens[2]).toEqualJson value: '[bar] bar', scopes: ['source.asciidoc']

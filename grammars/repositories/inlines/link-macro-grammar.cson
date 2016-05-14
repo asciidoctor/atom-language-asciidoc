@@ -20,13 +20,14 @@ patterns: [
     2: name: 'string.unquoted.asciidoc'
 ,
   # Matches an implicit link with only attribute reference.
+  # attribute must beginning with `uri-`
   #
   # Examples
   #
   #   {uri-repo}[GitHub]
   #
   name: 'markup.other.url.asciidoc'
-  match: '(?:^|<|[\\p{Blank}>\\(\\)\\[\\];])((?<!\\\\)\\{\\w+(?:[\\-]\\w+)*(?<!\\\\)\\})(?:\\[((?:\\\\\\]|[^\\]])*?)\\])'
+  match: '(?:^|<|[\\p{Blank}>\\(\\)\\[\\];])((?<!\\\\)\\{uri-\\w+(?:[\\-]\\w+)*(?<!\\\\)\\})(?:\\[((?:\\\\\\]|[^\\]])*?)\\])'
   captures:
     1: name: 'markup.substitution.attribute-reference.asciidoc'
     2: name: 'string.unquoted.asciidoc'

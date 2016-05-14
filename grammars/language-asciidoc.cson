@@ -547,7 +547,7 @@ repository:
       }
       {
         name: "markup.other.url.asciidoc"
-        match: "(?:^|<|[\\p{Blank}>\\(\\)\\[\\];])((?<!\\\\)\\{\\w+(?:[\\-]\\w+)*(?<!\\\\)\\})(?:\\[((?:\\\\\\]|[^\\]])*?)\\])"
+        match: "(?:^|<|[\\p{Blank}>\\(\\)\\[\\];])((?<!\\\\)\\{uri-\\w+(?:[\\-]\\w+)*(?<!\\\\)\\})(?:\\[((?:\\\\\\]|[^\\]])*?)\\])"
         captures:
           "1":
             name: "markup.substitution.attribute-reference.asciidoc"

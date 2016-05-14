@@ -84,15 +84,6 @@ describe 'Should tokenizes text link when', ->
 
   describe '"link:" & "mailto:" macro', ->
 
-    it 'is a simple url with https started with "link:"', ->
-      {tokens} = grammar.tokenizeLine 'Go on link:https://foobar.com now'
-      expect(tokens).toHaveLength 5
-      expect(tokens[0]).toEqualJson value: 'Go on ', scopes: ['source.asciidoc']
-      expect(tokens[1]).toEqualJson value: 'link', scopes: ['source.asciidoc', 'markup.other.url.asciidoc', 'entity.name.function.asciidoc']
-      expect(tokens[2]).toEqualJson value: ':', scopes: ['source.asciidoc', 'markup.other.url.asciidoc']
-      expect(tokens[3]).toEqualJson value: 'https://foobar.com', scopes: ['source.asciidoc', 'markup.other.url.asciidoc', 'markup.link.asciidoc']
-      expect(tokens[4]).toEqualJson value: ' now', scopes: ['source.asciidoc']
-
     it 'have optional link text and attributes', ->
       {tokens} = grammar.tokenizeLine 'Go on link:url[optional link text, optional target attribute, optional role attribute] now'
       expect(tokens).toHaveLength 8
@@ -127,6 +118,11 @@ describe 'Should tokenizes text link when', ->
       expect(tokens[6]).toEqualJson value: 'label', scopes: ['source.asciidoc', 'markup.other.url.asciidoc', 'string.unquoted.asciidoc']
       expect(tokens[7]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.other.url.asciidoc']
       expect(tokens[8]).toEqualJson value: ' now', scopes: ['source.asciidoc']
+
+    it 'is a simple url with https started with "link:" with missing square brackets ending (invalid context)', ->
+      {tokens} = grammar.tokenizeLine 'Go on link:https://foobar.com now'
+      expect(tokens).toHaveLength 1
+      expect(tokens[0]).toEqualJson value: 'Go on link:https://foobar.com now', scopes: ['source.asciidoc']
 
   describe 'email pattern', ->
 

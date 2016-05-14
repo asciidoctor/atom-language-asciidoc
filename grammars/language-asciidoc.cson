@@ -914,7 +914,7 @@ repository:
         begin: "^(,===)$"
         beginCaptures:
           "0":
-            name: "constant.other.symbol.asciidoc"
+            name: "markup.table.delimiter.asciidoc"
         contentName: "string.unquoted.asciidoc"
         patterns: [
           {
@@ -922,7 +922,7 @@ repository:
             match: ","
             captures:
               "0":
-                name: "constant.other.symbol.asciidoc"
+                name: "markup.table.delimiter.cell.asciidoc"
           }
           {
             include: "#general-block-macro"
@@ -931,7 +931,7 @@ repository:
         end: "^(\\1)$"
         endCaptures:
           "0":
-            name: "constant.other.symbol.asciidoc"
+            name: "markup.table.delimiter.asciidoc"
       }
     ]
   "table-dsv":
@@ -941,7 +941,7 @@ repository:
         begin: "^(:===)$"
         beginCaptures:
           "0":
-            name: "constant.other.symbol.asciidoc"
+            name: "markup.table.delimiter.asciidoc"
         contentName: "string.unquoted.asciidoc"
         patterns: [
           {
@@ -949,7 +949,7 @@ repository:
             match: ":"
             captures:
               "0":
-                name: "constant.other.symbol.asciidoc"
+                name: "markup.table.delimiter.cell.asciidoc"
           }
           {
             include: "#general-block-macro"
@@ -958,7 +958,7 @@ repository:
         end: "^(\\1)$"
         endCaptures:
           "0":
-            name: "constant.other.symbol.asciidoc"
+            name: "markup.table.delimiter.asciidoc"
       }
     ]
   "table-nested":
@@ -968,7 +968,7 @@ repository:
         begin: "^(!===)$"
         beginCaptures:
           "0":
-            name: "constant.other.symbol.asciidoc"
+            name: "markup.table.delimiter.asciidoc"
         contentName: "markup.table.content.asciidoc"
         patterns: [
           {
@@ -978,7 +978,7 @@ repository:
               "1":
                 name: "markup.meta.attribute-list.asciidoc"
               "2":
-                name: "constant.other.symbol.cell.asciidoc"
+                name: "markup.table.delimiter.cell.asciidoc"
           }
           {
             include: "#tables-includes"
@@ -987,7 +987,7 @@ repository:
         end: "^(\\1)$"
         endCaptures:
           "0":
-            name: "constant.other.symbol.asciidoc"
+            name: "markup.table.delimiter.asciidoc"
       }
     ]
   "table-psv":
@@ -997,7 +997,7 @@ repository:
         begin: "^(\\|===)$"
         beginCaptures:
           "0":
-            name: "constant.other.symbol.asciidoc"
+            name: "markup.table.delimiter.asciidoc"
         contentName: "markup.table.content.asciidoc"
         patterns: [
           {
@@ -1007,7 +1007,7 @@ repository:
               "1":
                 name: "markup.meta.attribute-list.asciidoc"
               "2":
-                name: "constant.other.symbol.cell.asciidoc"
+                name: "markup.table.delimiter.cell.asciidoc"
           }
           {
             include: "#tables-includes"
@@ -1016,7 +1016,7 @@ repository:
         end: "^(\\1)$"
         endCaptures:
           "0":
-            name: "constant.other.symbol.asciidoc"
+            name: "markup.table.delimiter.asciidoc"
       }
     ]
   "source-asciidoctor":

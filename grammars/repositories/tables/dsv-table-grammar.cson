@@ -17,17 +17,17 @@ patterns: [
   name: 'markup.table.dsv.asciidoc'
   begin: '^(:===)$'
   beginCaptures:
-    0: name: 'constant.other.symbol.asciidoc'
+    0: name: 'markup.table.delimiter.asciidoc'
   contentName: 'string.unquoted.asciidoc'
   patterns: [
     comment: 'cell separator'
     match: ':'
     captures:
-      0: name: 'constant.other.symbol.asciidoc'
+      0: name: 'markup.table.delimiter.cell.asciidoc'
   ,
     include: '#general-block-macro'
   ]
   end: '^(\\1)$'
   endCaptures:
-    0: name: 'constant.other.symbol.asciidoc'
+    0: name: 'markup.table.delimiter.asciidoc'
 ]

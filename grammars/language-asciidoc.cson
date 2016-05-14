@@ -918,6 +918,9 @@ repository:
         contentName: "string.unquoted.asciidoc"
         patterns: [
           {
+            include: "text.csv"
+          }
+          {
             comment: "cell separator"
             match: ","
             captures:

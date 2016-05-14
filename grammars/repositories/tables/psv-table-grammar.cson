@@ -14,11 +14,7 @@ patterns: [
       1: name: 'markup.meta.attribute-list.asciidoc'
       2: name: 'constant.other.symbol.cell.asciidoc'
   ,
-    include: '#inlines'
-  ,
-    include: '#blocks'
-  ,
-    include: '#list'
+    include: '#tables-includes'
   ]
   end: '^(\\1)$'
   endCaptures:

@@ -104,6 +104,39 @@ repository:
         include: "#table-dsv"
       }
     ]
+  "tables-includes":
+    patterns: [
+      {
+        include: "#comment"
+      }
+      {
+        include: "#callout-list-item"
+      }
+      {
+        include: "#attribute-entry"
+      }
+      {
+        include: "#block-title"
+      }
+      {
+        include: "#explicit-paragraph"
+      }
+      {
+        include: "#section"
+      }
+      {
+        include: "#blocks"
+      }
+      {
+        include: "#list"
+      }
+      {
+        include: "#inlines"
+      }
+      {
+        include: "#line-break"
+      }
+    ]
   inlines:
     patterns: [
       {
@@ -948,13 +981,7 @@ repository:
                 name: "constant.other.symbol.cell.asciidoc"
           }
           {
-            include: "#inlines"
-          }
-          {
-            include: "#blocks"
-          }
-          {
-            include: "#list"
+            include: "#tables-includes"
           }
         ]
         end: "^(\\1)$"
@@ -983,13 +1010,7 @@ repository:
                 name: "constant.other.symbol.cell.asciidoc"
           }
           {
-            include: "#inlines"
-          }
-          {
-            include: "#blocks"
-          }
-          {
-            include: "#list"
+            include: "#tables-includes"
           }
         ]
         end: "^(\\1)$"

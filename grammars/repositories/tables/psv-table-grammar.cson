@@ -1,7 +1,6 @@
-key: 'table-standard'
+key: 'table-psv'
 
 patterns: [
-# 1: name: 'variable.asciidoc'
 
   name: 'markup.table.asciidoc'
   begin: '^(\\|===)$'

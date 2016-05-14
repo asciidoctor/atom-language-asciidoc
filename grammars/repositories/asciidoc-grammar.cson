@@ -61,7 +61,7 @@ repository:
     ]
   tables:
     patterns: [
-      include: '#table-standard'
+      include: '#table-psv'
     ,
       include: '#table-nested'
     ,

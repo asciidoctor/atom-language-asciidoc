@@ -92,7 +92,7 @@ repository:
   tables:
     patterns: [
       {
-        include: "#table-standard"
+        include: "#table-psv"
       }
       {
         include: "#table-nested"
@@ -948,7 +948,7 @@ repository:
             name: "constant.other.symbol.asciidoc"
       }
     ]
-  "table-standard":
+  "table-psv":
     patterns: [
       {
         name: "markup.table.asciidoc"

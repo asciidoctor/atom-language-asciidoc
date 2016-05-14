@@ -2,6 +2,18 @@ key: 'table-csv'
 
 patterns: [
 
+  # Matches DSV tables.
+  #
+  # Examples:
+  #
+  # ,===
+  # Artist,Track,Genre
+  #
+  # Tool,Stinkfist,Metal
+  # The Lumineers,Ho Hey,Folk Rock
+  # Baauer,Harlem Shake,Hip Hop
+  # ,===
+  #
   name: 'markup.table.csv.asciidoc'
   begin: '^(,===)$'
   beginCaptures:

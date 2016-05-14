@@ -44,4 +44,19 @@ patterns: [
   match: '^\\p{Blank}*(\\.{1,5}|\\d+\\.|[a-zA-Z]\\.|[IVXivx]+\\))(?=\\p{Blank})'
   captures:
     1: name: 'markup.list.bullet.asciidoc'
+
+,
+  # Matches a definition list item.
+  #
+  # Examples
+  #
+  #   foo::
+  #   foo:::
+  #   foo::::
+  #   foo;;
+  #
+  name: 'markup.heading.list.asciidoc'
+  match: '^\\p{Blank}*(.*?\\S)(:{2,4}|;;)($|\\p{Blank}+)'
+  captures:
+    2: name: 'markup.list.bullet.asciidoc'
 ]

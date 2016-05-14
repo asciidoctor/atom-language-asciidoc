@@ -274,6 +274,13 @@ repository:
           "1":
             name: "markup.list.bullet.asciidoc"
       }
+      {
+        name: "markup.heading.list.asciidoc"
+        match: "^\\p{Blank}*(.*?\\S)(:{2,4}|;;)($|\\p{Blank}+)"
+        captures:
+          "2":
+            name: "markup.list.bullet.asciidoc"
+      }
     ]
   section:
     patterns: [

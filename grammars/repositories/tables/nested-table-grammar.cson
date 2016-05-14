@@ -1,6 +1,7 @@
 key: 'table-nested'
 
 patterns: [
+
   name: 'markup.table.nested.asciidoc'
   begin: '^(!===)$'
   beginCaptures:
@@ -12,6 +13,12 @@ patterns: [
     captures:
       1: name: 'markup.meta.attribute-list.asciidoc'
       2: name: 'constant.other.symbol.cell.asciidoc'
+  ,
+    include: '#inlines'
+  ,
+    include: '#blocks'
+  ,
+    include: '#list'
   ]
   end: '^(\\1)$'
   endCaptures:

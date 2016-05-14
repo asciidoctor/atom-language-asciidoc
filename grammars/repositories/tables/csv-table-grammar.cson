@@ -12,6 +12,8 @@ patterns: [
     match: ','
     captures:
       0: name: 'constant.other.symbol.asciidoc'
+  ,
+    include: '#general-block-macro'
   ]
   end: '^(\\1)$'
   endCaptures:

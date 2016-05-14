@@ -891,6 +891,9 @@ repository:
               "0":
                 name: "constant.other.symbol.asciidoc"
           }
+          {
+            include: "#general-block-macro"
+          }
         ]
         end: "^(\\1)$"
         endCaptures:
@@ -914,6 +917,9 @@ repository:
             captures:
               "0":
                 name: "constant.other.symbol.asciidoc"
+          }
+          {
+            include: "#general-block-macro"
           }
         ]
         end: "^(\\1)$"
@@ -940,6 +946,15 @@ repository:
                 name: "markup.meta.attribute-list.asciidoc"
               "2":
                 name: "constant.other.symbol.cell.asciidoc"
+          }
+          {
+            include: "#inlines"
+          }
+          {
+            include: "#blocks"
+          }
+          {
+            include: "#list"
           }
         ]
         end: "^(\\1)$"

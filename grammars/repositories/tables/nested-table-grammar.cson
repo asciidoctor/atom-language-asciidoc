@@ -9,7 +9,7 @@ patterns: [
   contentName: 'markup.table.content.asciidoc'
   patterns: [
     comment: 'cell separator and attributes'
-    match: '(^|[^\\\\\\p{Blank}]*)(!)'
+    match: '(^|[^\\p{Blank}\\\\]*)(?<!\\\\)(!)'
     captures:
       1: name: 'markup.meta.attribute-list.asciidoc'
       2: name: 'constant.other.symbol.cell.asciidoc'

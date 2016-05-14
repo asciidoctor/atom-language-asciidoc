@@ -940,7 +940,7 @@ repository:
         patterns: [
           {
             comment: "cell separator and attributes"
-            match: "(^|[^\\\\\\p{Blank}]*)(!)"
+            match: "(^|[^\\p{Blank}\\\\]*)(?<!\\\\)(!)"
             captures:
               "1":
                 name: "markup.meta.attribute-list.asciidoc"
@@ -975,7 +975,7 @@ repository:
         patterns: [
           {
             comment: "cell separator and attributes"
-            match: "(^|[^\\p{Blank}\\\\]*)(\\|)"
+            match: "(^|[^\\p{Blank}\\\\]*)(?<!\\\\)(\\|)"
             captures:
               "1":
                 name: "markup.meta.attribute-list.asciidoc"

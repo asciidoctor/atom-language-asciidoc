@@ -9,24 +9,37 @@ describe 'Code block generator', ->
       codeBlocks = generator.makeAsciidocBlocks(languages)
       expect(codeBlocks).toHaveLength 2 # Number of blocks
       expect(codeBlocks[0]).toEqualJson
-        begin: '^\\[(source)(,([^\\]]*))?\\]$'
-        beginCaptures:
-          0: name: 'support.asciidoc'
-          1: name: 'entity.name.function.asciidoc'
-          2: name: 'markup.meta.attribute-list.asciidoc'
-        end: '(?<=----)[\\r\\n]+$'
+        begin: '(?=(?>(?:^\\[(source)((?:,|#)[^\\]]+)*\\]$)))'
         patterns: [
+          match: '^\\[(source)((?:,|#)([^,\\]]+))*\\]$'
+          captures:
+            0:
+              name: 'markup.heading.asciidoc'
+              patterns: [
+                include: '#block-attribute-inner'
+              ]
+        ,
+          include: '#inlines'
+        ,
+          include: '#block-title'
+        ,
+          comment: 'listing block'
           name: 'markup.raw.asciidoc'
           begin: '^(-{4,})\\s*$'
-          beginCaptures:
-            0: name: 'support.asciidoc'
           patterns: [
             include: '#block-callout'
           ]
-          end: '^\\1*$'
-          endCaptures:
-            0: name: 'support.asciidoc'
+          end: '(?<=\\1)'
+        ,
+          comment: 'open block'
+          name: 'markup.raw.asciidoc'
+          begin: '^(-{2})\\s*$'
+          patterns: [
+            include: '#block-callout'
+          ]
+          end: '^(\\1)$'
         ]
+        end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
 
     it 'should generate listing block', ->
       languages = []
@@ -40,7 +53,7 @@ describe 'Code block generator', ->
         patterns: [
           include: '#block-callout'
         ]
-        end: '^\\1*$'
+        end: '^(\\1)$'
         endCaptures:
           0: name: 'support.asciidoc'
 
@@ -51,32 +64,42 @@ describe 'Code block generator', ->
       codeBlocks = generator.makeAsciidocBlocks(languages)
       expect(codeBlocks).toHaveLength 3 # Number of blocks
       expect(codeBlocks[0]).toEqualJson
-        begin: '^\\[(source),\\p{Blank}*(?i:(javascript|js))(?:,([^\]]*))?\\]$'
-        beginCaptures:
-          0: name: 'support.asciidoc'
-          1: name: 'entity.name.function.asciidoc'
-          2: name: 'entity.name.type.asciidoc'
-          3:
-            name: 'markup.meta.attribute-list.asciidoc'
-            patterns: [
-              include: '#attribute-reference'
-            ]
+        name: "markup.code.js.asciidoc"
+        begin: "(?=(?>(?:^\\[(source)(?:,|#)\\p{Blank}*(?i:(javascript|js))((?:,|#)[^\\]]+)*\\]$)))"
         patterns: [
-          name: 'markup.code.js.asciidoc'
+          match: "^\\[(source)(?:,|#)\\p{Blank}*(?i:(javascript|js))((?:,|#)([^,\\]]+))*\\]$"
+          captures:
+            0:
+              name: 'markup.heading.asciidoc'
+              patterns: [
+                include: '#block-attribute-inner'
+              ]
+        ,
+          include: '#inlines'
+        ,
+          include: '#block-title'
+        ,
+          comment: 'listing block'
           begin: '^(-{4,})\\s*$'
-          beginCaptures:
-            0: name: 'support.asciidoc'
-          contentName: 'source.embedded.js'
+          contentName: "source.embedded.js"
           patterns: [
             include: '#block-callout'
           ,
-            include: 'source.js'
+            include: "source.js"
           ]
-          end: '^\\1*$'
-          endCaptures:
-            0: name: 'support.asciidoc'
+          end: '^(\\1)$'
+        ,
+          comment: 'open block'
+          begin: '^(-{2})\\s*$'
+          contentName: "source.embedded.js"
+          patterns: [
+            include: '#block-callout'
+          ,
+            include: "source.js"
+          ]
+          end: '^(\\1)$'
         ]
-        end: '(?<=----)[\\r\\n]+$'
+        end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
 
     it 'should generate C++ code block', ->
       languages = [
@@ -85,32 +108,42 @@ describe 'Code block generator', ->
       codeBlocks = generator.makeAsciidocBlocks(languages)
       expect(codeBlocks).toHaveLength 3 # Number of blocks
       expect(codeBlocks[0]).toEqualJson
-        begin: '^\\[(source),\\p{Blank}*(?i:(c(pp|\\+\\+)))(?:,([^\]]*))?\\]$'
-        beginCaptures:
-          0: name: 'support.asciidoc'
-          1: name: 'entity.name.function.asciidoc'
-          2: name: 'entity.name.type.asciidoc'
-          3:
-            name: 'markup.meta.attribute-list.asciidoc'
-            patterns: [
-              include: '#attribute-reference'
-            ]
-        end: '(?<=----)[\\r\\n]+$'
+        name: "markup.code.cpp.asciidoc"
+        begin: "(?=(?>(?:^\\[(source)(?:,|#)\\p{Blank}*(?i:(c(pp|\\+\\+)))((?:,|#)[^\\]]+)*\\]$)))"
         patterns: [
-          name: 'markup.code.cpp.asciidoc'
+          match: "^\\[(source)(?:,|#)\\p{Blank}*(?i:(c(pp|\\+\\+)))((?:,|#)([^,\\]]+))*\\]$"
+          captures:
+            0:
+              name: 'markup.heading.asciidoc'
+              patterns: [
+                include: '#block-attribute-inner'
+              ]
+        ,
+          include: '#inlines'
+        ,
+          include: '#block-title'
+        ,
+          comment: 'listing block'
           begin: '^(-{4,})\\s*$'
-          beginCaptures:
-            0: name: 'support.asciidoc'
-          contentName: 'source.embedded.cpp'
+          contentName: "source.embedded.cpp"
           patterns: [
             include: '#block-callout'
           ,
-            include: 'source.cpp'
+            include: "source.cpp"
           ]
-          end: '^\\1*$'
-          endCaptures:
-            0: name: 'support.asciidoc'
+          end: '^(\\1)$'
+        ,
+          comment: 'open block'
+          begin: '^(-{2})\\s*$'
+          contentName: "source.embedded.cpp"
+          patterns: [
+            include: '#block-callout'
+          ,
+            include: "source.cpp"
+          ]
+          end: '^(\\1)$'
         ]
+        end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
 
   describe 'with Markdown syntax', ->
 

@@ -14,21 +14,19 @@ patterns: [
 ,
   include: '#attribute-entry'
 ,
+  include: '#blocks'
+,
   include: '#block-title'
 ,
-  include: '#explicit-paragraph'
-,
-  include: '#section'
-,
   include: '#tables'
-,
-  include: '#blocks'
 ,
   include: '#horizontal-rule'
 ,
   include: '#list'
 ,
   include: '#inlines'
+,
+  include: '#block-attribute'
 ,
   include: '#line-break'
 ]
@@ -37,11 +35,13 @@ repository:
     patterns: [
       include: '#front-matter-block'
     ,
-      include: '#admonition-block'
+      include: '#admonition-paragraph'
     ,
-      include: '#quote-block'
+      include: '#quote-paragraph'
     ,
-      include: '#code-blocks'
+      include: '#source-paragraphs'
+    ,
+      include: '#passthrough-paragraph'
     ,
       include: '#example-block'
     ,
@@ -49,11 +49,9 @@ repository:
     ,
       include: '#literal-block'
     ,
-      include: '#passthrough-block'
-    ,
       include: '#open-block'
     ]
-  'code-blocks':
+  'source-paragraphs':
     patterns: [
       include: '#source-asciidoctor'
     ,

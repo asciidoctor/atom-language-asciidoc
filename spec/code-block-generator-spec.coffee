@@ -7,7 +7,7 @@ describe 'Code block generator', ->
     it 'should generate default code block', ->
       languages = []
       codeBlocks = generator.makeAsciidocBlocks(languages)
-      expect(codeBlocks).toHaveLength 3 # Number of blocks
+      expect(codeBlocks).toHaveLength 2 # Number of blocks
       expect(codeBlocks[0]).toEqualJson
         begin: '^\\[(source)(,([^\\]]*))?\\]$'
         beginCaptures:
@@ -28,34 +28,11 @@ describe 'Code block generator', ->
             0: name: 'support.asciidoc'
         ]
 
-    it 'should generate default code block with attributes only', ->
-      languages = []
-      codeBlocks = generator.makeAsciidocBlocks(languages)
-      expect(codeBlocks).toHaveLength 3 # Number of blocks
-      expect(codeBlocks[1]).toEqualJson
-        begin: '^\\[([^\\]]+)\\]$'
-        beginCaptures:
-          0: name: 'support.asciidoc'
-          1: name: 'markup.meta.attribute-list.asciidocc'
-        end: '(?<=----)[\\r\\n]+$'
-        patterns: [
-          name: 'markup.raw.asciidoc'
-          begin: '^(-{4,})\\s*$'
-          beginCaptures:
-            0: name: 'support.asciidoc'
-          patterns: [
-            include: '#block-callout'
-          ]
-          end: '^\\1*$'
-          endCaptures:
-            0: name: 'support.asciidoc'
-        ]
-
     it 'should generate listing block', ->
       languages = []
       codeBlocks = generator.makeAsciidocBlocks(languages)
-      expect(codeBlocks).toHaveLength 3 # Number of blocks
-      expect(codeBlocks[2]).toEqualJson
+      expect(codeBlocks).toHaveLength 2 # Number of blocks
+      expect(codeBlocks[1]).toEqualJson
         name: 'markup.raw.asciidoc'
         begin: '^(-{4,})\\s*$'
         beginCaptures:
@@ -72,7 +49,7 @@ describe 'Code block generator', ->
         pattern: 'javascript|js', type: 'source', code: 'js'
       ]
       codeBlocks = generator.makeAsciidocBlocks(languages)
-      expect(codeBlocks).toHaveLength 4 # Number of blocks
+      expect(codeBlocks).toHaveLength 3 # Number of blocks
       expect(codeBlocks[0]).toEqualJson
         begin: '^\\[(source),\\p{Blank}*(?i:(javascript|js))(?:,([^\]]*))?\\]$'
         beginCaptures:
@@ -106,7 +83,7 @@ describe 'Code block generator', ->
         pattern: 'c(pp|\\+\\+)', type: 'source', code: 'cpp'
       ]
       codeBlocks = generator.makeAsciidocBlocks(languages)
-      expect(codeBlocks).toHaveLength 4 # Number of blocks
+      expect(codeBlocks).toHaveLength 3 # Number of blocks
       expect(codeBlocks[0]).toEqualJson
         begin: '^\\[(source),\\p{Blank}*(?i:(c(pp|\\+\\+)))(?:,([^\]]*))?\\]$'
         beginCaptures:

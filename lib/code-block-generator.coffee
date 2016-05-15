@@ -52,26 +52,6 @@ module.exports =
           0: name: 'support.asciidoc'
       ]
 
-    # add generic block with attributes only
-    codeBlocks.push
-      begin: '^\\[([^\\]]+)\\]$'
-      beginCaptures:
-        0: name: 'support.asciidoc'
-        1: name: 'markup.meta.attribute-list.asciidocc'
-      end: '(?<=----)[\\r\\n]+$'
-      patterns: [
-        name: 'markup.raw.asciidoc'
-        begin: '^(-{4,})\\s*$'
-        beginCaptures:
-          0: name: 'support.asciidoc'
-        patterns: [
-          include: '#block-callout'
-        ]
-        end: '^\\1*$'
-        endCaptures:
-          0: name: 'support.asciidoc'
-      ]
-
     # add listing block
     codeBlocks.push
       name: 'markup.raw.asciidoc'

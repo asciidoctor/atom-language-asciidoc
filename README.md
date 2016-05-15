@@ -10,6 +10,8 @@ Adds syntax highlighting and snippets to AsciiDoc files. Supports [Asciidoctor](
 
 ![](https://raw.github.com/wiki/asciidoctor/atom-language-asciidoc/writers-guide-screenshot.png)
 
+**NOTE:** This package recognizes the modern AsciiDoc syntax endorsed by Asciidoctor. It does not support the legacy AsciiDoc syntax permitted by Asciidoctor with [compat mode](http://asciidoctor.org/docs/migration/#compat-mode) enabled or by AsciiDoc Python. Additionally, two-line section titles are _not recognized_ by this package since they confuse both the language highlighter and the writer.
+
 ## File extension support
 
 The default file extensions for AsciiDoc files are _ad_, _asc_, _adoc_, _asciidoc_, and _asciidoc.txt_
@@ -33,7 +35,7 @@ Add a custom file type support:
     ...
 ```
 
-Then save the configuration file and restart Atom or press `ctrl+alt+r` to refresh the UI.  You should now see the new file type recognized by the atom-language-asciidoc package.
+Then save the configuration file and restart Atom or press <kbd>ctrl + alt + r</kbd> to refresh the UI.  You should now see the new file type recognized by the atom-language-asciidoc package.
 
 ## Contributing
 

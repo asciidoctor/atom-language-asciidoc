@@ -173,19 +173,25 @@ You can check the available source languages available in your Atom editor, to s
 . Open the _Developer Tools_: `Ctrl+Shift+I` on Linux and Windows, `Cmd+Alt+i` on Mac OS X.
 . Run the query `Object.keys(atom.grammars.grammarsByScopeName).sort().join('\n')` in the _Console_.
 
-
 .Example language query
 image::https://cloud.githubusercontent.com/assets/5674651/14895946/a40b08aa-0d7b-11e6-9bff-458a3d42087c.png[screenshot of a code support query]
 
+== Compat mode not supported
 
-== Compatibility mode not supported
+This grammar implements the modern AsciiDoc syntax endorsed by Asciidoctor.
+It does not support the legacy AsciiDoc syntax permitted by Asciidoctor with http://asciidoctor.org/docs/migration/#compat-mode[compat mode] enabled or by AsciiDoc Python.
+Additionally, two-line section titles are not recognized by this grammar.
 
-As the AsciiDoc syntax has changed quite a bit since the original Python implementation, Asciidoctor offers a legacy mode called `compat-mode`.
-This mode can be set using the `:compat-mode:` attribute.
-This can be done in the document iteself, or when generating the final result using `asciidoctor -a compat-mode`, or it's shorter equivalent `asciidoc`.
+The reason compat mode is not supported is two-fold.
 
-As the compatibility mode is a legacy syntax the project wants to move away from, the mode can be triggered from outside the source itself, and changing grammar on the fly introduces complexity, *compatibility mode is currently not supported by this highlighter*.
+. An Atom grammar is not capable of supporting different modes based on a setting within the document.
+. Since this project is part of the Asciidoctor organization, which endorses a modern, consistent AsciiDoc syntax, this package is aimed at encouraging migration away from the legacy syntax.
 
+Furthermore, this grammar doesn't support the two-line section titles for both the aforementioned reasons.
+That style confuses the language highlighter and we consider using that style a bad practice.
+
+We hope this grammar encourages authors to write good, clean, modern AsciiDoc.
+So that's the AsciiDoc we designed this grammar to recognize.
 
 == Styling
 

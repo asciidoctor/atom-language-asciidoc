@@ -10,7 +10,7 @@ Adds syntax highlighting and snippets to AsciiDoc files. Supports [Asciidoctor](
 
 ![](https://raw.github.com/wiki/asciidoctor/atom-language-asciidoc/writers-guide-screenshot.png)
 
-**Compatibility mode is currently not supported by this highlighter**
+**NOTE:** This package recognizes the modern AsciiDoc syntax endorsed by Asciidoctor. It does not support the legacy AsciiDoc syntax permitted by Asciidoctor with [compat mode](http://asciidoctor.org/docs/migration/#compat-mode) enabled or by AsciiDoc Python. Additionally, two-line section titles are _not recognized_ by this package since they confuse both the language highlighter and the writer.
 
 ## File extension support
 

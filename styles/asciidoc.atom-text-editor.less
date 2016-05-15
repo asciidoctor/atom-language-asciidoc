@@ -15,7 +15,7 @@ atom-text-editor::shadow, :host {
         font-style: italic;
       }
 
-      &.htmlentity {
+      &.character-reference {
         font-style: italic;
         color: mix(red, @syntax-text-color, 20%);
       }
@@ -26,9 +26,8 @@ atom-text-editor::shadow, :host {
         color: mix(green, @syntax-text-color, 20%);
       }
 
-      &.reference {
+      &.xref {
         font-style: italic;
-        color: mix(green, @syntax-text-color, 20%);
       }
 
       &.admonition,
@@ -44,18 +43,18 @@ atom-text-editor::shadow, :host {
         font-weight: bold;
 
         // Lighten headers for dark themes.
-        & when (lightness(@syntax-background-color) < 50%){
+        & when (lightness(@syntax-background-color) < 50%) {
           color: lighten(@syntax-text-color, 20%);
         }
 
         // Darken headers for light themes.
-        & when (lightness(@syntax-background-color) > 50%){
+        & when (lightness(@syntax-background-color) > 50%) {
           color: darken(@syntax-text-color, 20%);
         }
       }
 
       &.heading.blocktitle,
-      &.substitution{
+      &.substitution {
         color: @syntax-text-color-unobtrusive;
       }
       &.meta.attribute-list {

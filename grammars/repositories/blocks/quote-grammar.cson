@@ -24,9 +24,9 @@ patterns: [
   name: 'markup.italic.quotes.attributes.asciidoc'
   begin: '^\\[(quote|verse)(, ([\\w ]+))?(, ([\\w ]+))?'
   beginCaptures:
-    1: name: 'none.quotes.label.asciidoc'
-    3: name: 'none.quotes.attribution.asciidoc'
-    5: name: 'none.quotes.citetitle.asciidoc'
+    1: name: 'entity.name.function.label.asciidoc'
+    3: name: 'string.unquoted.attribution.asciidoc'
+    5: name: 'string.unquoted.citetitle.asciidoc'
   end: '\\]$'
 ,
   # Matches quote block

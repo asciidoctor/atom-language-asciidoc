@@ -9,22 +9,24 @@ describe 'Code block generator', ->
       codeBlocks = generator.makeAsciidocBlocks(languages)
       expect(codeBlocks).toHaveLength 2 # Number of blocks
       expect(codeBlocks[0]).toEqualJson
-        begin: '^\\[(source)(?:,([^,\\]]*)){0,2}\\]$'
+        begin: '^\\[(source)(,([^\\]]*))?\\]$'
         beginCaptures:
           0: name: 'support.asciidoc'
-          1: name: 'constant.asciidoc'
-          2: name: 'string.asciidoc'
+          1: name: 'entity.name.function.asciidoc'
+          2: name: 'markup.meta.attribute-list.asciidoc'
+        end: '(?<=----)[\\r\\n]+$'
         patterns: [
           name: 'markup.raw.asciidoc'
           begin: '^(-{4,})\\s*$'
           beginCaptures:
             0: name: 'support.asciidoc'
-          patterns: [include: '#block-callout']
+          patterns: [
+            include: '#block-callout'
+          ]
           end: '^\\1*$'
           endCaptures:
             0: name: 'support.asciidoc'
         ]
-        end: '(?<=----)[\\r\\n]+$'
 
     it 'should generate listing block', ->
       languages = []
@@ -35,7 +37,9 @@ describe 'Code block generator', ->
         begin: '^(-{4,})\\s*$'
         beginCaptures:
           0: name: 'support.asciidoc'
-        patterns: [include: '#block-callout']
+        patterns: [
+          include: '#block-callout'
+        ]
         end: '^\\1*$'
         endCaptures:
           0: name: 'support.asciidoc'
@@ -50,9 +54,10 @@ describe 'Code block generator', ->
         begin: '^\\[(source),\\p{Blank}*(?i:(javascript|js))(?:,([^\]]*))?\\]$'
         beginCaptures:
           0: name: 'support.asciidoc'
-          1: name: 'constant.asciidoc'
-          2: name: 'string.asciidoc'
+          1: name: 'entity.name.function.asciidoc'
+          2: name: 'entity.name.type.asciidoc'
           3:
+            name: 'markup.meta.attribute-list.asciidoc'
             patterns: [
               include: '#attribute-reference'
             ]
@@ -83,9 +88,10 @@ describe 'Code block generator', ->
         begin: '^\\[(source),\\p{Blank}*(?i:(c(pp|\\+\\+)))(?:,([^\]]*))?\\]$'
         beginCaptures:
           0: name: 'support.asciidoc'
-          1: name: 'constant.asciidoc'
-          2: name: 'string.asciidoc'
+          1: name: 'entity.name.function.asciidoc'
+          2: name: 'entity.name.type.asciidoc'
           3:
+            name: 'markup.meta.attribute-list.asciidoc'
             patterns: [
               include: '#attribute-reference'
             ]

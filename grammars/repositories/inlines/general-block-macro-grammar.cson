@@ -13,5 +13,9 @@ patterns: [
  captures:
    1: name: 'entity.name.function.asciidoc'
    2: name: 'markup.link.asciidoc'
-   3: name: 'string.unquoted.asciidoc'
+   3:
+    name: 'string.unquoted.asciidoc'
+    patterns: [
+      include: '#attribute-reference'
+    ]
 ]

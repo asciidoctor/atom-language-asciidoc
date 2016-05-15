@@ -7,9 +7,10 @@ module.exports =
       begin: "^\\[(source),\\p{Blank}*(?i:(#{lang.pattern}))(?:,([^\]]*))?\\]$"
       beginCaptures:
         0: name: 'support.asciidoc'
-        1: name: 'constant.asciidoc'
-        2: name: 'string.asciidoc'
+        1: name: 'entity.name.function.asciidoc'
+        2: name: 'entity.name.type.asciidoc'
         3:
+          name: 'markup.meta.attribute-list.asciidoc'
           patterns: [
             include: '#attribute-reference'
           ]
@@ -32,35 +33,39 @@ module.exports =
 
     # add generic block
     codeBlocks.push
-      begin: '^\\[(source)(?:,([^,\\]]*)){0,2}\\]$'
+      begin: '^\\[(source)(,([^\\]]*))?\\]$'
       beginCaptures:
         0: name: 'support.asciidoc'
-        1: name: 'constant.asciidoc'
-        2: name: 'string.asciidoc'
-      end: '(?<=----)[\\r\\n]+$'
+        1: name: 'entity.name.function.asciidoc'
+        2: name: 'markup.meta.attribute-list.asciidoc'
       patterns: [
         name: 'markup.raw.asciidoc'
         begin: '^(-{4,})\\s*$'
         beginCaptures:
           0: name: 'support.asciidoc'
-        patterns: [include: '#block-callout']
+        patterns: [
+          include: '#block-callout'
+        ]
         end: '^\\1*$'
         endCaptures:
           0: name: 'support.asciidoc'
       ]
+      end: '(?<=----)[\\r\\n]+$'
+
     # add listing block
     codeBlocks.push
       name: 'markup.raw.asciidoc'
       begin: '^(-{4,})\\s*$'
       beginCaptures:
         0: name: 'support.asciidoc'
-      patterns: [include: '#block-callout']
+      patterns: [
+        include: '#block-callout'
+      ]
       end: '^\\1*$'
       endCaptures:
         0: name: 'support.asciidoc'
 
-    if debug
-      console.log CSON.stringify codeBlocks
+    if debug then console.log CSON.stringify codeBlocks
     codeBlocks
 
   makeMarkdownBlocks: (languages, debug = false) ->
@@ -70,15 +75,15 @@ module.exports =
       begin: "^\\s*(`{3,})\\s*(?i:(#{lang.pattern}))\\s*$"
       beginCaptures:
         0: name: 'support.asciidoc'
-      end: '^\\s*\\1\\s*$'
-      endCaptures:
-        0: name: 'support.asciidoc'
       contentName: "#{lang.type}.embedded.#{lang.code}"
       patterns: [
         include: '#block-callout'
       ,
         include: "#{lang.type}.#{lang.code}"
       ]
+      end: '^\\s*\\1\\s*$'
+      endCaptures:
+        0: name: 'support.asciidoc'
 
     # add generic block
     codeBlocks.push
@@ -86,11 +91,12 @@ module.exports =
       begin: '^\\s*(`{3,}).*$'
       beginCaptures:
         0: name: 'support.asciidoc'
-      patterns: [include: '#block-callout']
+      patterns: [
+        include: '#block-callout'
+      ]
       end: '^\\s*\\1\\s*$'
       endCaptures:
         0: name: 'support.asciidoc'
 
-    if debug
-      console.log CSON.stringify codeBlocks
+    if debug then console.log CSON.stringify codeBlocks
     codeBlocks

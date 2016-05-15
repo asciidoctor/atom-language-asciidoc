@@ -150,7 +150,41 @@ repository:
     patterns: [
       {
         name: "meta.definition.attribute-entry.asciidoc"
-        match: "^(:)(!?\\w[\\p{Blank}\\w-]*?|\\w[\\p{Blank}\\w-]*?!?)(:)(\\p{Blank}+.*)?$"
+        begin: "^(:)(!?\\w.*?)(:)(\\p{Blank}+.+\\p{Blank}\\+)$"
+        beginCaptures:
+          "1":
+            name: "punctuation.separator.attribute-entry.asciidoc"
+          "2":
+            name: "support.constant.attribute-name.asciidoc"
+          "3":
+            name: "punctuation.separator.attribute-entry.asciidoc"
+          "4":
+            name: "string.unquoted.attribute-value.asciidoc"
+            patterns: [
+              {
+                include: "#inlines"
+              }
+              {
+                include: "#line-break"
+              }
+            ]
+        contentName: "string.unquoted.attribute-value.asciidoc"
+        patterns: [
+          {
+            include: "#inlines"
+          }
+          {
+            include: "#line-break"
+          }
+        ]
+        end: "^\\p{Blank}+.+$(?<!\\+)|^\\p{Blank}*$"
+        endCaptures:
+          "0":
+            name: "string.unquoted.attribute-value.asciidoc"
+      }
+      {
+        name: "meta.definition.attribute-entry.asciidoc"
+        match: "^(:)(!?\\w.*?)(:)(\\p{Blank}+(.*))?$"
         captures:
           "1":
             name: "punctuation.separator.asciidoc"
@@ -160,6 +194,14 @@ repository:
             name: "punctuation.separator.asciidoc"
           "4":
             name: "string.unquoted.attribute-value.asciidoc"
+            patterns: [
+              {
+                include: "#inlines"
+              }
+              {
+                include: "#line-break"
+              }
+            ]
       }
     ]
   "block-callout":

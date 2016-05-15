@@ -38,7 +38,6 @@ module.exports =
         0: name: 'support.asciidoc'
         1: name: 'entity.name.function.asciidoc'
         2: name: 'markup.meta.attribute-list.asciidoc'
-      end: '(?<=----)[\\r\\n]+$'
       patterns: [
         name: 'markup.raw.asciidoc'
         begin: '^(-{4,})\\s*$'
@@ -51,6 +50,7 @@ module.exports =
         endCaptures:
           0: name: 'support.asciidoc'
       ]
+      end: '(?<=----)[\\r\\n]+$'
 
     # add listing block
     codeBlocks.push
@@ -75,15 +75,15 @@ module.exports =
       begin: "^\\s*(`{3,})\\s*(?i:(#{lang.pattern}))\\s*$"
       beginCaptures:
         0: name: 'support.asciidoc'
-      end: '^\\s*\\1\\s*$'
-      endCaptures:
-        0: name: 'support.asciidoc'
       contentName: "#{lang.type}.embedded.#{lang.code}"
       patterns: [
         include: '#block-callout'
       ,
         include: "#{lang.type}.#{lang.code}"
       ]
+      end: '^\\s*\\1\\s*$'
+      endCaptures:
+        0: name: 'support.asciidoc'
 
     # add generic block
     codeBlocks.push

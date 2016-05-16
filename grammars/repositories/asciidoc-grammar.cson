@@ -103,6 +103,8 @@ repository:
     ,
       include: '#subscript'
     ,
+      include: '#mark'
+    ,
       include: '#general-block-macro'
     ,
       include: '#anchor-macro'

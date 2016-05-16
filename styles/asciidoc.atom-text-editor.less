@@ -15,6 +15,10 @@ atom-text-editor::shadow, :host {
         font-style: italic;
       }
 
+      &.highlight {
+        color: mix(@syntax-color-constant, @syntax-color-keyword, 50%);
+      }
+
       &.character-reference {
         font-style: italic;
         color: mix(red, @syntax-text-color, 20%);

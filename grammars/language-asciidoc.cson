@@ -155,6 +155,9 @@ repository:
         include: "#subscript"
       }
       {
+        include: "#mark"
+      }
+      {
         include: "#general-block-macro"
       }
       {
@@ -700,6 +703,35 @@ repository:
       {
         name: "markup.link.email.asciidoc"
         match: "\\p{Word}[\\p{Word}.%+-]*(@)\\p{Alnum}[\\p{Alnum}.-]*(\\.)\\p{Alpha}{2,4}\\b"
+      }
+    ]
+  mark:
+    patterns: [
+      {
+        name: "markup.mark.unconstrained.asciidoc"
+        match: "(?<!\\\\\\\\)(\\[[^\\]]+?\\])?((##)(.+?)(##))"
+        captures:
+          "1":
+            name: "markup.meta.attribute-list.asciidoc"
+          "2":
+            name: "markup.highlight.asciidoc"
+          "3":
+            name: "punctuation.definition.asciidoc"
+          "5":
+            name: "punctuation.definition.asciidoc"
+      }
+      {
+        name: "markup.mark.constrained.asciidoc"
+        match: "(?<![\\\\;:\\p{Word}#])(\\[[^\\]]+?\\])?((#)(\\S|\\S.*?\\S)(#)(?!\\p{Word}))"
+        captures:
+          "1":
+            name: "markup.meta.attribute-list.asciidoc"
+          "2":
+            name: "markup.highlight.asciidoc"
+          "3":
+            name: "punctuation.definition.asciidoc"
+          "5":
+            name: "punctuation.definition.asciidoc"
       }
     ]
   "menu-macro":

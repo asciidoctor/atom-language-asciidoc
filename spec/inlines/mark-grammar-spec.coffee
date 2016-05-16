@@ -130,17 +130,17 @@ describe 'mark text', ->
       {tokens} = grammar.tokenizeLine '[role]#mark#'
       expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqualJson value: '[role]', scopes: ['source.asciidoc', 'markup.mark.constrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
-      expect(tokens[1]).toEqualJson value: '#', scopes: ['source.asciidoc', 'markup.mark.constrained.asciidoc', 'markup.highlight.asciidoc', 'punctuation.definition.asciidoc']
-      expect(tokens[2]).toEqualJson value: 'mark', scopes: ['source.asciidoc', 'markup.mark.constrained.asciidoc', 'markup.highlight.asciidoc']
-      expect(tokens[3]).toEqualJson value: '#', scopes: ['source.asciidoc', 'markup.mark.constrained.asciidoc', 'markup.highlight.asciidoc', 'punctuation.definition.asciidoc']
+      expect(tokens[1]).toEqualJson value: '#', scopes: ['source.asciidoc', 'markup.mark.constrained.asciidoc', 'markup.mark.asciidoc', 'punctuation.definition.asciidoc']
+      expect(tokens[2]).toEqualJson value: 'mark', scopes: ['source.asciidoc', 'markup.mark.constrained.asciidoc', 'markup.mark.asciidoc']
+      expect(tokens[3]).toEqualJson value: '#', scopes: ['source.asciidoc', 'markup.mark.constrained.asciidoc', 'markup.mark.asciidoc', 'punctuation.definition.asciidoc']
 
     it 'when having [role1 role2] set on constrained mark text', ->
       {tokens} = grammar.tokenizeLine '[role1 role2]#mark#'
       expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqualJson value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.mark.constrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
-      expect(tokens[1]).toEqualJson value: '#', scopes: ['source.asciidoc', 'markup.mark.constrained.asciidoc', 'markup.highlight.asciidoc', 'punctuation.definition.asciidoc']
-      expect(tokens[2]).toEqualJson value: 'mark', scopes: ['source.asciidoc', 'markup.mark.constrained.asciidoc', 'markup.highlight.asciidoc']
-      expect(tokens[3]).toEqualJson value: '#', scopes: ['source.asciidoc', 'markup.mark.constrained.asciidoc', 'markup.highlight.asciidoc', 'punctuation.definition.asciidoc']
+      expect(tokens[1]).toEqualJson value: '#', scopes: ['source.asciidoc', 'markup.mark.constrained.asciidoc', 'markup.mark.asciidoc', 'punctuation.definition.asciidoc']
+      expect(tokens[2]).toEqualJson value: 'mark', scopes: ['source.asciidoc', 'markup.mark.constrained.asciidoc', 'markup.mark.asciidoc']
+      expect(tokens[3]).toEqualJson value: '#', scopes: ['source.asciidoc', 'markup.mark.constrained.asciidoc', 'markup.mark.asciidoc', 'punctuation.definition.asciidoc']
 
   describe 'Should tokenizes unconstrained math text', ->
 
@@ -168,14 +168,14 @@ describe 'mark text', ->
       {tokens} = grammar.tokenizeLine '[role]##mark##'
       expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqualJson value: '[role]', scopes: ['source.asciidoc', 'markup.mark.unconstrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
-      expect(tokens[1]).toEqualJson value: '##', scopes: ['source.asciidoc', 'markup.mark.unconstrained.asciidoc', 'markup.highlight.asciidoc', 'punctuation.definition.asciidoc']
-      expect(tokens[2]).toEqualJson value: 'mark', scopes: ['source.asciidoc', 'markup.mark.unconstrained.asciidoc', 'markup.highlight.asciidoc']
-      expect(tokens[3]).toEqualJson value: '##', scopes: ['source.asciidoc', 'markup.mark.unconstrained.asciidoc', 'markup.highlight.asciidoc', 'punctuation.definition.asciidoc']
+      expect(tokens[1]).toEqualJson value: '##', scopes: ['source.asciidoc', 'markup.mark.unconstrained.asciidoc', 'markup.mark.asciidoc', 'punctuation.definition.asciidoc']
+      expect(tokens[2]).toEqualJson value: 'mark', scopes: ['source.asciidoc', 'markup.mark.unconstrained.asciidoc', 'markup.mark.asciidoc']
+      expect(tokens[3]).toEqualJson value: '##', scopes: ['source.asciidoc', 'markup.mark.unconstrained.asciidoc', 'markup.mark.asciidoc', 'punctuation.definition.asciidoc']
 
     it 'when having [role1 role2] set on unconstrained mark text', ->
       {tokens} = grammar.tokenizeLine '[role1 role2]##mark##'
       expect(tokens).toHaveLength 4
       expect(tokens[0]).toEqualJson value: '[role1 role2]', scopes: ['source.asciidoc', 'markup.mark.unconstrained.asciidoc', 'markup.meta.attribute-list.asciidoc']
-      expect(tokens[1]).toEqualJson value: '##', scopes: ['source.asciidoc', 'markup.mark.unconstrained.asciidoc', 'markup.highlight.asciidoc', 'punctuation.definition.asciidoc']
-      expect(tokens[2]).toEqualJson value: 'mark', scopes: ['source.asciidoc', 'markup.mark.unconstrained.asciidoc', 'markup.highlight.asciidoc']
-      expect(tokens[3]).toEqualJson value: '##', scopes: ['source.asciidoc', 'markup.mark.unconstrained.asciidoc', 'markup.highlight.asciidoc', 'punctuation.definition.asciidoc']
+      expect(tokens[1]).toEqualJson value: '##', scopes: ['source.asciidoc', 'markup.mark.unconstrained.asciidoc', 'markup.mark.asciidoc', 'punctuation.definition.asciidoc']
+      expect(tokens[2]).toEqualJson value: 'mark', scopes: ['source.asciidoc', 'markup.mark.unconstrained.asciidoc', 'markup.mark.asciidoc']
+      expect(tokens[3]).toEqualJson value: '##', scopes: ['source.asciidoc', 'markup.mark.unconstrained.asciidoc', 'markup.mark.asciidoc', 'punctuation.definition.asciidoc']

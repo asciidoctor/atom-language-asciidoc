@@ -1,6 +1,8 @@
 @import 'syntax-variables';
 
 @syntax-text-color-unobtrusive: fadeout(@syntax-text-color, 50%);
+@syntax-text-mark: mix(@syntax-color-constant, @syntax-color-keyword, 50%);
+@syntax-text-highlight: mix(yellow, @syntax-background-color, 70%);
 
 atom-text-editor::shadow, :host {
   .asciidoc {
@@ -15,8 +17,13 @@ atom-text-editor::shadow, :host {
         font-style: italic;
       }
 
+      &.mark {
+        color: @syntax-text-mark;
+      }
+
       &.highlight {
-        color: mix(@syntax-color-constant, @syntax-color-keyword, 50%);
+        color: black;
+        background-color: @syntax-text-highlight;
       }
 
       &.character-reference {

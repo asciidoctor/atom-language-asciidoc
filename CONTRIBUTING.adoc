@@ -94,17 +94,17 @@ The file link:grammars/language-asciidoc.cson[grammars/language-asciidoc.cson] i
 atom -d .
 ----
 
-* Open the Command Palette with press keys: `Ctrl+Shift-P`
+* Open the Command Palette with press keys: `Ctrl+Shift+P`
 * In the Command Palette, find and choose the item named `Asciidoc Grammar: Compile grammar and reload`
 ** Tips: write only `agc` for a quick access to the item.
 * The grammar file is re-generated automatically.
 
 ==== Live Reload
 
-* For automaticaly reload the grammar when a `.cson` file is saved:
+* To automaticaly reload the grammar when a `.cson` file is saved:
 ** In the package settings, checked: `[Only on Developer Mode] Grammars live reload`
 ** To quickly toggle Live Reload:
-*** Open the Command Palette with press keys: `Ctrl+Shift-P`
+*** Open the Command Palette with press keys: `Ctrl+Shift+P`
 *** In the Command Palette, find and choose the item named `Asciidoc Grammar: Toggle Live Reload`
 **** Tips: write only `agt` for a quick access to the item.
 

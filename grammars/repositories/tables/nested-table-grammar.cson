@@ -23,7 +23,7 @@ patterns: [
     match: '(^|[^\\p{Blank}\\\\]*)(?<!\\\\)(!)'
     captures:
       1: name: 'markup.meta.attribute-list.asciidoc'
-      2: name: 'markup.table.delimiter.cell.asciidoc'
+      2: name: 'markup.table.cell.delimiter.asciidoc'
   ,
     include: '#tables-includes'
   ]

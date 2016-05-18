@@ -25,7 +25,7 @@ patterns: [
     comment: 'cell separator'
     match: ','
     captures:
-      0: name: 'markup.table.delimiter.cell.asciidoc'
+      0: name: 'markup.table.cell.delimiter.asciidoc'
   ,
     include: '#general-block-macro'
   ]

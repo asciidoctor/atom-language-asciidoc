@@ -925,7 +925,7 @@ repository:
             match: ","
             captures:
               "0":
-                name: "markup.table.delimiter.cell.asciidoc"
+                name: "markup.table.cell.delimiter.asciidoc"
           }
           {
             include: "#general-block-macro"
@@ -952,7 +952,7 @@ repository:
             match: ":"
             captures:
               "0":
-                name: "markup.table.delimiter.cell.asciidoc"
+                name: "markup.table.cell.delimiter.asciidoc"
           }
           {
             include: "#general-block-macro"
@@ -981,7 +981,7 @@ repository:
               "1":
                 name: "markup.meta.attribute-list.asciidoc"
               "2":
-                name: "markup.table.delimiter.cell.asciidoc"
+                name: "markup.table.cell.delimiter.asciidoc"
           }
           {
             include: "#tables-includes"
@@ -1010,7 +1010,7 @@ repository:
               "1":
                 name: "markup.meta.attribute-list.asciidoc"
               "2":
-                name: "markup.table.delimiter.cell.asciidoc"
+                name: "markup.table.cell.delimiter.asciidoc"
           }
           {
             include: "#tables-includes"

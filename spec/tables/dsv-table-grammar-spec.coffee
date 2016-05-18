@@ -29,17 +29,17 @@ describe 'Should tokenizes DSV table when', ->
     expect(tokens[0][0]).toEqualJson value: ':===', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'markup.table.delimiter.asciidoc']
     expect(tokens[1]).toHaveLength 5
     expect(tokens[1][0]).toEqualJson value: 'Artist', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc']
-    expect(tokens[1][1]).toEqualJson value: ':', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc', 'markup.table.delimiter.cell.asciidoc']
+    expect(tokens[1][1]).toEqualJson value: ':', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc', 'markup.table.cell.delimiter.asciidoc']
     expect(tokens[1][2]).toEqualJson value: 'Track', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc']
-    expect(tokens[1][3]).toEqualJson value: ':', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc', 'markup.table.delimiter.cell.asciidoc']
+    expect(tokens[1][3]).toEqualJson value: ':', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc', 'markup.table.cell.delimiter.asciidoc']
     expect(tokens[1][4]).toEqualJson value: 'Genre', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc']
     expect(tokens[2]).toHaveLength 1
     expect(tokens[2][0]).toEqualJson value: '', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc']
     expect(tokens[3]).toHaveLength 5
     expect(tokens[3][0]).toEqualJson value: 'Tool', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc']
-    expect(tokens[3][1]).toEqualJson value: ':', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc', 'markup.table.delimiter.cell.asciidoc']
+    expect(tokens[3][1]).toEqualJson value: ':', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc', 'markup.table.cell.delimiter.asciidoc']
     expect(tokens[3][2]).toEqualJson value: 'Stinkfist', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc']
-    expect(tokens[3][3]).toEqualJson value: ':', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc', 'markup.table.delimiter.cell.asciidoc']
+    expect(tokens[3][3]).toEqualJson value: ':', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc', 'markup.table.cell.delimiter.asciidoc']
     expect(tokens[3][4]).toEqualJson value: 'Metal', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'string.unquoted.asciidoc']
     expect(tokens[4]).toHaveLength 1
     expect(tokens[4][0]).toEqualJson value: ':===', scopes: ['source.asciidoc', 'markup.table.dsv.asciidoc', 'markup.table.delimiter.asciidoc']

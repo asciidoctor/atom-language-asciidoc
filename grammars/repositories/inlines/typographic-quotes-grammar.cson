@@ -10,13 +10,13 @@ patterns: [
   #   "`double-quoted`"
   #   [bar]"`double-quoted`"
   #
-  name: 'markup.other.typographic-quotes.asciidoc'
+  name: 'markup.quote.typographic-quotes.asciidoc'
   comment: 'double-quoted'
   match: '(?:^|(?<!\\p{Word}|;|:))(\\[([^\\]]+?)\\])?(\"\`)(\\S|\\S.*?\\S)(\`\")(?!\\p{Word})'
   captures:
     1: name: 'markup.meta.attribute-list.asciidoc'
-    3: name: 'constant.other.symbol.asciidoc'
-    5: name: 'constant.other.symbol.asciidoc'
+    3: name: 'punctuation.definition.asciidoc'
+    5: name: 'punctuation.definition.asciidoc'
 ,
   # Matches typographic single quotes.
   #
@@ -25,11 +25,11 @@ patterns: [
   #   '`single-quoted`'
   #   [bar]'`single-quoted`'
   #
-  name: 'markup.other.typographic-quotes.asciidoc'
+  name: 'markup.quote.typographic-quotes.asciidoc'
   comment: 'single-quoted'
   match: '(?:^|(?<!\\p{Word}|;|:))(\\[([^\\]]+?)\\])?(\'\`)(\\S|\\S.*?\\S)(\`\')(?!\\p{Word})'
   captures:
     1: name: 'markup.meta.attribute-list.asciidoc'
-    3: name: 'constant.other.symbol.asciidoc'
-    5: name: 'constant.other.symbol.asciidoc'
+    3: name: 'punctuation.definition.asciidoc'
+    5: name: 'punctuation.definition.asciidoc'
 ]

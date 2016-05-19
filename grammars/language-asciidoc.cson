@@ -863,28 +863,28 @@ repository:
   "typographic-quotes":
     patterns: [
       {
-        name: "markup.other.typographic-quotes.asciidoc"
+        name: "markup.quote.typographic-quotes.asciidoc"
         comment: "double-quoted"
         match: "(?:^|(?<!\\p{Word}|;|:))(\\[([^\\]]+?)\\])?(\"`)(\\S|\\S.*?\\S)(`\")(?!\\p{Word})"
         captures:
           "1":
             name: "markup.meta.attribute-list.asciidoc"
           "3":
-            name: "constant.other.symbol.asciidoc"
+            name: "punctuation.definition.asciidoc"
           "5":
-            name: "constant.other.symbol.asciidoc"
+            name: "punctuation.definition.asciidoc"
       }
       {
-        name: "markup.other.typographic-quotes.asciidoc"
+        name: "markup.quote.typographic-quotes.asciidoc"
         comment: "single-quoted"
         match: "(?:^|(?<!\\p{Word}|;|:))(\\[([^\\]]+?)\\])?('`)(\\S|\\S.*?\\S)(`')(?!\\p{Word})"
         captures:
           "1":
             name: "markup.meta.attribute-list.asciidoc"
           "3":
-            name: "constant.other.symbol.asciidoc"
+            name: "punctuation.definition.asciidoc"
           "5":
-            name: "constant.other.symbol.asciidoc"
+            name: "punctuation.definition.asciidoc"
       }
     ]
   "xref-macro":

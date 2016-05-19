@@ -7,11 +7,11 @@ patterns: [
   # Examples
   #
   #   :attr: foo +
-  #       foo +
+  #       foo + \
   #       bar
   #
   name: 'meta.definition.attribute-entry.asciidoc'
-  begin: '^(:)(!?\\w.*?)(:)(\\p{Blank}+.+\\p{Blank}\\+)$'
+  begin: '^(:)(!?\\w.*?)(:)(\\p{Blank}+.+\\p{Blank}(?:\\+|\\\\))$'
   beginCaptures:
     1: name: 'punctuation.separator.attribute-entry.asciidoc'
     2: name: 'support.constant.attribute-name.asciidoc'
@@ -21,15 +21,23 @@ patterns: [
       patterns: [
         include: '#inlines'
       ,
+        include: '#hard-break-backslash'
+      ,
         include: '#line-break'
+      ,
+        include: '#line-break-backslash'
       ]
   contentName: 'string.unquoted.attribute-value.asciidoc'
   patterns: [
     include: '#inlines'
   ,
+    include: '#hard-break-backslash'
+  ,
     include: '#line-break'
+  ,
+    include: '#line-break-backslash'
   ]
-  end: '^\\p{Blank}+.+$(?<!\\+)|^\\p{Blank}*$'
+  end: '^\\p{Blank}+.+$(?<!\\+|\\\\)|^\\p{Blank}*$'
   endCaptures:
     0: name: 'string.unquoted.attribute-value.asciidoc'
 ,

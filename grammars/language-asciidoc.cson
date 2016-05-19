@@ -150,7 +150,7 @@ repository:
     patterns: [
       {
         name: "meta.definition.attribute-entry.asciidoc"
-        begin: "^(:)(!?\\w.*?)(:)(\\p{Blank}+.+\\p{Blank}\\+)$"
+        begin: "^(:)(!?\\w.*?)(:)(\\p{Blank}+.+\\p{Blank}(?:\\+|\\\\))$"
         beginCaptures:
           "1":
             name: "punctuation.separator.attribute-entry.asciidoc"
@@ -165,7 +165,13 @@ repository:
                 include: "#inlines"
               }
               {
+                include: "#hard-break-backslash"
+              }
+              {
                 include: "#line-break"
+              }
+              {
+                include: "#line-break-backslash"
               }
             ]
         contentName: "string.unquoted.attribute-value.asciidoc"
@@ -174,10 +180,16 @@ repository:
             include: "#inlines"
           }
           {
+            include: "#hard-break-backslash"
+          }
+          {
             include: "#line-break"
           }
+          {
+            include: "#line-break-backslash"
+          }
         ]
-        end: "^\\p{Blank}+.+$(?<!\\+)|^\\p{Blank}*$"
+        end: "^\\p{Blank}+.+$(?<!\\+|\\\\)|^\\p{Blank}*$"
         endCaptures:
           "0":
             name: "string.unquoted.attribute-value.asciidoc"
@@ -275,11 +287,29 @@ repository:
             name: "entity.name.function.asciidoc"
       }
     ]
+  "hard-break-backslash":
+    patterns: [
+      {
+        match: "(?<=\\S)\\p{Blank}+(\\+ \\\\)$"
+        captures:
+          "1":
+            name: "constant.other.symbol.hard-break.asciidoc"
+      }
+    ]
   "horizontal-rule":
     patterns: [
       {
         name: "constant.other.symbol.horizontal-rule.asciidoc"
         match: "^(?:'|<){3,}$|^ {0,3}([-\\*'])( *)\\1\\2\\1$"
+      }
+    ]
+  "line-break-backslash":
+    patterns: [
+      {
+        match: "(?<=\\S)\\p{Blank}+(\\\\)$"
+        captures:
+          "1":
+            name: "variable.line-break.asciidoc"
       }
     ]
   "line-break":

@@ -10,7 +10,7 @@ patterns: [
   #   "`double-quoted`"
   #   [bar]"`double-quoted`"
   #
-  name: 'markup.quote.typographic-quotes.asciidoc'
+  name: 'markup.italic.quote.typographic-quotes.asciidoc'
   comment: 'double-quoted'
   match: '(?:^|(?<!\\p{Word}|;|:))(\\[([^\\]]+?)\\])?(\"\`)(\\S|\\S.*?\\S)(\`\")(?!\\p{Word})'
   captures:
@@ -25,7 +25,7 @@ patterns: [
   #   '`single-quoted`'
   #   [bar]'`single-quoted`'
   #
-  name: 'markup.quote.typographic-quotes.asciidoc'
+  name: 'markup.italic.quote.typographic-quotes.asciidoc'
   comment: 'single-quoted'
   match: '(?:^|(?<!\\p{Word}|;|:))(\\[([^\\]]+?)\\])?(\'\`)(\\S|\\S.*?\\S)(\`\')(?!\\p{Word})'
   captures:

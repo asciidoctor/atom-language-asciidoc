@@ -863,7 +863,7 @@ repository:
   "typographic-quotes":
     patterns: [
       {
-        name: "markup.quote.typographic-quotes.asciidoc"
+        name: "markup.italic.quote.typographic-quotes.asciidoc"
         comment: "double-quoted"
         match: "(?:^|(?<!\\p{Word}|;|:))(\\[([^\\]]+?)\\])?(\"`)(\\S|\\S.*?\\S)(`\")(?!\\p{Word})"
         captures:
@@ -875,7 +875,7 @@ repository:
             name: "punctuation.definition.asciidoc"
       }
       {
-        name: "markup.quote.typographic-quotes.asciidoc"
+        name: "markup.italic.quote.typographic-quotes.asciidoc"
         comment: "single-quoted"
         match: "(?:^|(?<!\\p{Word}|;|:))(\\[([^\\]]+?)\\])?('`)(\\S|\\S.*?\\S)(`')(?!\\p{Word})"
         captures:

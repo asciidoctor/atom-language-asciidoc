@@ -1,0 +1,59 @@
+key: 'mark'
+
+patterns: [
+
+  # Matches mark unconstrained phrases
+  #
+  # Examples:
+  #
+  #   m[role]##ark## phrase
+  #
+  name: 'markup.mark.unconstrained.asciidoc'
+  match: '(?<!\\\\\\\\)(\\[[^\\]]+?\\])((##)(.+?)(##))'
+  captures:
+    1: name: 'markup.meta.attribute-list.asciidoc'
+    2: name: 'markup.mark.asciidoc'
+    3: name: 'punctuation.definition.asciidoc'
+    5: name: 'punctuation.definition.asciidoc'
+,
+  # Matches mark unconstrained phrases. (highlight)
+  #
+  # Examples:
+  #
+  #   m##ark## phrase
+  #
+  name: 'markup.mark.unconstrained.asciidoc'
+  match: '(?<!\\\\\\\\)((##)(.+?)(##))'
+  captures:
+    1: name: 'markup.highlight.asciidoc'
+    2: name: 'punctuation.definition.asciidoc'
+    4: name: 'punctuation.definition.asciidoc'
+,
+  # Matches mark constrained phrases
+  #
+  # Examples:
+  #
+  #   [smal]#mark phrase#
+  #
+  name: 'markup.mark.constrained.asciidoc'
+  match: '(?<![\\\\;:\\p{Word}#])(\\[[^\\]]+?\\])((#)(\\S|\\S.*?\\S)(#)(?!\\p{Word}))'
+  captures:
+    1: name: 'markup.meta.attribute-list.asciidoc'
+    2: name: 'markup.mark.asciidoc'
+    3: name: 'punctuation.definition.asciidoc'
+    5: name: 'punctuation.definition.asciidoc'
+,
+  # Matches mark constrained phrases (highlight)
+  #
+  # Examples:
+  #
+  #   #mark phrase#
+  #
+  name: 'markup.mark.constrained.asciidoc'
+  match: '(?<![\\\\;:\\p{Word}#])(\\[[^\\]]+?\\])?((#)(\\S|\\S.*?\\S)(#)(?!\\p{Word}))'
+  captures:
+    1: name: 'markup.meta.attribute-list.asciidoc'
+    2: name: 'markup.highlight.asciidoc'
+    3: name: 'punctuation.definition.asciidoc'
+    5: name: 'punctuation.definition.asciidoc'
+]

@@ -1,0 +1,33 @@
+key: 'table-dsv'
+
+patterns: [
+
+  # Matches DSV tables.
+  #
+  # Examples:
+  #
+  # :===
+  # Artist:Track:Genre
+  #
+  # Tool:Stinkfist:Metal
+  # The Lumineers:Ho Hey:Folk Rock
+  # Baauer:Harlem Shake:Hip Hop
+  # :===
+  #
+  name: 'markup.table.dsv.asciidoc'
+  begin: '^(:===)$'
+  beginCaptures:
+    0: name: 'markup.table.delimiter.asciidoc'
+  contentName: 'string.unquoted.asciidoc'
+  patterns: [
+    comment: 'cell separator'
+    match: ':'
+    captures:
+      0: name: 'markup.table.cell.delimiter.asciidoc'
+  ,
+    include: '#general-block-macro'
+  ]
+  end: '^(\\1)$'
+  endCaptures:
+    0: name: 'markup.table.delimiter.asciidoc'
+]

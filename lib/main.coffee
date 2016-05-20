@@ -61,7 +61,7 @@ module.exports =
       'adoc.txt'
     ]
 
-    @helper.appendPartialGrammarsDirectory rootGrammar, ['partials/', 'inlines/', 'blocks/']
+    @helper.appendPartialGrammarsDirectory rootGrammar, ['partials/', 'inlines/', 'blocks/', 'tables/']
 
     # Load languages list
     languages = @helper.readGrammarFile 'languages.cson'

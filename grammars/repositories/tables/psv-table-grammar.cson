@@ -1,0 +1,33 @@
+key: 'table-psv'
+
+patterns: [
+
+  # Matches PSV tables.
+  #
+  # Examples:
+  #
+  # |===
+  #  |1      >s|2   |3        |4
+  # ^|5 2.2+^.^|6      .3+<.>m|7
+  # ^|8
+  #  |9     2+>|10
+  # |===
+  #
+  name: 'markup.table.asciidoc'
+  begin: '^(\\|===)$'
+  beginCaptures:
+    0: name: 'markup.table.delimiter.asciidoc'
+  contentName: 'markup.table.content.asciidoc'
+  patterns: [
+    comment: 'cell separator and attributes'
+    match: '(^|[^\\p{Blank}\\\\]*)(?<!\\\\)(\\|)'
+    captures:
+      1: name: 'markup.meta.attribute-list.asciidoc'
+      2: name: 'markup.table.cell.delimiter.asciidoc'
+  ,
+    include: '#tables-includes'
+  ]
+  end: '^(\\1)$'
+  endCaptures:
+    0: name: 'markup.table.delimiter.asciidoc'
+]

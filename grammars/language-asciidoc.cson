@@ -31,6 +31,9 @@ patterns: [
     include: "#section"
   }
   {
+    include: "#tables"
+  }
+  {
     include: "#blocks"
   }
   {
@@ -59,9 +62,6 @@ repository:
         include: "#quote-block"
       }
       {
-        include: "#table"
-      }
-      {
         include: "#code-blocks"
       }
       {
@@ -87,6 +87,54 @@ repository:
       }
       {
         include: "#source-markdown"
+      }
+    ]
+  tables:
+    patterns: [
+      {
+        include: "#table-psv"
+      }
+      {
+        include: "#table-nested"
+      }
+      {
+        include: "#table-csv"
+      }
+      {
+        include: "#table-dsv"
+      }
+    ]
+  "tables-includes":
+    patterns: [
+      {
+        include: "#comment"
+      }
+      {
+        include: "#callout-list-item"
+      }
+      {
+        include: "#attribute-entry"
+      }
+      {
+        include: "#block-title"
+      }
+      {
+        include: "#explicit-paragraph"
+      }
+      {
+        include: "#section"
+      }
+      {
+        include: "#blocks"
+      }
+      {
+        include: "#list"
+      }
+      {
+        include: "#inlines"
+      }
+      {
+        include: "#line-break"
       }
     ]
   inlines:
@@ -859,30 +907,119 @@ repository:
         end: "\\1"
       }
     ]
-  table:
+  "table-csv":
     patterns: [
       {
-        begin: "^(\\|={3,}\\s*)$"
+        name: "markup.table.csv.asciidoc"
+        begin: "^(,===)$"
         beginCaptures:
           "0":
-            name: "support.table.asciidoc"
+            name: "markup.table.delimiter.asciidoc"
+        contentName: "string.unquoted.asciidoc"
         patterns: [
           {
-            match: "(^|\\s+)([^\\|\\s\\\\]*)(\\|)(?!={3,}|\\|)"
-            captures:
-              "2":
-                name: "support.table.spec.asciidoc"
-              "3":
-                name: "support.table.asciidoc"
+            include: "text.csv"
           }
           {
-            include: "#inlines"
+            comment: "cell separator"
+            match: ","
+            captures:
+              "0":
+                name: "markup.table.cell.delimiter.asciidoc"
+          }
+          {
+            include: "#general-block-macro"
           }
         ]
-        end: "^\\1$"
+        end: "^(\\1)$"
         endCaptures:
           "0":
-            name: "support.table.asciidoc"
+            name: "markup.table.delimiter.asciidoc"
+      }
+    ]
+  "table-dsv":
+    patterns: [
+      {
+        name: "markup.table.dsv.asciidoc"
+        begin: "^(:===)$"
+        beginCaptures:
+          "0":
+            name: "markup.table.delimiter.asciidoc"
+        contentName: "string.unquoted.asciidoc"
+        patterns: [
+          {
+            comment: "cell separator"
+            match: ":"
+            captures:
+              "0":
+                name: "markup.table.cell.delimiter.asciidoc"
+          }
+          {
+            include: "#general-block-macro"
+          }
+        ]
+        end: "^(\\1)$"
+        endCaptures:
+          "0":
+            name: "markup.table.delimiter.asciidoc"
+      }
+    ]
+  "table-nested":
+    patterns: [
+      {
+        name: "markup.table.nested.asciidoc"
+        begin: "^(!===)$"
+        beginCaptures:
+          "0":
+            name: "markup.table.delimiter.asciidoc"
+        contentName: "markup.table.content.asciidoc"
+        patterns: [
+          {
+            comment: "cell separator and attributes"
+            match: "(^|[^\\p{Blank}\\\\]*)(?<!\\\\)(!)"
+            captures:
+              "1":
+                name: "markup.meta.attribute-list.asciidoc"
+              "2":
+                name: "markup.table.cell.delimiter.asciidoc"
+          }
+          {
+            include: "#tables-includes"
+          }
+        ]
+        end: "^(\\1)$"
+        endCaptures:
+          "0":
+            name: "markup.table.delimiter.asciidoc"
+      }
+    ]
+  "table-psv":
+    patterns: [
+      {
+        name: "markup.table.asciidoc"
+        begin: "^(\\|===)$"
+        beginCaptures:
+          "0":
+            name: "markup.table.delimiter.asciidoc"
+        contentName: "markup.table.content.asciidoc"
+        patterns: [
+          {
+            comment: "cell separator and attributes"
+            match: "(^|[^\\p{Blank}\\\\]*)(?<!\\\\)(\\|)"
+            captures:
+              "1":
+                name: "markup.meta.attribute-list.asciidoc"
+              "2":
+                name: "markup.table.cell.delimiter.asciidoc"
+          }
+          {
+            include: "#tables-includes"
+          }
+        ]
+        end: "^(\\1)$"
+        endCaptures:
+          "0":
+            name: "markup.table.delimiter.asciidoc"
       }
     ]
   "source-asciidoctor":

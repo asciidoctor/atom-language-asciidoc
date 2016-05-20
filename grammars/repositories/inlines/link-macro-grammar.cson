@@ -10,11 +10,27 @@ patterns: [
   #   http://github.com[GitHub]
   #
   name: 'markup.other.url.asciidoc'
-  match: '(^|link:|<|[\\s>\\(\\)\\[\\];])((?<!\\\\)(?:https?|file|ftp|irc)://[^\\s\\[\\]<]*[^\\s.,\\[\\]<])(?:\\[((?:\\\\\\]|[^\\]])*?)\\])?'
+  match: '(?:^|<|[\\s>\\(\\)\\[\\];])((?<!\\\\)(?:https?|file|ftp|irc)://[^\\s\\[\\]<]*[^\\s.,\\[\\]<\\)])(?:\\[((?:\\\\\\]|[^\\]])*?)\\])?'
   captures:
-    1: name: 'entity.name.function.asciidoc'
-    2: name: 'markup.link.asciidoc'
-    3: name: 'string.unquoted.asciidoc'
+    1:
+      name: 'markup.link.asciidoc'
+      patterns: [
+        include: '#attribute-reference'
+      ]
+    2: name: 'string.unquoted.asciidoc'
+,
+  # Matches an implicit link with only attribute reference.
+  # attribute must beginning with `uri-`
+  #
+  # Examples
+  #
+  #   {uri-repo}[GitHub]
+  #
+  name: 'markup.other.url.asciidoc'
+  match: '(?:^|<|[\\p{Blank}>\\(\\)\\[\\];])((?<!\\\\)\\{uri-\\w+(?:[\\-]\\w+)*(?<!\\\\)\\})(?:\\[((?:\\\\\\]|[^\\]])*?)\\])'
+  captures:
+    1: name: 'markup.substitution.attribute-reference.asciidoc'
+    2: name: 'string.unquoted.asciidoc'
 ,
   # Match a link or e-mail inline macro
   # Examples
@@ -26,7 +42,11 @@ patterns: [
   match: '(?<!\\\\)(link|mailto):([^\\s\\[]+)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])'
   captures:
     1: name: 'entity.name.function.asciidoc'
-    2: name: 'markup.link.asciidoc'
+    2:
+      name: 'markup.link.asciidoc'
+      patterns: [
+        include: '#attribute-reference'
+      ]
     3: name: 'string.unquoted.asciidoc'
 ,
   # Matches an inline e-mail address.

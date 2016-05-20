@@ -1,0 +1,7 @@
+key: 'hard-break-backslash'
+
+patterns: [
+    match: '(?<=\\S)\\p{Blank}+(\\+ \\\\)$'
+    captures:
+      1: name: 'constant.other.symbol.hard-break.asciidoc'
+]

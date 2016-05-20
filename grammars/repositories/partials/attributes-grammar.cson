@@ -2,6 +2,45 @@ key: 'attribute-entry'
 
 patterns: [
 
+  # Matches attributes (multi-lines)
+  #
+  # Examples
+  #
+  #   :attr: foo +
+  #       foo + \
+  #       bar
+  #
+  name: 'meta.definition.attribute-entry.asciidoc'
+  begin: '^(:)(!?\\w.*?)(:)(\\p{Blank}+.+\\p{Blank}(?:\\+|\\\\))$'
+  beginCaptures:
+    1: name: 'punctuation.separator.attribute-entry.asciidoc'
+    2: name: 'support.constant.attribute-name.asciidoc'
+    3: name: 'punctuation.separator.attribute-entry.asciidoc'
+    4:
+      name: 'string.unquoted.attribute-value.asciidoc'
+      patterns: [
+        include: '#inlines'
+      ,
+        include: '#hard-break-backslash'
+      ,
+        include: '#line-break'
+      ,
+        include: '#line-break-backslash'
+      ]
+  contentName: 'string.unquoted.attribute-value.asciidoc'
+  patterns: [
+    include: '#inlines'
+  ,
+    include: '#hard-break-backslash'
+  ,
+    include: '#line-break'
+  ,
+    include: '#line-break-backslash'
+  ]
+  end: '^\\p{Blank}+.+$(?<!\\+|\\\\)|^\\p{Blank}*$'
+  endCaptures:
+    0: name: 'string.unquoted.attribute-value.asciidoc'
+,
   # Matches attributes
   #
   # Examples
@@ -11,10 +50,16 @@ patterns: [
   #   :!compat-mode:
   #
   name: 'meta.definition.attribute-entry.asciidoc'
-  match: '^(:)(!?\\w[\\p{Blank}\\w-]*?|\\w[\\p{Blank}\\w-]*?!?)(:)(\\p{Blank}+.*)?$'
+  match: '^(:)(!?\\w.*?)(:)(\\p{Blank}+(.*))?$'
   captures:
-    1: name: 'punctuation.separator.attribute-entry.asciidoc'
+    1: name: 'punctuation.separator.asciidoc'
     2: name: 'support.constant.attribute-name.asciidoc'
-    3: name: 'punctuation.separator.attribute-entry.asciidoc'
-    4: name: 'string.unquoted.attribute-value.asciidoc'
+    3: name: 'punctuation.separator.asciidoc'
+    4:
+      name: 'string.unquoted.attribute-value.asciidoc'
+      patterns: [
+        include: '#inlines'
+      ,
+        include: '#line-break'
+      ]
 ]

@@ -74,16 +74,8 @@ atom-text-editor::shadow, :host {
         color: mix(red, @syntax-text-color, 40%);
       }
 
-      &.macro {
-
-        &.inline,
-        &.block {
-            color: mix(green, @syntax-text-color, 20%);
-        }
-        &.block {
-            font-weight: bold;
-        }
-
+      &.macro.block {
+        font-weight: bold;
       }
 
       &.super {
@@ -122,8 +114,7 @@ atom-text-editor::shadow, :host {
       font-size: @font-size * .7;
     }
 
-    .block,
-    .table.spec {
+    .block {
       color: @syntax-text-color-unobtrusive;
     }
 

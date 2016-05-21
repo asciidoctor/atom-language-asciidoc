@@ -542,7 +542,22 @@ repository:
     patterns: [
       {
         name: "markup.substitution.attribute-reference.asciidoc"
-        match: "(?<!\\\\)(\\{)((set|counter2?):.+?|\\w+(?:[\\-]\\w+)*)(?<!\\\\)(\\})"
+        match: "(?<!\\\\)(\\{)(set|counter2?)(:)([\\p{Alnum}\\-_!]+)((:)(.*?))?(?<!\\\\)(\\})"
+        captures:
+          "2":
+            name: "entity.name.function.asciidoc"
+          "3":
+            name: "punctuation.separator.asciidoc"
+          "4":
+            name: "support.constant.attribute-name.asciidoc"
+          "6":
+            name: "punctuation.separator.asciidoc"
+          "7":
+            name: "string.unquoted.attribute-value.asciidoc"
+      }
+      {
+        name: "markup.substitution.attribute-reference.asciidoc"
+        match: "(?<!\\\\)(\\{)(\\w+(?:[\\-]\\w+)*)(?<!\\\\)(\\})"
       }
     ]
   "bibliography-anchor":

@@ -2,16 +2,31 @@ key: 'attribute-reference'
 
 patterns: [
 
+  # Matches document variables inline assignment.
+  #
+  # Examples
+  #
+  #   {counter:pcount:1}
+  #   {counter2:pcount:1}
+  #   {set:foo:bar}
+  #   {set:name!}
+  #
+  name: 'markup.substitution.attribute-reference.asciidoc'
+  match: '(?<!\\\\)(\\{)(set|counter2?)(:)([\\p{Alnum}\\-_!]+)((:)(.*?))?(?<!\\\\)(\\})'
+  captures:
+    2: name: 'entity.name.function.asciidoc'
+    3: name: 'punctuation.separator.asciidoc'
+    4: name: 'support.constant.attribute-name.asciidoc'
+    6: name: 'punctuation.separator.asciidoc'
+    7: name: 'string.unquoted.attribute-value.asciidoc'
+,
   # Matches an inline attribute reference.
   #
   # Examples
   #
   #   {foo}
-  #   {counter:pcount:1}
-  #   {set:foo:bar}
-  #   {set:name!}
+  #   {foo-bar}
   #
   name: 'markup.substitution.attribute-reference.asciidoc'
-  match: '(?<!\\\\)(\\{)((set|counter2?):.+?|\\w+(?:[\\-]\\w+)*)(?<!\\\\)(\\})'
-
+  match: '(?<!\\\\)(\\{)(\\w+(?:[\\-]\\w+)*)(?<!\\\\)(\\})'
 ]

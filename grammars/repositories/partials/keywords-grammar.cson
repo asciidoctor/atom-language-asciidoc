@@ -1,0 +1,19 @@
+key: 'keywords'
+
+patterns: [
+  comment: 'Admonition'
+  name: 'entity.name.function.asciidoc'
+  match: '(NOTE|TIP|IMPORTANT|WARNING|CAUTION)'
+,
+  comment: 'Paragraph or verbatim'
+  name: 'entity.name.function.asciidoc'
+  match: '(comment|example|literal|listing|normal|pass|quote|sidebar|source|verse|abstract|partintro)'
+,
+  comment: 'Diagram'
+  name: 'entity.name.function.asciidoc'
+  match: '(actdiag|blockdiag|ditaa|graphviz|meme|mermaid|nwdiag|packetdiag|plantuml|rackdiag|seqdiag|shaape|wavedrom)'
+,
+  comment: 'Others'
+  name: 'entity.name.function.asciidoc'
+  match: '(sect[1-4]|preface|colophon|dedication|glossary|bibliography|synopsis|appendix|index|normal|partintro|music|latex|stem)'
+]

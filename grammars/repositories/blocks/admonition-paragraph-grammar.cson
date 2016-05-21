@@ -1,0 +1,78 @@
+key: 'admonition-paragraph'
+
+patterns: [
+
+  # Matches admonition blocks
+  #
+  # Examples:
+  #
+  #   [TIP]
+  #   Most features
+  #
+  # or
+  #
+  #   [IMPORTANT, attrs1, attrs2]
+  #   .foo bar foo
+  #   ====
+  #   foobar
+  #   ====
+  #
+  # or
+  #
+  #   [IMPORTANT, attrs1, attrs2]
+  #   .foo bar foo
+  #   --
+  #   foobar
+  #   --
+  #
+  name: 'markup.admonition.asciidoc'
+  begin: '(?=(?>(?:^\\[(NOTE|TIP|IMPORTANT|WARNING|CAUTION)((?:,|#)[^\\]]+)*\\]$)))'
+  patterns: [
+    match: '^\\[(NOTE|TIP|IMPORTANT|WARNING|CAUTION)((?:,|#)([^,\\]]+))*\\]$'
+    captures:
+      0:
+        patterns: [
+          include: '#block-attribute-inner'
+        ]
+  ,
+    include: '#inlines'
+  ,
+    include: '#block-title'
+  ,
+    comment: 'example block'
+    begin: '^(={4,})\\s*$'
+    patterns: [
+      include: '#inlines'
+    ,
+      include: '#list'
+    ]
+    end: '(?<=\\1)'
+  ,
+    comment: 'open block'
+    begin: '^(-{2})\\s*$'
+    patterns: [
+      include: '#inlines'
+    ,
+      include: '#list'
+    ]
+    end: '(?<=\\1)'
+  ]
+  end: '((?<=--|====)[\\r\\n]+$|^\\p{Blank}*$)'
+,
+  # Matches admonition blocks
+  #
+  # Examples
+  #
+  #   TIP: Pro tip...
+  #
+  #   IMPORTANT: Don't forget...
+  #
+  name: 'markup.admonition.asciidoc'
+  begin: '^(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\\:\\p{Blank}+'
+  captures:
+    1: name: 'entity.name.function.asciidoc'
+  patterns: [
+    include: '#inlines'
+  ]
+  end: '^\\p{Blank}*$'
+]

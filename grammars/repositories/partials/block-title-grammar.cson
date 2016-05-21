@@ -11,7 +11,7 @@ patterns: [
   # This is an example.
   # ========================
   #
-  begin: '^\\.([^\\s.].*)'
+  begin: '^\\.([^\\p{Blank}.].*)'
   captures:
     1: name: 'markup.heading.blocktitle.asciidoc'
   end: '$'

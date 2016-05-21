@@ -28,13 +28,13 @@ describe 'Should tokenizes callout in code block when', ->
                                       '''
     expect(tokens).toHaveLength 8
     expect(tokens[0]).toHaveLength 5
-    expect(tokens[0][0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'support.asciidoc']
-    expect(tokens[0][1]).toEqualJson value: 'source', scopes: ['source.asciidoc', 'support.asciidoc', 'entity.name.function.asciidoc']
-    expect(tokens[0][2]).toEqualJson value: ', ', scopes: ['source.asciidoc', 'support.asciidoc']
-    expect(tokens[0][3]).toEqualJson value: 'js', scopes: ['source.asciidoc', 'support.asciidoc', 'entity.name.type.asciidoc']
-    expect(tokens[0][4]).toEqualJson value: ']', scopes: ['source.asciidoc', 'support.asciidoc']
+    expect(tokens[0][0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'markup.heading.asciidoc']
+    expect(tokens[0][1]).toEqualJson value: 'source', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'markup.heading.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
+    expect(tokens[0][2]).toEqualJson value: ',', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'markup.heading.asciidoc', 'punctuation.separator.asciidoc']
+    expect(tokens[0][3]).toEqualJson value: ' js', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'markup.heading.asciidoc', 'markup.meta.attribute-list.asciidoc']
+    expect(tokens[0][4]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'markup.heading.asciidoc']
     expect(tokens[1]).toHaveLength 1
-    expect(tokens[1][0]).toEqualJson value: '----', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'support.asciidoc']
+    expect(tokens[1][0]).toEqualJson value: '----', scopes: ['source.asciidoc', 'markup.code.js.asciidoc']
     expect(tokens[2]).toHaveLength 4
     expect(tokens[2][0]).toEqualJson value: 'var http = require(\'http\'); ', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js']
     expect(tokens[2][1]).toEqualJson value: '<', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js', 'callout.source.code.asciidoc', 'constant.other.symbol.asciidoc']
@@ -55,5 +55,5 @@ describe 'Should tokenizes callout in code block when', ->
     expect(tokens[6]).toHaveLength 1
     expect(tokens[6][0]).toEqualJson value: '}).listen(1337, \'127.0.0.1\');', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'source.embedded.js']
     expect(tokens[7]).toHaveLength 2
-    expect(tokens[7][0]).toEqualJson value: '----', scopes: ['source.asciidoc', 'markup.code.js.asciidoc', 'support.asciidoc']
-    expect(tokens[7][1]).toEqualJson value: '', scopes: ['source.asciidoc']
+    expect(tokens[7][0]).toEqualJson value: '----', scopes: ['source.asciidoc', 'markup.code.js.asciidoc']
+    expect(tokens[7][1]).toEqualJson value: '', scopes: ['source.asciidoc', 'markup.code.js.asciidoc']

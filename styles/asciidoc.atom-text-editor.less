@@ -42,15 +42,13 @@ atom-text-editor::shadow, :host {
       }
 
       &.admonition,
-      &.explicit,
       &.heading,
       &.heading-0,
       &.heading-1,
       &.heading-2,
       &.heading-3,
       &.heading-4,
-      &.heading-5,
-      &.section {
+      &.heading-5 {
         font-weight: bold;
 
         // Lighten headers for dark themes.
@@ -76,16 +74,8 @@ atom-text-editor::shadow, :host {
         color: mix(red, @syntax-text-color, 40%);
       }
 
-      &.macro {
-
-        &.inline,
-        &.block {
-            color: mix(green, @syntax-text-color, 20%);
-        }
-        &.block {
-            font-weight: bold;
-        }
-
+      &.macro.block {
+        font-weight: bold;
       }
 
       &.super {
@@ -124,8 +114,7 @@ atom-text-editor::shadow, :host {
       font-size: @font-size * .7;
     }
 
-    .block,
-    .table.spec {
+    .block {
       color: @syntax-text-color-unobtrusive;
     }
 

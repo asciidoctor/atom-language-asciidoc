@@ -1,0 +1,28 @@
+key: 'block-attribute-inner'
+
+# Matches block attribute content
+#
+patterns: [
+
+  comment: 'separators'
+  name: 'punctuation.separator.asciidoc'
+  match: '([,.#%])'
+,
+  comment: 'blockname'
+  match: '(?<=\\[)([^\\[\\],.#%]+)'
+  captures:
+    0:
+      name: 'markup.meta.attribute-list.asciidoc'
+      patterns: [
+        include: '#keywords'
+      ]
+,
+  comment: 'attributes'
+  name: 'markup.meta.attribute-list.asciidoc'
+  match: '(?<=\\{|,|.|#|"|\'|%)([^\\],.#%]+)'
+  captures:
+    0:
+      patterns: [
+        include: '#attribute-reference'
+      ]
+]

@@ -1,0 +1,20 @@
+key: 'block-attribute'
+
+patterns: [
+
+  # Matches block attribute.
+  # [<blockname>,<positional attributes>,<explicit attributes>]
+  #
+  # Examples:
+  #
+  #   [ditaa,diagram-name,format=png]
+  #   [literal#output.console%nowrap]
+  #
+  match: '^\\[(|\\p{Blank}*[\\p{Word}\\{,.#"\'%].*)\\]$'
+  name: 'markup.heading.block-attribute.asciidoc'
+  captures:
+    0:
+      patterns: [
+        include: '#block-attribute-inner'
+      ]
+]

@@ -1,0 +1,71 @@
+key: 'passthrough-paragraph'
+
+patterns: [
+
+  # Matches passthrough paragraph.
+  #
+  # Examples:
+  #
+  #   [pass]
+  #   <s>Could be struck through</s>
+  #
+  # or
+  #
+  #   [pass, attrs1, attrs2]
+  #   .foo bar foo
+  #   --
+  #   <s>Could be struck through</s>
+  #   --
+  #
+  # or
+  #
+  #   [pass, attrs1, attrs2]
+  #   .foo bar foo
+  #   ++++
+  #   <s>Could be struck through</s>
+  #   ++++
+  #
+  name: 'markup.block.passthrough.asciidoc'
+  begin: '(?=(?>(?:^\\[(pass)((?:,|#)[^\\]]+)*\\]$)))'
+  patterns: [
+    match: '^\\[(pass)((?:,|#)([^,\\]]+))*\\]$'
+    captures:
+      0:
+        name: 'markup.heading.asciidoc'
+        patterns: [
+          include: '#block-attribute-inner'
+        ]
+  ,
+    include: '#block-title'
+  ,
+    comment: 'passthrough block'
+    begin: '^(\\+{4,})\\s*$'
+    patterns: [
+      include: 'text.html.basic'
+    ]
+    end: '(?<=\\1)'
+  ,
+    comment: 'open block'
+    begin: '^(-{2})\\s*$'
+    patterns: [
+      include: 'text.html.basic'
+    ]
+    end: '(?<=\\1)'
+  ]
+  end: '((?<=--|\\+\\+)[\\r\\n]+$|^\\p{Blank}*$)'
+,
+  # Matches passthrough block
+  #
+  # Examples
+  #
+  # ++++
+  # <s>Could be struck through</s>
+  # ++++
+  #
+  name: 'markup.block.passthrough.asciidoc'
+  begin: '(^\\+{4,}$)'
+  patterns: [
+    include: 'text.html.basic'
+  ]
+  end: '\\1'
+]

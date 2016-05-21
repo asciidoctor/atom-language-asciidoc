@@ -4,53 +4,76 @@ module.exports =
   makeAsciidocBlocks: (languages, debug = false) ->
     # add languages blocks
     codeBlocks = languages.map (lang) ->
-      begin: "^\\[(source),\\p{Blank}*(?i:(#{lang.pattern}))(?:,([^\]]*))?\\]$"
-      beginCaptures:
-        0: name: 'support.asciidoc'
-        1: name: 'entity.name.function.asciidoc'
-        2: name: 'entity.name.type.asciidoc'
-        3:
-          name: 'markup.meta.attribute-list.asciidoc'
-          patterns: [
-            include: '#attribute-reference'
-          ]
+      name: "markup.code.#{lang.code}.asciidoc"
+      begin: "(?=(?>(?:^\\[(source)(?:,|#)\\p{Blank}*(?i:(#{lang.pattern}))((?:,|#)[^\\]]+)*\\]$)))"
       patterns: [
-        name: "markup.code.#{lang.code}.asciidoc"
+        match: "^\\[(source)(?:,|#)\\p{Blank}*(?i:(#{lang.pattern}))((?:,|#)([^,\\]]+))*\\]$"
+        captures:
+          0:
+            name: 'markup.heading.asciidoc'
+            patterns: [
+              include: '#block-attribute-inner'
+            ]
+      ,
+        include: '#inlines'
+      ,
+        include: '#block-title'
+      ,
+        comment: 'listing block'
         begin: '^(-{4,})\\s*$'
-        beginCaptures:
-          0: name: 'support.asciidoc'
         contentName: "#{lang.type}.embedded.#{lang.code}"
         patterns: [
           include: '#block-callout'
         ,
           include: "#{lang.type}.#{lang.code}"
         ]
-        end: '^\\1*$'
-        endCaptures:
-          0: name: 'support.asciidoc'
+        end: '^(\\1)$'
+      ,
+        comment: 'open block'
+        begin: '^(-{2})\\s*$'
+        contentName: "#{lang.type}.embedded.#{lang.code}"
+        patterns: [
+          include: '#block-callout'
+        ,
+          include: "#{lang.type}.#{lang.code}"
+        ]
+        end: '^(\\1)$'
       ]
-      end: '(?<=----)[\\r\\n]+$'
+      end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
 
     # add generic block
     codeBlocks.push
-      begin: '^\\[(source)(,([^\\]]*))?\\]$'
-      beginCaptures:
-        0: name: 'support.asciidoc'
-        1: name: 'entity.name.function.asciidoc'
-        2: name: 'markup.meta.attribute-list.asciidoc'
+      begin: '(?=(?>(?:^\\[(source)((?:,|#)[^\\]]+)*\\]$)))'
       patterns: [
+        match: '^\\[(source)((?:,|#)([^,\\]]+))*\\]$'
+        captures:
+          0:
+            name: 'markup.heading.asciidoc'
+            patterns: [
+              include: '#block-attribute-inner'
+            ]
+      ,
+        include: '#inlines'
+      ,
+        include: '#block-title'
+      ,
+        comment: 'listing block'
         name: 'markup.raw.asciidoc'
         begin: '^(-{4,})\\s*$'
-        beginCaptures:
-          0: name: 'support.asciidoc'
         patterns: [
           include: '#block-callout'
         ]
-        end: '^\\1*$'
-        endCaptures:
-          0: name: 'support.asciidoc'
+        end: '(?<=\\1)'
+      ,
+        comment: 'open block'
+        name: 'markup.raw.asciidoc'
+        begin: '^(-{2})\\s*$'
+        patterns: [
+          include: '#block-callout'
+        ]
+        end: '^(\\1)$'
       ]
-      end: '(?<=----)[\\r\\n]+$'
+      end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
 
     # add listing block
     codeBlocks.push
@@ -61,7 +84,7 @@ module.exports =
       patterns: [
         include: '#block-callout'
       ]
-      end: '^\\1*$'
+      end: '^(\\1)$'
       endCaptures:
         0: name: 'support.asciidoc'
 

@@ -1,0 +1,107 @@
+key: 'quote-paragraph'
+
+patterns: [
+
+  # Matches quote blocks
+  #
+  # Examples:
+  #
+  #   [quote]
+  #   Most features
+  #
+  # or
+  #
+  #   [quote, attrs1, attrs2]
+  #   .foo bar foo
+  #   ____
+  #   foobar
+  #   ____
+  #
+  # or
+  #
+  #   [quote, attrs1, attrs2]
+  #   ""
+  #   When the President does it, that means that it's not illegal.
+  #   ""
+  #
+  # or
+  #
+  #   [quote, attrs1, attrs2]
+  #   --
+  #   When the President does it, that means that it's not illegal.
+  #   --
+  #
+  name: 'markup.italic.quotes.asciidoc'
+  begin: '(?=(?>(?:^\\[(quote|verse)((?:,|#)([^,\\]]+))*\\]$)))'
+  patterns: [
+    match: '^\\[(quote|verse)((?:,|#)([^,\\]]+))*\\]$'
+    captures:
+      0:
+        patterns: [
+          include: '#block-attribute-inner'
+        ]
+  ,
+    include: '#block-title'
+  ,
+    include: '#inlines'
+  ,
+    comment: 'quotes block'
+    begin: '^([_]{4,})\\s*$'
+    patterns: [
+      include: '#inlines'
+    ,
+      include: '#list'
+    ]
+    end: '(?<=\\1)'
+  ,
+    comment: 'air quotes'
+    begin: '^("{2})\\s*$'
+    patterns: [
+      include: '#inlines'
+    ,
+      include: '#list'
+    ]
+    end: '(?<=\\1)'
+  ,
+    comment: 'open block'
+    begin: '^(-{2})\\s*$'
+    patterns: [
+      include: '#inlines'
+    ,
+      include: '#list'
+    ]
+    end: '(?<=\\1)$'
+  ]
+  end: '((?<=____|""|--)[\\r\\n]+$|^\\p{Blank}*$)'
+,
+  # Matches air quotes.
+  #
+  # Examples:
+  #
+  #   ""
+  #   When the President does it, that means that it's not illegal.
+  #   ""
+  #
+  name: 'markup.italic.quotes.asciidoc'
+  begin: '^("")$'
+  patterns: [
+    include: '#inlines'
+  ,
+    include: '#list'
+  ]
+  end: '^\\1$'
+,
+  # Matches Markdown style quote
+  #
+  # > I don't like it, and I'm sorry I ever had anything to do with it.
+  # Erwin Schrödinger, Sorry
+  #
+  name: 'markup.italic.quotes.asciidoc'
+  begin: '^\\p{Blank}*(>) '
+  patterns: [
+    include: '#inlines'
+  ,
+    include: '#list'
+  ]
+  end: '^\\p{Blank}*?$'
+]

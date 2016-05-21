@@ -93,6 +93,8 @@ repository:
     ]
   inlines:
     patterns: [
+      include: '#typographic-quotes'
+    ,
       include: '#strong'
     ,
       include: '#monospace'

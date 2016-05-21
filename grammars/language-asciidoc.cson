@@ -140,6 +140,9 @@ repository:
   inlines:
     patterns: [
       {
+        include: "#typographic-quotes"
+      }
+      {
         include: "#strong"
       }
       {
@@ -907,6 +910,33 @@ repository:
             name: "markup.meta.super.attribute-list.asciidoc"
           "2":
             name: "markup.super.superscript.asciidoc"
+          "3":
+            name: "punctuation.definition.asciidoc"
+          "5":
+            name: "punctuation.definition.asciidoc"
+      }
+    ]
+  "typographic-quotes":
+    patterns: [
+      {
+        name: "markup.italic.quote.typographic-quotes.asciidoc"
+        comment: "double-quoted"
+        match: "(?:^|(?<!\\p{Word}|;|:))(\\[([^\\]]+?)\\])?(\"`)(\\S|\\S.*?\\S)(`\")(?!\\p{Word})"
+        captures:
+          "1":
+            name: "markup.meta.attribute-list.asciidoc"
+          "3":
+            name: "punctuation.definition.asciidoc"
+          "5":
+            name: "punctuation.definition.asciidoc"
+      }
+      {
+        name: "markup.italic.quote.typographic-quotes.asciidoc"
+        comment: "single-quoted"
+        match: "(?:^|(?<!\\p{Word}|;|:))(\\[([^\\]]+?)\\])?('`)(\\S|\\S.*?\\S)(`')(?!\\p{Word})"
+        captures:
+          "1":
+            name: "markup.meta.attribute-list.asciidoc"
           "3":
             name: "punctuation.definition.asciidoc"
           "5":

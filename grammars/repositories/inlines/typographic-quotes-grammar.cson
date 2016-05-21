@@ -1,0 +1,35 @@
+key: 'typographic-quotes'
+
+# http://asciidoctor.org/docs/user-manual/#curved
+patterns: [
+
+  # Matches typographic double quotes.
+  #
+  # Examples:
+  #
+  #   "`double-quoted`"
+  #   [bar]"`double-quoted`"
+  #
+  name: 'markup.italic.quote.typographic-quotes.asciidoc'
+  comment: 'double-quoted'
+  match: '(?:^|(?<!\\p{Word}|;|:))(\\[([^\\]]+?)\\])?(\"\`)(\\S|\\S.*?\\S)(\`\")(?!\\p{Word})'
+  captures:
+    1: name: 'markup.meta.attribute-list.asciidoc'
+    3: name: 'punctuation.definition.asciidoc'
+    5: name: 'punctuation.definition.asciidoc'
+,
+  # Matches typographic single quotes.
+  #
+  # Examples:
+  #
+  #   '`single-quoted`'
+  #   [bar]'`single-quoted`'
+  #
+  name: 'markup.italic.quote.typographic-quotes.asciidoc'
+  comment: 'single-quoted'
+  match: '(?:^|(?<!\\p{Word}|;|:))(\\[([^\\]]+?)\\])?(\'\`)(\\S|\\S.*?\\S)(\`\')(?!\\p{Word})'
+  captures:
+    1: name: 'markup.meta.attribute-list.asciidoc'
+    3: name: 'punctuation.definition.asciidoc'
+    5: name: 'punctuation.definition.asciidoc'
+]

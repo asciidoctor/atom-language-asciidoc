@@ -9,7 +9,7 @@ Feel free to use the https://github.com/asciidoctor/atom-language-asciidoc/issue
 
 The project is hosted and run using GitHub.
 The issue tracker is in place to report bugs, discuss improvements, show our ambitious goals and desires for the future, and encourage each other.
-Classification labels and versioning tags are added for clarity and the ability to search
+Classification labels and versioning tags are added for clarity and the ability to search.
 
 === Labels
 
@@ -21,9 +21,9 @@ Labels are added to issues and pull request for clarity, in the present but also
 |question    | generic question
 |improvement | refinement on top of an existing feature
 |enhancement | new feature
-|duplicate   | a similar (open) issue already exsists
-|invalid     | not, or no longer, true
-|declined    | not accepted for inclusion
+|duplicate   | a similar (open) issue already exists
+|invalid     | not reproducible or out of date
+|declined    | a decision was made not to pursue
 |===
 
 .Category labels
@@ -71,7 +71,7 @@ apm install
 . Link the package using `apm link -d`, and start atom in dev-mode using the command `atom -d .`
 . _Develop_ (this is where the magic happens)
 . Commit and push your code onto your forked project
-. Make a pull request to get the changes merged into the upstream project
+. Make a pull request and fill in the pull request template to request for the changes to be merged into the upstream project
 . Answer questions or make adjustments based on the discussion around the pull request
 . Wait for the merge, wait for the next release, use it in your normal Atom install
 . _Show off to others what you have made, and feel proud for you have improved the lives of many by contributing to this package!_

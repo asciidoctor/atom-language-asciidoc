@@ -26,9 +26,9 @@ patterns: [
   #   --
   #
   name: 'markup.admonition.asciidoc'
-  begin: '(?=(?>(?:^\\[(NOTE|TIP|IMPORTANT|WARNING|CAUTION)((?:,|#)[^\\]]+)*\\]$)))'
+  begin: '(?=(?>(?:^\\[(NOTE|TIP|IMPORTANT|WARNING|CAUTION)((?:,|#|\\.|%)[^\\]]+)*\\]$)))'
   patterns: [
-    match: '^\\[(NOTE|TIP|IMPORTANT|WARNING|CAUTION)((?:,|#)([^,\\]]+))*\\]$'
+    match: '^\\[(NOTE|TIP|IMPORTANT|WARNING|CAUTION)((?:,|#|\\.|%)([^,\\]]+))*\\]$'
     captures:
       0:
         patterns: [

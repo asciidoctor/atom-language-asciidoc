@@ -26,9 +26,9 @@ patterns: [
   #   ++++
   #
   name: 'markup.block.passthrough.asciidoc'
-  begin: '(?=(?>(?:^\\[(pass)((?:,|#)[^\\]]+)*\\]$)))'
+  begin: '(?=(?>(?:^\\[(pass)((?:,|#|\\.|%)[^\\]]+)*\\]$)))'
   patterns: [
-    match: '^\\[(pass)((?:,|#)([^,\\]]+))*\\]$'
+    match: '^\\[(pass)((?:,|#|\\.|%)([^,\\]]+))*\\]$'
     captures:
       0:
         name: 'markup.heading.asciidoc'

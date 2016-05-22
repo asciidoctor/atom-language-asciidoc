@@ -63,7 +63,7 @@ module.exports =
       resolve(potentialAttributes)
 
   loadCompletions: ->
-    completionsFilePath = path.resolve __dirname, '..', 'completions.json'
+    completionsFilePath = path.resolve __dirname, '..', 'completions', 'attribute-completions.json'
     new Promise (resolve, reject) ->
       CSON.readFile completionsFilePath, (error, data) ->
         if error? then reject error else resolve data

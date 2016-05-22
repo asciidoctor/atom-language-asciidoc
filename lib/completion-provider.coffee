@@ -4,16 +4,23 @@ CSON = require 'season'
 
 module.exports =
   selector: '.source.asciidoc'
-  disableForSelector: '.source.asciidoc .comment.block.asciidoc'
+  disableForSelector: '.source.asciidoc .comment.block.asciidoc .comment.inline.asciidoc'
+
+  # This will take priority over the default provider, which has a priority of 0.
+  # `excludeLowerPriority` will suppress any providers with a lower priority
+  # i.e. The default provider will be suppressed
   inclusionPriority: 1
   excludeLowerPriority: true
+
   filterSuggestions: true
 
   attributes: {}
 
-  getSuggestions: ({editor, bufferPosition}) ->
-    prefix = @getPrefix(editor, bufferPosition)
-    return unless prefix isnt ''
+  getSuggestions: ({editor, bufferPosition, scopeDescriptor, prefix, activatedManually}) ->
+
+    scopes = scopeDescriptor.getScopesArray()
+
+    return unless scopes.includes 'markup.substitution.attribute-reference.asciidoc'
 
     pattern = /^:([a-zA-Z_\-!]+):/
     textLines = editor.getText().split(/\n/)
@@ -53,16 +60,6 @@ module.exports =
 
     new Promise (resolve) ->
       resolve(potentialAttributes)
-
-  getPrefix: (editor, bufferPosition) ->
-    # Whatever your prefix regex might be
-    regex = /\{(\b\w*[a-zA-Z_\-!]\w*\b)?/g
-
-    # Get the text for the line up to the triggered buffer position
-    line = editor.getTextInBufferRange([[bufferPosition.row, 0], bufferPosition])
-
-    # Match the regex to the line, and return the match
-    line.match(regex)?[0] or ''
 
   loadCompletions: ->
     completionsFilePath = path.resolve __dirname, '..', 'completions.json'

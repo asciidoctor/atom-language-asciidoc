@@ -21,7 +21,7 @@ module.exports =
 
     scopes = scopeDescriptor.getScopesArray()
 
-    return [] unless scopes.includes 'markup.substitution.attribute-reference.asciidoc'
+    return Promise.resolve([]) unless scopes.includes 'markup.substitution.attribute-reference.asciidoc'
 
     new Promise (resolve, reject) =>
 

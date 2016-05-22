@@ -24,7 +24,8 @@ module.exports =
     return unless scopes.includes 'markup.substitution.attribute-reference.asciidoc'
 
     new Promise (resolve, reject) =>
-      pattern = /^:([a-zA-Z_\-!]+):/
+
+      pattern = /^:([\w\-!]+):/
       textLines = editor.getText().split(/\n/)
       currentRow = editor.getCursorScreenPosition().row
       counter = 0

@@ -25,43 +25,41 @@ module.exports =
 
     new Promise (resolve, reject) =>
 
-      pattern = /^:([\w\-]+)(?:!)?:/
-      textLines = editor.getText().split(/\n/)
-      currentRow = editor.getCursorScreenPosition().row
-      counter = 0
+      localAttributes = @extractLocalAttributes editor
 
-      potentialAttributes = _.chain(textLines)
-        .filter((line) ->
-          counter++
-          pattern.test(line) and counter<=currentRow)
-        .map (rawAttribute) ->
-          pattern.exec(rawAttribute)[1]
-        .uniq()
+      suggestions = _.chain @attributes
+        .map (attribute, key) ->
+          suggestion =
+              type: 'variable'
+              text: key
+              displayText: key
+              rightLabel: 'asciidoc'
+              description: attribute.description
+              descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#using-attributes-set-assign-and-reference'
+        .concat localAttributes
+        .sortBy (attribute) -> attribute.text.toLowerCase()
         .value()
 
-      potentialAttributes = _.map(potentialAttributes, (attribute) ->
-        value =
+      resolve(suggestions)
+
+  extractLocalAttributes: (editor) ->
+    pattern = /^:([\w\-]+)(?:!)?:/
+    textLines = editor.getBuffer().getLines()
+    currentRow = editor.getCursorScreenPosition().row
+
+    _.chain textLines
+      .take currentRow
+      .filter (line) -> pattern.test(line)
+      .map (rawAttribute) -> pattern.exec(rawAttribute)[1]
+      .uniq()
+      .map (attribute) ->
+        suggestion =
           type: 'variable'
           text: attribute
           displayText: attribute
           rightLabel: 'local'
-      )
-
-      asciidocAttr = _.map(@attributes, (attribute, key) ->
-        value =
-            type: 'variable'
-            text: key
-            displayText: key
-            rightLabel: 'asciidoc'
-            description: attribute.description
-      )
-
-      potentialAttributes = potentialAttributes.concat asciidocAttr
-
-      potentialAttributes = _.sortBy potentialAttributes, (_attribute) ->
-        _attribute.text.toLowerCase()
-
-      resolve(potentialAttributes)
+          descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#using-attributes-set-assign-and-reference'
+      .value()
 
   loadCompletions: ->
     completionsFilePath = path.resolve __dirname, '..', 'completions', 'attribute-completions.json'

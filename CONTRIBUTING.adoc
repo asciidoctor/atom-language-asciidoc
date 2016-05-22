@@ -260,4 +260,17 @@ The styling is defined in link:styles/asciidoc.atom-text-editor.less[styles/asci
 
 == Snippets
 
-Snippets are defined in link:snippets/language-asciidoc.cson[snippets/language-asciidoc.cson]
+Snippets are defined in link:snippets/language-asciidoc.cson[snippets/language-asciidoc.cson].
+
+== Package publising
+
+We use https://travis-ci.org[Travis CI] to publish this package.
+
+Every merged PR is released as a new version (by default a `patch`).
+
+We use the [Travis CI UI](https://travis-ci.org/asciidoctor/atom-language-asciidoc/settings) to manage the publishing system via secure environment variables:
+
+* `PUBLISH_TYPE`: default `patch`, can be change to `minor`, `major`.
+* `STOP_PUBLISH`: if defined, prevent the publishing.
+* `$encrypted_xxxx_key` and `$encrypted_xxxx_iv`: defined the main key and vector to encrypt the SSH key.
+* `ATOM_ACCESS_TOKEN`: defined the Atom token for `apm`.

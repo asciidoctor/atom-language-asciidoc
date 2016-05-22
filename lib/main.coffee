@@ -1,8 +1,9 @@
 {CompositeDisposable} = require 'atom'
 CSON = require 'season'
+path = require 'path'
 GrammarHelper = require './grammar-helper'
 generator = require './code-block-generator'
-path = require 'path'
+completionProvider = require './completion-provider'
 
 module.exports =
 
@@ -16,6 +17,8 @@ module.exports =
   liveReloadSubscriptions: null
 
   activate: (state) ->
+    completionProvider.loadCompletions()
+
     return unless atom.inDevMode() and not atom.inSpecMode()
 
     @subscriptions = new CompositeDisposable
@@ -38,6 +41,9 @@ module.exports =
         @startliveReload()
       else
         @liveReloadSubscriptions?.dispose()
+
+  provideAutocompletion: ->
+    completionProvider
 
   startliveReload: ->
     return unless atom.inDevMode() and not atom.inSpecMode() and atom.config.get 'language-asciidoc.liveReload'

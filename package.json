@@ -7,8 +7,16 @@
   "engines": {
     "atom": ">0.50.0"
   },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "provideAutocompletion"
+      }
+    }
+  },
   "dependencies": {
-    "season": "^5.3"
+    "season": "^5.3",
+    "lodash": "~4.12.0"
   },
   "devDependencies": {
     "coffeelint": "^1.15.0"

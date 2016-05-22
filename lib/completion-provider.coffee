@@ -25,7 +25,7 @@ module.exports =
 
     new Promise (resolve, reject) =>
 
-      pattern = /^:([\w\-!]+):/
+      pattern = /^:([\w\-]+)(?:!)?:/
       textLines = editor.getText().split(/\n/)
       currentRow = editor.getCursorScreenPosition().row
       counter = 0

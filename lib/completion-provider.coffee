@@ -35,7 +35,7 @@ module.exports =
               displayText: key
               rightLabel: 'asciidoc'
               description: attribute.description
-              descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#using-attributes-set-assign-and-reference'
+              descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
         .concat localAttributes
         .sortBy (attribute) -> attribute.text.toLowerCase()
         .value()

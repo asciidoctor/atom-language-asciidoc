@@ -21,7 +21,7 @@ module.exports =
 
     scopes = scopeDescriptor.getScopesArray()
 
-    if @isAttributeReferenceScope scopes
+    if @isAttributeReferenceScope scopes, editor, bufferPosition
       new Promise (resolve, reject) =>
 
         localAttributes = @extractLocalAttributes editor
@@ -66,8 +66,13 @@ module.exports =
           descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#using-attributes-set-assign-and-reference'
       .value()
 
-  isAttributeReferenceScope: (scopes) ->
-    scopes.includes 'markup.substitution.attribute-reference.asciidoc'
+  isAttributeReferenceScope: (scopes, editor, bufferPosition) ->
+    line = editor.getTextInRange([[bufferPosition.row, 0], bufferPosition])
+    beginPattern = /^\{.*/g
+    endPattern =  /^.*\}$/g
+    matchPrefix = beginPattern.test(line) and not endPattern.test(line)
+
+    scopes.includes('markup.substitution.attribute-reference.asciidoc') and matchPrefix
 
   loadCompletions: ->
     completionsFilePath = path.resolve __dirname, '..', 'completions', 'attribute-completions.json'

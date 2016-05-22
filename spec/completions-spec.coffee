@@ -38,7 +38,7 @@ describe "AsciiDoc autocompletions", ->
 
       waitsForPromise -> getCompletions().then (c) -> completions = c
       runs ->
-        expect(completions.length).toBe 41
+        expect(completions.length).toBe 57
 
     it 'is in an attribute reference', ->
       editor.setText '{b}'
@@ -46,35 +46,55 @@ describe "AsciiDoc autocompletions", ->
 
       waitsForPromise -> getCompletions().then (c) -> completions = c
       runs ->
-        expect(completions.length).toBe 4
+        expect(completions.length).toBe 6
 
-        expect(completions[0].text).toBe 'backend'
-        expect(completions[0].displayText).toBe 'backend'
-        expect(completions[0].type).toBe 'variable'
-        expect(completions[0].replacementPrefix).toBeUndefined()
-        expect(completions[0].description).toBe 'Backend used to render document'
-        expect(completions[0].descriptionMoreURL).toBe 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+        expect(completions[0]).toEqualJson
+          text: 'backend'
+          displayText: 'backend'
+          type: 'variable'
+          description: 'Backend used to create the output file.'
+          descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+          rightLabel: 'asciidoc'
 
-        expect(completions[1].text).toBe 'backslash'
-        expect(completions[1].displayText).toBe 'backslash'
-        expect(completions[1].type).toBe 'variable'
-        expect(completions[1].replacementPrefix).toBeUndefined()
-        expect(completions[1].description).toBeUndefined()
-        expect(completions[1].descriptionMoreURL).toBe 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+        expect(completions[1]).toEqualJson
+          text: 'backslash'
+          displayText: 'backslash'
+          type: 'variable'
+          description: '\\'
+          descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+          rightLabel: 'asciidoc'
 
-        expect(completions[2].text).toBe 'backtick'
-        expect(completions[2].displayText).toBe 'backtick'
-        expect(completions[2].type).toBe 'variable'
-        expect(completions[2].replacementPrefix).toBeUndefined()
-        expect(completions[2].description).toBeUndefined()
-        expect(completions[2].descriptionMoreURL).toBe 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+        expect(completions[2]).toEqualJson
+          text: 'backtick'
+          displayText: 'backtick'
+          type: 'variable'
+          description: '`'
+          descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+          rightLabel: 'asciidoc'
 
-        expect(completions[3].text).toBe 'brvbar'
-        expect(completions[3].displayText).toBe 'brvbar'
-        expect(completions[3].type).toBe 'variable'
-        expect(completions[3].replacementPrefix).toBeUndefined()
-        expect(completions[3].description).toBeUndefined()
-        expect(completions[3].descriptionMoreURL).toBe 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+        expect(completions[3]).toEqualJson
+          text: 'basebackend'
+          displayText: 'basebackend'
+          type: 'variable'
+          description: 'The backend value minus any trailing numbers.'
+          descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+          rightLabel: 'asciidoc'
+
+        expect(completions[4]).toEqualJson
+          text: 'blank'
+          displayText: 'blank'
+          type: 'variable'
+          description: 'nothing'
+          descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+          rightLabel: 'asciidoc'
+
+        expect(completions[5]).toEqualJson
+          text: 'brvbar'
+          displayText: 'brvbar'
+          type: 'variable'
+          description: '&#166;'
+          descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+          rightLabel: 'asciidoc'
 
     it 'with a local attribute definition', ->
       editor.setText '''
@@ -88,19 +108,21 @@ describe "AsciiDoc autocompletions", ->
       runs ->
         expect(completions.length).toBe 2
 
-        expect(completions[0].text).toBe 'zwsp'
-        expect(completions[0].displayText).toBe 'zwsp'
-        expect(completions[0].type).toBe 'variable'
-        expect(completions[0].replacementPrefix).toBeUndefined()
-        expect(completions[0].description).toBeUndefined()
-        expect(completions[0].descriptionMoreURL).toBe 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+        expect(completions[0]).toEqualJson
+          text: 'zwsp'
+          displayText: 'zwsp'
+          type: 'variable'
+          description: '&#8203;'
+          descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+          rightLabel: 'asciidoc'
 
-        expect(completions[1].text).toBe 'zzzzz'
-        expect(completions[1].displayText).toBe 'zzzzz'
-        expect(completions[1].type).toBe 'variable'
-        expect(completions[1].replacementPrefix).toBeUndefined()
-        expect(completions[1].description).toBeUndefined()
-        expect(completions[1].descriptionMoreURL).toBe 'http://asciidoctor.org/docs/user-manual/#using-attributes-set-assign-and-reference'
+        expect(completions[1]).toEqualJson
+          text: 'zzzzz'
+          displayText: 'zzzzz'
+          type: 'variable'
+          description: 'Local attribute'
+          descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#using-attributes-set-assign-and-reference'
+          rightLabel: 'local'
 
     it 'with a local attribute definition after the current position', ->
       editor.setText '''
@@ -114,12 +136,13 @@ describe "AsciiDoc autocompletions", ->
       runs ->
         expect(completions.length).toBe 1
 
-        expect(completions[0].text).toBe 'zwsp'
-        expect(completions[0].displayText).toBe 'zwsp'
-        expect(completions[0].type).toBe 'variable'
-        expect(completions[0].replacementPrefix).toBeUndefined()
-        expect(completions[0].description).toBeUndefined()
-        expect(completions[0].descriptionMoreURL).toBe 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+        expect(completions[0]).toEqualJson
+          text: 'zwsp'
+          displayText: 'zwsp'
+          type: 'variable'
+          description: '&#8203;'
+          descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+          rightLabel: 'asciidoc'
 
   describe 'should not provide completion when', ->
 

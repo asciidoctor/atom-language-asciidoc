@@ -92,7 +92,7 @@ describe "AsciiDoc autocompletions", ->
           text: 'brvbar'
           displayText: 'brvbar'
           type: 'variable'
-          description: '&#166;'
+          description: '¦'
           descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
           rightLabel: 'asciidoc'
 

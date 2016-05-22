@@ -21,28 +21,30 @@ module.exports =
 
     scopes = scopeDescriptor.getScopesArray()
 
-    return Promise.resolve([]) unless scopes.includes 'markup.substitution.attribute-reference.asciidoc'
+    if @isAttributeReferenceScope scopes
+      new Promise (resolve, reject) =>
 
-    new Promise (resolve, reject) =>
+        localAttributes = @extractLocalAttributes editor
 
-      localAttributes = @extractLocalAttributes editor
+        suggestions = _.chain @attributes
+          .map (attribute, key) ->
+            suggestion =
+                type: 'variable'
+                text: key
+                displayText: key
+                rightLabel: 'asciidoc'
+                description: attribute.description or key
+                descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
+          .concat localAttributes
+          .filter (attribute) ->
+            if prefix.match /^[\w]/ then firstCharsEqual(attribute.text, prefix) else true
+          .sortBy (attribute) -> attribute.text.toLowerCase()
+          .value()
 
-      suggestions = _.chain @attributes
-        .map (attribute, key) ->
-          suggestion =
-              type: 'variable'
-              text: key
-              displayText: key
-              rightLabel: 'asciidoc'
-              description: attribute.description
-              descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
-        .concat localAttributes
-        .filter (attribute) ->
-          if prefix.match /^[\w]/ then firstCharsEqual(attribute.text, prefix) else true
-        .sortBy (attribute) -> attribute.text.toLowerCase()
-        .value()
+        resolve(suggestions)
+    else
+      Promise.resolve([])
 
-      resolve(suggestions)
 
   extractLocalAttributes: (editor) ->
     pattern = /^:([\w\-]+)(?:!)?:/
@@ -60,8 +62,12 @@ module.exports =
           text: attribute
           displayText: attribute
           rightLabel: 'local'
+          description: 'Local attribute'
           descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#using-attributes-set-assign-and-reference'
       .value()
+
+  isAttributeReferenceScope: (scopes) ->
+    scopes.includes 'markup.substitution.attribute-reference.asciidoc'
 
   loadCompletions: ->
     completionsFilePath = path.resolve __dirname, '..', 'completions', 'attribute-completions.json'

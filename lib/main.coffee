@@ -42,7 +42,7 @@ module.exports =
       else
         @liveReloadSubscriptions?.dispose()
 
-  provideAutocompletion: ->
+  getCompletionProvider: ->
     completionProvider
 
   startliveReload: ->

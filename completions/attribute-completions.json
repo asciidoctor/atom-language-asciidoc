@@ -1,69 +1,61 @@
 {
   "attributes": {
-    "amp": {},
-    "apos": {},
+    "amp": { "description": "&" },
+    "apos": { "description": "&#39;" },
     "apostrophe": {},
-    "asciidoctor-version": {
-      "description":"Version of the processor"
-    },
-    "asterisk": {},
-    "backend": {
-      "description": "Backend used to render document"
-    },
-    "backslash": {},
-    "backtick": {},
-    "brvbar": {},
-    "caret": {},
-    "deg": {},
-    "docdate": {
-      "description": "Last modified date"
-    },
-    "docdatetime": {
-      "description": "Last modified date and time"
-    },
-    "docdir": {
-      "description": "Name of document directory"
-    },
-    "docfile": {
-      "description": "Name of document file"
-    },
-    "doctime": {
-      "description": "Last modified time"
-    },
-    "doctitle": {
-      "description": "The title of the document"
-    },
-    "doctype": {
-      "description": "Document’s doctype (e.g., article)"
-    },
-    "empty": {},
-    "endsb": {},
-    "gt": {},
-    "ldquo": {},
-    "localdate": {
-      "description": "Local date when rendered"
-    },
-    "localdatetime": {
-      "description": "Local date and time when rendered"
-    },
-    "localtime": {
-      "description": "Local time when rendered"
-    },
-    "lsquo": {},
-    "lt": {},
-    "nbsp": {},
-    "plus": {},
-    "quot": {},
-    "rdquo": {},
-    "rsquo": {},
-    "sp": {},
+    "asciidoctor": { "description": "Set if the current processor is Asciidoctor." },
+    "asciidoctor-version": { "description": "Asciidoctor version." },
+    "asterisk": { "description": "*" },
+    "backend": { "description": "Backend used to create the output file." },
+    "backslash": { "description": "\\" },
+    "backtick": { "description": "`" },
+    "basebackend": { "description": "The backend value minus any trailing numbers." },
+    "blank": { "description": "nothing" },
+    "brvbar": { "description": "&#166;" },
+    "caret": { "description": "^" },
+    "deg": { "description": "&#176;" },
+    "docdate": { "description": "Last modified date of the source document." },
+    "docdatetime": { "description": "Last modified date and time of the source document." },
+    "docdir": { "description": "Full path of the directory that contains the source document." },
+    "docfile": { "description": "Full path of the source document." },
+    "docname": { "description": "Root name of the source document (no leading path or file extension)." },
+    "doctime": { "description": "Last modified time of the source document." },
+    "doctype": { "description": "Document type (article, book or manpage)." },
+    "embedded": { "description": "Set if content is being converted to an embeddable document (body only)." },
+    "empty": { "description": "nothing" },
+    "endsb": { "description": "]" },
+    "filetype": { "description": "File extension of the output file name (without leading period)." },
+    "gt": { "description": ">" },
+    "htmlsyntax": { "description": "Syntax used when generating the HTML output (html or xhtml)." },
+    "ldquo": { "description": "&#8220;" },
+    "localdate": { "description": "Date when converted." },
+    "localdatetime": { "description": "Date and time when converted." },
+    "localtime": { "description": "Time when converted." },
+    "lsquo": { "description": "&#8216;" },
+    "lt": { "description": "<" },
+    "nbsp": { "description": "&#160;" },
+    "outdir": { "description": "Full path of the output directory." },
+    "outfile": { "description": "Full path of the output file." },
+    "outfilesuffix": { "description": "Default file extension of output file." },
+    "plus": { "description": "&#43;" },
+    "quot": { "description": "&#34;" },
+    "rdquo": { "description": "&#8221;" },
+    "rsquo": { "description": "&#8217;" },
+    "sp": { "description": "single space" },
+    "safe-mode-level": { "description": "Numeric value of the safe mode setting." },
+    "safe-mode-name": { "description": "Textual value of the safe mode setting." },
+    "safe-mode-unsafe": { "description": "Set if the safe mode is UNSAFE." },
+    "safe-mode-safe": { "description": "Set if the safe mode is SAFE." },
+    "safe-mode-server": { "description": "Set if the safe mode is SERVER." },
+    "safe-mode-secure": { "description": "Set if the safe mode is SECURE." },
     "space": {},
-    "startsb": {},
-    "tilde": {},
-    "two-colons": {},
-    "two-semicolons": {},
-    "vbar": {},
-    "wj": {},
-    "zwsp": {}
+    "startsb": { "description": "[" },
+    "tilde": { "description": "~" },
+    "two-colons": { "description": "::" },
+    "two-semicolons": { "description": ";;" },
+    "user-home": { "description": "Home directory of the current user." },
+    "vbar": { "description": "|" },
+    "wj": { "description": "&#8288;" },
+    "zwsp": { "description": "&#8203;" }
   }
 }

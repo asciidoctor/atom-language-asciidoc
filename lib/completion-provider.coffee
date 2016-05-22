@@ -37,6 +37,8 @@ module.exports =
               description: attribute.description
               descriptionMoreURL: 'http://asciidoctor.org/docs/user-manual/#attribute-catalog'
         .concat localAttributes
+        .filter (attribute) ->
+          if prefix.match /^[\w]/ then firstCharsEqual(attribute.text, prefix) else true
         .sortBy (attribute) -> attribute.text.toLowerCase()
         .value()
 
@@ -68,3 +70,6 @@ module.exports =
         if error? then reject error else resolve data
     .then (data) =>
       {@attributes} = data
+
+firstCharsEqual = (str1, str2) ->
+  str1[0].toLowerCase() is str2[0].toLowerCase()

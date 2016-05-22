@@ -3,6 +3,7 @@ path = require 'path'
 CSON = require 'season'
 
 module.exports =
+  # FIXME check .source.asciidoc
   selector: '.source.asciidoc'
   disableForSelector: '.source.asciidoc .comment.block.asciidoc .comment.inline.asciidoc'
 
@@ -22,43 +23,43 @@ module.exports =
 
     return unless scopes.includes 'markup.substitution.attribute-reference.asciidoc'
 
-    pattern = /^:([a-zA-Z_\-!]+):/
-    textLines = editor.getText().split(/\n/)
-    currentRow = editor.getCursorScreenPosition().row
-    counter = 0
+    new Promise (resolve, reject) =>
+      pattern = /^:([a-zA-Z_\-!]+):/
+      textLines = editor.getText().split(/\n/)
+      currentRow = editor.getCursorScreenPosition().row
+      counter = 0
 
-    potentialAttributes = _.chain(textLines)
-      .filter((line) ->
-        counter++
-        pattern.test(line) and counter<=currentRow)
-      .map (rawAttribute) ->
-        pattern.exec(rawAttribute)[1]
-      .uniq()
-      .value()
+      potentialAttributes = _.chain(textLines)
+        .filter((line) ->
+          counter++
+          pattern.test(line) and counter<=currentRow)
+        .map (rawAttribute) ->
+          pattern.exec(rawAttribute)[1]
+        .uniq()
+        .value()
 
-    potentialAttributes = _.map(potentialAttributes, (attribute) ->
-      value =
-        type: 'variable'
-        text: attribute
-        displayText: attribute
-        rightLabel: 'local'
-    )
-
-    asciidocAttr = _.map(@attributes, (attribute, key) ->
-      value =
+      potentialAttributes = _.map(potentialAttributes, (attribute) ->
+        value =
           type: 'variable'
-          text: key
-          displayText: key
-          rightLabel: 'asciidoc'
-          description: attribute.description
-    )
+          text: attribute
+          displayText: attribute
+          rightLabel: 'local'
+      )
 
-    potentialAttributes = potentialAttributes.concat asciidocAttr
+      asciidocAttr = _.map(@attributes, (attribute, key) ->
+        value =
+            type: 'variable'
+            text: key
+            displayText: key
+            rightLabel: 'asciidoc'
+            description: attribute.description
+      )
 
-    potentialAttributes = _.sortBy potentialAttributes, (_attribute) ->
-      _attribute.text.toLowerCase()
+      potentialAttributes = potentialAttributes.concat asciidocAttr
 
-    new Promise (resolve) ->
+      potentialAttributes = _.sortBy potentialAttributes, (_attribute) ->
+        _attribute.text.toLowerCase()
+
       resolve(potentialAttributes)
 
   loadCompletions: ->

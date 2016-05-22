@@ -1,69 +1,69 @@
 {
   "attributes": {
-    "amp":{},
-    "apos":{},
-    "apostrophe":{},
-    "asciidoctor-version":{
+    "amp": {},
+    "apos": {},
+    "apostrophe": {},
+    "asciidoctor-version": {
       "description":"Version of the processor"
     },
-    "asterisk":{},
-    "backend":{
+    "asterisk": {},
+    "backend": {
       "description": "Backend used to render document"
     },
-    "backslash":{},
-    "backtick":{},
-    "brvbar":{},
-    "caret":{},
-    "deg":{},
-    "docdate":{
+    "backslash": {},
+    "backtick": {},
+    "brvbar": {},
+    "caret": {},
+    "deg": {},
+    "docdate": {
       "description": "Last modified date"
     },
-    "docdatetime":{
+    "docdatetime": {
       "description": "Last modified date and time"
     },
-    "docdir":{
+    "docdir": {
       "description": "Name of document directory"
     },
-    "docfile":{
+    "docfile": {
       "description": "Name of document file"
     },
-    "doctime":{
+    "doctime": {
       "description": "Last modified time"
     },
-    "doctitle":{
+    "doctitle": {
       "description": "The title of the document"
     },
-    "doctype":{
+    "doctype": {
       "description": "Document’s doctype (e.g., article)"
     },
-    "empty":{},
-    "endsb":{},
-    "gt":{},
-    "ldquo":{},
-    "localdate":{
+    "empty": {},
+    "endsb": {},
+    "gt": {},
+    "ldquo": {},
+    "localdate": {
       "description": "Local date when rendered"
     },
-    "localdatetime":{
+    "localdatetime": {
       "description": "Local date and time when rendered"
     },
-    "localtime":{
+    "localtime": {
       "description": "Local time when rendered"
     },
-    "lsquo":{},
-    "lt":{},
-    "nbsp":{},
-    "plus":{},
-    "quot":{},
-    "rdquo":{},
-    "rsquo":{},
-    "sp":{},
-    "space":{},
-    "startsb":{},
-    "tilde":{},
-    "two-colons":{},
-    "two-semicolons":{},
-    "vbar":{},
-    "wj":{},
-    "zwsp":{}
+    "lsquo": {},
+    "lt": {},
+    "nbsp": {},
+    "plus": {},
+    "quot": {},
+    "rdquo": {},
+    "rsquo": {},
+    "sp": {},
+    "space": {},
+    "startsb": {},
+    "tilde": {},
+    "two-colons": {},
+    "two-semicolons": {},
+    "vbar": {},
+    "wj": {},
+    "zwsp": {}
   }
 }

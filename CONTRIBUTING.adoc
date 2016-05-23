@@ -268,7 +268,7 @@ We use https://travis-ci.org[Travis CI] to publish this package.
 
 Every merged PR is released as a new version (by default a `patch`).
 
-We use the [Travis CI UI](https://travis-ci.org/asciidoctor/atom-language-asciidoc/settings) to manage the publishing system via secure environment variables:
+We use the https://travis-ci.org/asciidoctor/atom-language-asciidoc/settings[Travis CI UI] to manage the publishing system via secure environment variables:
 
 * `PUBLISH_TYPE`: default `patch`, can be change to `minor`, `major`.
 * `STOP_PUBLISH`: if defined, prevent the publishing.

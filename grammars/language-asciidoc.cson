@@ -290,7 +290,7 @@ repository:
       }
       {
         comment: "blockname"
-        match: "(?<=\\[)([^\\[\\],.#%]+)"
+        match: "(?<=\\[)([^\\[\\],.#%=]+)"
         captures:
           "0":
             name: "markup.meta.attribute-list.asciidoc"
@@ -1035,10 +1035,10 @@ repository:
     patterns: [
       {
         name: "markup.admonition.asciidoc"
-        begin: "(?=(?>(?:^\\[(NOTE|TIP|IMPORTANT|WARNING|CAUTION)((?:,|#)[^\\]]+)*\\]$)))"
+        begin: "(?=(?>(?:^\\[(NOTE|TIP|IMPORTANT|WARNING|CAUTION)((?:,|#|\\.|%)[^\\]]+)*\\]$)))"
         patterns: [
           {
-            match: "^\\[(NOTE|TIP|IMPORTANT|WARNING|CAUTION)((?:,|#)([^,\\]]+))*\\]$"
+            match: "^\\[(NOTE|TIP|IMPORTANT|WARNING|CAUTION)((?:,|#|\\.|%)([^,\\]]+))*\\]$"
             captures:
               "0":
                 patterns: [
@@ -1142,10 +1142,10 @@ repository:
     patterns: [
       {
         name: "markup.block.passthrough.asciidoc"
-        begin: "(?=(?>(?:^\\[(pass)((?:,|#)[^\\]]+)*\\]$)))"
+        begin: "(?=(?>(?:^\\[(pass)((?:,|#|\\.|%)[^\\]]+)*\\]$)))"
         patterns: [
           {
-            match: "^\\[(pass)((?:,|#)([^,\\]]+))*\\]$"
+            match: "^\\[(pass)((?:,|#|\\.|%)([^,\\]]+))*\\]$"
             captures:
               "0":
                 name: "markup.heading.asciidoc"
@@ -1196,10 +1196,10 @@ repository:
     patterns: [
       {
         name: "markup.italic.quotes.asciidoc"
-        begin: "(?=(?>(?:^\\[(quote|verse)((?:,|#)([^,\\]]+))*\\]$)))"
+        begin: "(?=(?>(?:^\\[(quote|verse)((?:,|#|\\.|%)([^,\\]]+))*\\]$)))"
         patterns: [
           {
-            match: "^\\[(quote|verse)((?:,|#)([^,\\]]+))*\\]$"
+            match: "^\\[(quote|verse)((?:,|#|\\.|%)([^,\\]]+))*\\]$"
             captures:
               "0":
                 patterns: [

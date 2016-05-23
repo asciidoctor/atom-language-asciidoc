@@ -9,7 +9,7 @@ patterns: [
   match: '([,.#%])'
 ,
   comment: 'blockname'
-  match: '(?<=\\[)([^\\[\\],.#%]+)'
+  match: '(?<=\\[)([^\\[\\],.#%=]+)'
   captures:
     0:
       name: 'markup.meta.attribute-list.asciidoc'

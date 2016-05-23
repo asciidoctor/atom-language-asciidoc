@@ -2,11 +2,11 @@
 set -e
 
 ## Custom variables
-USER_EMAIL="<email for git config>" # FIXME
-USER_NAME="<name for git config>" # FIXME
-GIT_REPOSITORY='git@github.com:asciidoctor/atom-language-asciidoc.git'
+USER_EMAIL="docbot@asciidoctor.org"
+USER_NAME="Asciidoctor DocBot"
+GIT_REPOSITORY="git@github.com:asciidoctor/atom-language-asciidoc.git"
 SSH_KEY_NAME="travis_rsa"
-AUTHORIZED_BRANCH='master'
+AUTHORIZED_BRANCH="master"
 PUBLISH_TYPE=${PUBLISH_TYPE:="patch"}
 
 ## Fix apm path to the Atom stable channel
@@ -26,13 +26,12 @@ else
 fi
 
 ## Git configuration
-git config --global user.email ${USER_EMAIL}
+git config --global user.email "${USER_EMAIL}"
 git config --global user.name "${USER_NAME}"
 
 ## Loading SSH key
-echo "Loading key..."
-# FIXME
-openssl aes-256-cbc -K "$encrypted_key" -iv "$encrypted_iv" -in .travis/${SSH_KEY_NAME}.enc -out ~/.ssh/${SSH_KEY_NAME} -d
+echo 'Loading key...'
+openssl aes-256-cbc -K "$encrypted_86f473c09ba9_key" -iv "$encrypted_86f473c09ba9_iv" -in .travis/${SSH_KEY_NAME}.enc -out ~/.ssh/${SSH_KEY_NAME} -d
 eval "$(ssh-agent -s)"
 chmod 600 ~/.ssh/${SSH_KEY_NAME}
 ssh-add ~/.ssh/${SSH_KEY_NAME}
@@ -40,7 +39,7 @@ ssh-add ~/.ssh/${SSH_KEY_NAME}
 ## Change origin url to use SSH
 git remote set-url origin ${GIT_REPOSITORY}
 
-## Force checkout master branch (because Travis use a detached head)
+## Force checkout master branch (because Travis uses a detached head)
 git checkout ${AUTHORIZED_BRANCH}
 
 ## Publish

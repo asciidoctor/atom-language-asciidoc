@@ -460,6 +460,15 @@ repository:
         name: "markup.heading.list.asciidoc"
         match: "^\\p{Blank}*(.*?\\S)(:{2,4}|;;)($|\\p{Blank}+)"
         captures:
+          "1":
+            patterns: [
+              {
+                include: "#link-macro"
+              }
+              {
+                include: "#attribute-reference"
+              }
+            ]
           "2":
             name: "markup.list.bullet.asciidoc"
       }

@@ -98,7 +98,7 @@ coffeelint -f coffeelint.json grammars/asciidoc.cson spec/*-spec.coffee snippets
 
 === Package specs
 
-Tests are defined in link:spec/asciidoc-spec.coffee[asciidoc-spec.coffee], which provide snippets of text and test if the parsed result meet the expectations.
+Tests are defined in link:spec/[spec/] directory, which provide snippets of text and test if the parsed result meet the expectations.
 Ideally all grammar features are covered in the specs (100% test coverage), with both positive and negative tests.
 Having these tests present will help future contributors make improvements without accidentally breaking other parts of the package.
 

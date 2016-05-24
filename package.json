@@ -4,6 +4,11 @@
   "description": "Syntax highlighting and snippets for AsciiDoc (with Asciidoctor flavor).",
   "repository": "https://github.com/asciidoctor/atom-language-asciidoc",
   "license": "MIT",
+  "keywords": [
+    "asciidoctor",
+    "asciidoc",
+    "grammar"
+  ],
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },

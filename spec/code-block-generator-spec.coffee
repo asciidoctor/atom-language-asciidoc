@@ -28,6 +28,8 @@ describe 'Code block generator', ->
           begin: '^(-{4,})\\s*$'
           patterns: [
             include: '#block-callout'
+          ,
+            include: '#include-directive'
           ]
           end: '(?<=\\1)'
         ,
@@ -36,10 +38,22 @@ describe 'Code block generator', ->
           begin: '^(-{2})\\s*$'
           patterns: [
             include: '#block-callout'
+          ,
+            include: '#include-directive'
+          ]
+          end: '^(\\1)$'
+        ,
+          comment: 'literal block'
+          name: 'markup.raw.asciidoc'
+          begin: '^(\\.{4})\\s*$'
+          patterns: [
+            include: '#block-callout'
+          ,
+            include: '#include-directive'
           ]
           end: '^(\\1)$'
         ]
-        end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
+        end: '((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)'
 
     it 'should generate listing block', ->
       languages = []
@@ -52,6 +66,8 @@ describe 'Code block generator', ->
           0: name: 'support.asciidoc'
         patterns: [
           include: '#block-callout'
+        ,
+          include: '#include-directive'
         ]
         end: '^(\\1)$'
         endCaptures:
@@ -85,6 +101,8 @@ describe 'Code block generator', ->
           patterns: [
             include: '#block-callout'
           ,
+            include: '#include-directive'
+          ,
             include: "source.js"
           ]
           end: '^(\\1)$'
@@ -95,11 +113,25 @@ describe 'Code block generator', ->
           patterns: [
             include: '#block-callout'
           ,
+            include: '#include-directive'
+          ,
+            include: "source.js"
+          ]
+          end: '^(\\1)$'
+        ,
+          comment: 'literal block'
+          begin: '^(\\.{4})\\s*$'
+          contentName: "source.embedded.js"
+          patterns: [
+            include: '#block-callout'
+          ,
+            include: '#include-directive'
+          ,
             include: "source.js"
           ]
           end: '^(\\1)$'
         ]
-        end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
+        end: '((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)'
 
     it 'should generate C++ code block', ->
       languages = [
@@ -129,6 +161,8 @@ describe 'Code block generator', ->
           patterns: [
             include: '#block-callout'
           ,
+            include: '#include-directive'
+          ,
             include: "source.cpp"
           ]
           end: '^(\\1)$'
@@ -139,11 +173,25 @@ describe 'Code block generator', ->
           patterns: [
             include: '#block-callout'
           ,
+            include: '#include-directive'
+          ,
+            include: "source.cpp"
+          ]
+          end: '^(\\1)$'
+        ,
+          comment: 'literal block'
+          begin: '^(\\.{4})\\s*$'
+          contentName: "source.embedded.cpp"
+          patterns: [
+            include: '#block-callout'
+          ,
+            include: '#include-directive'
+          ,
             include: "source.cpp"
           ]
           end: '^(\\1)$'
         ]
-        end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
+        end: '((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)'
 
   describe 'with Markdown syntax', ->
 

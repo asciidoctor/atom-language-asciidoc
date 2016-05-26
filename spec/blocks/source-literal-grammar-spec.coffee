@@ -1,4 +1,4 @@
-fdescribe 'Source literal', ->
+describe 'Source literal', ->
   grammar = null
 
   beforeEach ->

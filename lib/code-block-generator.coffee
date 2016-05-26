@@ -38,8 +38,18 @@ module.exports =
           include: "#{lang.type}.#{lang.code}"
         ]
         end: '^(\\1)$'
+      ,
+        comment: 'literal block'
+        begin: '^(\\.{4})\\s*$'
+        contentName: "#{lang.type}.embedded.#{lang.code}"
+        patterns: [
+          include: '#block-callout'
+        ,
+          include: "#{lang.type}.#{lang.code}"
+        ]
+        end: '^(\\1)$'
       ]
-      end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
+      end: '((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)'
 
     # add generic block
     codeBlocks.push
@@ -72,8 +82,16 @@ module.exports =
           include: '#block-callout'
         ]
         end: '^(\\1)$'
+      ,
+        comment: 'literal block'
+        name: 'markup.raw.asciidoc'
+        begin: '^(\\.{4})\\s*$'
+        patterns: [
+          include: '#block-callout'
+        ]
+        end: '^(\\1)$'
       ]
-      end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
+      end: '((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)'
 
     # add listing block
     codeBlocks.push

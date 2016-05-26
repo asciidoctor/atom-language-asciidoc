@@ -1471,8 +1471,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.c"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.c"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.clojure.asciidoc"
@@ -1523,8 +1537,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.clojure"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.clojure"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.coffee.asciidoc"
@@ -1575,8 +1603,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.coffee"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.coffee"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.cpp.asciidoc"
@@ -1627,8 +1669,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.cpp"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.cpp"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.css.asciidoc"
@@ -1679,8 +1735,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.css"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.css"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.cs.asciidoc"
@@ -1731,8 +1801,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.cs"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.cs"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.diff.asciidoc"
@@ -1783,8 +1867,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.diff"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.diff"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.dockerfile.asciidoc"
@@ -1835,8 +1933,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.dockerfile"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.dockerfile"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.elixir.asciidoc"
@@ -1887,8 +1999,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.elixir"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.elixir"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.elm.asciidoc"
@@ -1939,8 +2065,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.elm"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.elm"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.erlang.asciidoc"
@@ -1991,8 +2131,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.erlang"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.erlang"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.go.asciidoc"
@@ -2043,8 +2197,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.go"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.go"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.groovy.asciidoc"
@@ -2095,8 +2263,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.groovy"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.groovy"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.haskell.asciidoc"
@@ -2147,8 +2329,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.haskell"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.haskell"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.html.basic.asciidoc"
@@ -2199,8 +2395,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "text.embedded.html.basic"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "text.html.basic"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.java.asciidoc"
@@ -2251,8 +2461,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.java"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.java"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.js.asciidoc"
@@ -2303,8 +2527,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.js"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.js"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.json.asciidoc"
@@ -2355,8 +2593,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.json"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.json"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.js.jsx.asciidoc"
@@ -2407,8 +2659,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.js.jsx"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.js.jsx"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.julia.asciidoc"
@@ -2459,8 +2725,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.julia"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.julia"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.css.less.asciidoc"
@@ -2511,8 +2791,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.css.less"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.css.less"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.makefile.asciidoc"
@@ -2563,8 +2857,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.makefile"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.makefile"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.gfm.asciidoc"
@@ -2615,8 +2923,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.gfm"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.gfm"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.html.mustache.asciidoc"
@@ -2667,8 +2989,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "text.embedded.html.mustache"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "text.html.mustache"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.objc.asciidoc"
@@ -2719,8 +3055,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.objc"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.objc"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.ocaml.asciidoc"
@@ -2771,8 +3121,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.ocaml"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.ocaml"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.perl.asciidoc"
@@ -2823,8 +3187,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.perl"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.perl"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.perl6.asciidoc"
@@ -2875,8 +3253,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.perl6"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.perl6"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.html.php.asciidoc"
@@ -2927,8 +3319,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "text.embedded.html.php"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "text.html.php"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.asciidoc.properties.asciidoc"
@@ -2979,8 +3385,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.asciidoc.properties"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.asciidoc.properties"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.python.asciidoc"
@@ -3031,8 +3451,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.python"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.python"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.r.asciidoc"
@@ -3083,8 +3517,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.r"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.r"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.ruby.asciidoc"
@@ -3135,8 +3583,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.ruby"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.ruby"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.rust.asciidoc"
@@ -3187,8 +3649,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.rust"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.rust"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.sass.asciidoc"
@@ -3239,8 +3715,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.sass"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.sass"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.scala.asciidoc"
@@ -3291,8 +3781,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.scala"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.scala"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.css.scss.asciidoc"
@@ -3343,8 +3847,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.css.scss"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.css.scss"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.shell.asciidoc"
@@ -3395,8 +3913,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.shell"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.shell"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.sql.asciidoc"
@@ -3447,8 +3979,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.sql"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.sql"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.swift.asciidoc"
@@ -3499,8 +4045,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.swift"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.swift"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.toml.asciidoc"
@@ -3551,8 +4111,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.toml"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.toml"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.ts.asciidoc"
@@ -3603,8 +4177,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.ts"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.ts"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.xml.asciidoc"
@@ -3655,8 +4243,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "text.embedded.xml"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "text.xml"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.yaml.asciidoc"
@@ -3707,8 +4309,22 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.yaml"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "source.yaml"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         begin: "(?=(?>(?:^\\[(source)((?:,|#)[^\\]]+)*\\]$)))"
@@ -3752,8 +4368,19 @@ repository:
             ]
             end: "^(\\1)$"
           }
+          {
+            comment: "literal block"
+            name: "markup.raw.asciidoc"
+            begin: "^(\\.{4})\\s*$"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+            ]
+            end: "^(\\1)$"
+          }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
         name: "markup.raw.asciidoc"

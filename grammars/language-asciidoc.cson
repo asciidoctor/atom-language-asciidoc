@@ -390,6 +390,35 @@ repository:
         match: "^(?:'|<){3,}$|^ {0,3}([-\\*'])( *)\\1\\2\\1$"
       }
     ]
+  "include-directive":
+    patterns: [
+      {
+        match: "\\b(include)(::)([^\\[]+)(\\[)(.*?)(\\])$"
+        captures:
+          "1":
+            name: "entity.name.function.asciidoc"
+          "2":
+            name: "punctuation.separator.asciidoc"
+          "3":
+            name: "markup.link.asciidoc"
+            patterns: [
+              {
+                include: "#attribute-reference"
+              }
+            ]
+          "4":
+            name: "punctuation.separator.asciidoc"
+          "5":
+            name: "string.unquoted.asciidoc"
+            patterns: [
+              {
+                include: "#attribute-reference"
+              }
+            ]
+          "6":
+            name: "punctuation.separator.asciidoc"
+      }
+    ]
   keywords:
     patterns: [
       {
@@ -691,14 +720,25 @@ repository:
     patterns: [
       {
         name: "markup.macro.block.general.asciidoc"
-        match: "^(\\p{Word}+)::(\\S*?)\\[((?:\\\\\\]|[^\\]])*?)\\]$"
+        match: "^(\\p{Word}+)(::)(\\S*?)(\\[)((?:\\\\\\]|[^\\]])*?)\\]$"
         captures:
           "1":
             name: "entity.name.function.asciidoc"
           "2":
-            name: "markup.link.asciidoc"
+            name: "punctuation.separator.asciidoc"
           "3":
-            name: "string.unquoted.asciidoc"
+            "4":
+              name: "punctuation.separator.asciidoc"
+            "5":
+              name: "string.unquoted.asciidoc"
+              patterns: [
+                {
+                  include: "#attribute-reference"
+                }
+              ]
+            "6":
+              name: "punctuation.separator.asciidoc"
+            name: "markup.link.asciidoc"
             patterns: [
               {
                 include: "#attribute-reference"
@@ -1452,6 +1492,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.c"
               }
             ]
@@ -1466,6 +1509,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.c"
               }
             ]
@@ -1478,6 +1524,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.c"
@@ -1518,6 +1567,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.clojure"
               }
             ]
@@ -1532,6 +1584,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.clojure"
               }
             ]
@@ -1544,6 +1599,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.clojure"
@@ -1584,6 +1642,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.coffee"
               }
             ]
@@ -1598,6 +1659,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.coffee"
               }
             ]
@@ -1610,6 +1674,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.coffee"
@@ -1650,6 +1717,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.cpp"
               }
             ]
@@ -1664,6 +1734,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.cpp"
               }
             ]
@@ -1676,6 +1749,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.cpp"
@@ -1716,6 +1792,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.css"
               }
             ]
@@ -1730,6 +1809,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.css"
               }
             ]
@@ -1742,6 +1824,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.css"
@@ -1782,6 +1867,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.cs"
               }
             ]
@@ -1796,6 +1884,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.cs"
               }
             ]
@@ -1808,6 +1899,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.cs"
@@ -1848,6 +1942,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.diff"
               }
             ]
@@ -1862,6 +1959,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.diff"
               }
             ]
@@ -1874,6 +1974,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.diff"
@@ -1914,6 +2017,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.dockerfile"
               }
             ]
@@ -1928,6 +2034,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.dockerfile"
               }
             ]
@@ -1940,6 +2049,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.dockerfile"
@@ -1980,6 +2092,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.elixir"
               }
             ]
@@ -1994,6 +2109,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.elixir"
               }
             ]
@@ -2006,6 +2124,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.elixir"
@@ -2046,6 +2167,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.elm"
               }
             ]
@@ -2060,6 +2184,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.elm"
               }
             ]
@@ -2072,6 +2199,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.elm"
@@ -2112,6 +2242,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.erlang"
               }
             ]
@@ -2126,6 +2259,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.erlang"
               }
             ]
@@ -2138,6 +2274,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.erlang"
@@ -2178,6 +2317,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.go"
               }
             ]
@@ -2192,6 +2334,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.go"
               }
             ]
@@ -2204,6 +2349,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.go"
@@ -2244,6 +2392,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.groovy"
               }
             ]
@@ -2258,6 +2409,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.groovy"
               }
             ]
@@ -2270,6 +2424,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.groovy"
@@ -2310,6 +2467,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.haskell"
               }
             ]
@@ -2324,6 +2484,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.haskell"
               }
             ]
@@ -2336,6 +2499,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.haskell"
@@ -2376,6 +2542,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "text.html.basic"
               }
             ]
@@ -2390,6 +2559,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "text.html.basic"
               }
             ]
@@ -2402,6 +2574,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "text.html.basic"
@@ -2442,6 +2617,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.java"
               }
             ]
@@ -2456,6 +2634,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.java"
               }
             ]
@@ -2468,6 +2649,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.java"
@@ -2508,6 +2692,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.js"
               }
             ]
@@ -2522,6 +2709,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.js"
               }
             ]
@@ -2534,6 +2724,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.js"
@@ -2574,6 +2767,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.json"
               }
             ]
@@ -2588,6 +2784,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.json"
               }
             ]
@@ -2600,6 +2799,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.json"
@@ -2640,6 +2842,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.js.jsx"
               }
             ]
@@ -2654,6 +2859,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.js.jsx"
               }
             ]
@@ -2666,6 +2874,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.js.jsx"
@@ -2706,6 +2917,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.julia"
               }
             ]
@@ -2720,6 +2934,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.julia"
               }
             ]
@@ -2732,6 +2949,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.julia"
@@ -2772,6 +2992,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.css.less"
               }
             ]
@@ -2786,6 +3009,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.css.less"
               }
             ]
@@ -2798,6 +3024,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.css.less"
@@ -2838,6 +3067,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.makefile"
               }
             ]
@@ -2852,6 +3084,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.makefile"
               }
             ]
@@ -2864,6 +3099,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.makefile"
@@ -2904,6 +3142,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.gfm"
               }
             ]
@@ -2918,6 +3159,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.gfm"
               }
             ]
@@ -2930,6 +3174,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.gfm"
@@ -2970,6 +3217,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "text.html.mustache"
               }
             ]
@@ -2984,6 +3234,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "text.html.mustache"
               }
             ]
@@ -2996,6 +3249,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "text.html.mustache"
@@ -3036,6 +3292,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.objc"
               }
             ]
@@ -3050,6 +3309,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.objc"
               }
             ]
@@ -3062,6 +3324,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.objc"
@@ -3102,6 +3367,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.ocaml"
               }
             ]
@@ -3116,6 +3384,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.ocaml"
               }
             ]
@@ -3128,6 +3399,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.ocaml"
@@ -3168,6 +3442,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.perl"
               }
             ]
@@ -3182,6 +3459,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.perl"
               }
             ]
@@ -3194,6 +3474,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.perl"
@@ -3234,6 +3517,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.perl6"
               }
             ]
@@ -3248,6 +3534,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.perl6"
               }
             ]
@@ -3260,6 +3549,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.perl6"
@@ -3300,6 +3592,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "text.html.php"
               }
             ]
@@ -3314,6 +3609,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "text.html.php"
               }
             ]
@@ -3326,6 +3624,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "text.html.php"
@@ -3366,6 +3667,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.asciidoc.properties"
               }
             ]
@@ -3380,6 +3684,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.asciidoc.properties"
               }
             ]
@@ -3392,6 +3699,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.asciidoc.properties"
@@ -3432,6 +3742,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.python"
               }
             ]
@@ -3446,6 +3759,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.python"
               }
             ]
@@ -3458,6 +3774,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.python"
@@ -3498,6 +3817,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.r"
               }
             ]
@@ -3512,6 +3834,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.r"
               }
             ]
@@ -3524,6 +3849,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.r"
@@ -3564,6 +3892,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.ruby"
               }
             ]
@@ -3578,6 +3909,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.ruby"
               }
             ]
@@ -3590,6 +3924,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.ruby"
@@ -3630,6 +3967,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.rust"
               }
             ]
@@ -3644,6 +3984,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.rust"
               }
             ]
@@ -3656,6 +3999,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.rust"
@@ -3696,6 +4042,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.sass"
               }
             ]
@@ -3710,6 +4059,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.sass"
               }
             ]
@@ -3722,6 +4074,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.sass"
@@ -3762,6 +4117,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.scala"
               }
             ]
@@ -3776,6 +4134,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.scala"
               }
             ]
@@ -3788,6 +4149,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.scala"
@@ -3828,6 +4192,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.css.scss"
               }
             ]
@@ -3842,6 +4209,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.css.scss"
               }
             ]
@@ -3854,6 +4224,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.css.scss"
@@ -3894,6 +4267,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.shell"
               }
             ]
@@ -3908,6 +4284,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.shell"
               }
             ]
@@ -3920,6 +4299,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.shell"
@@ -3960,6 +4342,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.sql"
               }
             ]
@@ -3974,6 +4359,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.sql"
               }
             ]
@@ -3986,6 +4374,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.sql"
@@ -4026,6 +4417,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.swift"
               }
             ]
@@ -4040,6 +4434,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.swift"
               }
             ]
@@ -4052,6 +4449,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.swift"
@@ -4092,6 +4492,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.toml"
               }
             ]
@@ -4106,6 +4509,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.toml"
               }
             ]
@@ -4118,6 +4524,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.toml"
@@ -4158,6 +4567,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.ts"
               }
             ]
@@ -4172,6 +4584,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.ts"
               }
             ]
@@ -4184,6 +4599,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.ts"
@@ -4224,6 +4642,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "text.xml"
               }
             ]
@@ -4238,6 +4659,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "text.xml"
               }
             ]
@@ -4250,6 +4674,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "text.xml"
@@ -4290,6 +4717,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.yaml"
               }
             ]
@@ -4304,6 +4734,9 @@ repository:
                 include: "#block-callout"
               }
               {
+                include: "#include-directive"
+              }
+              {
                 include: "source.yaml"
               }
             ]
@@ -4316,6 +4749,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
               {
                 include: "source.yaml"
@@ -4354,6 +4790,9 @@ repository:
               {
                 include: "#block-callout"
               }
+              {
+                include: "#include-directive"
+              }
             ]
             end: "(?<=\\1)"
           }
@@ -4365,6 +4804,9 @@ repository:
               {
                 include: "#block-callout"
               }
+              {
+                include: "#include-directive"
+              }
             ]
             end: "^(\\1)$"
           }
@@ -4375,6 +4817,9 @@ repository:
             patterns: [
               {
                 include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
               }
             ]
             end: "^(\\1)$"
@@ -4391,6 +4836,9 @@ repository:
         patterns: [
           {
             include: "#block-callout"
+          }
+          {
+            include: "#include-directive"
           }
         ]
         end: "^(\\1)$"

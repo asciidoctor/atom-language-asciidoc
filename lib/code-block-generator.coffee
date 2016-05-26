@@ -25,6 +25,8 @@ module.exports =
         patterns: [
           include: '#block-callout'
         ,
+          include: '#include-directive'
+        ,
           include: "#{lang.type}.#{lang.code}"
         ]
         end: '^(\\1)$'
@@ -35,6 +37,8 @@ module.exports =
         patterns: [
           include: '#block-callout'
         ,
+          include: '#include-directive'
+        ,
           include: "#{lang.type}.#{lang.code}"
         ]
         end: '^(\\1)$'
@@ -44,6 +48,8 @@ module.exports =
         contentName: "#{lang.type}.embedded.#{lang.code}"
         patterns: [
           include: '#block-callout'
+        ,
+          include: '#include-directive'
         ,
           include: "#{lang.type}.#{lang.code}"
         ]
@@ -72,6 +78,8 @@ module.exports =
         begin: '^(-{4,})\\s*$'
         patterns: [
           include: '#block-callout'
+        ,
+          include: '#include-directive'
         ]
         end: '(?<=\\1)'
       ,
@@ -80,6 +88,8 @@ module.exports =
         begin: '^(-{2})\\s*$'
         patterns: [
           include: '#block-callout'
+        ,
+          include: '#include-directive'
         ]
         end: '^(\\1)$'
       ,
@@ -88,6 +98,8 @@ module.exports =
         begin: '^(\\.{4})\\s*$'
         patterns: [
           include: '#block-callout'
+        ,
+          include: '#include-directive'
         ]
         end: '^(\\1)$'
       ]
@@ -101,6 +113,8 @@ module.exports =
         0: name: 'support.asciidoc'
       patterns: [
         include: '#block-callout'
+      ,
+        include: '#include-directive'
       ]
       end: '^(\\1)$'
       endCaptures:

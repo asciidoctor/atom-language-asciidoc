@@ -393,7 +393,7 @@ repository:
   "include-directive":
     patterns: [
       {
-        match: "\\b(include)(::)([^\\[]+)(\\[)(.*?)(\\])$"
+        match: "^(include)(::)([^\\[]+)(\\[)(.*?)(\\])$"
         captures:
           "1":
             name: "entity.name.function.asciidoc"

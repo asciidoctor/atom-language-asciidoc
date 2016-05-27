@@ -25,6 +25,8 @@ module.exports =
         patterns: [
           include: '#block-callout'
         ,
+          include: '#include-directive'
+        ,
           include: "#{lang.type}.#{lang.code}"
         ]
         end: '^(\\1)$'
@@ -35,11 +37,25 @@ module.exports =
         patterns: [
           include: '#block-callout'
         ,
+          include: '#include-directive'
+        ,
+          include: "#{lang.type}.#{lang.code}"
+        ]
+        end: '^(\\1)$'
+      ,
+        comment: 'literal block'
+        begin: '^(\\.{4})\\s*$'
+        contentName: "#{lang.type}.embedded.#{lang.code}"
+        patterns: [
+          include: '#block-callout'
+        ,
+          include: '#include-directive'
+        ,
           include: "#{lang.type}.#{lang.code}"
         ]
         end: '^(\\1)$'
       ]
-      end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
+      end: '((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)'
 
     # add generic block
     codeBlocks.push
@@ -62,6 +78,8 @@ module.exports =
         begin: '^(-{4,})\\s*$'
         patterns: [
           include: '#block-callout'
+        ,
+          include: '#include-directive'
         ]
         end: '(?<=\\1)'
       ,
@@ -70,10 +88,22 @@ module.exports =
         begin: '^(-{2})\\s*$'
         patterns: [
           include: '#block-callout'
+        ,
+          include: '#include-directive'
+        ]
+        end: '^(\\1)$'
+      ,
+        comment: 'literal block'
+        name: 'markup.raw.asciidoc'
+        begin: '^(\\.{4})\\s*$'
+        patterns: [
+          include: '#block-callout'
+        ,
+          include: '#include-directive'
         ]
         end: '^(\\1)$'
       ]
-      end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
+      end: '((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)'
 
     # add listing block
     codeBlocks.push
@@ -83,6 +113,8 @@ module.exports =
         0: name: 'support.asciidoc'
       patterns: [
         include: '#block-callout'
+      ,
+        include: '#include-directive'
       ]
       end: '^(\\1)$'
       endCaptures:

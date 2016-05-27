@@ -1,0 +1,27 @@
+key: 'include-directive'
+
+# Matches the include directive.
+# http://asciidoctor.org/docs/user-manual/#include-directive
+#
+# Examples
+#
+#   include::{testpkg}/WhenAttributesAreUsed.java[tags=uri-scheme]
+#
+patterns: [
+  match: '^(include)(::)([^\\[]+)(\\[)(.*?)(\\])$'
+  captures:
+    1: name: 'entity.name.function.asciidoc'
+    2: name: 'punctuation.separator.asciidoc'
+    3:
+      name: 'markup.link.asciidoc'
+      patterns: [
+        include: '#attribute-reference'
+      ]
+    4: name: 'punctuation.separator.asciidoc'
+    5:
+     name: 'string.unquoted.asciidoc'
+     patterns: [
+       include: '#attribute-reference'
+     ]
+    6: name: 'punctuation.separator.asciidoc'
+]

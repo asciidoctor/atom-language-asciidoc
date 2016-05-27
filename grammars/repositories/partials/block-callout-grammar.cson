@@ -10,7 +10,7 @@ patterns: [
     #   <!--1--> (for XML-based languages)
     #
     name: 'callout.source.code.asciidoc'
-    match: '(?:(?:\\/\\/|#|--|;;) ?)?(\\\\)?(<)!?(--|)(\\d+)\\3(>)(?=(?: ?\\\\?<!?\\3\\d+\\3>)*$)'
+    match: '(?:(?:\\/\\/|#|--|;;) ?)?( )?(?<!\\\\)(<)!?(--|)(\\d+)\\3(>)(?=(?: ?<!?\\3\\d+\\3>)*$)'
     captures:
       2: name: 'constant.other.symbol.asciidoc'
       4: name: 'constant.numeric.asciidoc'

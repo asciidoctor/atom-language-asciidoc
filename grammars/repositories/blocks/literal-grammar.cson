@@ -11,6 +11,6 @@ patterns: [
   # ....
   #
   name: 'markup.block.literal.asciidoc'
-  begin: '(^\\.{4,}$)'
-  end: '\\1'
+  begin: '^(\\.{4,})$'
+  end: '^(\\1)$'
 ]

@@ -1155,7 +1155,7 @@ repository:
             include: "#inlines"
           }
         ]
-        end: "\\1"
+        end: "^(\\1)$"
       }
     ]
   "front-matter-block":
@@ -1175,8 +1175,8 @@ repository:
     patterns: [
       {
         name: "markup.block.literal.asciidoc"
-        begin: "(^\\.{4,}$)"
-        end: "\\1"
+        begin: "^(\\.{4,})$"
+        end: "^(\\1)$"
       }
     ]
   "open-block":
@@ -1184,7 +1184,7 @@ repository:
       {
         name: "markup.raw.open.asciidoc"
         begin: "^(-{2})$"
-        end: "\\1"
+        end: "^(\\1)$"
       }
     ]
   "passthrough-paragraph":
@@ -1336,13 +1336,13 @@ repository:
     patterns: [
       {
         name: "markup.block.sidebar.asciidoc"
-        begin: "(^\\*{4,}$)"
+        begin: "^(\\*{4,})$"
         patterns: [
           {
             include: "#inlines"
           }
         ]
-        end: "\\1"
+        end: "^(\\1)$"
       }
     ]
   "table-csv":

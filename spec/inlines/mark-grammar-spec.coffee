@@ -8,10 +8,6 @@ describe 'mark text', ->
     runs ->
       grammar = atom.grammars.grammarForScopeName 'source.asciidoc'
 
-  it 'parses the grammar', ->
-    expect(grammar).toBeDefined()
-    expect(grammar.scopeName).toBe 'source.asciidoc'
-
   describe 'Should tokenizes constrained mark text', ->
 
     it 'when constrained mark text', ->

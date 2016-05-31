@@ -8,10 +8,6 @@ describe 'Should tokenizes callout list item when', ->
     runs ->
       grammar = atom.grammars.grammarForScopeName 'source.asciidoc'
 
-  # convenience function during development
-  debug = (tokens) ->
-    console.log(JSON.stringify tokens, null, ' ')
-
   it 'parses the grammar', ->
     expect(grammar).toBeDefined()
     expect(grammar.scopeName).toBe 'source.asciidoc'

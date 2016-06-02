@@ -1,0 +1,29 @@
+key: 'comment-open-block'
+
+patterns: [
+    name: 'comment.block.asciidoc'
+    begin: '(?=(?>(?:^\\[(comment)((?:,|#|\\.|%)[^\\]]+)*\\]$)))'
+    patterns: [
+      match: '^\\[(comment)((?:,|#|\\.|%)([^,\\]]+))*\\]$'
+      captures:
+        0:
+          patterns: [
+            include: '#block-attribute-inner'
+          ]
+    ,
+      include: '#inlines'
+    ,
+      include: '#block-title'
+    ,
+      comment: 'open block'
+      begin: '^(-{2})\\s*$'
+      patterns: [
+        include: '#inlines'
+      ,
+        include: '#list'
+      ]
+      end: '(?<=\\1)'
+    ]
+    end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
+  ,
+]

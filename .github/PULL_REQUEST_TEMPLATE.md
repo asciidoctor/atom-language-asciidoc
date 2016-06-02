@@ -21,7 +21,9 @@ Your description.
 
 ## Syntax example
 
+```adoc
 Your syntax example.
+```
 
 ## Screenshots
 

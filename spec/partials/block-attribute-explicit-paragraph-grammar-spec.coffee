@@ -78,9 +78,9 @@ describe 'Should tokenizes block attribute for explicit paragraph when', ->
   it 'use "comment" keyword', ->
     {tokens} = grammar.tokenizeLine '[comment]'
     expect(tokens).toHaveLength 3
-    expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
-    expect(tokens[1]).toEqualJson value: 'comment', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
-    expect(tokens[2]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
+    expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'comment.block.asciidoc']
+    expect(tokens[1]).toEqualJson value: 'comment', scopes: ['source.asciidoc', 'comment.block.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
+    expect(tokens[2]).toEqualJson value: ']', scopes: ['source.asciidoc', 'comment.block.asciidoc']
 
   it 'use "example" keyword', ->
     {tokens} = grammar.tokenizeLine '[example]'

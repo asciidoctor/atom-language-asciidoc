@@ -35,6 +35,8 @@ repository:
     patterns: [
       include: '#front-matter-block'
     ,
+      include: '#comment-open-block'
+    ,
       include: '#admonition-paragraph'
     ,
       include: '#quote-paragraph'

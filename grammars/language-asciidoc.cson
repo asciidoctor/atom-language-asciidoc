@@ -37,6 +37,9 @@ patterns: [
     include: "#list"
   }
   {
+    include: "#literal-paragraph"
+  }
+  {
     include: "#inlines"
   }
   {
@@ -1219,6 +1222,14 @@ repository:
         name: "markup.block.literal.asciidoc"
         begin: "^(\\.{4,})$"
         end: "^(\\1)$"
+      }
+    ]
+  "literal-paragraph":
+    patterns: [
+      {
+        name: "markup.block.literal.asciidoc"
+        begin: "^\\p{Blank}+(.*)$"
+        end: "^\\p{Blank}*$"
       }
     ]
   "open-block":

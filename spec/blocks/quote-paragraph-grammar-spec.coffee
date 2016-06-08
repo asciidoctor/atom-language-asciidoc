@@ -71,9 +71,9 @@ describe 'Quotes paragraph', ->
         '''
       expect(tokens).toHaveLength 4
       expect(tokens[0]).toHaveLength 1
-      expect(tokens[0][0]).toEqualJson value: ' [quote, Erwin Schrödinger, Sorry]', scopes: ['source.asciidoc']
+      expect(tokens[0][0]).toEqualJson value: ' [quote, Erwin Schrödinger, Sorry]', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
       expect(tokens[1]).toHaveLength 1
-      expect(tokens[1][0]).toEqualJson value: 'I don\'t like it, and I\'m sorry I ever had anything to do with it.', scopes: ['source.asciidoc']
+      expect(tokens[1][0]).toEqualJson value: 'I don\'t like it, and I\'m sorry I ever had anything to do with it.', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
       expect(tokens[2]).toHaveLength 1
       expect(tokens[2][0]).toEqualJson value: '', scopes: ['source.asciidoc']
       expect(tokens[3]).toHaveLength 1

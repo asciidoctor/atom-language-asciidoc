@@ -1,0 +1,18 @@
+key: 'literal-paragraph'
+
+patterns: [
+
+  # Matches literal paragraph
+  #
+  # Examples
+  #
+  # Type the following command:
+  #
+  #  $ gem install asciidoctor
+  #
+  # Asciidoctor should now be installed on your machine.
+  #
+  name: 'markup.block.literal.asciidoc'
+  begin: '^\\p{Blank}+(.*)$'
+  end: '^\\p{Blank}*$'
+]

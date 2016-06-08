@@ -93,4 +93,4 @@ describe 'Admonition paragraph', ->
     it 'beginning with space', ->
       {tokens} = grammar.tokenizeLine ' CAUTION: Ensure that...'
       expect(tokens).toHaveLength 1
-      expect(tokens[0]).toEqualJson value: ' CAUTION: Ensure that...', scopes: ['source.asciidoc']
+      expect(tokens[0]).toEqualJson value: ' CAUTION: Ensure that...', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']

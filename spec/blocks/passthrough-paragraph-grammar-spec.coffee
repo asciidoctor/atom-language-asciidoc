@@ -44,9 +44,9 @@ describe 'Passthrough paragraph', ->
         '''
       expect(tokens).toHaveLength 4
       expect(tokens[0]).toHaveLength 1
-      expect(tokens[0][0]).toEqualJson value: ' [pass]', scopes: ['source.asciidoc']
+      expect(tokens[0][0]).toEqualJson value: ' [pass]', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
       expect(tokens[1]).toHaveLength 1
-      expect(tokens[1][0]).toEqualJson value: '<s>Could be struck through</s>', scopes: ['source.asciidoc']
+      expect(tokens[1][0]).toEqualJson value: '<s>Could be struck through</s>', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
       expect(tokens[2]).toHaveLength 1
       expect(tokens[2][0]).toEqualJson value: '', scopes: ['source.asciidoc']
       expect(tokens[3]).toHaveLength 1

@@ -24,6 +24,8 @@ patterns: [
 ,
   include: '#list'
 ,
+  include: '#literal-paragraph'
+,
   include: '#inlines'
 ,
   include: '#block-attribute'

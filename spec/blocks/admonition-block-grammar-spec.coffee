@@ -12,10 +12,6 @@ describe 'Admonition block', ->
     expect(grammar).toBeDefined()
     expect(grammar.scopeName).toBe 'source.asciidoc'
 
-# - Admonition block
-# - Admonition paragraph
-# - Admonition inline paragraph
-
   describe 'Should tokenizes when', ->
 
     it 'contains section title and bulleted list', ->
@@ -87,25 +83,24 @@ describe 'Admonition block', ->
       expect(tokens).toHaveLength 7
       numLine = 0
       expect(tokens[numLine]).toHaveLength 1
-      expect(tokens[numLine][0]).toEqualJson value: ' [IMPORTANT]', scopes: ['source.asciidoc']
-      numLine++
-      expect(tokens[numLine]).toHaveLength 2
-      expect(tokens[numLine][0]).toEqualJson value: '.', scopes: ['source.asciidoc']
-      expect(tokens[numLine][1]).toEqualJson value: 'Feeding the Werewolves', scopes: ['source.asciidoc', 'markup.heading.blocktitle.asciidoc']
+      expect(tokens[numLine][0]).toEqualJson value: ' [IMPORTANT]', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
       numLine++
       expect(tokens[numLine]).toHaveLength 1
-      expect(tokens[numLine][0]).toEqualJson value: '====', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
+      expect(tokens[numLine][0]).toEqualJson value: '.Feeding the Werewolves', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
       numLine++
       expect(tokens[numLine]).toHaveLength 1
-      expect(tokens[numLine][0]).toEqualJson value: 'While werewolves are hardy community members, keep in mind the following dietary concerns:', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
+      expect(tokens[numLine][0]).toEqualJson value: '====', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
       numLine++
       expect(tokens[numLine]).toHaveLength 1
-      expect(tokens[numLine][0]).toEqualJson value: '...', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
+      expect(tokens[numLine][0]).toEqualJson value: 'While werewolves are hardy community members, keep in mind the following dietary concerns:', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
       numLine++
       expect(tokens[numLine]).toHaveLength 1
-      expect(tokens[numLine][0]).toEqualJson value: '====', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
+      expect(tokens[numLine][0]).toEqualJson value: '...', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
       numLine++
       expect(tokens[numLine]).toHaveLength 1
-      expect(tokens[numLine][0]).toEqualJson value: 'foobar', scopes: ['source.asciidoc']
+      expect(tokens[numLine][0]).toEqualJson value: '====', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
+      numLine++
+      expect(tokens[numLine]).toHaveLength 1
+      expect(tokens[numLine][0]).toEqualJson value: 'foobar', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
       numLine++
       expect(numLine).toBe 7

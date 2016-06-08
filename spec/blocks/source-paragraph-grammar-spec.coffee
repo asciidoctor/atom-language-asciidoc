@@ -46,9 +46,9 @@ describe 'Source paragraph', ->
                                       '''
       expect(tokens).toHaveLength 4 # Number of lines
       expect(tokens[0]).toHaveLength 1
-      expect(tokens[0][0]).toEqualJson value: ' [source,shell]', scopes: ['source.asciidoc']
+      expect(tokens[0][0]).toEqualJson value: ' [source,shell]', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
       expect(tokens[1]).toHaveLength 1
-      expect(tokens[1][0]).toEqualJson value: 'cd ..', scopes: ['source.asciidoc']
+      expect(tokens[1][0]).toEqualJson value: 'cd ..', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
       expect(tokens[2]).toHaveLength 1
       expect(tokens[2][0]).toEqualJson value: '', scopes: ['source.asciidoc']
       expect(tokens[3]).toHaveLength 1

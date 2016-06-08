@@ -10,7 +10,14 @@ patterns: [
   # An open block can be an anonymous container
   # --
   #
-  name: 'markup.raw.open.asciidoc'
+  name: 'markup.block.open.asciidoc'
   begin: '^(-{2})$'
+  beginCaptures:
+    1: name: 'constant.other.symbol.asciidoc'
+  patterns: [
+    include: '$self'
+  ]
   end: '^(\\1)$'
+  endCaptures:
+      1: name: 'constant.other.symbol.asciidoc'
 ]

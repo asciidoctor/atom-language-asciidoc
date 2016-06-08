@@ -103,6 +103,16 @@ atom-text-editor::shadow, :host {
           }
         }
       }
+
+      &.block {
+        &.sidebar,
+        &.passthrough,
+        &.literal,
+        &.front-matter,
+        &.example {
+          color: @syntax-text-color-unobtrusive;
+        }
+      }
     }
 
     .super {
@@ -113,10 +123,5 @@ atom-text-editor::shadow, :host {
       vertical-align: text-bottom;
       font-size: @font-size * .7;
     }
-
-    .block {
-      color: @syntax-text-color-unobtrusive;
-    }
-
   }
 }

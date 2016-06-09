@@ -29,9 +29,9 @@ describe 'Should tokenizes block attribute for explicit paragraph when', ->
   it 'use "listing" keyword', ->
     {tokens} = grammar.tokenizeLine '[listing]'
     expect(tokens).toHaveLength 3
-    expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
-    expect(tokens[1]).toEqualJson value: 'listing', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
-    expect(tokens[2]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
+    expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.block.listing.asciidoc']
+    expect(tokens[1]).toEqualJson value: 'listing', scopes: ['source.asciidoc', 'markup.block.listing.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
+    expect(tokens[2]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.block.listing.asciidoc']
 
   it 'use "TIP" keyword', ->
     {tokens} = grammar.tokenizeLine '[TIP]'

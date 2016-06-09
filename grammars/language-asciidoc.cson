@@ -77,6 +77,9 @@ repository:
         include: "#literal-block"
       }
       {
+        include: "#listing-block"
+      }
+      {
         include: "#open-block"
       }
     ]
@@ -1254,6 +1257,37 @@ repository:
           }
         ]
         end: "^(\\1)$"
+      }
+    ]
+  "listing-block":
+    patterns: [
+      {
+        name: "markup.block.listing.asciidoc"
+        begin: "(?=(?>(?:^\\[(listing)((?:,|#|\\.|%)[^\\]]+)*\\]$)))"
+        patterns: [
+          {
+            match: "^\\[(listing)((?:,|#|\\.|%)([^,\\]]+))*\\]$"
+            captures:
+              "0":
+                patterns: [
+                  {
+                    include: "#block-attribute-inner"
+                  }
+                ]
+          }
+          {
+            include: "#block-title"
+          }
+          {
+            comment: "open block"
+            begin: "^(-{2})\\s*$"
+            end: "^(\\1)$"
+          }
+          {
+            include: "#inlines"
+          }
+        ]
+        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
       }
     ]
   "literal-block":

@@ -11,14 +11,14 @@ patterns: [
   #   A multi-line example.
   #   ====
   #
-  #   or
+  # or
   #
   #   [example]
   #   --
   #   A multi-line example.
   #   --
   #
-  #   or
+  # or
   #
   #   [example]
   #   A example paragraph

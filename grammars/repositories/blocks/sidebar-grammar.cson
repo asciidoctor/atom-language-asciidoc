@@ -11,14 +11,14 @@ patterns: [
   #   A multi-line *sidebar*.
   #   ****
   #
-  #   or
+  # or
   #
   #   [sidebar]
   #   --
   #   A multi-line *sidebar*.
   #   --
   #
-  #   or
+  # or
   #
   #   [sidebar]
   #   A multi-line *sidebar*.

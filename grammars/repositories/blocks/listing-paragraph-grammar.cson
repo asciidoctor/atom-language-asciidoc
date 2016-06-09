@@ -1,0 +1,38 @@
+key: 'listing-block'
+
+patterns: [
+
+  # Matches listing paragraph
+  #
+  # Examples
+  #
+  #   [listing]
+  #   --
+  #   an open block listing.
+  #   --
+  #
+  # or
+  #
+  #   [listing]
+  #   a listing paragraph
+  #
+  name: 'markup.block.listing.asciidoc'
+  begin: '(?=(?>(?:^\\[(listing)((?:,|#|\\.|%)[^\\]]+)*\\]$)))'
+  patterns: [
+    match: '^\\[(listing)((?:,|#|\\.|%)([^,\\]]+))*\\]$'
+    captures:
+      0:
+        patterns: [
+          include: '#block-attribute-inner'
+        ]
+  ,
+    include: '#block-title'
+  ,
+    comment: 'open block'
+    begin: '^(-{2})\\s*$'
+    end: '^(\\1)$'
+  ,
+    include: '#inlines'
+  ]
+  end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
+]

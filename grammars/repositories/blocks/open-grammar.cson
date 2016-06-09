@@ -6,9 +6,9 @@ patterns: [
   #
   # Examples
   #
-  # --
-  # An open block can be an anonymous container
-  # --
+  #   --
+  #   An open block can be an anonymous container
+  #   --
   #
   name: 'markup.block.open.asciidoc'
   begin: '^(-{2})$'

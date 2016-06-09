@@ -31,7 +31,7 @@ describe 'Code block generator', ->
           ,
             include: '#include-directive'
           ]
-          end: '(?<=\\1)'
+          end: '^(\\1)$'
         ,
           comment: 'open block'
           name: 'markup.raw.asciidoc'

@@ -77,6 +77,9 @@ repository:
         include: "#literal-block"
       }
       {
+        include: "#listing-block"
+      }
+      {
         include: "#open-block"
       }
     ]
@@ -1165,9 +1168,6 @@ repository:
                 ]
           }
           {
-            include: "#inlines"
-          }
-          {
             include: "#block-title"
           }
           {
@@ -1181,7 +1181,10 @@ repository:
                 include: "#list"
               }
             ]
-            end: "(?<=\\1)"
+            end: "^(\\1)$"
+          }
+          {
+            include: "#inlines"
           }
         ]
         end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
@@ -1191,10 +1194,53 @@ repository:
     patterns: [
       {
         name: "markup.block.example.asciidoc"
+        begin: "(?=(?>(?:^\\[(example)((?:,|#|\\.|%)[^\\]]+)*\\]$)))"
+        patterns: [
+          {
+            match: "^\\[(example)((?:,|#|\\.|%)([^,\\]]+))*\\]$"
+            captures:
+              "0":
+                patterns: [
+                  {
+                    include: "#block-attribute-inner"
+                  }
+                ]
+          }
+          {
+            include: "#block-title"
+          }
+          {
+            comment: "example block"
+            begin: "^(={4,})$"
+            patterns: [
+              {
+                include: "$self"
+              }
+            ]
+            end: "^(\\1)$"
+          }
+          {
+            comment: "open block"
+            begin: "^(-{2})$"
+            patterns: [
+              {
+                include: "$self"
+              }
+            ]
+            end: "^(\\1)$"
+          }
+          {
+            include: "#inlines"
+          }
+        ]
+        end: "((?<=--|====)[\\r\\n]+$|^\\p{Blank}*$)"
+      }
+      {
+        name: "markup.block.example.asciidoc"
         begin: "^(={4,})$"
         patterns: [
           {
-            include: "#inlines"
+            include: "$self"
           }
         ]
         end: "^(\\1)$"
@@ -1213,8 +1259,72 @@ repository:
         end: "^(\\1)$"
       }
     ]
+  "listing-block":
+    patterns: [
+      {
+        name: "markup.block.listing.asciidoc"
+        begin: "(?=(?>(?:^\\[(listing)((?:,|#|\\.|%)[^\\]]+)*\\]$)))"
+        patterns: [
+          {
+            match: "^\\[(listing)((?:,|#|\\.|%)([^,\\]]+))*\\]$"
+            captures:
+              "0":
+                patterns: [
+                  {
+                    include: "#block-attribute-inner"
+                  }
+                ]
+          }
+          {
+            include: "#block-title"
+          }
+          {
+            comment: "open block"
+            begin: "^(-{2})\\s*$"
+            end: "^(\\1)$"
+          }
+          {
+            include: "#inlines"
+          }
+        ]
+        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+      }
+    ]
   "literal-block":
     patterns: [
+      {
+        name: "markup.block.literal.asciidoc"
+        begin: "(?=(?>(?:^\\[(literal)((?:,|#|\\.|%)[^\\]]+)*\\]$)))"
+        patterns: [
+          {
+            match: "^\\[(literal)((?:,|#|\\.|%)([^,\\]]+))*\\]$"
+            captures:
+              "0":
+                patterns: [
+                  {
+                    include: "#block-attribute-inner"
+                  }
+                ]
+          }
+          {
+            include: "#block-title"
+          }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4,})$"
+            end: "^(\\1)$"
+          }
+          {
+            comment: "open block"
+            begin: "^(-{2})\\s*$"
+            end: "^(\\1)$"
+          }
+          {
+            include: "#inlines"
+          }
+        ]
+        end: "((?<=--|\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+      }
       {
         name: "markup.block.literal.asciidoc"
         begin: "^(\\.{4,})$"
@@ -1389,10 +1499,53 @@ repository:
     patterns: [
       {
         name: "markup.block.sidebar.asciidoc"
+        begin: "(?=(?>(?:^\\[(sidebar)((?:,|#|\\.|%)[^\\]]+)*\\]$)))"
+        patterns: [
+          {
+            match: "^\\[(sidebar)((?:,|#|\\.|%)([^,\\]]+))*\\]$"
+            captures:
+              "0":
+                patterns: [
+                  {
+                    include: "#block-attribute-inner"
+                  }
+                ]
+          }
+          {
+            include: "#block-title"
+          }
+          {
+            comment: "sidebar block"
+            begin: "^(\\*{4,})$"
+            patterns: [
+              {
+                include: "$self"
+              }
+            ]
+            end: "^(\\1)$"
+          }
+          {
+            comment: "open block"
+            begin: "^(-{2})$"
+            patterns: [
+              {
+                include: "$self"
+              }
+            ]
+            end: "^(\\1)$"
+          }
+          {
+            include: "#inlines"
+          }
+        ]
+        end: "((?<=--|\\*\\*\\*\\*)[\\r\\n]+$|^\\p{Blank}*$)"
+      }
+      {
+        name: "markup.block.sidebar.asciidoc"
         begin: "^(\\*{4,})$"
         patterns: [
           {
-            include: "#inlines"
+            include: "$self"
           }
         ]
         end: "^(\\1)$"
@@ -4847,7 +5000,7 @@ repository:
                 include: "#include-directive"
               }
             ]
-            end: "(?<=\\1)"
+            end: "^(\\1)$"
           }
           {
             comment: "open block"

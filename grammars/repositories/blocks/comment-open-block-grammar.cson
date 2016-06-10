@@ -1,29 +1,43 @@
 key: 'comment-open-block'
 
 patterns: [
-    name: 'comment.block.asciidoc'
-    begin: '(?=(?>(?:^\\[(comment)((?:,|#|\\.|%)[^\\]]+)*\\]$)))'
+
+  # Matches comments paragraph
+  #
+  # Examples
+  #
+  #   [comment]
+  #   --
+  #   an open block comment.
+  #   --
+  #
+  # or
+  #
+  #   [comment]
+  #   a comment paragraph
+  #
+  name: 'comment.block.asciidoc'
+  begin: '(?=(?>(?:^\\[(comment)((?:,|#|\\.|%)[^\\]]+)*\\]$)))'
+  patterns: [
+    match: '^\\[(comment)((?:,|#|\\.|%)([^,\\]]+))*\\]$'
+    captures:
+      0:
+        patterns: [
+          include: '#block-attribute-inner'
+        ]
+  ,
+    include: '#block-title'
+  ,
+    comment: 'open block'
+    begin: '^(-{2})\\s*$'
     patterns: [
-      match: '^\\[(comment)((?:,|#|\\.|%)([^,\\]]+))*\\]$'
-      captures:
-        0:
-          patterns: [
-            include: '#block-attribute-inner'
-          ]
-    ,
       include: '#inlines'
     ,
-      include: '#block-title'
-    ,
-      comment: 'open block'
-      begin: '^(-{2})\\s*$'
-      patterns: [
-        include: '#inlines'
-      ,
-        include: '#list'
-      ]
-      end: '(?<=\\1)'
+      include: '#list'
     ]
-    end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
+    end: '^(\\1)$'
   ,
+    include: '#inlines'
+  ]
+  end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
 ]

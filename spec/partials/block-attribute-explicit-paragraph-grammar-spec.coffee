@@ -22,16 +22,16 @@ describe 'Should tokenizes block attribute for explicit paragraph when', ->
   it 'use "literal" keyword', ->
     {tokens} = grammar.tokenizeLine '[literal]'
     expect(tokens).toHaveLength 3
-    expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
-    expect(tokens[1]).toEqualJson value: 'literal', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
-    expect(tokens[2]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
+    expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
+    expect(tokens[1]).toEqualJson value: 'literal', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
+    expect(tokens[2]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
 
   it 'use "listing" keyword', ->
     {tokens} = grammar.tokenizeLine '[listing]'
     expect(tokens).toHaveLength 3
-    expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
-    expect(tokens[1]).toEqualJson value: 'listing', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
-    expect(tokens[2]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
+    expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.block.listing.asciidoc']
+    expect(tokens[1]).toEqualJson value: 'listing', scopes: ['source.asciidoc', 'markup.block.listing.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
+    expect(tokens[2]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.block.listing.asciidoc']
 
   it 'use "TIP" keyword', ->
     {tokens} = grammar.tokenizeLine '[TIP]'
@@ -85,16 +85,16 @@ describe 'Should tokenizes block attribute for explicit paragraph when', ->
   it 'use "example" keyword', ->
     {tokens} = grammar.tokenizeLine '[example]'
     expect(tokens).toHaveLength 3
-    expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
-    expect(tokens[1]).toEqualJson value: 'example', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
-    expect(tokens[2]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
+    expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
+    expect(tokens[1]).toEqualJson value: 'example', scopes: ['source.asciidoc', 'markup.block.example.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
+    expect(tokens[2]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
 
   it 'use "sidebar" keyword', ->
     {tokens} = grammar.tokenizeLine '[sidebar]'
     expect(tokens).toHaveLength 3
-    expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
-    expect(tokens[1]).toEqualJson value: 'sidebar', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
-    expect(tokens[2]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
+    expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']
+    expect(tokens[1]).toEqualJson value: 'sidebar', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
+    expect(tokens[2]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']
 
   it 'use "source" keyword', ->
     {tokens} = grammar.tokenizeLine '[source]'
@@ -123,23 +123,3 @@ describe 'Should tokenizes block attribute for explicit paragraph when', ->
     expect(tokens[0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
     expect(tokens[1]).toEqualJson value: 'graphviz', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
     expect(tokens[2]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
-
-
-  it 'simple title with example block', ->
-    tokens = grammar.tokenizeLines '''
-      [example]
-      ====
-      foobar
-      ====
-      '''
-    expect(tokens).toHaveLength 4
-    expect(tokens[0]).toHaveLength 3
-    expect(tokens[0][0]).toEqualJson value: '[', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
-    expect(tokens[0][1]).toEqualJson value: 'example', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc', 'markup.meta.attribute-list.asciidoc', 'entity.name.function.asciidoc']
-    expect(tokens[0][2]).toEqualJson value: ']', scopes: ['source.asciidoc', 'markup.heading.block-attribute.asciidoc']
-    expect(tokens[1]).toHaveLength 1
-    expect(tokens[1][0]).toEqualJson value: '====', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
-    expect(tokens[2]).toHaveLength 1
-    expect(tokens[2][0]).toEqualJson value: 'foobar', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']
-    expect(tokens[3]).toHaveLength 1
-    expect(tokens[3][0]).toEqualJson value: '====', scopes: ['source.asciidoc', 'markup.block.example.asciidoc']

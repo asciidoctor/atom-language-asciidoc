@@ -2,6 +2,57 @@ key: 'example-block'
 
 patterns: [
 
+  # Matches example paragraph.
+  #
+  # Examples:
+  #
+  #   [example]
+  #   ====
+  #   A multi-line example.
+  #   ====
+  #
+  # or
+  #
+  #   [example]
+  #   --
+  #   A multi-line example.
+  #   --
+  #
+  # or
+  #
+  #   [example]
+  #   A example paragraph
+  #
+  name: 'markup.block.example.asciidoc'
+  begin: '(?=(?>(?:^\\[(example)((?:,|#|\\.|%)[^\\]]+)*\\]$)))'
+  patterns: [
+    match: '^\\[(example)((?:,|#|\\.|%)([^,\\]]+))*\\]$'
+    captures:
+      0:
+        patterns: [
+          include: '#block-attribute-inner'
+        ]
+  ,
+    include: '#block-title'
+  ,
+    comment: 'example block'
+    begin: '^(={4,})$'
+    patterns: [
+      include: '$self'
+    ]
+    end: '^(\\1)$'
+  ,
+    comment: 'open block'
+    begin: '^(-{2})$'
+    patterns: [
+      include: '$self'
+    ]
+    end: '^(\\1)$'
+  ,
+    include: '#inlines'
+  ]
+  end: '((?<=--|====)[\\r\\n]+$|^\\p{Blank}*$)'
+,
   # Matches example block
   #
   # Examples
@@ -15,7 +66,7 @@ patterns: [
   name: 'markup.block.example.asciidoc'
   begin: '^(={4,})$'
   patterns: [
-    include: '#inlines'
+    include: '$self'
   ]
   end: '^(\\1)$'
 ]

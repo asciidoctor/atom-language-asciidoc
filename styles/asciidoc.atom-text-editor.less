@@ -3,6 +3,7 @@
 @syntax-text-color-unobtrusive: fadeout(@syntax-text-color, 50%);
 @syntax-text-mark: mix(@syntax-color-constant, @syntax-color-keyword, 50%);
 @syntax-text-highlight: mix(yellow, @syntax-background-color, 70%);
+@syntax-block-raw: fadeout(@syntax-text-color, 30%);
 
 atom-text-editor::shadow, :host {
   .asciidoc {
@@ -62,13 +63,24 @@ atom-text-editor::shadow, :host {
         }
       }
 
-      &.heading.blocktitle,
+      &.meta.attribute-list,
       &.substitution {
         color: @syntax-text-color-unobtrusive;
       }
-      &.meta.attribute-list {
-        color: @syntax-text-color-unobtrusive;
+
+      &.heading.blocktitle {
+
+        // Lighten headers for dark themes.
+        & when (lightness(@syntax-background-color) < 50%) {
+          color: lighten(@syntax-text-color, 10%);
+        }
+
+        // Darken headers for light themes.
+        & when (lightness(@syntax-background-color) > 50%) {
+          color: darken(@syntax-text-color, 10%);
+        }
       }
+
       &.todo.box,
       &.list.bullet {
         color: mix(red, @syntax-text-color, 40%);
@@ -107,10 +119,14 @@ atom-text-editor::shadow, :host {
       &.block {
         &.sidebar,
         &.passthrough,
-        &.literal,
         &.front-matter,
         &.example {
-          color: @syntax-text-color-unobtrusive;
+          color: @syntax-block-raw;
+        }
+
+        &.listing,
+        &.literal {
+          color: @syntax-color-snippet;
         }
       }
     }

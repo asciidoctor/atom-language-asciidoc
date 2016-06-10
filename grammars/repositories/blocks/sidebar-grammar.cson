@@ -2,6 +2,57 @@ key: 'sidebar-block'
 
 patterns: [
 
+  # Matches sidebar paragraph.
+  #
+  # Examples:
+  #
+  #   [sidebar]
+  #   ****
+  #   A multi-line *sidebar*.
+  #   ****
+  #
+  # or
+  #
+  #   [sidebar]
+  #   --
+  #   A multi-line *sidebar*.
+  #   --
+  #
+  # or
+  #
+  #   [sidebar]
+  #   A multi-line *sidebar*.
+  #
+  name: 'markup.block.sidebar.asciidoc'
+  begin: '(?=(?>(?:^\\[(sidebar)((?:,|#|\\.|%)[^\\]]+)*\\]$)))'
+  patterns: [
+    match: '^\\[(sidebar)((?:,|#|\\.|%)([^,\\]]+))*\\]$'
+    captures:
+      0:
+        patterns: [
+          include: '#block-attribute-inner'
+        ]
+  ,
+    include: '#block-title'
+  ,
+    comment: 'sidebar block'
+    begin: '^(\\*{4,})$'
+    patterns: [
+      include: '$self'
+    ]
+    end: '^(\\1)$'
+  ,
+    comment: 'open block'
+    begin: '^(-{2})$'
+    patterns: [
+      include: '$self'
+    ]
+    end: '^(\\1)$'
+  ,
+    include: '#inlines'
+  ]
+  end: '((?<=--|\\*\\*\\*\\*)[\\r\\n]+$|^\\p{Blank}*$)'
+,
   # Matches sidebar block
   #
   # Examples
@@ -13,7 +64,7 @@ patterns: [
   name: 'markup.block.sidebar.asciidoc'
   begin: '^(\\*{4,})$'
   patterns: [
-    include: '#inlines'
+    include: '$self'
   ]
   end: '^(\\1)$'
 ]

@@ -2,6 +2,51 @@ key: 'literal-block'
 
 patterns: [
 
+  # Matches literal paragraph.
+  #
+  # Examples:
+  #
+  #   [literal]
+  #   ....
+  #   Daleks EXTERMINATE in monospace!
+  #   ....
+  #
+  # or
+  #
+  #   [literal]
+  #   --
+  #   Daleks EXTERMINATE in monospace!
+  #   --
+  #
+  # or
+  #
+  #   [literal]
+  #   Daleks EXTERMINATE in monospace!
+  #
+  name: 'markup.block.literal.asciidoc'
+  begin: '(?=(?>(?:^\\[(literal)((?:,|#|\\.|%)[^\\]]+)*\\]$)))'
+  patterns: [
+    match: '^\\[(literal)((?:,|#|\\.|%)([^,\\]]+))*\\]$'
+    captures:
+      0:
+        patterns: [
+          include: '#block-attribute-inner'
+        ]
+  ,
+    include: '#block-title'
+  ,
+    comment: 'literal block'
+    begin: '^(\\.{4,})$'
+    end: '^(\\1)$'
+  ,
+    comment: 'open block'
+    begin: '^(-{2})\\s*$'
+    end: '^(\\1)$'
+  ,
+    include: '#inlines'
+  ]
+  end: '((?<=--|\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)'
+,
   # Matches literal block
   #
   # Examples

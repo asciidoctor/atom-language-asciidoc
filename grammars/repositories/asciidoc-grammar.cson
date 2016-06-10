@@ -51,6 +51,8 @@ repository:
     ,
       include: '#literal-block'
     ,
+      include: '#listing-block'
+    ,
       include: '#open-block'
     ]
   'source-paragraphs':

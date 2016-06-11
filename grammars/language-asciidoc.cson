@@ -53,7 +53,7 @@ repository:
         include: "#front-matter-block"
       }
       {
-        include: "#comment-open-block"
+        include: "#comment-paragraph"
       }
       {
         include: "#admonition-paragraph"
@@ -68,16 +68,16 @@ repository:
         include: "#passthrough-paragraph"
       }
       {
-        include: "#example-block"
+        include: "#example-paragraph"
       }
       {
-        include: "#sidebar-block"
+        include: "#sidebar-paragraph"
       }
       {
-        include: "#literal-block"
+        include: "#literal-paragraph"
       }
       {
-        include: "#listing-block"
+        include: "#listing-paragraph"
       }
       {
         include: "#open-block"
@@ -1151,7 +1151,7 @@ repository:
         end: "^\\p{Blank}*$"
       }
     ]
-  "comment-open-block":
+  "comment-paragraph":
     patterns: [
       {
         name: "comment.block.asciidoc"
@@ -1190,7 +1190,7 @@ repository:
         end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
       }
     ]
-  "example-block":
+  "example-paragraph":
     patterns: [
       {
         name: "markup.block.example.asciidoc"
@@ -1259,7 +1259,7 @@ repository:
         end: "^(\\1)$"
       }
     ]
-  "listing-block":
+  "listing-paragraph":
     patterns: [
       {
         name: "markup.block.listing.asciidoc"
@@ -1290,7 +1290,7 @@ repository:
         end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
       }
     ]
-  "literal-block":
+  "literal-paragraph":
     patterns: [
       {
         name: "markup.block.literal.asciidoc"
@@ -1495,7 +1495,7 @@ repository:
         end: "^\\p{Blank}*?$"
       }
     ]
-  "sidebar-block":
+  "sidebar-paragraph":
     patterns: [
       {
         name: "markup.block.sidebar.asciidoc"

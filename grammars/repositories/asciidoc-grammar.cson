@@ -35,7 +35,7 @@ repository:
     patterns: [
       include: '#front-matter-block'
     ,
-      include: '#comment-open-block'
+      include: '#comment-paragraph'
     ,
       include: '#admonition-paragraph'
     ,
@@ -45,13 +45,13 @@ repository:
     ,
       include: '#passthrough-paragraph'
     ,
-      include: '#example-block'
+      include: '#example-paragraph'
     ,
-      include: '#sidebar-block'
+      include: '#sidebar-paragraph'
     ,
-      include: '#literal-block'
+      include: '#literal-paragraph'
     ,
-      include: '#listing-block'
+      include: '#listing-paragraph'
     ,
       include: '#open-block'
     ]

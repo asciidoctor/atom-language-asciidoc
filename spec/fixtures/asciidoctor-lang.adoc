@@ -55,6 +55,36 @@ public class HelloWorld {
 }
 ----
 
+== Kotlin (with plugin)
+
+```kotlin
+import java.util.*
+
+with(helloWorldTextView) {
+    text = "Hello World!"
+    visibility = View.VISIBLE
+}
+
+fun main(args: Array<String>) {
+    val name = if (args.size > 0) args[0] else "Publikum"
+    val zuschauer = Gast(name, title = Title.wertes)
+
+    println(zuschauer)
+    println("Hallo ${zuschauer.title} ${zuschauer.name}")
+}
+
+data class Gast(val name: String, var zeit: Date = Date(),
+                val title: Title?)
+enum class Title { Herr, Frau, wertes }
+```
+
+[source,kt]
+----
+open class HelloWorld {
+    inline fun <reified T : View> Activity.find(id: Int): T
+      = findViewById(id) as T
+}
+----
 
 == Markdown
 

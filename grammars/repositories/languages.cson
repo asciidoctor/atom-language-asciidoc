@@ -39,6 +39,8 @@
 ,
   pattern: 'julia', type: 'source', code: 'julia'
 ,
+  pattern: 'kotlin|kts?', type: 'source', code: 'kotlin'
+,
   pattern: 'less', type: 'source', code: 'css.less'
 ,
   pattern: 'make(file)?', type: 'source', code: 'makefile'

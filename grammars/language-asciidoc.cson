@@ -3169,6 +3169,81 @@ repository:
         end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
       }
       {
+        name: "markup.code.kotlin.asciidoc"
+        begin: "(?=(?>(?:^\\[(source)(?:,|#)\\p{Blank}*(?i:(kotlin|kts?))((?:,|#)[^\\]]+)*\\]$)))"
+        patterns: [
+          {
+            match: "^\\[(source)(?:,|#)\\p{Blank}*(?i:(kotlin|kts?))((?:,|#)([^,\\]]+))*\\]$"
+            captures:
+              "0":
+                name: "markup.heading.asciidoc"
+                patterns: [
+                  {
+                    include: "#block-attribute-inner"
+                  }
+                ]
+          }
+          {
+            include: "#inlines"
+          }
+          {
+            include: "#block-title"
+          }
+          {
+            comment: "listing block"
+            begin: "^(-{4,})\\s*$"
+            contentName: "source.embedded.kotlin"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
+              }
+              {
+                include: "source.kotlin"
+              }
+            ]
+            end: "^(\\1)$"
+          }
+          {
+            comment: "open block"
+            begin: "^(-{2})\\s*$"
+            contentName: "source.embedded.kotlin"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
+              }
+              {
+                include: "source.kotlin"
+              }
+            ]
+            end: "^(\\1)$"
+          }
+          {
+            comment: "literal block"
+            begin: "^(\\.{4})\\s*$"
+            contentName: "source.embedded.kotlin"
+            patterns: [
+              {
+                include: "#block-callout"
+              }
+              {
+                include: "#include-directive"
+              }
+              {
+                include: "source.kotlin"
+              }
+            ]
+            end: "^(\\1)$"
+          }
+        ]
+        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+      }
+      {
         name: "markup.code.css.less.asciidoc"
         begin: "(?=(?>(?:^\\[(source)(?:,|#)\\p{Blank}*(?i:(less))((?:,|#)[^\\]]+)*\\]$)))"
         patterns: [
@@ -5448,6 +5523,26 @@ repository:
           }
           {
             include: "source.julia"
+          }
+        ]
+        end: "^\\s*\\1\\s*$"
+        endCaptures:
+          "0":
+            name: "support.asciidoc"
+      }
+      {
+        name: "markup.code.kotlin.asciidoc"
+        begin: "^\\s*(`{3,})\\s*(?i:(kotlin|kts?))\\s*$"
+        beginCaptures:
+          "0":
+            name: "support.asciidoc"
+        contentName: "source.embedded.kotlin"
+        patterns: [
+          {
+            include: "#block-callout"
+          }
+          {
+            include: "source.kotlin"
           }
         ]
         end: "^\\s*\\1\\s*$"

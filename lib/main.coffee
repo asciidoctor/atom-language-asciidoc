@@ -94,7 +94,12 @@ module.exports =
     # Reload grammars for each editor
     atom.workspace.getTextEditors().forEach (editor) ->
       if editor.getGrammar().packageName is 'language-asciidoc'
-        atom.textEditors.maintainGrammar(editor)
+        atomVersion = parseFloat(atom.getVersion())
+        if atomVersion < 1.11
+          # only for compatibilty with older version of Atom
+          editor.reloadGrammar()
+        else
+          atom.textEditors.maintainGrammar(editor)
 
     console.log 'AsciiDoc grammars reloaded'
 

@@ -14,6 +14,11 @@ branches:
   only:
     - master
 
+env:
+  global:
+    - APM_TEST_PACKAGES=""
+    - AUTHORIZED_BRANCH="master"
+
 os:
   - linux
   - osx

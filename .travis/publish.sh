@@ -4,10 +4,8 @@ set -e
 ## Custom variables
 USER_EMAIL="docbot@asciidoctor.org"
 USER_NAME="Asciidoctor DocBot"
-GIT_REPOSITORY="git@github.com:asciidoctor/atom-language-asciidoc.git"
-SSH_KEY_NAME="travis_rsa"
-AUTHORIZED_BRANCH="master"
 PUBLISH_TYPE=${PUBLISH_TYPE:="patch"}
+SSH_KEY_NAME="travis_rsa"
 
 ## Fix apm path to the Atom stable channel
 APM_SCRIPT_PATH=${APM_SCRIPT_PATH:="$HOME/atom/usr/bin/apm"}
@@ -28,6 +26,11 @@ fi
 ## Git configuration
 git config --global user.email "${USER_EMAIL}"
 git config --global user.name "${USER_NAME}"
+
+## Repository URL
+GIT_REPOSITORY=$(git config remote.origin.url)
+GIT_REPOSITORY=${GIT_REPOSITORY/git:\/\/github.com\//git@github.com:}
+GIT_REPOSITORY=${GIT_REPOSITORY/https:\/\/github.com\//git@github.com:}
 
 ## Loading SSH key
 echo 'Loading key...'

@@ -1,0 +1,22 @@
+key: 'general-inline-macro'
+
+patterns: [
+
+  # Matches a general inline macro shall more specific match fail.
+  #
+  # Examples
+  #
+  #   cite:[Kale2015]
+  #   cite:Name[Kale2015]
+  #
+  name: 'markup.other.inline.asciidoc'
+  match: '(?<!\\\\)(\\p{Word}+):([^\\s\\[:]*)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])'
+  captures:
+    1: name: 'entity.name.function.asciidoc'
+    2:
+      name: 'markup.link.asciidoc'
+      patterns: [
+        include: '#attribute-reference'
+      ]
+    3: name: 'string.unquoted.asciidoc'
+]

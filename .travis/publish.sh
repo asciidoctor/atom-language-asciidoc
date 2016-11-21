@@ -15,6 +15,14 @@ cd "$TRAVIS_BUILD_DIR"
 ## Prevent publish on tags
 CURRENT_TAG=$(git tag --contains HEAD)
 
+echo "STOP_PUBLISH: ${STOP_PUBLISH}"
+echo "TRAVIS_OS_NAME: ${TRAVIS_OS_NAME}"
+echo "ATOM_CHANNEL: ${ATOM_CHANNEL}"
+echo "TRAVIS_BRANCH: ${TRAVIS_BRANCH}"
+echo "AUTHORIZED_BRANCH: ${AUTHORIZED_BRANCH}"
+echo "CURRENT_TAG: ${CURRENT_TAG}"
+echo "TRAVIS_PULL_REQUEST: ${TRAVIS_PULL_REQUEST}"
+
 if [ -z "${STOP_PUBLISH}" ] && [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$ATOM_CHANNEL" = "stable" ] && [ "$TRAVIS_BRANCH" = "$AUTHORIZED_BRANCH" ] && [ -z "$CURRENT_TAG" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]
 then
   echo 'Publishing...'

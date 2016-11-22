@@ -10,7 +10,7 @@
     "grammar"
   ],
   "engines": {
-    "atom": ">=1.12.0 <2.0.0"
+    "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
     "season": "^5.3"

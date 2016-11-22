@@ -5,51 +5,51 @@
 @syntax-text-highlight: mix(yellow, @syntax-background-color, 70%);
 @syntax-block-raw: fadeout(@syntax-text-color, 30%);
 
-atom-text-editor.editor, atom-text-editor:host {
-  .syntax--asciidoc {
+atom-text-editor::shadow, :host {
+  .asciidoc {
 
-    .syntax--markup {
+    .markup {
 
-      &.syntax--bold {
+      &.bold {
         font-weight: bold;
       }
 
-      &.syntax--italic {
+      &.italic {
         font-style: italic;
       }
 
-      &.syntax--mark {
+      &.mark {
         color: @syntax-text-mark;
       }
 
-      &.syntax--highlight {
+      &.highlight {
         color: black;
         background-color: @syntax-text-highlight;
       }
 
-      &.syntax--character-reference {
+      &.character-reference {
         font-style: italic;
         color: mix(red, @syntax-text-color, 20%);
       }
 
-      &.syntax--biblioref,
-      &.syntax--blockid {
+      &.biblioref,
+      &.blockid {
         font-weight: bold;
         color: mix(green, @syntax-text-color, 20%);
       }
 
-      &.syntax--xref {
+      &.xref {
         font-style: italic;
       }
 
-      &.syntax--admonition,
-      &.syntax--heading,
-      &.syntax--heading-0,
-      &.syntax--heading-1,
-      &.syntax--heading-2,
-      &.syntax--heading-3,
-      &.syntax--heading-4,
-      &.syntax--heading-5 {
+      &.admonition,
+      &.heading,
+      &.heading-0,
+      &.heading-1,
+      &.heading-2,
+      &.heading-3,
+      &.heading-4,
+      &.heading-5 {
         font-weight: bold;
 
         // Lighten headers for dark themes.
@@ -63,12 +63,12 @@ atom-text-editor.editor, atom-text-editor:host {
         }
       }
 
-      &.syntax--meta.syntax--attribute-list,
-      &.syntax--substitution {
+      &.meta.attribute-list,
+      &.substitution {
         color: @syntax-text-color-unobtrusive;
       }
 
-      &.syntax--heading.syntax--blocktitle {
+      &.heading.blocktitle {
 
         // Lighten headers for dark themes.
         & when (lightness(@syntax-background-color) < 50%) {
@@ -81,29 +81,29 @@ atom-text-editor.editor, atom-text-editor:host {
         }
       }
 
-      &.syntax--todo.syntax--box,
-      &.syntax--list.syntax--bullet {
+      &.todo.box,
+      &.list.bullet {
         color: mix(red, @syntax-text-color, 40%);
       }
 
-      &.syntax--macro.syntax--block {
+      &.macro.block {
         font-weight: bold;
       }
 
-      &.syntax--super {
+      &.super {
         color: mix(green, @syntax-text-color, 50%);
       }
 
-      &.syntax--sub {
+      &.sub {
         color: mix(green, @syntax-text-color, 50%);
       }
 
-      &.syntax--table {
-        &.syntax--cell.syntax--delimiter,
-        &.syntax--delimiter {
+      &.table {
+        &.cell.delimiter,
+        &.delimiter {
           color: @syntax-color-function
         }
-        &.syntax--content {
+        &.content {
           // Lighten headers for dark themes.
           & when (lightness(@syntax-background-color) < 50%) {
             color: darken(@syntax-text-color, 5%);
@@ -116,26 +116,26 @@ atom-text-editor.editor, atom-text-editor:host {
         }
       }
 
-      &.syntax--block {
-        &.syntax--sidebar,
-        &.syntax--passthrough,
-        &.syntax--front-matter,
-        &.syntax--example {
+      &.block {
+        &.sidebar,
+        &.passthrough,
+        &.front-matter,
+        &.example {
           color: @syntax-block-raw;
         }
 
-        &.syntax--listing,
-        &.syntax--literal {
+        &.listing,
+        &.literal {
           color: @syntax-color-snippet;
         }
       }
     }
 
-    .syntax--super {
+    .super {
       vertical-align: text-top;
       font-size: @font-size * .7;
     }
-    .syntax--sub {
+    .sub {
       vertical-align: text-bottom;
       font-size: @font-size * .7;
     }

@@ -13,7 +13,7 @@
     "atom": ">=1.13.0 <2.0.0"
   },
   "dependencies": {
-    "season": "^5.3"
+    "season": "^5.4.1"
   },
   "devDependencies": {
     "coffeelint": "^1.15.0"

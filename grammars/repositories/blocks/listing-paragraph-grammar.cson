@@ -28,6 +28,10 @@ patterns: [
   ,
     include: '#block-title'
   ,
+    comment: 'listing block'
+    begin: '^(-{4,})\\s*$'
+    end: '^(\\1)$'
+  ,
     comment: 'open block'
     begin: '^(-{2})\\s*$'
     end: '^(\\1)$'

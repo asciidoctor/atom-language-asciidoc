@@ -63,6 +63,9 @@ repository:
         include: "#quote-paragraph"
       }
       {
+        include: "#listing-paragraph"
+      }
+      {
         include: "#source-paragraphs"
       }
       {
@@ -76,9 +79,6 @@ repository:
       }
       {
         include: "#literal-paragraph"
-      }
-      {
-        include: "#listing-paragraph"
       }
       {
         include: "#open-block"
@@ -1278,6 +1278,11 @@ repository:
           }
           {
             include: "#block-title"
+          }
+          {
+            comment: "listing block"
+            begin: "^(-{4,})\\s*$"
+            end: "^(\\1)$"
           }
           {
             comment: "open block"

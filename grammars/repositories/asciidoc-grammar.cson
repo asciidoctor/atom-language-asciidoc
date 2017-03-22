@@ -41,6 +41,8 @@ repository:
     ,
       include: '#quote-paragraph'
     ,
+      include: '#listing-paragraph'
+    ,
       include: '#source-paragraphs'
     ,
       include: '#passthrough-paragraph'
@@ -50,8 +52,6 @@ repository:
       include: '#sidebar-paragraph'
     ,
       include: '#literal-paragraph'
-    ,
-      include: '#listing-paragraph'
     ,
       include: '#open-block'
     ]

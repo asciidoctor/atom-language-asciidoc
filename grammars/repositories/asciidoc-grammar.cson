@@ -3,6 +3,7 @@ name: ''
 scopeName: ''
 fileTypes: []
 
+limitLineLength: false
 maxTokensPerLine: 100
 
 patterns: [

@@ -130,7 +130,8 @@ sh build-package.sh
 
 The grammar is defined in files contains in the directory `grammars/repositories`.
 
-The file link:grammars/language-asciidoc.cson[grammars/language-asciidoc.cson] is a generated file, *you must don't chnage this file manually*.
+The file link:grammars/language-asciidoc.cson[grammars/language-asciidoc.cson] is generated automatically.
+*Please don't change this file manually.*
 
 === Generate the grammar file
 

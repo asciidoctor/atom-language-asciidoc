@@ -1,8 +1,6 @@
 ## Preamble
 
-The file `/grammars/language-asciidoc` is generated, please don't modify manually this file.
-
-Please read the contributing guide to know how generate this file.
+The `grammars/language-asciidoc.cson` file is auto-generated. Please don't modify this file manually. Consult the contributing guide to learn how to generate this file.
 
 ### How to write a good PR
 
@@ -11,9 +9,9 @@ Please read the contributing guide to know how generate this file.
 - Run *all* tests.
 - Add an explanation.
 - Add screenshot(s).
-- Add AsciiDoctor syntax example (related to scrennshots).
+- Add AsciiDoc syntax example (related to scrennshots).
 
-*Remove the previous 'Preamble' section upon you have read it.*
+*Remove the previous 'Preamble' section once you have read it.*
 
 ## Description
 
@@ -21,7 +19,7 @@ Your description.
 
 ## Syntax example
 
-```adoc
+```asciidoc
 Your syntax example.
 ```
 

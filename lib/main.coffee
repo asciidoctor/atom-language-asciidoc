@@ -99,7 +99,17 @@ module.exports =
           # only for compatibilty with older version of Atom
           editor.reloadGrammar()
         else
-          atom.textEditors.maintainGrammar(editor)
+          # Workaround because:
+          # - `reloadGrammar` is buggy before 1.11 (https://github.com/atom/atom/issues/13022)
+          # - `maintainGrammar` change this behavior and don't reload existing grammar.
+          #   - https://github.com/atom/atom/pull/12125
+          #   - https://github.com/atom/atom/blob/c844d0f099e6ed95c52f0b94e1f141759926aeb8/src/text-editor-registry.js#L201
+          grammarOverride = atom.textEditors.editorGrammarOverrides[editor.id]
+          atom.textEditors.setGrammarOverride editor, 'text.plain'
+          if grammarOverride?
+            atom.textEditors.setGrammarOverride editor, grammarOverride
+          else
+            atom.textEditors.clearGrammarOverride editor
 
     console.log 'AsciiDoc grammars reloaded'
 

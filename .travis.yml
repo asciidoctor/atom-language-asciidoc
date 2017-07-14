@@ -36,6 +36,7 @@ branches:
 git:
   depth: 10
 
+dist: trusty
 sudo: false
 
 addons:
@@ -43,5 +44,5 @@ addons:
     packages:
     - build-essential
     - git
-    - libgnome-keyring-dev
+    - libsecret-1-dev
     - fakeroot

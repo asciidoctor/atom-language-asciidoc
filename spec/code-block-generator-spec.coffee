@@ -53,7 +53,7 @@ describe 'Code block generator', ->
           ]
           end: '^(\\1)$'
         ]
-        end: '((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)'
+        end: '((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)'
 
     it 'should generate listing block', ->
       languages = []
@@ -131,7 +131,7 @@ describe 'Code block generator', ->
           ]
           end: '^(\\1)$'
         ]
-        end: '((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)'
+        end: '((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)'
 
     it 'should generate C++ code block', ->
       languages = [
@@ -191,7 +191,7 @@ describe 'Code block generator', ->
           ]
           end: '^(\\1)$'
         ]
-        end: '((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)'
+        end: '((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)'
 
   describe 'with Markdown syntax', ->
 

@@ -1136,7 +1136,7 @@ repository:
             end: "(?<=\\1)"
           }
         ]
-        end: "((?<=--|====)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|====)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.admonition.asciidoc"
@@ -1188,7 +1188,7 @@ repository:
             include: "#inlines"
           }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--)$|^\\p{Blank}*$)"
       }
     ]
   "example-paragraph":
@@ -1234,7 +1234,7 @@ repository:
             include: "#inlines"
           }
         ]
-        end: "((?<=--|====)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|====)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.block.example.asciidoc"
@@ -1293,7 +1293,7 @@ repository:
             include: "#inlines"
           }
         ]
-        end: "((?<=--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--)$|^\\p{Blank}*$)"
       }
     ]
   "literal-paragraph":
@@ -1329,7 +1329,7 @@ repository:
             include: "#inlines"
           }
         ]
-        end: "((?<=--|\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.block.literal.asciidoc"
@@ -1397,7 +1397,7 @@ repository:
             end: "(?<=\\1)"
           }
         ]
-        end: "((?<=--|\\+\\+)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\+\\+)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.block.passthrough.asciidoc"
@@ -1472,7 +1472,7 @@ repository:
             end: "(?<=\\1)$"
           }
         ]
-        end: "((?<=____|\"\"|--)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=____|\"\"|--)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.italic.quotes.asciidoc"
@@ -1544,7 +1544,7 @@ repository:
             include: "#inlines"
           }
         ]
-        end: "((?<=--|\\*\\*\\*\\*)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\*\\*\\*\\*)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.block.sidebar.asciidoc"
@@ -1747,7 +1747,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.clojure.asciidoc"
@@ -1822,7 +1822,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.coffee.asciidoc"
@@ -1897,7 +1897,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.cpp.asciidoc"
@@ -1972,7 +1972,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.css.asciidoc"
@@ -2047,7 +2047,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.cs.asciidoc"
@@ -2122,7 +2122,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.diff.asciidoc"
@@ -2197,7 +2197,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.dockerfile.asciidoc"
@@ -2272,7 +2272,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.elixir.asciidoc"
@@ -2347,7 +2347,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.elm.asciidoc"
@@ -2422,7 +2422,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.erlang.asciidoc"
@@ -2497,7 +2497,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.go.asciidoc"
@@ -2572,7 +2572,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.groovy.asciidoc"
@@ -2647,7 +2647,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.haskell.asciidoc"
@@ -2722,7 +2722,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.html.basic.asciidoc"
@@ -2797,7 +2797,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.java.asciidoc"
@@ -2872,7 +2872,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.js.asciidoc"
@@ -2947,7 +2947,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.json.asciidoc"
@@ -3022,7 +3022,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.js.jsx.asciidoc"
@@ -3097,7 +3097,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.julia.asciidoc"
@@ -3172,7 +3172,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.kotlin.asciidoc"
@@ -3247,7 +3247,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.css.less.asciidoc"
@@ -3322,7 +3322,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.makefile.asciidoc"
@@ -3397,7 +3397,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.gfm.asciidoc"
@@ -3472,7 +3472,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.html.mustache.asciidoc"
@@ -3547,7 +3547,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.objc.asciidoc"
@@ -3622,7 +3622,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.ocaml.asciidoc"
@@ -3697,7 +3697,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.perl.asciidoc"
@@ -3772,7 +3772,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.perl6.asciidoc"
@@ -3847,7 +3847,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.html.php.asciidoc"
@@ -3922,7 +3922,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.asciidoc.properties.asciidoc"
@@ -3997,7 +3997,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.python.asciidoc"
@@ -4072,7 +4072,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.r.asciidoc"
@@ -4147,7 +4147,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.ruby.asciidoc"
@@ -4222,7 +4222,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.rust.asciidoc"
@@ -4297,7 +4297,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.sass.asciidoc"
@@ -4372,7 +4372,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.scala.asciidoc"
@@ -4447,7 +4447,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.css.scss.asciidoc"
@@ -4522,7 +4522,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.shell.asciidoc"
@@ -4597,7 +4597,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.sql.asciidoc"
@@ -4672,7 +4672,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.swift.asciidoc"
@@ -4747,7 +4747,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.toml.asciidoc"
@@ -4822,7 +4822,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.ts.asciidoc"
@@ -4897,7 +4897,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.xml.asciidoc"
@@ -4972,7 +4972,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.code.yaml.asciidoc"
@@ -5047,7 +5047,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         begin: "(?=(?>(?:^\\[(source)((?:,|#)[^\\]]+)*\\]$)))"
@@ -5112,7 +5112,7 @@ repository:
             end: "^(\\1)$"
           }
         ]
-        end: "((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)"
+        end: "((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)"
       }
       {
         name: "markup.raw.asciidoc"

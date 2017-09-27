@@ -31,9 +31,8 @@ describe 'Literal open block', ->
       expect(tokens[1][0]).toEqualJson value: '--', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
       expect(tokens[2]).toHaveLength 1
       expect(tokens[2][0]).toEqualJson value: 'Daleks EXTERMINATE in monospace!', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
-      expect(tokens[3]).toHaveLength 2
+      expect(tokens[3]).toHaveLength 1
       expect(tokens[3][0]).toEqualJson value: '--', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
-      expect(tokens[3][1]).toEqualJson value: '', scopes: ['source.asciidoc', 'markup.block.literal.asciidoc']
 
   describe 'Should not tokenizes when', ->
 

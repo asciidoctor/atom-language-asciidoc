@@ -55,7 +55,7 @@ module.exports =
         ]
         end: '^(\\1)$'
       ]
-      end: '((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)'
+      end: '((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)'
 
     # add generic block
     codeBlocks.push
@@ -103,7 +103,7 @@ module.exports =
         ]
         end: '^(\\1)$'
       ]
-      end: '((?<=--|\\.\\.\\.\\.)[\\r\\n]+$|^\\p{Blank}*$)'
+      end: '((?<=--|\\.\\.\\.\\.)$|^\\p{Blank}*$)'
 
     # add listing block
     codeBlocks.push

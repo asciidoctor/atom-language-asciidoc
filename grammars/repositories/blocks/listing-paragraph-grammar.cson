@@ -38,5 +38,5 @@ patterns: [
   ,
     include: '#inlines'
   ]
-  end: '((?<=--)[\\r\\n]+$|^\\p{Blank}*$)'
+  end: '((?<=--)$|^\\p{Blank}*$)'
 ]

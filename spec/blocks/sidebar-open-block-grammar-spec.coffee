@@ -35,9 +35,8 @@ describe 'Sidebar open block', ->
       expect(tokens[2][2]).toEqualJson value: 'sidebar', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.asciidoc']
       expect(tokens[2][3]).toEqualJson value: '*', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc', 'markup.strong.constrained.asciidoc', 'markup.bold.asciidoc', 'punctuation.definition.asciidoc']
       expect(tokens[2][4]).toEqualJson value: '.', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']
-      expect(tokens[3]).toHaveLength 2
+      expect(tokens[3]).toHaveLength 1
       expect(tokens[3][0]).toEqualJson value: '--', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']
-      expect(tokens[3][1]).toEqualJson value: '', scopes: ['source.asciidoc', 'markup.block.sidebar.asciidoc']
 
   describe 'Should not tokenizes when', ->
 

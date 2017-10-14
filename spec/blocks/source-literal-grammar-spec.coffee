@@ -37,9 +37,8 @@ describe 'Source literal', ->
       expect(tokens[2][0]).toEqualJson value: 'ls -l', scopes: ['source.asciidoc', 'markup.code.shell.asciidoc', 'source.embedded.shell']
       expect(tokens[3]).toHaveLength 1
       expect(tokens[3][0]).toEqualJson value: 'cd ..', scopes: ['source.asciidoc', 'markup.code.shell.asciidoc', 'source.embedded.shell']
-      expect(tokens[4]).toHaveLength 2
+      expect(tokens[4]).toHaveLength 1
       expect(tokens[4][0]).toEqualJson value: '....', scopes: ['source.asciidoc', 'markup.code.shell.asciidoc']
-      expect(tokens[4][1]).toEqualJson value: '', scopes: ['source.asciidoc', 'markup.code.shell.asciidoc']
       expect(tokens[5]).toHaveLength 11
       expect(tokens[5][0]).toEqualJson value: '<', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.other.symbol.asciidoc']
       expect(tokens[5][1]).toEqualJson value: '1', scopes: ['source.asciidoc', 'callout.asciidoc', 'constant.numeric.asciidoc']
@@ -87,6 +86,5 @@ describe 'Source literal', ->
       expect(tokens[1][0]).toEqualJson value: '....', scopes: ['source.asciidoc', 'markup.code.java.asciidoc']
       expect(tokens[2]).toHaveLength 1
       expect(tokens[2][0]).toEqualJson value: 'System.out.println("Hello *strong* text").', scopes: ['source.asciidoc', 'markup.code.java.asciidoc', 'source.embedded.java']
-      expect(tokens[3]).toHaveLength 2
+      expect(tokens[3]).toHaveLength 1
       expect(tokens[3][0]).toEqualJson value: '....', scopes: ['source.asciidoc', 'markup.code.java.asciidoc']
-      expect(tokens[3][1]).toEqualJson value: '', scopes: ['source.asciidoc', 'markup.code.java.asciidoc']

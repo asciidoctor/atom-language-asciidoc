@@ -52,7 +52,7 @@ patterns: [
     ]
     end: '(?<=\\1)'
   ]
-  end: '((?<=--|\\+\\+)[\\r\\n]+$|^\\p{Blank}*$)'
+  end: '((?<=--|\\+\\+)$|^\\p{Blank}*$)'
 ,
   # Matches passthrough block
   #

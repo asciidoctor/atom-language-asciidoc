@@ -31,9 +31,8 @@ describe 'Listing open block', ->
       expect(tokens[1][0]).toEqualJson value: '--', scopes: ['source.asciidoc', 'markup.block.listing.asciidoc']
       expect(tokens[2]).toHaveLength 1
       expect(tokens[2][0]).toEqualJson value: 'A multi-line listing.', scopes: ['source.asciidoc', 'markup.block.listing.asciidoc']
-      expect(tokens[3]).toHaveLength 2
+      expect(tokens[3]).toHaveLength 1
       expect(tokens[3][0]).toEqualJson value: '--', scopes: ['source.asciidoc', 'markup.block.listing.asciidoc']
-      expect(tokens[3][1]).toEqualJson value: '', scopes: ['source.asciidoc', 'markup.block.listing.asciidoc']
 
   describe 'Should not tokenizes when', ->
 

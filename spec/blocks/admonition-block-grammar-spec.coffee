@@ -63,9 +63,8 @@ describe 'Admonition block', ->
       expect(tokens[numLine][0]).toEqualJson value: '*', scopes: ['source.asciidoc', 'markup.admonition.asciidoc', 'markup.list.asciidoc', 'markup.list.bullet.asciidoc']
       expect(tokens[numLine][1]).toEqualJson value: ' Celery makes them sad.', scopes: ['source.asciidoc', 'markup.admonition.asciidoc']
       numLine++
-      expect(tokens[numLine]).toHaveLength 2
+      expect(tokens[numLine]).toHaveLength 1
       expect(tokens[numLine][0]).toEqualJson value: '====', scopes: ['source.asciidoc', 'markup.admonition.asciidoc']
-      expect(tokens[numLine][1]).toEqualJson value: '', scopes: ['source.asciidoc', 'markup.admonition.asciidoc']
       numLine++
       expect(tokens[numLine]).toHaveLength 1
       expect(tokens[numLine][0]).toEqualJson value: 'foobar', scopes: ['source.asciidoc']

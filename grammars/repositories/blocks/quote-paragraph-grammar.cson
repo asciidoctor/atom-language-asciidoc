@@ -72,7 +72,7 @@ patterns: [
     ]
     end: '(?<=\\1)$'
   ]
-  end: '((?<=____|""|--)[\\r\\n]+$|^\\p{Blank}*$)'
+  end: '((?<=____|""|--)$|^\\p{Blank}*$)'
 ,
   # Matches air quotes.
   #

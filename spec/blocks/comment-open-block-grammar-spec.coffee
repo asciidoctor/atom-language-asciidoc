@@ -40,8 +40,7 @@ describe 'Comment open block', ->
       expect(tokens[4][0]).toEqualJson value: '', scopes: ['source.asciidoc', 'comment.block.asciidoc']
       expect(tokens[5]).toHaveLength 1
       expect(tokens[5][0]).toEqualJson value: 'an open block comment.', scopes: ['source.asciidoc', 'comment.block.asciidoc']
-      expect(tokens[6]).toHaveLength 2
+      expect(tokens[6]).toHaveLength 1
       expect(tokens[6][0]).toEqualJson value: '--', scopes: ['source.asciidoc', 'comment.block.asciidoc']
-      expect(tokens[6][1]).toEqualJson value: '', scopes: ['source.asciidoc', 'comment.block.asciidoc']
       expect(tokens[7]).toHaveLength 1
       expect(tokens[7][0]).toEqualJson value: 'foobar', scopes: ['source.asciidoc']

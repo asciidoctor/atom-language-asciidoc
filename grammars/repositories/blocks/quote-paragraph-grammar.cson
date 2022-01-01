@@ -32,9 +32,9 @@ patterns: [
   #   --
   #
   name: 'markup.italic.quotes.asciidoc'
-  begin: '(?=(?>(?:^\\[(quote|verse)((?:(?:,|#|\\.|%)([^,]+?))*)\\]$)))'
+  begin: '(?=(?>(?:^\\[(quote|verse)(?:(?:,|#|\\.|%)([^,]+?))*\\]$)))'
   patterns: [
-    match: '^\\[(quote|verse)((?:(?:,|#|\\.|%)([^,]+?))*)\\]$'
+    match: '^\\[(quote|verse)(?:(?:,|#|\\.|%)([^,]+?))*\\]$'
     captures:
       0:
         patterns: [

@@ -19,7 +19,7 @@ patterns: [
 ,
   comment: 'attributes'
   name: 'markup.meta.attribute-list.asciidoc'
-  match: '(?<=\\{|,|.|#|"|\'|%)([^\\],.#%]+)'
+  match: '(?<=\\{|,|\\.|#|"|\'|%)(?:[^\\],.#%]|\\](?=[ \\t]*\\S))+'
   captures:
     0:
       patterns: [

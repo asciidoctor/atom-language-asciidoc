@@ -135,4 +135,6 @@ repository:
       include: '#characters'
     ,
       include: '#bibliography-anchor'
+    ,
+      include: '#general-inline-macro'
     ]

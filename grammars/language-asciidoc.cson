@@ -203,6 +203,9 @@ repository:
       {
         include: "#bibliography-anchor"
       }
+      {
+        include: "#general-inline-macro"
+      }
     ]
   "attribute-entry":
     patterns: [
@@ -751,6 +754,25 @@ repository:
             ]
           "6":
             name: "punctuation.separator.asciidoc"
+      }
+    ]
+  "general-inline-macro":
+    patterns: [
+      {
+        name: "markup.other.inline.asciidoc"
+        match: "(?<!\\\\)(\\p{Word}+):([^\\s\\[:]*)(?:\\[((?:\\\\\\]|[^\\]])*?)\\])"
+        captures:
+          "1":
+            name: "entity.name.function.asciidoc"
+          "2":
+            name: "markup.link.asciidoc"
+            patterns: [
+              {
+                include: "#attribute-reference"
+              }
+            ]
+          "3":
+            name: "string.unquoted.asciidoc"
       }
     ]
   "image-macro":
